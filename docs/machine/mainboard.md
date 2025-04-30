@@ -24,3 +24,7 @@ The hotend runs Klipper MCU firmware.
 ## Bed
 
 The bed is its own Klipper MCU with an accelerometer and some pressure sensors. The heating is not controlled by the MCU, but via a seperate AC board.
+
+## Screen
+
+Unknown. Please contribute if you know what type of connector/interface the screen is.
