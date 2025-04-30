@@ -1,0 +1,52 @@
+site_name: OpenCentauri
+repo_url: https://github.com/suchmememanyskill/OpenCentauri
+repo_name: OpenCentauri
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+nav:
+  - Home: index.md
+  - Machine:
+    - Machine: machine/index.md
+    - Mainboard: machine/mainboard.md
+    - Mods:
+      - Printable Mods: machine/mods/printable_mods.md
+      - Light Mods: machine/mods/light_mods.md
+  - Software: 
+    - Software: software/index.md
+    - Partitions: software/partitions.md
+    - Updates: software/updates.md
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.expand
+    - toc.integrate
+  palette:
+  # Palette toggle for automatic mode
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+
+  # Palette toggle for light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+
+  # Palette toggle for dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
