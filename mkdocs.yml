@@ -20,6 +20,7 @@ nav:
     - Software: software/index.md
     - Partitions: software/partitions.md
     - Updates: software/updates.md
+    - API: software/api.md
 theme:
   name: material
   features:
