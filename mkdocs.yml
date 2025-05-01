@@ -18,6 +18,7 @@ nav:
     - Partitions: software/partitions.md
     - Updates: software/updates.md
     - API: software/api.md
+    - Klipperify Research: software/killerify-research.md 
   - Mods:
     - Printable Mods: mods/printable_mods.md
     - Light Mods: mods/light_mods.md
