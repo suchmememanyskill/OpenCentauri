@@ -13,14 +13,14 @@ nav:
   - Machine:
     - Machine: machine/index.md
     - Mainboard: machine/mainboard.md
-    - Mods:
-      - Printable Mods: machine/mods/printable_mods.md
-      - Light Mods: machine/mods/light_mods.md
   - Software: 
     - Software: software/index.md
     - Partitions: software/partitions.md
     - Updates: software/updates.md
     - API: software/api.md
+  - Mods:
+    - Printable Mods: mods/printable_mods.md
+    - Light Mods: mods/light_mods.md
 theme:
   name: material
   features:
