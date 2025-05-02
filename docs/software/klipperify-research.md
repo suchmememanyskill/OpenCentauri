@@ -62,17 +62,8 @@ To figure out your ttyACM number, SSH into the Raspberry and go to `/dev`. Run t
 
 ## Outdated MCU error
 
-Most likely you'll get an outdated MCU error with the MCU being V9, and your Klipper being up-to-date. Flashing the newest Klipper onto the hotend boards requires extra hardware and some soldering thin legs of the controller and it would break compatiblity with the factory mainboard. A quick fix is to hack-revert the change in Klipper change [d4aee4f](https://github.com/Klipper3d/klipper/commit/d4aee4f55e0203aa7cf2877227a574a1b1458a2e).
+Most likely you'll get an outdated MCU error with the MCU being V9, and your Klipper being up-to-date. Flashing the newest Klipper onto the hotend boards requires extra hardware and some soldering thin legs of the controller and it would break compatiblity with the factory mainboard.
 
-#### On a windows working machine
-
-WinSCP into the Raspberry, go to `/home/[your username]/klipper/klippy` and copy the `mcu.pu` to your machine.
-Find the line that starts with `get_config_cmd = self.lookup_query_command(` and in the second parameter
-change the
-|from|to|
-|---|---|
-|is_shutdown=%c move_count=%hu|move_count=%hu is_shutdown=%c|
-
-Refer to the linked commit for what was changed. Copy back the `mcu.py` and reboot the Raspberry (Klipper's restart command does not work).
+TODO - Updating Hotend Firmware
 
 ### Klipper Config #2
