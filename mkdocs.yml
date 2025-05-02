@@ -18,7 +18,10 @@ nav:
     - Partitions: software/partitions.md
     - Updates: software/updates.md
     - API: software/api.md
-    - Klipperify Research: software/killerify-research.md 
+    - Klipperify Research: software/killerify-research/index.md
+      - Recognize Hotend: software/killerify-research/recognize-hotend.md
+      - Control Temp: software/killerify-research/control-temp.md
+      - Full Config: software/killerify-research/full-config.md
   - Mods:
     - Printable Mods: mods/printable_mods.md
     - Light Mods: mods/light_mods.md
