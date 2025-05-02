@@ -39,3 +39,7 @@ To figure out your ttyACM device, SSH into the Raspberry and go to `/dev`. Run t
 ## Outdated MCU error
 
 Most likely you'll get an outdated MCU error with the MCU being V9, and your Klipper being up-to-date. Flashing the newest Klipper onto the hotend boards requires extra hardware and some soldering thin legs of the controller and it would break compatiblity with the factory mainboard.
+
+## ttyACMx constantly changing
+
+TODO: Find solution
