@@ -10,6 +10,13 @@ markdown_extensions:
   - pymdownx.blocks.caption
   - pymdownx.tasklist:
       custom_checkbox: true
+plugins:
+  - git-committers:
+      repository: suchmememanyskill/OpenCentauri
+      branch: main
+      enabled: !ENV [CI, false]
+  - git-revision-date-localized:
+      enable_creation_date: true
 nav:
   - Home: index.md
   - Machine:

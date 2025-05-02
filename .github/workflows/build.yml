@@ -15,4 +15,4 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: mkdocs gh-deploy --force --clean --verbose
+      - run: MKDOCS_GIT_COMMITTERS_APIKEY=${{secrets.GITHUB_TOKEN}} mkdocs gh-deploy --force --clean --verbose
