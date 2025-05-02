@@ -8,6 +8,8 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.blocks.caption
+  - pymdownx.tasklist:
+      custom_checkbox: true
 nav:
   - Home: index.md
   - Machine:
@@ -18,6 +20,10 @@ nav:
     - Partitions: software/partitions.md
     - Updates: software/updates.md
     - API: software/api.md
+  - Klipper via mainboard replacement:
+    - Main: klipper-via-mainboard-replacement/index.md
+    - Recognize Hotend: klipper-via-mainboard-replacement/recognize-hotend.md
+    - Full Config: klipper-via-mainboard-replacement/full-config.md
   - Mods:
     - Printable Mods: mods/printable_mods.md
     - Light Mods: mods/light_mods.md
