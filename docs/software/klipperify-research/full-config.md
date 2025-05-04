@@ -47,7 +47,7 @@ fan_speed: 98
 tachometer_pin:	PA1 ## Update to hotend MCU prefix once we have multiple boards added
 
 [fan model]
-pin8: PB5 ## Update to hotend MCU prefix once we have multiple boards added
+pin: PB5 ## Update to hotend MCU prefix once we have multiple boards added
 tachometer_pin:	PA0 ## Update to hotend MCU prefix once we have multiple boards added
 
 ################################# !!! DOES NOT WORK WITHOUT MATCHING KLIPPER VERSION !!!
