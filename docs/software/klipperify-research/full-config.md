@@ -50,6 +50,17 @@ tachometer_pin:	PA1 ## Update to hotend MCU prefix once we have multiple boards 
 pin: PB5 ## Update to hotend MCU prefix once we have multiple boards added
 tachometer_pin:	PA0 ## Update to hotend MCU prefix once we have multiple boards added
 
+[tmc2209 extruder]
+stealthchop_threshold: 9999999999
+tx_pin: PC6 ## Update to hotend MCU prefix once we have multiple boards added
+uart_pin: PC7 ## Update to hotend MCU prefix once we have multiple boards added
+interpolate: False
+run_current: 0.8
+hold_current: 0.5
+uart_address: 3
+sense_resistor: 0.1
+driver_sgthrs: 10
+
 ################################# !!! DOES NOT WORK WITHOUT MATCHING KLIPPER VERSION !!!
 [resonance_tester]
 accel_chip: adxl345 X
