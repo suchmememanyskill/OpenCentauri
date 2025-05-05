@@ -22,6 +22,9 @@ The hotend is connected over a USB-C cable. This USB-C interface carries 24v. Co
 !!! example
     The board boots from a simple 5v USB connection.
 
+!!! warning
+    You can make the hotend board boot into DFU mode by bridging the boot and 3.3v pins on the back during power-on. The board is in Read Out Protection mode.
+
 ## Supplementary board
 
 ![Hotend supplementary board image](../assets/centauri-hotend-supplementary.jpg){ width="600" }
