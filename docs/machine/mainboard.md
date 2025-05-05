@@ -1,5 +1,3 @@
-# Mainboard
-
 Metric|Value
 ---|---
 CPU|AllWinner R528-S3
@@ -7,24 +5,49 @@ Memory|128 MB Onboard
 Storage|8gb eMMC
 Stepper drivers|tmc2209
 
-![Mainboard image](../assets/centauri-mobo.jpg){ width="400" }
-/// caption
-Credit to the Elegoo discord.
-///
+Front|Back
+---|---
+![Mainboard image](../assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](../assets/centauri-mobo-back.jpg){ width="800" }
+Credit to the Elegoo discord.|Credit to thijskunst on the OpenCentauri Discord.
 
-## Hotend
+## Mainboard Pins
 
-The hotend is connected over a USB-C cable. This USB-C interface carries 24v.
+### Z-Axis Optical Sensor (titled EXT on board)
 
-!!! question "Speculation"
-    I suspect that D+/D- is either a direct serial connection or a serial-over-usb interface.
+|pin|voltage|
+|---|----|
+|+|24v|
+|-|GND|
+|s| 3.3v when bed is zeroed, 0v when not|
 
-The hotend runs Klipper MCU firmware.
+### Filament Runout Sensor
 
-## Bed
+|pin|voltage|
+|---|---|
+|+|5v|
+|-|GND|
+|s|3v3 when filament is inserted, 0v when not|
 
-The bed is its own Klipper MCU with an accelerometer and some pressure sensors. The heating is not controlled by the MCU, but via a seperate AC board.
+### Light
 
-## Screen
+|pin|Voltage|
+|---|---|
+|+|24v when Light is enabled, 0v when not*|
+|-|GND|
 
-Unknown. Please contribute if you know what type of connector/interface the screen is.
+\* Matches the state of the light on the camera module.
+
+### Camera
+
+The camera uses an USB 2.0 connection with a JST connector.
+
+### Bed Heating
+
+|pin|Voltage|
+|---|---|
+|+|24v when bed is heating, 0 when not|
+|-|GND|
+
+### Hotend
+
+Serial-Over-USB connection but the USB's VBus is connected to the PSU's 24v line.

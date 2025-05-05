@@ -11,6 +11,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 plugins:
+  - glightbox
   - git-committers:
       repository: suchmememanyskill/OpenCentauri
       branch: main
@@ -22,6 +23,9 @@ nav:
   - Machine:
     - Machine: machine/index.md
     - Mainboard: machine/mainboard.md
+    - Hotend: machine/hotend.md
+    - Bed: machine/bed.md
+    - Screen: machine/screen.md
   - Software: 
     - Software: software/index.md
     - Partitions: software/partitions.md
@@ -64,3 +68,7 @@ theme:
       name: Switch to light mode
   icon:
     repo: fontawesome/brands/github
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/t6Cft3wNJ3
