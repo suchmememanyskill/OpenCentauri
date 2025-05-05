@@ -7,7 +7,8 @@ Currently a work in progress. See the progress below:
         - [ ] Update firmware on hotend board
         - [ ] Downgrade Klipper
     - [x] Read and control temperature
-    - [ ] Control the model fan
+    - [x] Control the model fan
+    - [X] Control the hotend fan
     - [ ] Read the ADXL accelerometer
     - [ ] Control the extruder motor
     - [ ] Read yet to be determined sensors
