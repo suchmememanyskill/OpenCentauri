@@ -36,6 +36,7 @@ nav:
     - Recognize Hotend: klipper-via-mainboard-replacement/recognize-hotend.md
     - Printer Config: klipper-via-mainboard-replacement/printer-config.md
     - Mainsail Config: klipper-via-mainboard-replacement/mainsail-config.md
+    - UDEV Setup: klipper-via-mainboard-replacement/udev-setup.md
   - Mods:
     - Printable Mods: mods/printable_mods.md
     - Light Mods: mods/light_mods.md
