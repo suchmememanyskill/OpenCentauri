@@ -1,5 +1,7 @@
 # !!! WORK IN PROGRESS !!!
 
+Reconstruction for the Centauri Carbon Printer.cfg
+
 ```yaml
 [mcu]
 serial: /dev/ttyACM1
@@ -43,7 +45,6 @@ pressure_advance: 0.04
 [heater_fan hotend_cooling_fan]
 pin: PC8 ## Update to hotend MCU prefix once we have multiple boards added
 heater_temp: 50
-fan_speed: 98
 tachometer_pin:	PA1 ## Update to hotend MCU prefix once we have multiple boards added
 
 [fan model]
