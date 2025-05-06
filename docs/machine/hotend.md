@@ -33,3 +33,10 @@ Credit to rabirx on the OpenCentauri Discord.
 ///
 
 The hotend board has an 2x4 pin port at the bottom of the board. This connector connects to a seperate pcb, that breaks out the nessesary connectors for the hotend (Temperature sensor, heater, hotend fan).
+
+## Firmware dump
+
+!!! failure "Help needed"
+    If you're able to dump the firmware from the microcontroller on the hotend ([possibly using stm32f0-pico-dump](https://github.com/racerxdl/stm32f0-pico-dump)), please consider sending us a firmware dump of the hotend microcontroller.
+
+    Ask on [the Discord](https://discord.gg/t6Cft3wNJ3) for more information.

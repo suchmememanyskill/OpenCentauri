@@ -39,6 +39,6 @@ Coredumps can be loaded in IDA, Ghidra, BinaryNinja, or any other analyser of yo
 ### Emmc dump
 
 !!! failure "Help needed"
-    If you're able to dump an emmc and would like to contribute, please consider sending me an emmc dump of the Centauri Carbon.
+    If you're able to dump an emmc and would like to contribute, please consider sending us an emmc dump of the Centauri Carbon.
 
     See [this issue on github](https://github.com/suchmememanyskill/OpenCentauri/issues/1) for more information
