@@ -12,7 +12,7 @@
         <link rel="prev" href="../recognize-hotend/">
       
       
-        <link rel="next" href="../../mods/printable_mods/">
+        <link rel="next" href="../mainsail-config/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Full Config - OpenCentauri</title>
+        <title>Printer Config - OpenCentauri</title>
       
     
     
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Full Config
+              Printer Config
             
           </span>
         </div>
@@ -780,13 +780,59 @@
   
   
   <span class="md-ellipsis">
-    Full Config
+    Printer Config
     
   </span>
   
 
       </a>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mainsail-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mainsail Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../udev-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UDEV Setup
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -915,24 +961,29 @@
 
 
 <h1 id="work-in-progress">!!! WORK IN PROGRESS !!!</h1>
+<p>Reconstruction for the Centauri Carbon Printer.cfg</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">mcu</span><span class="p p-Indicator">]</span>
 <span class="nt">serial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/ttyACM1</span>
 <span class="nt">baud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span>
 <span class="nt">restart_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">command</span>
 
+<span class="c1"># TODO: MCU for hotend</span>
+
+<span class="c1"># TODO: MCU For new Mobo</span>
+
 <span class="p p-Indicator">[</span><span class="nv">printer</span><span class="p p-Indicator">]</span>
 <span class="nt">max_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span>
 <span class="nt">max_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20000</span>
 <span class="c1"># TODO: Will be upated for the last step of the Klipperification when the hotend and the hot bed are done</span>
-<span class="nt">kinematics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span><span class="w"> </span>
+<span class="nt">kinematics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
 
 <span class="p p-Indicator">[</span><span class="nv">extruder</span><span class="p p-Indicator">]</span>
 <span class="c1"># Pins</span>
-<span class="nt">sensor_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PA3</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">heater_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PB6</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">step_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC13</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">dir_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC14</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">enable_pin</span><span class="p">:</span><span class="w"> </span><span class="kt">!PC15</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">sensor_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PA3</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">heater_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PB6</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">step_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC13</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">dir_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC14</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">enable_pin</span><span class="p">:</span><span class="w"> </span><span class="kt">!PC15</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
 <span class="c1"># Metadata</span>
 <span class="nt">nozzle_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
 <span class="nt">filament_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.75</span>
@@ -954,28 +1005,109 @@
 <span class="nt">pressure_advance_smooth_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.01</span>
 <span class="nt">pressure_advance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.04</span>
 
+<span class="p p-Indicator">[</span><span class="nv">heater_bed</span><span class="p p-Indicator">]</span>
+<span class="nt">heater_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PG13</span>
+<span class="nt">sensor_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NTC 100K MGB18-104F39050L32</span>
+<span class="nt">control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pid</span>
+<span class="nt">pid_Kp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">46.504839</span>
+<span class="nt">pid_Ki</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.453276</span>
+<span class="nt">pid_Kd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">372.038710</span>
+<span class="nt">pwm_cycle_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.016</span>
+<span class="nt">min_temp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-10</span>
+<span class="nt">max_temp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">125</span>
+
+<span class="p p-Indicator">[</span><span class="nv">verify_heater heater_bed</span><span class="p p-Indicator">]</span>
+<span class="nt">max_error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
+<span class="nt">check_gain_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="nt">hysteresis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="nt">heating_gain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="p p-Indicator">[</span><span class="nv">temperature_sensor box</span><span class="p p-Indicator">]</span>
+<span class="nt">sensor_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PB13</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">sensor_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NTC 100K MGB18-104F39050L32</span>
+<span class="nt">min_temp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-10</span>
+<span class="nt">max_temp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">125</span>
+
 <span class="p p-Indicator">[</span><span class="nv">heater_fan hotend_cooling_fan</span><span class="p p-Indicator">]</span>
-<span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC8</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC8</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
 <span class="nt">heater_temp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
-<span class="nt">fan_speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">98</span>
-<span class="nt">tachometer_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PA1</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">tachometer_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PA1</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
 
 <span class="p p-Indicator">[</span><span class="nv">fan model</span><span class="p p-Indicator">]</span>
-<span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PB5</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">tachometer_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PA0</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PB5</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">tachometer_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PA0</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+
+<span class="c1"># TODO, Config completely scrambled</span>
+<span class="c1"># AUX Fan</span>
+<span class="c1"># [fan model_helper_fan]</span>
+
+<span class="p p-Indicator">[</span><span class="nv">fan box_fan</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># Case-fan</span>
+<span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PG18</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+
+<span class="p p-Indicator">[</span><span class="nv">controller_fan board_cooling_fan</span><span class="p p-Indicator">]</span>
+<span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PG16</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
 
 <span class="p p-Indicator">[</span><span class="nv">tmc2209 extruder</span><span class="p p-Indicator">]</span>
 <span class="nt">stealthchop_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9999999999</span>
-<span class="nt">tx_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC6</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">uart_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC7</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
-<span class="nt">interpolate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="nt">tx_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC6</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">uart_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC7</span><span class="w"> </span><span class="c1">## TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">interpolate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">run_current</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
 <span class="nt">hold_current</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="nt">uart_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="nt">sense_resistor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="nt">driver_sgthrs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 
-<span class="c1">################################# !!! DOES NOT WORK WITHOUT MATCHING KLIPPER VERSION !!!</span>
+<span class="p p-Indicator">[</span><span class="nv">tmc2209 stepper_x</span><span class="p p-Indicator">]</span>
+<span class="nt">tx_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PE9</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">uart_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PE6</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">uart_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">interpolate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">run_current</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">sense_resistor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="nt">microsteps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="nt">driver_sgthrs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
+<span class="nt">diag_pin</span><span class="p">:</span><span class="w"> </span><span class="kt">!PG4</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+
+<span class="p p-Indicator">[</span><span class="nv">tmc2209 stepper_y</span><span class="p p-Indicator">]</span>
+<span class="nt">tx_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PE9</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">uart_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PE6</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">interpolate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">run_current</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">uart_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">sense_resistor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="nt">microsteps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="nt">driver_sgthrs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
+<span class="nt">diag_pin</span><span class="p">:</span><span class="w"> </span><span class="kt">!PF6</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+
+<span class="p p-Indicator">[</span><span class="nv">tmc2209 stepper_z</span><span class="p p-Indicator">]</span>
+<span class="nt">tx_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PE9</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">uart_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PE6</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">interpolate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">run_current</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<span class="nt">uart_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">stealthchop_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">99999</span>
+<span class="nt">sense_resistor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="nt">microsteps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="nt">driver_sgthrs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
+
+<span class="p p-Indicator">[</span><span class="nv">led led1</span><span class="p p-Indicator">]</span>
+<span class="nt">red_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC9</span><span class="w"> </span><span class="c1"># TODO Update to hotend MCU prefix once we have multiple boards added</span>
+<span class="nt">cycle_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.016</span>
+
+<span class="p p-Indicator">[</span><span class="nv">led led2</span><span class="p p-Indicator">]</span>
+<span class="nt">red_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PG15</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">cycle_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.016</span>
+
+<span class="p p-Indicator">[</span><span class="nv">led led3</span><span class="p p-Indicator">]</span>
+<span class="nt">red_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PC2</span><span class="w"> </span><span class="c1"># TODO Need to be adjusted for the mobo</span>
+<span class="nt">cycle_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.016</span>
+
+<span class="p p-Indicator">[</span><span class="nv">led boxLed</span><span class="p p-Indicator">]</span>
+<span class="nt">red_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PG15</span>
+<span class="nt">cycle_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.016</span>
+
+<span class="c1">## ######################### !!! ADXL Config currently faces issues !!! #########################</span>
 <span class="p p-Indicator">[</span><span class="nv">resonance_tester</span><span class="p p-Indicator">]</span>
 <span class="nt">accel_chip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adxl345 X</span>
 <span class="nt">probe_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128, 128, 5</span>
@@ -985,7 +1117,6 @@
 <span class="nt">hz_per_sec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="nt">max_smoothing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
 
-<span class="c1">################################# !!! DOES NOT WORK WITHOUT MATCHING KLIPPER VERSION !!!</span>
 <span class="p p-Indicator">[</span><span class="nv">adxl345 X</span><span class="p p-Indicator">]</span>
 <span class="nt">spi_speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000000</span>
 <span class="nt">spi_bus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spi1</span><span class="w"> </span><span class="c1">## Update to hotend MCU prefix once we have multiple boards added</span>
@@ -1017,7 +1148,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 5, 2025 19:14:38">May 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2025 21:57:11">May 7, 2025</span>
   </span>
 
     
@@ -1027,7 +1158,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2025 17:52:34">May 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2025 21:57:11">May 7, 2025</span>
   </span>
 
     
@@ -1053,11 +1184,6 @@
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
           
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&size=72" alt="web-flow">
-        </a>
-      
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
-          
-          <img src="https://avatars.githubusercontent.com/u/38142618?u=61a34ddba080efcf11b2b0c5d23e14c3deb152d0&v=4&size=72" alt="Sims">
         </a>
       
       
