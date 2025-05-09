@@ -10,7 +10,6 @@ The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://
 ## Updating locally (via USB)
 
 1. Download a firmware from one of the packageUrl's below.
-    - Latest Firmware [(v1.1.25)](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.1.25/2025-05-09/219b4c9e67de4a1d99c7680164911ab5.bin)
 2. Rename the just downloaded file to `update.bin`.
 3. Plug in a USB thumb drive and put `update.bin` on the root of the USB.
 4. Plug the USB into the Centauri Carbon and power it on.
