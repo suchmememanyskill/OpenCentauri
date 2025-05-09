@@ -70,6 +70,7 @@ theme:
       name: Switch to light mode
   icon:
     repo: fontawesome/brands/github
+    logo: material/cube 
 extra:
   social:
     - icon: fontawesome/brands/discord
