@@ -9,6 +9,26 @@ The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://
 
 ## Firmware update archive
 
+### v1.1.25 (Released 9/05/2025)
+```json
+{
+    "code": "000000",
+    "messages": null,
+    "data": {
+        "update": true,
+        "version": "1.1.25",
+        "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.1.25/2025-05-09/219b4c9e67de4a1d99c7680164911ab5.bin",
+        "firmwareType": 1,
+        "packageHash": "cba67e65b6b6cf313c4725fd0e545cb8",
+        "updateStrategy": 1,
+        "log": "Fixes：\n1. Fixed occasional abnormal activation timing issues with the chassis fan and auxiliary fan.\n2. Resolved anomalies in time-lapse photography generation and export functionality.\n3. Optimized material handling processes during feeding/retraction operations.\n4. Addressed unresponsive errors and improved stability in the web interface.\n5. Mitigated miscellaneous issues impacting overall system reliability.",
+        "timeMS": 1746814513456,
+        "dataInfoId": "7662684858844806bdab03184477fb6e"
+    },
+    "success": true
+}
+```
+
 ### v1.1.18 (Released 31/03/2025)
 ```json
 {
