@@ -27,5 +27,3 @@ Currently a work in progress. See the progress below:
     - [ ] Set up sensorless homing
     - [ ] Set up macro for Filament Change
     - [ ] Connect the stock camera
-
-[Full Config](full-config.md)
