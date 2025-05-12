@@ -5,17 +5,15 @@ Currently a work in progress. See the progress below:
 - [ ] Connect hotend to Klipper
     - [x] [Recognize the hotend](recognize-hotend.md)
         - [ ] Update firmware on hotend board
-        - [ ] Downgrade Klipper
+        - [x] Downgrade Klipper
     - [x] Read and control temperature
     - [x] Control the model fan
     - [X] Control the hotend fan
     - [ ] Read the ADXL accelerometer
-    - [ ] Control the extruder motor
-    - [ ] Read yet to be determined sensors
+    - [x] Control the extruder motor
+    - [ ] Control LED on bottom of hotend
 - [ ] Connect hot bed to Klipper
-    - [ ] Read thermocouple data
     - [ ] Read the load cell data
-    - [ ] Read yet to be determined sensors
 - [ ] Connect the wires from the CC-Mainboard to 3rd party board
     - [ ] Control the bed heating
     - [ ] Read the bed temperature
@@ -27,3 +25,13 @@ Currently a work in progress. See the progress below:
     - [ ] Set up sensorless homing
     - [ ] Set up macro for Filament Change
     - [ ] Connect the stock camera
+
+[Printer Config](printer-config.md)
+
+[Mainsail Config](mainsail-config.md)
+
+[Hotend-Wiring](recognize-hotend.md)
+
+[UDEV Config](udev-setup.md)
+
+[Rewiring to BTT SKR Mini E3 V3](rewire-btt-skr-mini3.md)
