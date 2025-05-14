@@ -4,6 +4,7 @@ The printer.cfg used for the BTT SKR Mini 3
 
 ```yaml
 # Mainboard
+# Mainboard
 [mcu]
 serial: /dev/ttyS0
 baud: 250000
@@ -27,6 +28,10 @@ kinematics: corexy
 
 [gcode_arcs]
 resolution: 0.5
+
+[pause_resume]
+
+[respond]
 
 ## ========================================================= Toolhead Movement =========================================================
 [stepper_x]
@@ -100,8 +105,8 @@ interpolate: false
 set_position_z: 0
 gcode:
   G0 Z5 F600
-  SET_TMC_CURRENT STEPPER=stepper_x CURRENT=0.300
-  SET_TMC_CURRENT STEPPER=stepper_y CURRENT=0.300
+  SET_TMC_CURRENT STEPPER=stepper_x CURRENT=0.350
+  SET_TMC_CURRENT STEPPER=stepper_y CURRENT=0.350
   G4 P1000 # Allow TMC stall flag to clear
   G28 X # The printer can get stuck on the left egde of the rear fan housing
   G4 P1000 # Allow TMC stall flag to clear
@@ -261,12 +266,13 @@ gcode:
 
 [gcode_macro UNLOAD_FILAMENT]
 gcode:
+  SAVE_GCODE_STATE
   G28
   CUT_FILAMENT
   PARK_HEAD_NOHOME
-  M109 S200
   PUSH_FILAMENT_OUT
   CLEAN_NOZZLE_NOPARK
+  RESTORE_GCODE_STATE MOVE=0
 
 [gcode_macro PARK_HEAD]
 gcode:
@@ -275,21 +281,49 @@ gcode:
 
 [gcode_macro LOAD_FILAMENT]
 gcode:
+  SAVE_GCODE_STATE
   PARK_HEAD
   M109 S250
   PULL_FILAMENT_IN
   CLEAN_NOZZLE_NOPARK
   M104 S0
+  RESTORE_GCODE_STATE MOVE=0
 
 [gcode_macro M600]
 gcode:
-  CUT_FILAMENT
-  PARK_HEAD_NOHOME
-  PUSH_FILAMENT_OUT
-  CLEAN_NOZZLE_NOPARK
   PAUSE
-  PULL_FILAMENT_IN
+  G91
+  G1 Z10
+  G90
+  M400
+  DISPLAY_UNLOAD_PROGRESS STEP=0
+  CUT_FILAMENT
+  M400
+  DISPLAY_UNLOAD_PROGRESS STEP=1
+  PARK_HEAD_NOHOME
+  M400
+  DISPLAY_UNLOAD_PROGRESS STEP=2
+  M109 S250
+  M400
+  DISPLAY_UNLOAD_PROGRESS STEP=3
+  PUSH_FILAMENT_OUT
+  M400
+  DISPLAY_UNLOAD_PROGRESS STEP=4
   CLEAN_NOZZLE_NOPARK
+  M400
+  RESPOND type="command" msg="action:prompt_end"
+  DISPLAY_FILAMENT_LOADED_CONFIRM
+  M400
+
+[gcode_macro TST]
+gcode:
+  RESPOND TYPE=command MSG="action:prompt_begin TEST"
+  RESPOND TYPE=command MSG="action:prompt_text LoL"
+  RESPOND TYPE=command MSG="action:prompt_show"
+  G4 P2000
+  RESPOND TYPE=command MSG="action:prompt_text XD"
+  G4 P2000
+  RESPOND TYPE=command MSG="action:prompt_text Wololo"
 
 ## ========================================================= Helper Macros =========================================================
 [gcode_macro START_PRINT]
@@ -298,17 +332,18 @@ gcode:
 
 [gcode_macro PARK_HEAD_NOHOME]
 gcode:
-  G1 X203 F4000
-  G1 Y265 F4000
+  G1 X203 F8000
+  G1 Y252 F8000
+  G1 Y265 F1000
 
 [gcode_macro CLEAN_NOZZLE_NOPARK]
 # This macro assumes the toolhead is already parked over the chute
 gcode:
-  G1 X171 F7000
-  G1 X186 F7000
-  G1 X171 F7000
-  G1 X186 F7000
-  G1 X171 F7000
+  G1 X171 F9000
+  G1 X186 F9000
+  G1 X171 F9000
+  G1 X186 F9000
+  G1 X171 F9000
   G1 X186 F2000
   G1 Y252 F2000 # Go back a bit to prevent hitting the chute open lever
   PARK_HEAD_NOHOME # Park again
@@ -322,15 +357,58 @@ gcode:
 
 [gcode_macro PUSH_FILAMENT_OUT]
 gcode:
-  G92 E50
-  G1 E0 F100
+  M83
+  G0 E-30 F200
+  G0 E-30 F200
 
 [gcode_macro PULL_FILAMENT_IN]
 gcode:
-  G92 E0
-  G1 E50 F100
-  G92 E0
-  G1 E50 F100
+  M83
+  G0 E30 F200
+  G0 E30 F200
+
+[gcode_macro CONTINUE_M600]
+gcode:
+  M400
+  DISPLAY_LOAD_PROGRESS STEP=0 
+  M109 S250
+  M400
+  DISPLAY_LOAD_PROGRESS STEP=1
+  PULL_FILAMENT_IN
+  M400
+  CLEAN_NOZZLE_NOPARK
+  M400
+  DISPLAY_LOAD_PROGRESS STEP=2
+  RESPOND type="command" msg="action:prompt_end"
+  RESUME
+
+[gcode_macro DISPLAY_UNLOAD_PROGRESS]
+gcode:
+  {% set step = params.STEP|default(0)|int %}
+  RESPOND TYPE=command MSG="action:prompt_begin Unloading Filament"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>0 else '❌' } Cut Filament"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>1 else '❌' } Park Head"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>2 else '❌' } Heat Up Nozzle"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>3 else '❌' } Release"
+  RESPOND TYPE=command MSG="action:prompt_show"
+
+[gcode_macro DISPLAY_LOAD_PROGRESS]
+gcode:
+  {% set step = params.STEP|default(0)|int %}
+  RESPOND TYPE=command MSG="action:prompt_begin Loading Filament"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>0 else '❌' } Heat Up Nozzle"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>1 else '❌' } Pull Filament"
+  RESPOND TYPE=command MSG="action:prompt_text { '✅' if step>2 else '❌' } Clean Nozzle"
+  RESPOND TYPE=command MSG="action:prompt_show"
+
+[gcode_macro DISPLAY_FILAMENT_LOADED_CONFIRM]
+gcode:
+  {% set step = params.STEP|default(0)|int %}
+  RESPOND TYPE=command MSG="action:prompt_begin Load new filament"
+  RESPOND TYPE=command MSG="action:prompt_text Load new filament into the extruder"
+  RESPOND TYPE=command MSG="action:prompt_button Stop Print|CANCEL_PRINT|warning"
+  RESPOND TYPE=command MSG="action:prompt_button Confirm|CONTINUE_M600|success"
+  RESPOND TYPE=command MSG="action:prompt_show"
 
 [include mainsail.cfg]
 ```
