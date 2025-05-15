@@ -17,6 +17,15 @@ The Centauri Carbon seems to be running a variant of TinaLinux/OpenWrt, consider
 
     Whatever it is, it seems to be very far gone from a standard klipper install...
 
+### Speed profiles
+
+Speed setting | Speed multiplier
+---|---
+Silent|50%
+Balanced|100%
+Sport|130%
+Ludicrous|160%
+
 ### Getting a coredump
 
 Coredumps sadly have their executable memory stripped :(
