@@ -146,7 +146,6 @@ cycle_time: 0.016
 red_pin: PG15
 cycle_time: 0.016
 
-## ######################### !!! ADXL Config currently faces issues !!! #########################
 [resonance_tester]
 accel_chip: adxl345 X
 probe_points: 128, 128, 5
@@ -162,4 +161,17 @@ spi_bus: spi1 ## Update to hotend MCU prefix once we have multiple boards added
 axes_map: x,z,-y
 rate: 1600
 cs_pin: PA4 ## Update to hotend MCU prefix once we have multiple boards added
+
+## !!!!!!!!!!!!!!!!!!!!! Fragments !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+sensor0_clk_pin: strain_gauge_mcu:PB13
+sensor0_sdo_pin: ## MISSING
+
+sensor1_clk_pin: strain_gauge_mcu:PC7
+sensor1_sdo_pin: strain_gauge_mcu:PC8
+
+sensor2_clk_pin: strain_gauge_mcu:PC6
+sensor2_sdo_pin: # MISSING
+
+sensor3_clk_pin: strain_gauge_mcu:PC9
+sensor3_sdo_pin: strain_gauge_mcu:PA8
 ```
