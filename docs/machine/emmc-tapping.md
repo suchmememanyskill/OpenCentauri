@@ -13,7 +13,13 @@ During tapping the MCU must be powered down and/or held reset with the onboard b
 |D3|R28|Bottom|The pad toward the text|
 
 ## Top side traces & tap points
-![img](assets/EMMCTapPointsTOP.png)
+![img](assets/EMMCTapPointsTOP.png){ width="600" }
+/// caption
+Credit to thijskunst and rabirx on the OpenCentauri Discord.
+///
 
 ## Bottom side traces & tap points
-![img](assets/EMMCTapPointsBOTTOM.png)
+![img](assets/EMMCTapPointsBOTTOM.png){ width="600" }
+/// caption
+Credit to thijskunst and rabirx on the OpenCentauri Discord.
+///
