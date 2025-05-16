@@ -26,6 +26,7 @@ nav:
     - Hotend: machine/hotend.md
     - Bed: machine/bed.md
     - Screen: machine/screen.md
+    - EMMC Tap Points: machine/emmc-tapping.md
   - Software: 
     - Software: software/index.md
     - Partitions: software/partitions.md
