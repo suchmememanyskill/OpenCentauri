@@ -2,14 +2,9 @@
 
 The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&machineId=0&version=1.1.0&lan=en&firmwareType=1) to check if a new firmware update is available.
 
-!!! question "Speculation"
-    These firmware updates seem to be encrypted (very high entropy).
-
-    I suspect, looking at the coredump, that the result after decryption is a bz2 archive.
-
 ## Updating locally (via USB)
 
-1. Download a firmware from one of the packageUrl's below.
+1. Download a firmware from one of the packageUrl's in the [Firmware update archive](#firmware-update-archive) section.
 2. Rename the just downloaded file to `update.bin`.
 3. Plug in a USB thumb drive and put `update.bin` on the root of the USB.
 4. Plug the USB into the Centauri Carbon and power it on.
@@ -19,6 +14,24 @@ The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://
 /// caption
 Credit to Sims on the OpenCentauri Discord.
 ///
+
+Note: Instead of using `update.bin`, you can also use `update/update.swu`.
+
+## Decrypting & Unpacking updates
+
+1. Download a firmware from one of the packageUrl's in the [Firmware update archive](#firmware-update-archive) section.
+2. Run [the unpack.py python script](../assets/unpack.py) to unpack the update
+    - Usage: `python unpack.py <filename> <key> <iv>`
+3. You will get an `update.swu` file. You can open this file in 7zip. This archive contains all partitions that will be replaced during an update.
+
+![update contents](../assets/swu.png){ width="400" }
+
+The Centauri Carbon makes use of an A/B partition scheme. When an update is applied, the update is applied to the inactive slot. After the update is applied, the machine switches A/B around so the next boot uses the previously inactive slot. The Centuari Carbon makes use of `swupdate` for updates.
+
+Internally, the following commands are used, where %s is the path to the .swu file:
+
+- A->B: `swupdate -i %s -e stable,now_A_next_B -k /etc/swupdate_public.pem -p reboot &`
+- B->A: `swupdate -i %s -e stable,now_B_next_A -k /etc/swupdate_public.pem -p reboot &`
 
 ## Firmware update archive
 
