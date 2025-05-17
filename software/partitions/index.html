@@ -80,11 +80,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#partition-layout-emmc" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -630,8 +625,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -686,6 +679,29 @@
   
   <span class="md-ellipsis">
     API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-gcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom gcode
     
   </span>
   
@@ -983,29 +999,100 @@
   
 
 
-<h1 id="partition-layout-emmc">Partition layout EMMC</h1>
-<div class="admonition question">
-<p class="admonition-title">Speculation</p>
-<p>The Centauri Carbon seems to make use of an A/B partition scheme, 
-likely to make updates while booted into the OS consistent.</p>
-<p>After a firmware update, i suspect the other partition gets selected for a seamless transition.</p>
-<p>Elegoo seemingly has not provided a way to go back to an older version of the OS, though.</p>
-</div>
-<p>The coredump contains the following on partitions:</p>
-<ul>
-<li>boot-resource@mmcblk0p1</li>
-<li>env@mmcblk0p2:env-redund@mmcblk0p3</li>
-<li>bootA@mmcblk0p4</li>
-<li>rootfsA@mmcblk0p5</li>
-<li>dsp0A@mmcblk0p6</li>
-<li>bootB@mmcblk0p7</li>
-<li>rootfsB@mmcblk0p8</li>
-<li>dsp0B@mmcblk0p9</li>
-<li>rootfs_data@mmcblk0p10</li>
-<li>user@mmcblk0p11</li>
-<li>private@mmcblk0p12</li>
-<li>UDISK@mmcblk0p13</li>
-</ul>
+  <h1>Partitions</h1>
+
+<p>The Centauri Carbon uses an A/B partition scheme for updates. When an update is performed, it will be written to the inactive partition and will be marked as active, so the next boot will use this previously unused partition. The current A/B slot is stored in the <code>env</code> partition.</p>
+<p>The Centauri Carbon contains the following partitions:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Size</th>
+<th>Offset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boot-resource@mmcblk0p1</td>
+<td>0x627000</td>
+<td>0x143F000</td>
+<td>Contains boot logos (Strangely also one from anycubic)</td>
+</tr>
+<tr>
+<td>env@mmcblk0p2</td>
+<td>0x3F000</td>
+<td>0x1A66000</td>
+<td>Contains bootup parameters and endpoints</td>
+</tr>
+<tr>
+<td>env-redund@mmcblk0p3</td>
+<td>0x3F000</td>
+<td>0x1AA5000</td>
+<td></td>
+</tr>
+<tr>
+<td>bootA@mmcblk0p4</td>
+<td>0x627000</td>
+<td>0x1AE4000</td>
+<td></td>
+</tr>
+<tr>
+<td>rootfsA@mmcblk0p5</td>
+<td>0x8017800</td>
+<td>0x210B000</td>
+<td>Operating system, slot A</td>
+</tr>
+<tr>
+<td>dsp0A@mmcblk0p6</td>
+<td>0xFC000</td>
+<td>0xA122800</td>
+<td></td>
+</tr>
+<tr>
+<td>bootB@mmcblk0p7</td>
+<td>0x627000</td>
+<td>0xA21E800</td>
+<td></td>
+</tr>
+<tr>
+<td>rootfsB@mmcblk0p8</td>
+<td>0x8017800</td>
+<td>0xA845800</td>
+<td>Operating system, slot B</td>
+</tr>
+<tr>
+<td>dsp0B@mmcblk0p9</td>
+<td>0xFC000</td>
+<td>0x187BB100</td>
+<td></td>
+</tr>
+<tr>
+<td>rootfs_data@mmcblk0p10</td>
+<td>0x8017800</td>
+<td>0x12959000</td>
+<td></td>
+</tr>
+<tr>
+<td>user@mmcblk0p11</td>
+<td>0x8017800</td>
+<td>0x1A970800</td>
+<td>Seemingly the storage location for logging</td>
+</tr>
+<tr>
+<td>private@mmcblk0p12</td>
+<td>0xFC000</td>
+<td>0x22988000</td>
+<td>Entirely empty</td>
+</tr>
+<tr>
+<td>UDISK@mmcblk0p13</td>
+<td>0x1A5577E00</td>
+<td>0x22A84000</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1028,7 +1115,7 @@ likely to make updates while booted into the OS consistent.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 21:56:38">April 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 17, 2025 21:41:23">May 17, 2025</span>
   </span>
 
     

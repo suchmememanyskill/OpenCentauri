@@ -706,6 +706,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#decrypting-unpacking-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decrypting &amp; Unpacking updates
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#firmware-update-archive" class="md-nav__link">
     <span class="md-ellipsis">
       Firmware update archive
@@ -760,6 +769,29 @@
   
   <span class="md-ellipsis">
     API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-gcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom gcode
     
   </span>
   
@@ -1059,14 +1091,9 @@
 
 <h1 id="updates">Updates</h1>
 <p>The Centauri Carbon during startup checks <a href="https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&amp;machineId=0&amp;version=1.1.0&amp;lan=en&amp;firmwareType=1">an endpoint on chituiot.com</a> to check if a new firmware update is available.</p>
-<div class="admonition question">
-<p class="admonition-title">Speculation</p>
-<p>These firmware updates seem to be encrypted (very high entropy).</p>
-<p>I suspect, looking at the coredump, that the result after decryption is a bz2 archive.</p>
-</div>
 <h2 id="updating-locally-via-usb">Updating locally (via USB)</h2>
 <ol>
-<li>Download a firmware from one of the packageUrl's below.</li>
+<li>Download a firmware from one of the packageUrl's in the <a href="#firmware-update-archive">Firmware update archive</a> section.</li>
 <li>Rename the just downloaded file to <code>update.bin</code>.</li>
 <li>Plug in a USB thumb drive and put <code>update.bin</code> on the root of the USB.</li>
 <li>Plug the USB into the Centauri Carbon and power it on.</li>
@@ -1078,6 +1105,23 @@
 <p>Credit to Sims on the OpenCentauri Discord.</p>
 </figcaption>
 </figure>
+<p>Note: Instead of using <code>update.bin</code>, you can also use <code>update/update.swu</code>.</p>
+<h2 id="decrypting-unpacking-updates">Decrypting &amp; Unpacking updates</h2>
+<ol>
+<li>Download a firmware from one of the packageUrl's in the <a href="#firmware-update-archive">Firmware update archive</a> section.</li>
+<li>Run <a href="../../assets/unpack.py">the unpack.py python script</a> to unpack the update<ul>
+<li>Usage: <code>python unpack.py &lt;filename&gt; &lt;key&gt; &lt;iv&gt;</code></li>
+</ul>
+</li>
+<li>You will get an <code>update.swu</code> file. You can open this file in 7zip. This archive contains all partitions that will be replaced during an update.</li>
+</ol>
+<p><a class="glightbox" href="../../assets/swu.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="update contents" src="../../assets/swu.png" width="400" /></a></p>
+<p>The Centauri Carbon makes use of an A/B partition scheme. When an update is applied, the update is applied to the inactive slot. After the update is applied, the machine switches A/B around so the next boot uses the previously inactive slot. The Centuari Carbon makes use of <code>swupdate</code> for updates.</p>
+<p>Internally, the following commands are used, where %s is the path to the .swu file:</p>
+<ul>
+<li>A-&gt;B: <code>swupdate -i %s -e stable,now_A_next_B -k /etc/swupdate_public.pem -p reboot &amp;</code></li>
+<li>B-&gt;A: <code>swupdate -i %s -e stable,now_B_next_A -k /etc/swupdate_public.pem -p reboot &amp;</code></li>
+</ul>
 <h2 id="firmware-update-archive">Firmware update archive</h2>
 <h3 id="v1125-released-9052025">v1.1.25 (Released 9/05/2025)</h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1137,7 +1181,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 9, 2025 21:15:21">May 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 17, 2025 21:41:23">May 17, 2025</span>
   </span>
 
     
