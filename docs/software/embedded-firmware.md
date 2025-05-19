@@ -79,6 +79,14 @@ The STM32F402 is an STM32 variant specifically made for the Chinese market. For 
 
 Select "No bootloader" in the `make menuconfig` and flash it to the default address. If you plan to use the stock bootloader and/or a similar size, select 32Kb bootloader and flash to default address + `0x8000`.
 
+#### Communication interfaces
+
+|Board|Pins|
+|--|--|
+|Hotend|USB PA11 / PA12|
+|Bed (stock RS232 transciever)|UART PA2 / PA3|
+|Bed (right side serial)| UART1 PA9 / PA10|
+
 ### Boostrapping the stock firmware
 
 You need to find a bootloader either source code or image. Then you need to merge it with the Elegoo firmware into one file, with the following format:
