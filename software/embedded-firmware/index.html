@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../api/">
+        <link rel="prev" href="../custom-gcode/">
       
       
-        <link rel="next" href="../embedded-firmware/">
+        <link rel="next" href="../../klipper-via-mainboard-replacement/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Custom gcode - OpenCentauri</title>
+        <title>Embedded Firmware - OpenCentauri</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#m8803" class="md-skip">
+        <a href="#official-update-method" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom gcode
+              Embedded Firmware
             
           </span>
         </div>
@@ -690,6 +690,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-gcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom gcode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -705,7 +728,7 @@
   
   
   <span class="md-ellipsis">
-    Custom gcode
+    Embedded Firmware
     
   </span>
   
@@ -718,7 +741,7 @@
   
   
   <span class="md-ellipsis">
-    Custom gcode
+    Embedded Firmware
     
   </span>
   
@@ -739,20 +762,110 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#m8803" class="md-nav__link">
+  <a href="#official-update-method" class="md-nav__link">
     <span class="md-ellipsis">
-      M8803
+      Official update method
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#m8807" class="md-nav__link">
+  <a href="#stm32-flash-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      M8807
+      STM32 flash structure
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashing-custom-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing custom firmware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flashing custom firmware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readout-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Readout Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hotend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hotend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firmware-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firmware Creation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firmware Creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vanilla-klipper-andor-custom-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vanilla Klipper and/or custom firmware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vanilla Klipper and/or custom firmware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boostrapping-the-stock-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boostrapping the stock firmware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -760,29 +873,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../embedded-firmware/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Embedded Firmware
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1075,24 +1165,184 @@
   
 
 
-  <h1>Custom gcode</h1>
+  <h1>Embedded Firmware</h1>
 
-<p>This page contains misc information about some of the custom GCODE commands obtained by reverse engineering</p>
-<h2 id="m8803">M8803</h2>
-<p>Executes the following 3 system commands:</p>
-<ul>
-<li><code>cp /board-resource/printer.cfg /mnt/exUDISK/printer.cfg</code></li>
-<li><code>cp /board-resource/user_printer.cfg /mnt/exUDISK/user_printer.cfg</code></li>
-<li><code>cp /board-resource/unmodifiable.cfg /mnt/exUDISK/unmodifiable.cfg</code></li>
+<p>The CC uses two different embedded firmware for the bed and the hotend boards with allegedly the same bootloader. The firmwares as of 2025-05-19 are a substitute of Klipper commit <code>28f60f7e</code> with a lot of changes.</p>
+<h2 id="official-update-method">Official update method</h2>
+<p>To update both the hotend and the bed boards, the main firmware attempts to send a file through YModem protocol when the said boards are power cycled during bootup. The firmware files are not encrypted and are stored
+on the <code>rootfsA</code> or <code>rootfsB</code> partition (whichever is active) in the <code>/lib/firmware</code> folder. The hotend firmware is called <code>upgrade-hotend.bin</code> and the bed board's is <code>upgrade-bed.bin</code>.</p>
+<h2 id="stm32-flash-structure">STM32 flash structure</h2>
+<table>
+<thead>
+<tr>
+<th>Start offset</th>
+<th>End offset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x08000000</td>
+<td>0x08007FFF</td>
+<td>32Kb Bootloader</td>
+</tr>
+<tr>
+<td>0x08008000</td>
+<td>0x0800BFFF</td>
+<td>16Kb Unknown</td>
+</tr>
+<tr>
+<td>0x0800C000</td>
+<td>...</td>
+<td>Elegoo-Klipper Firmware</td>
+</tr>
+</tbody>
+</table>
+<p>The firmware upgrade files include the 16Kb of unknown (mostly 0xFF with some random bytes) data so it must be flashed on address <code>0x08008000</code>.</p>
+<h2 id="flashing-custom-firmware">Flashing custom firmware</h2>
+<div class="admonition warning">
+<p class="admonition-title">No going back</p>
+<p>Flashing a new firmware will ERASE THE ELEGOO BOOTLOADER that we have no image file for, nor a substitution!</p>
+<p>Currently the stock mainboard CANNOT boot from custom firmwares nor the stock firmware without the original bootloader. This essentially means you cannot use the stock mainboard anymore after wiping the firmware from the hotend or bed boards!</p>
+<p>Nobody in the OpenCentauri community holds responsibility of any bricked or damaged machine. 
+Anything you do is your own responsibility!</p>
+</div>
+<h3 id="readout-protection">Readout Protection</h3>
+<p>The hotend and bed boards come with the readout protection enabled by default. As long as you don't remove it, the stock flash is safe. If you instruct the programmer to deactivate the readout protection, the entire flash memory, with the bootloader and the firmware will be wiped.</p>
+<h3 id="hotend">Hotend</h3>
+<ol>
+<li>Remove the hotend board (only the main one, the supplementary board is not needed).</li>
+<li>On the back side, there is a 2x4 copper pad row. Short the <code>3.3v</code> and the <code>BOOT</code> with a tweezer<ul>
+<li><a class="glightbox" href="../assets/HotendFlashPinShort.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/HotendFlashPinShort.png" width="400" /></a></li>
 </ul>
-<p>(Note: exUDISK is the USB Stick)</p>
-<h2 id="m8807">M8807</h2>
-<p>Executes the following 2 system commands:</p>
-<ul>
-<li><code>cp /mnt/exUDISK/printer.cfg /board-resource/printer.cfg</code></li>
-<li><code>cp /mnt/exUDISK/user_printer.cfg /board-resource/user_printer.cfg</code></li>
+</li>
+<li>Connect it to your PC via an USB-C cable (no adapter is needed) while shorting the pins</li>
+<li>Keep it shorted for ~2 seconds, then you can let go</li>
+<li>Open STM32CubeProgrammer software</li>
+<li>On the top right, select the USB mode. If you shorted the pins correctly, it should find the hotend board. if not, you'll get a "No DFU detected".<ul>
+<li><a class="glightbox" href="../assets/STM32CubeProgrammerMode.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/STM32CubeProgrammerMode.png" width="400" /></a></li>
 </ul>
-<p>(Note: exUDISK is the USB Stick)</p>
+</li>
+<li>Go to the second tab in the left side vertical button column</li>
+<li>In the "Download" section, select the firmware file.</li>
+<li>Click <code>Start Programming</code></li>
+</ol>
+<h3 id="bed">Bed</h3>
+<ol>
+<li>
+<p>Either via an added connector or solder jumper wires directly to the right side serial pins to an USB-TTL transciever as</p>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th>Bed Board</th>
+<th>USB-TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5v</td>
+<td>5v</td>
+</tr>
+<tr>
+<td>RX</td>
+<td>RX</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>TX</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Note: Depending on the USB-TTL board, RX and TX lines might need to be switched.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Short the <code>BOOT</code> pin to <code>3.3v</code></p>
+<ul>
+<li><a class="glightbox" href="../assets/BedBoardFlashPinShort.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/BedBoardFlashPinShort.png" width="400" /></a></li>
+</ul>
+</li>
+<li>
+<p>Connect the USB-TTL board to your PC</p>
+</li>
+<li>
+<p>Short the <code>RESET</code> pins on the bed board (no need to keep it shorted, just touch it)</p>
+<ul>
+<li><a class="glightbox" href="../assets/BedBoardResetPinShort.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/BedBoardResetPinShort.png" width="400" /></a></li>
+</ul>
+</li>
+<li>
+<p>In STM32CubeProgrammer, select UART mode and select your USB-TTL device</p>
+<ul>
+<li><a class="glightbox" href="../assets/STM32CubeProgrammerModeUART.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/STM32CubeProgrammerModeUART.png" width="400" /></a></li>
+</ul>
+</li>
+<li>
+<p>Go to the second tab in the left side vertical button column</p>
+</li>
+<li>In the "Download" section, select the firmware file.</li>
+<li>Click <code>Start Programming</code></li>
+</ol>
+<h2 id="firmware-creation">Firmware Creation</h2>
+<p>The STM32F402 is an STM32 variant specifically made for the Chinese market. For any configuration, use STM32F401RTC6 (sometimes just STM32F401).</p>
+<h3 id="vanilla-klipper-andor-custom-firmware">Vanilla Klipper and/or custom firmware</h3>
+<p>Select "No bootloader" in the <code>make menuconfig</code> and flash it to the default address. If you plan to use the stock bootloader and/or a similar size, select 32Kb bootloader and flash to default address + <code>0x8000</code>.</p>
+<h4 id="communication-interfaces">Communication interfaces</h4>
+<table>
+<thead>
+<tr>
+<th>Board</th>
+<th>Pins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hotend</td>
+<td>USB PA11 / PA12</td>
+</tr>
+<tr>
+<td>Bed (stock RS232 transciever)</td>
+<td>UART PA2 / PA3</td>
+</tr>
+<tr>
+<td>Bed (right side serial)</td>
+<td>UART1 PA9 / PA10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="boostrapping-the-stock-firmware">Boostrapping the stock firmware</h3>
+<p>You need to find a bootloader either source code or image. Then you need to merge it with the Elegoo firmware into one file, with the following format:</p>
+<table>
+<thead>
+<tr>
+<th>Start offset</th>
+<th>End offset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x7FFF</td>
+<td>Bootloader, padded with 0x00</td>
+</tr>
+<tr>
+<td>0x8000</td>
+<td>...</td>
+<td>Stock firmware file</td>
+</tr>
+</tbody>
+</table>
+<p>And flash the merged file to the default address.</p>
 
 
 
@@ -1115,7 +1365,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 17, 2025 21:41:23 UTC">May 17, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 25, 2025 20:39:08 UTC">May 25, 2025</span>
   </span>
 
     
@@ -1125,7 +1375,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 17, 2025 21:41:23 UTC">May 17, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 25, 2025 20:39:08 UTC">May 25, 2025</span>
   </span>
 
     
@@ -1143,9 +1393,19 @@
     
     <nav>
       
+        <a href="https://github.com/rabirland" class="md-author" title="@rabirland">
+          
+          <img src="https://avatars.githubusercontent.com/u/17327831?v=4&size=72" alt="rabirland">
+        </a>
+      
+        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
+          
+          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&size=72" alt="web-flow">
+        </a>
+      
         <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
           
-          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&size=72" alt="suchmememanyskill">
+          <img src="https://avatars.githubusercontent.com/u/38142618?u=61a34ddba080efcf11b2b0c5d23e14c3deb152d0&v=4&size=72" alt="Sims">
         </a>
       
       
