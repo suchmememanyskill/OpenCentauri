@@ -1,7 +1,7 @@
 use clap::Parser;
 use serialport::{SerialPort, TTYPort};
 use std::{
-    collections::HashMap, fs::{self, create_dir, File}, hash::Hash, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit
+    collections::HashMap, fs::{self, create_dir, File}, hash::Hash, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, thread, time::Duration
 };
 
 use crate::config::{Args, SerialEntry, SerialEntryRaw};
@@ -130,10 +130,16 @@ fn communicate(
                             let mut mini_buff = [0u8; 2];
                             mini_buff[0] = port.0.clone() as u8;
                             mini_buff[1] = bytes_read as u8;
-                            multiplexed_port_clone.write(&mini_buff).unwrap();
-                            multiplexed_port_clone
-                                .write_all(&buff[..bytes_read])
-                                .unwrap();
+
+                            if multiplexed_port_clone.write(&mini_buff).is_ok()
+                            {
+                                let _ = multiplexed_port_clone.write_all(&buff[..bytes_read]);
+                            }
+                            else 
+                            {
+                                println!("Connection to {} lost, retrying in 1000ms", multiplexed_port_clone.name().unwrap());
+                                thread::sleep(Duration::from_secs(1u64));
+                            }
                         }
                     }
                 }
