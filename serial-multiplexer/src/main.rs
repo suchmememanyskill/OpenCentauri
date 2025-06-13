@@ -52,7 +52,7 @@ fn main() {
                     entry.id as u32,
                     config::SerialEntry {
                         name: f.0.clone(),
-                        device: match serialport::new(&entry.device_path, entry.baud_rate).open_native() {
+                        device: match serialport::new(&entry.device_path, entry.baud_rate).timeout(Duration::from_millis(1u64)).open_native() {
                             Ok(port) => port,
                             Err(e) => {
                                 eprintln!("Failed to open serial port {}: {}", entry.device_path, e);
@@ -73,6 +73,7 @@ fn main() {
             .map(|f| {
                 let entry = f.1;
                 let (mut master, mut slave) = TTYPort::pair().expect("Unable to create ptty pair");
+                master.set_timeout(Duration::from_millis(1u64)).unwrap();
 
                 let name = slave.name().unwrap();
                 unused.push(slave);
