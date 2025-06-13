@@ -1,7 +1,7 @@
 use clap::Parser;
 use serialport::{SerialPort, TTYPort};
 use std::{
-    collections::HashMap, fs::{self, create_dir, File}, hash::Hash, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, thread, time::Duration
+    collections::HashMap, fs::{self, create_dir, remove_file, File}, hash::Hash, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, thread, time::Duration
 };
 
 use crate::config::{Args, SerialEntry, SerialEntryRaw};
@@ -29,7 +29,7 @@ fn main() {
     }
 
     let mut multiplexed_port = match serialport::new(&args.device, args.baud)
-        .timeout(Duration::from_millis(10u64))
+        .timeout(Duration::MAX)
         .open_native() {
         Ok(port) => port,
         Err(e) => {
@@ -40,6 +40,8 @@ fn main() {
             exit(5);
         }
     };
+
+    let mut unused = vec![];
 
     if args.with_real_ports {
         let mut serial_ports: HashMap<u32, SerialEntry> = serial_ports_raw
@@ -73,6 +75,7 @@ fn main() {
                 let (mut master, mut slave) = TTYPort::pair().expect("Unable to create ptty pair");
 
                 let name = slave.name().unwrap();
+                unused.push(slave);
 
                 let mut link_path = std::env::home_dir().unwrap_or(PathBuf::from("/dev"));
 
@@ -83,6 +86,11 @@ fn main() {
                 }
 
                 link_path.push(f.0);
+
+                if link_path.exists()
+                {
+                    remove_file(&link_path).unwrap();
+                }
 
                 symlink(name, link_path).unwrap();
 
@@ -133,18 +141,9 @@ fn communicate(
                             mini_buff[0] = port.0.clone() as u8;
                             mini_buff[1] = bytes_read as u8;
 
-                            if multiplexed_port_clone.write(&mini_buff).is_ok()
-                            {
-                                if multiplexed_port_clone.write_all(&buff[..bytes_read]).is_ok()
-                                {
-                                    println!("Sent {} bytes for device {}", bytes_read, port.0);
-                                }
-                            }
-                            else 
-                            {
-                                //println!("Connection to {} lost, retrying in 1000ms", multiplexed_port_clone.name().unwrap());
-                                //thread::sleep(Duration::from_secs(1u64));
-                            }
+                            multiplexed_port_clone.write_all(&mini_buff).unwrap();
+                            multiplexed_port_clone.write_all(&buff[..bytes_read]).unwrap();
+                            println!("Sent {} bytes for device {}", bytes_read, port.0);
                         }
                     }
                 }
