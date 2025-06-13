@@ -28,7 +28,9 @@ fn main() {
         exit(3);
     }
 
-    let mut multiplexed_port = match serialport::new(&args.device, args.baud).open_native() {
+    let mut multiplexed_port = match serialport::new(&args.device, args.baud)
+        .timeout(Duration::from_millis(10u64))
+        .open_native() {
         Ok(port) => port,
         Err(e) => {
             eprintln!(
@@ -133,12 +135,15 @@ fn communicate(
 
                             if multiplexed_port_clone.write(&mini_buff).is_ok()
                             {
-                                let _ = multiplexed_port_clone.write_all(&buff[..bytes_read]);
+                                if multiplexed_port_clone.write_all(&buff[..bytes_read]).is_ok()
+                                {
+                                    println!("Sent {} bytes for device {}", bytes_read, port.0);
+                                }
                             }
                             else 
                             {
-                                println!("Connection to {} lost, retrying in 1000ms", multiplexed_port_clone.name().unwrap());
-                                thread::sleep(Duration::from_secs(1u64));
+                                //println!("Connection to {} lost, retrying in 1000ms", multiplexed_port_clone.name().unwrap());
+                                //thread::sleep(Duration::from_secs(1u64));
                             }
                         }
                     }
@@ -155,6 +160,8 @@ fn communicate(
 
             let mut buff = vec![0u8; length];
             if multiplexed_port.read_exact(&mut buff).is_ok() {
+                println!("Received {} bytes for device {}", length, id);
+
                 let port = serial_ports.get_mut(&(id as u32)).unwrap();
                 port.device.write_all(&buff).unwrap();
             }
