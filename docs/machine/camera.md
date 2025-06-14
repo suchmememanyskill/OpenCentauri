@@ -21,13 +21,13 @@ and lack the LED on the camera and associated YP3 surface mount transistor. Howe
 the pin for LED control is still active. Testing shows when the chamber lights are
 turned on the pad for the transistor gate changes from 0 to +3V.
 
-![Known camera revisions](assets/camerarevisions.png){ width="800" }
+![Known camera revisions](assets/camerarevisions.jpg){ width="800" }
 /// caption
 Credit to Rabir, unvaluablespaces, and baconmilkshake on the OpenCentauri Discord.
 ///
 
 
-![Led behavior](assets/ledpads.png){ width="350" }
+![Led behavior](assets/ledpads.jpg){ width="350" }
 /// caption
 Camera LED control on a V2.0.028 board lacking an LED and switching transistor
  showing switching transistor pads are still functional.
@@ -44,10 +44,10 @@ Pin|Value
 3/DN| D-
 4/5V| +5v
 
-![Camera wiring image](assets/camerawiring.png){ width="350" }
+![Camera wiring image](assets/camerawiring.jpg){ width="350" }
 /// caption
 Camera shown attached to a USB cable for a PC webcam with standard color coded
-USB wires. The second ground connector is for USB cable sheilding and is not neccessary.
+USB wires. The second ground connector is for USB cable shielding and is not neccessary.
 Credit to baconmilkshake on the OpenCentauri Discord.
 ///
 
@@ -56,7 +56,7 @@ Credit to baconmilkshake on the OpenCentauri Discord.
 
 !!! note
 
-    The mounting location for the stock camera can accomodate up to 42mmx42mm.
+    The mounting location for the stock camera can accommodate up to 42mmx42mm.
     Use of a wider replacement camera module is possible if the module is shifted
     toward the rear of the printer, but the maximum height is fixed.
 
@@ -65,7 +65,7 @@ Credit to baconmilkshake on the OpenCentauri Discord.
     Make sure your replacement camera has a wide FOV (>90°) to see the whole build plate
 
 Replacement of the stock camera with other USB cameras has been tested with at least
- two webcam PCBs, and the Centauri Carbon webui works with multiple different camera
+ two webcam PCBs, and the Centauri Carbon webUI works with multiple different camera
  resolutions and aspect ratios, including 1080p- higher than the resolution of the
  stock camera. Replacement can be accomplished through simply switching the PCB if
  the same connector is used, although JST-ZH connectors are very uncommon on consumer
@@ -75,16 +75,16 @@ Replacement of the stock camera with other USB cameras has been tested with at l
 
 
 
-![Replacement cameras used](assets/camerasummary.png){ width="600" }
+![Replacement cameras used](assets/camerasummary.jpg){ width="600" }
 /// caption
 Alternate webcam PCBs used during testing
 ///
 
  Camera performance in terms of resolution, image clarity, and brightness in use may vary.
 
-![Test captures](assets/cameracomparison.png){ width="800" }
+![Test captures](assets/cameracomparison.jpg){ width="800" }
 /// caption
-screenshots from the Centauri Carbon webui with alternate cameras attached.
+Screenshots from the Centauri Carbon webUI with alternate cameras attached.
 Due to temporary wiring the 1080p Fanniko PCB was only aimed directly upward from the bed during testing to verify functionality at higher than stock resolution.
 Credit to baconmilkshake on the OpenCentauri Discord.
 ///
