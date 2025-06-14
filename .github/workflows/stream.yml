@@ -24,14 +24,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build binary
-        uses: houseabsolute/actions-rust-cross@v1
-        with:
-          command: build
-          target: ${{ matrix.platform.target }}
-          args: "--locked --release"
-          strip: true
-          working-directory: stream-to-serial
       - name: Build debug binary
         uses: houseabsolute/actions-rust-cross@v1
         with:
@@ -40,10 +32,20 @@ jobs:
           args: "--locked"
           strip: true
           working-directory: stream-to-serial
+      - name: rename debug build
+        run: mv stream-to-serial/target/${{ matrix.platform.target }}/debug/stream-to-serial stream-to-serial/target/${{ matrix.platform.target }}/debug/stream-to-serial-debug
+      - name: Build release binary
+        uses: houseabsolute/actions-rust-cross@v1
+        with:
+          command: build
+          target: ${{ matrix.platform.target }}
+          args: "--locked --release"
+          strip: true
+          working-directory: stream-to-serial
       - name: Upload binary
         uses: actions/upload-artifact@v4
         with:
           name: stream-to-serial-${{ matrix.platform.os-name }}
           path: |
             stream-to-serial/target/${{ matrix.platform.target }}/release/stream-to-serial
-            
+            stream-to-serial/target/${{ matrix.platform.target }}/debug/stream-to-serial-debug
