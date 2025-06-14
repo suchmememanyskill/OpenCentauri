@@ -11,7 +11,7 @@ pub struct Args
     pub device : String,
 
     #[arg(required = true)]
-    pub serial_name : String
+    pub serial_device : String
 }
 
 fn main() {
@@ -24,15 +24,7 @@ fn main() {
 
     let name = slave.name().unwrap();
 
-    let mut link_path = std::env::home_dir().unwrap_or(PathBuf::from("/dev"));
-
-    link_path.push("vtty");
-    if !link_path.exists()
-    {
-        create_dir(&link_path).unwrap();
-    }
-
-    link_path.push(args.serial_name);
+    let link_path = PathBuf::from(args.serial_device);
     let _ = remove_file(&link_path);
 
     symlink(name, &link_path).unwrap();
