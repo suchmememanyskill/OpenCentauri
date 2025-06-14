@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../bed/">
+        <link rel="prev" href="../hotend/">
       
       
-        <link rel="next" href="../emmc-tapping/">
+        <link rel="next" href="../bed/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Screen - OpenCentauri</title>
+        <title>Camera - OpenCentauri</title>
       
     
     
@@ -80,6 +80,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#camera-revisions" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -110,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Screen
+              Camera
             
           </span>
         </div>
@@ -474,10 +479,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../camera/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Camera
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -488,6 +513,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#camera-revisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Revisions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Pins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-replacementcompatability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Replacement/Compatability
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -520,17 +590,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../screen/" class="md-nav__link">
         
   
   
@@ -541,7 +604,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1045,15 +1107,158 @@
   
 
 
-  <h1>Screen</h1>
+  <h1>Camera</h1>
 
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resolution</td>
+<td>720p(1280x720)</td>
+</tr>
+<tr>
+<td>Aspect Ratio</td>
+<td>16:9</td>
+</tr>
+<tr>
+<td>Max Refresh Rate</td>
+<td>30 Hz</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Fixed (glued barrel adjustment)</td>
+</tr>
+<tr>
+<td>FOV</td>
+<td>90-110°?</td>
+</tr>
+<tr>
+<td>Exposure</td>
+<td>Auto</td>
+</tr>
+<tr>
+<td>PCB Dimensions</td>
+<td>30mmx30mm</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>4 pin JST-ZH (1.5mm pitch)</td>
+</tr>
+<tr>
+<td>Communication Protocol</td>
+<td>USB 2.0</td>
+</tr>
+<tr>
+<td>Display Name</td>
+<td>"Integrated Camera"</td>
+</tr>
+<tr>
+<td>Listed Power</td>
+<td>500 mA @5V</td>
+</tr>
+<tr>
+<td>USB Transceiver</td>
+<td>SunplusIT SPCA2075A</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>PUYA P25D40SH or PY25Q128HB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="camera-revisions">Camera Revisions</h2>
+<p>At least three revisions of the Centauri Carbon camera PCB exist. The most recent
+version (V2.0.028) is included in units that shipped with 24 LED strip lighting
+and lack the LED on the camera and associated YP3 surface mount transistor. However
+the pin for LED control is still active. Testing shows when the chamber lights are
+turned on the pad for the transistor gate changes from 0 to +3V.</p>
 <figure>
-<p><a class="glightbox" href="../../assets/centauri-screen.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screen back" src="../../assets/centauri-screen.jpg" width="600" /></a></p>
+<p><a class="glightbox" href="../assets/camerarevisions.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Known camera revisions" src="../assets/camerarevisions.jpg" width="800" /></a></p>
 <figcaption>
-<p>Credit to rabirx on the OpenCentauri Discord.</p>
+<p>Credit to Rabir, unvaluablespaces, and baconmilkshake on the OpenCentauri Discord.</p>
 </figcaption>
 </figure>
-<p>The screen is a generic <code>0430A046-I1I1100</code> LCD screen (capacitive touch screen version). The driver board is custom, probably just re-routes the screen wires to the mainboard that implements the actual driver.</p>
+<figure>
+<p><a class="glightbox" href="../assets/ledpads.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Led behavior" src="../assets/ledpads.jpg" width="350" /></a></p>
+<figcaption>
+<p>Camera LED control on a V2.0.028 board lacking an LED and switching transistor
+ showing switching transistor pads are still functional.
+Credit to baconmilkshake on the OpenCentauri Discord.</p>
+</figcaption>
+</figure>
+<h2 id="camera-pins">Camera Pins</h2>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>2/DP</td>
+<td>D+</td>
+</tr>
+<tr>
+<td>3/DN</td>
+<td>D-</td>
+</tr>
+<tr>
+<td>4/5V</td>
+<td>+5v</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><a class="glightbox" href="../assets/camerawiring.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Camera wiring image" src="../assets/camerawiring.jpg" width="350" /></a></p>
+<figcaption>
+<p>Camera shown attached to a USB cable for a PC webcam with standard color coded
+USB wires. The second ground connector is for USB cable shielding and is not neccessary.
+Credit to baconmilkshake on the OpenCentauri Discord.</p>
+</figcaption>
+</figure>
+<h2 id="camera-replacementcompatability">Camera Replacement/Compatability</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mounting location for the stock camera can accommodate up to 42mmx42mm.
+Use of a wider replacement camera module is possible if the module is shifted
+toward the rear of the printer, but the maximum height is fixed.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure your replacement camera has a wide FOV (&gt;90°) to see the whole build plate</p>
+</div>
+<p>Replacement of the stock camera with other USB cameras has been tested with at least
+ two webcam PCBs, and the Centauri Carbon webUI works with multiple different camera
+ resolutions and aspect ratios, including 1080p- higher than the resolution of the
+ stock camera. Replacement can be accomplished through simply switching the PCB if
+ the same connector is used, although JST-ZH connectors are very uncommon on consumer
+ cameras excluding Arducam cameras and adapter boards. Alternatively the original webcam's
+ cable may cut and solder onto the CC camera cable.</p>
+<figure>
+<p><a class="glightbox" href="../assets/camerasummary.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Replacement cameras used" src="../assets/camerasummary.jpg" width="600" /></a></p>
+<figcaption>
+<p>Alternate webcam PCBs used during testing</p>
+</figcaption>
+</figure>
+<p>Camera performance in terms of resolution, image clarity, and brightness in use may vary.</p>
+<figure>
+<p><a class="glightbox" href="../assets/cameracomparison.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Test captures" src="../assets/cameracomparison.jpg" width="800" /></a></p>
+<figcaption>
+<p>Screenshots from the Centauri Carbon webUI with alternate cameras attached.
+Due to temporary wiring the 1080p Fanniko PCB was only aimed directly upward from the bed during testing to verify functionality at higher than stock resolution.
+Credit to baconmilkshake on the OpenCentauri Discord.</p>
+</figcaption>
+</figure>
 
 
 
@@ -1076,7 +1281,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 5, 2025 19:14:38 UTC">May 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 14, 2025 21:16:07 UTC">June 14, 2025</span>
   </span>
 
     
@@ -1086,7 +1291,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 5, 2025 19:14:38 UTC">May 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 14, 2025 21:16:07 UTC">June 14, 2025</span>
   </span>
 
     
@@ -1104,19 +1309,14 @@
     
     <nav>
       
-        <a href="https://github.com/rabirland" class="md-author" title="@rabirland">
+        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
           
-          <img src="https://avatars.githubusercontent.com/u/17327831?v=4&size=72" alt="rabirland">
+          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&size=72" alt="robertsamples">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
           
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&size=72" alt="web-flow">
-        </a>
-      
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
-          
-          <img src="https://avatars.githubusercontent.com/u/38142618?u=61a34ddba080efcf11b2b0c5d23e14c3deb152d0&v=4&size=72" alt="Sims">
         </a>
       
       
