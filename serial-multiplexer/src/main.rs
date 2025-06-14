@@ -87,11 +87,7 @@ fn main() {
                 }
 
                 link_path.push(f.0);
-
-                if link_path.exists()
-                {
-                    remove_file(&link_path).unwrap();
-                }
+                let _ = remove_file(&link_path);
 
                 symlink(name, link_path).unwrap();
 
