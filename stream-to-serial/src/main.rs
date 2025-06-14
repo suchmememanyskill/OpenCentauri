@@ -35,11 +35,11 @@ fn main() {
         .read(true)
         .open(&args.device).unwrap();
 
-    let mut stream_writer = stream_reader.try_clone().unwrap();
+    //let mut stream_writer = stream_reader.try_clone().unwrap();
 
-    //let writer = OpenOptions::new()
-    //    .write(true)
-    //    .open(&args.device).unwrap();
+    let mut stream_writer = OpenOptions::new()
+        .write(true)
+        .open(&args.device).unwrap();
 
     
     thread::spawn(move || {
