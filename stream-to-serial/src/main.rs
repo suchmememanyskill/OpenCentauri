@@ -41,7 +41,6 @@ fn main() {
         .write(true)
         .open(&args.device).unwrap();
 
-    
     thread::spawn(move || {
         let mut buff = [0u8; 128];
         let mut reader = stream_reader;
