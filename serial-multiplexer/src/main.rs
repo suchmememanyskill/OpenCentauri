@@ -1,7 +1,7 @@
 use clap::Parser;
 use serialport::{SerialPort, TTYPort};
 use std::{
-    collections::HashMap, fs::{self, create_dir, remove_file, File}, hash::Hash, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, thread, time::Duration
+    collections::HashMap, fs::{self, create_dir, remove_file}, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, time::Duration
 };
 
 use crate::config::{Args, SerialEntry, SerialEntryRaw};
@@ -52,7 +52,7 @@ fn main() {
                     entry.id as u32,
                     config::SerialEntry {
                         name: f.0.clone(),
-                        device: match serialport::new(&entry.device_path, entry.baud_rate).timeout(Duration::from_millis(1u64)).open_native() {
+                        device: match serialport::new(&entry.device_path, entry.baud_rate).timeout(Duration::from_millis(100u64)).open_native() {
                             Ok(port) => port,
                             Err(e) => {
                                 eprintln!("Failed to open serial port {}: {}", entry.device_path, e);
@@ -73,7 +73,7 @@ fn main() {
             .map(|f| {
                 let entry = f.1;
                 let (mut master, mut slave) = TTYPort::pair().expect("Unable to create ptty pair");
-                master.set_timeout(Duration::from_millis(1u64)).unwrap();
+                master.set_timeout(Duration::from_millis(100u64)).unwrap();
 
                 let name = slave.name().unwrap();
                 unused.push(slave);
@@ -135,16 +135,23 @@ fn communicate(
         loop {
             local_map.iter_mut().for_each(|port| {
                 let mut buff = [0u8; 255];
-                loop {
-                    if let Ok(bytes_read) = port.1.device.read(&mut buff) {
-                        if bytes_read > 0 {
-                            let mut mini_buff = [0u8; 2];
-                            mini_buff[0] = port.0.clone() as u8;
-                            mini_buff[1] = bytes_read as u8;
+                if let Ok(bytes_to_read) = port.1.device.bytes_to_read()
+                {
+                    if bytes_to_read > 0
+                    {
+                        if let Ok(bytes_read) = port.1.device.read(&mut buff) {
+                            if bytes_read > 0 {
+                                let mut mini_buff = [0u8; 2];
+                                mini_buff[0] = port.0.clone() as u8;
+                                mini_buff[1] = bytes_read as u8;
 
-                            multiplexed_port_clone.write_all(&mini_buff).unwrap();
-                            multiplexed_port_clone.write_all(&buff[..bytes_read]).unwrap();
-                            println!("Sent {} bytes for device {}", bytes_read, port.0);
+                                multiplexed_port_clone.write_all(&mini_buff).unwrap();
+                                multiplexed_port_clone.write_all(&buff[..bytes_read]).unwrap();
+                                #[cfg(debug_assertions)]
+                                {
+                                    println!("Sent {} bytes for device {}", bytes_read, port.0);
+                                }
+                            }
                         }
                     }
                 }
@@ -160,7 +167,10 @@ fn communicate(
 
             let mut buff = vec![0u8; length];
             if multiplexed_port.read_exact(&mut buff).is_ok() {
-                println!("Received {} bytes for device {}", length, id);
+                #[cfg(debug_assertions)]
+                {
+                    println!("Received {} bytes for device {}", length, id);
+                }
 
                 let port = serial_ports.get_mut(&(id as u32)).unwrap();
                 port.device.write_all(&buff).unwrap();
