@@ -11,7 +11,7 @@ fn main() {
     println!("Hello, world!");
     let args = Args::parse();
     if (!args.with_virtual_ports && !args.with_real_ports) || (args.with_virtual_ports && args.with_real_ports) {
-        eprintln!("You must specify either --receive or --send");
+        eprintln!("You must specify either --with_virtual_ports or --with_real_ports");
         exit(1);
     }
 
@@ -168,8 +168,17 @@ fn communicate(
                     println!("Received {} bytes for device {}", length, id);
                 }
 
-                let port = serial_ports.get_mut(&(id as u32)).unwrap();
-                port.device.write_all(&buff).unwrap();
+                if let Some(port) = serial_ports.get_mut(&(id as u32))
+                {
+                    port.device.write_all(&buff).unwrap();
+                }
+                else
+                {
+                    eprintln!("Device with id {} does not exist. Assuming we're not in sync! Waiting 1s and trying again...", id);
+                    multiplexed_port.clear(serialport::ClearBuffer::Input).unwrap();
+                    std::thread::sleep(Duration::from_secs(1u64));
+                    multiplexed_port.clear(serialport::ClearBuffer::Input).unwrap();
+                }
             }
         }
     }
