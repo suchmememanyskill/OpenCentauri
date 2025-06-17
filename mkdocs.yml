@@ -24,6 +24,7 @@ nav:
     - Machine: machine/index.md
     - Mainboard: machine/mainboard.md
     - Hotend: machine/hotend.md
+    - Camera: machine/camera.md
     - Bed: machine/bed.md
     - Screen: machine/screen.md
     - EMMC Tap Points: machine/emmc-tapping.md
