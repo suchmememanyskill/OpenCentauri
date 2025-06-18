@@ -38,6 +38,27 @@ Internally, the following commands are used, where %s is the path to the .swu fi
 
 ## Firmware update archive
 
+### v1.1.29 (Released 18/06/2025)
+
+```json
+{
+    "code": "000000",
+    "messages": null,
+    "data": {
+        "update": true,
+        "version": "1.1.29",
+        "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.1.29/2025-06-18/810e5a7e9518452c9172e11a7d04a683.bin",
+        "firmwareType": 1,
+        "packageHash": "ebdd1571df5d5336cc8556bac72f61b4",
+        "updateStrategy": 1,
+        "log": "Fixes：\n1. Fixed several issues that could cause unexpected print interruptions.\n2. Added thermal protection for the extruder during homing.\n3. Resolved UI display issues when the machine encounters an error.\n4. Addressed occasional issues with web-based controls.\n5. Fixed bugs that could prevent time-lapse videos from exporting properly.\n6. Improved USB drive compatibility to fix occasional reading errors.",
+        "timeMS": 1750271579195,
+        "dataInfoId": "5ef143b3b5c54b898a39710a7b745904"
+    },
+    "success": true
+}
+```
+
 ### v1.1.25 (Released 9/05/2025)
 ```json
 {
