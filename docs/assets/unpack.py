@@ -8,6 +8,20 @@ filepath = sys.argv[1]
 key = sys.argv[2].upper()
 iv = sys.argv[3].upper()
 
+# Anycubic kobra 2 pro decryption key ;)
+# Absolutely cannot be found in the following link: https://klipper.discourse.group/t/printer-cfg-for-anycubic-kobra-2-plus-pro-max/11658/106
+if hashlib.sha256(key.encode()).hexdigest() == "72a072fe99dcea381e3bf6e604788a16da43c4581bf788008345c14ba36bf3fe":
+    print("Bruteforcing Centauri key from 'good' Anycubic guess ;)")
+
+    i = 0
+    for i in range(0xFFFFFF):
+        start_key = key[:-6]
+        guess = start_key + f"{i:06X}"
+        if hashlib.sha256(guess.encode()).hexdigest() == "71f1dd02796351fcdcf27e12ae578eec46411234a4a4fcb91d3caa498788c303":
+            print("Found key:", guess)
+            key = guess
+            break
+
 if hashlib.sha256(key.encode()).hexdigest() != "71f1dd02796351fcdcf27e12ae578eec46411234a4a4fcb91d3caa498788c303":
     print("Invalid key")
     sys.exit(1)
