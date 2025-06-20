@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api" class="md-skip">
+        <a href="#sdcp-websocket-api-documentation-centauri-carbon-fdm-printer" class="md-skip">
           Skip to content
         </a>
       
@@ -702,6 +702,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -713,6 +726,682 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-establishment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Establishment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection Establishment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Format
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Message Format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Message Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topic Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heartbeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heartbeat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-field-naming-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol Field Naming Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol Field Naming Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-spelling-errors-in-field-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known Spelling Errors in Field Names
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Message Format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-specific-field-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation-Specific Field Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation-Specific Field Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temperature-fields-fdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temperature Fields (FDM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Position Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fan-control-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fan Control Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lighting-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lighting Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-status-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Status Values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-and-storage-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network and Storage Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-streaming-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Streaming Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-dimensions-and-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Dimensions and Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Status Codes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Status Codes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-error-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Error Codes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-error-status-reasons-errorstatusreason" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extended Error Status Reasons (ErrorStatusReason)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribute-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attribute Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attribute-message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute Message Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Information Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-status-refresh-cmd-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Status Refresh (Cmd: 0)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-attributes-cmd-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Attributes (Cmd: 1)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-control-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print Control Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Print Control Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-print-cmd-128" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Print (Cmd: 128)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pause-print-cmd-129" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pause Print (Cmd: 129)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-print-cmd-130" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stop Print (Cmd: 130)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-print-cmd-131" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue Print (Cmd: 131)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-material-feeding-cmd-132" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stop Material Feeding (Cmd: 132)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skip-preheating-cmd-133" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip Preheating (Cmd: 133)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-printer-name-cmd-192" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Printer Name (Cmd: 192)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-management-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Management Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Management Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-file-list-cmd-258" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve File List (Cmd: 258)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-delete-files-cmd-259" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Delete Files (Cmd: 259)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      History Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="History Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-historical-tasks-cmd-320" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve Historical Tasks (Cmd: 320)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-task-details-cmd-321" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve Task Details (Cmd: 321)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-stream-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Stream Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Video Stream Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabledisable-video-stream-cmd-386" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable/Disable Video Stream (Cmd: 386)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabledisable-time-lapse-photography-cmd-387" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable/Disable Time-lapse Photography (Cmd: 387)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-transfer-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Transfer Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Transfer Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminate-file-transfer-cmd-255" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminate File Transfer (Cmd: 255)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notification Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-source-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Source Identification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-file-transfer-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP File Transfer Interface
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-specific-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation-Specific Behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-stream-implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Stream Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Video Stream Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-side-video-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-Side Video Display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-stream-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Stream Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#field-location-flexibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field Location Flexibility
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1052,9 +1741,876 @@
   
 
 
-<h1 id="api">Api</h1>
+<h1 id="sdcp-websocket-api-documentation-centauri-carbon-fdm-printer">SDCP WebSocket API Documentation - Centauri Carbon FDM Printer</h1>
 <p>The Centauri Carbon makes use of the "Smart Device Control Protocol"</p>
-<p><a href="https://github.com/cbd-tech/SDCP-Smart-Device-Control-Protocol-V3.0.0/blob/main/SDCP(Smart%20Device%20Control%20Protocol)_V3.0.0_EN.md">See here for documentation of the protocol</a></p>
+<p><a href="https://github.com/cbd-tech/SDCP-Smart-Device-Control-Protocol-V3.0.0/blob/main/SDCP(Smart%20Device%20Control%20Protocol)_V3.0.0_EN.md">See here for official documentation of the protocol</a></p>
+<p>However, the Centauri has some specific quirks on this specification. See below for a more accurate overview of the API of the Centauri printers.</p>
+<p>Written by remmylee on the Elegoo discord.</p>
+<h2 id="protocol-overview">Protocol Overview</h2>
+<p>The Smart Device Control Protocol (SDCP) v3.0.0 is an application layer protocol for interaction between clients and the Centauri Carbon FDM printer motherboard. Communication is conducted using JSON format over WebSocket connections, with MJPEG streams for video.</p>
+<h2 id="connection-establishment">Connection Establishment</h2>
+<h3 id="device-discovery">Device Discovery</h3>
+<p>Before establishing a WebSocket connection, devices must be discovered via UDP broadcast:</p>
+<p><strong>UDP Broadcast Discovery:</strong></p>
+<ul>
+<li>Port: 3000</li>
+<li>Message: <code>"M99999"</code></li>
+<li>Response format:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri Carbon&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MachineName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri Carbon&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">&quot;BrandName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000000000001d354&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ProtocolVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;V3.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;V1.0.0&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+
+<span class="c1"># IP: x.x.x.255</span>
+<span class="n">broadcast_address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">broadcast_address</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Broadcast address cannot be empty. Please specify a valid broadcast address.&quot;</span><span class="p">)</span>
+
+    <span class="n">broadcast_message</span> <span class="o">=</span> <span class="s2">&quot;M99999&quot;</span>
+    <span class="n">udp_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">udp_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_BROADCAST</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sending broadcast message: </span><span class="si">{</span><span class="n">broadcast_message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">udp_socket</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">broadcast_message</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">broadcast_address</span><span class="p">)</span>
+
+        <span class="n">udp_socket</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">udp_socket</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received response from </span><span class="si">{</span><span class="n">addr</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Listening timed out. No more responses.&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">udp_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="websocket-connection">WebSocket Connection</h3>
+<ul>
+<li>URL: <code>ws://{MainboardIP}:3030/websocket</code></li>
+<li>Alternative paths: <code>/ws</code>, <code>/</code>, <code>/api/websocket</code>, <code>/sdcp</code></li>
+<li>Protocol: WebSocket over TCP</li>
+</ul>
+<h2 id="message-format">Message Format</h2>
+<p>All WebSocket messages use JSON format with the following structure:</p>
+<h3 id="request-message-format">Request Message Format</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="response-message-format">Response Message Format</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="topic-structure">Topic Structure</h2>
+<p>The protocol uses topic-based messaging with the following patterns:</p>
+<ul>
+<li><strong>Control Request:</strong> <code>sdcp/request/{MainboardID}</code></li>
+<li><strong>Control Response:</strong> <code>sdcp/response/{MainboardID}</code></li>
+<li><strong>Status Information:</strong> <code>sdcp/status/{MainboardID}</code></li>
+<li><strong>Attribute Information:</strong> <code>sdcp/attributes/{MainboardID}</code></li>
+<li><strong>Error Messages:</strong> <code>sdcp/error/{MainboardID}</code></li>
+<li><strong>Notification Messages:</strong> <code>sdcp/notice/{MainboardID}</code></li>
+</ul>
+<h2 id="heartbeat">Heartbeat</h2>
+<p><strong>Request:</strong> <code>"ping"</code></p>
+<p><strong>Response:</strong> <code>"pong"</code></p>
+<h2 id="protocol-field-naming-issues">Protocol Field Naming Issues</h2>
+<p><strong>IMPORTANT</strong>: The SDCP protocol contains several field names with spelling errors that must be used exactly as specified:</p>
+<h3 id="known-spelling-errors-in-field-names">Known Spelling Errors in Field Names</h3>
+<ul>
+<li><code>CurrenCoord</code> - Missing 't' in "Current" (should be "CurrentCoord")</li>
+<li><code>RelaseFilmState</code> - Missing 'e' in "Release" (should be "ReleaseFilmState")</li>
+<li><code>MaximumCloudSDCPSercicesAllowed</code> - Missing 'v' in "Services" (should be "ServicesAllowed")</li>
+</ul>
+<h3 id="implementation-handling">Implementation Handling</h3>
+<p>The implementation code handles these inconsistencies by checking multiple possible field locations:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example from the code - checking for both spellings</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">currentCoord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">status</span><span class="p">.</span><span class="nx">CurrenCoord</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">status</span><span class="p">.</span><span class="nx">CurrentCoord</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;0,0,0&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Critical</strong>: Always use the misspelled field names when sending requests or parsing responses, as these are the actual field names in the protocol specification.</p>
+<h2 id="status-information">Status Information</h2>
+<p>The motherboard reports status information automatically when:</p>
+<ol>
+<li>Status information changes</li>
+<li>Upon receiving the status refresh command</li>
+</ol>
+<h3 id="status-message-format">Status Message Format</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CurrentStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;PreviousStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TempOfNozzle&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TempTargetNozzle&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TempOfHotbed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TempTargetHotbed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TempOfBox&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TempTargetBox&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CurrenCoord&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;150.5,75.2,10.8&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CurrentFanSpeed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;ModelFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;ModeFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;AuxiliaryFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;BoxFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;LightStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;SecondLight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RgbLight&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;ZOffset&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PrintSpeed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PrintInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;CurrentLayer&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;TotalLayer&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;CurrentTicks&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;TotalTicks&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">36000</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;model.gcode&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;ErrorNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;TaskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;PrintSpeed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/status/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="implementation-specific-field-usage">Implementation-Specific Field Usage</h3>
+<p>This implementation supports FDM printing with the following field mappings:</p>
+<h4 id="temperature-fields-fdm">Temperature Fields (FDM)</h4>
+<ul>
+<li><code>TempOfNozzle</code> / <code>TempTargetNozzle</code> - Extruder temperature (typically 180-250°C)</li>
+<li><code>TempOfHotbed</code> / <code>TempTargetHotbed</code> - Heated bed temperature (typically 50-100°C)</li>
+<li><code>TempOfBox</code> / <code>TempTargetBox</code> - Chamber temperature (for enclosed printers)</li>
+</ul>
+<h4 id="position-data">Position Data</h4>
+<ul>
+<li><code>CurrenCoord</code> - Position as comma-separated string "x,y,z" (e.g., "150.5,75.2,10.8")</li>
+<li><strong>Note</strong>: Field name is missing the 't' in "Current" - this is a protocol spelling error</li>
+<li><code>ZOffset</code> - Z-axis offset value as number</li>
+</ul>
+<h4 id="fan-control-object">Fan Control Object</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;ModelFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">        </span><span class="c1">// Part cooling fan percentage (0-100%)</span>
+<span class="w">    </span><span class="nt">&quot;ModeFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">         </span><span class="c1">// Alternative name for ModelFan  </span>
+<span class="w">    </span><span class="nt">&quot;AuxiliaryFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">     </span><span class="c1">// Auxiliary fan percentage (hotend cooling)</span>
+<span class="w">    </span><span class="nt">&quot;BoxFan&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">            </span><span class="c1">// Chamber/enclosure fan percentage</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="lighting-control">Lighting Control</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;LightStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;SecondLight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1">// 0=Off, 1=On (printer LED lighting)</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;RgbLight&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">]</span><span class="w">  </span><span class="c1">// RGB values array for accent lighting</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="device-status-values">Device Status Values</h4>
+<p>The <code>DevicesStatus</code> object contains FDM hardware component status codes:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;ZMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="c1">// 0=Disconnected, 1=Connected (Z-axis stepper)</span>
+<span class="w">    </span><span class="nt">&quot;YMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="c1">// 0=Disconnected, 1=Connected (Y-axis stepper)</span>
+<span class="w">    </span><span class="nt">&quot;XMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="c1">// 0=Disconnected, 1=Connected (X-axis stepper)</span>
+<span class="w">    </span><span class="nt">&quot;ExtruderMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">      </span><span class="c1">// 0=Disconnected, 1=Connected (Extruder stepper)</span>
+<span class="w">    </span><span class="nt">&quot;RelaseFilmState&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">           </span><span class="c1">// 0=Abnormal, 1=Normal (legacy field from SLA)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Note</strong>: <code>RelaseFilmState</code> is missing the 'e' in "Release" - this is a protocol spelling error that must be used as-is.</p>
+<h4 id="network-and-storage-status">Network and Storage Status</h4>
+<ul>
+<li><code>NetworkStatus</code> - Connection type: <code>"wlan"</code> or <code>"eth"</code></li>
+<li><code>UsbDiskStatus</code> - USB drive: <code>0=Disconnected</code>, <code>1=Connected</code></li>
+<li><code>CameraStatus</code> - Camera: <code>0=Disconnected</code>, <code>1=Connected</code></li>
+<li><code>RemainingMemory</code> - Available storage in bytes</li>
+<li><code>MainboardMAC</code> - MAC address string</li>
+</ul>
+<h4 id="video-streaming-limits">Video Streaming Limits</h4>
+<ul>
+<li><code>NumberOfVideoStreamConnected</code> - Current active video streams</li>
+<li><code>MaximumVideoStreamAllowed</code> - Maximum concurrent video streams</li>
+<li><code>NumberOfCloudSDCPServicesConnected</code> - Active cloud connections</li>
+<li><code>MaximumCloudSDCPSercicesAllowed</code> - Maximum cloud connections</li>
+<li><strong>Note</strong>: Field name is missing 'v' in "Services" - this is a protocol spelling error</li>
+</ul>
+<h4 id="print-dimensions-and-capabilities">Print Dimensions and Capabilities</h4>
+<ul>
+<li><code>XYZsize</code> - Build volume as string "width x depth x height" (e.g., "300x300x400")</li>
+<li><code>Capabilities</code> - Array of supported features: <code>["FILE_TRANSFER", "PRINT_CONTROL", "VIDEO_STREAM"]</code></li>
+<li><code>SupportFileType</code> - Array of supported file formats: <code>["GCODE"]</code></li>
+</ul>
+<h3 id="machine-status-codes">Machine Status Codes</h3>
+<p>The <code>CurrentStatus</code> and <code>PreviousStatus</code> fields indicate overall machine state:</p>
+<div class="highlight"><pre><span></span><code>0 = &quot;Idle&quot;                  // Machine is idle and ready
+1 = &quot;Printing&quot;              // Executing print task
+2 = &quot;File Transferring&quot;     // File transfer in progress
+3 = &quot;Calibrating&quot;           // Running calibration routines
+4 = &quot;Device Testing&quot;        // Device self-check in progress
+</code></pre></div>
+<h3 id="print-status-codes">Print Status Codes</h3>
+<div class="highlight"><pre><span></span><code>SDCP_PRINT_STATUS_IDLE = 0
+SDCP_PRINT_STATUS_HOMING = 1
+SDCP_PRINT_STATUS_DROPPING = 2
+SDCP_PRINT_STATUS_EXPOSURING = 3
+SDCP_PRINT_STATUS_LIFTING = 4
+SDCP_PRINT_STATUS_PAUSING = 5
+SDCP_PRINT_STATUS_PAUSED = 6
+SDCP_PRINT_STATUS_STOPPING = 7
+SDCP_PRINT_STATUS_STOPPED = 8
+SDCP_PRINT_STATUS_COMPLETE = 9
+SDCP_PRINT_STATUS_FILE_CHECKING = 10
+</code></pre></div>
+<h3 id="print-error-codes">Print Error Codes</h3>
+<p>The <code>PrintInfo.ErrorNumber</code> field indicates print-related errors:</p>
+<div class="highlight"><pre><span></span><code>0 = &quot;Normal&quot;                    // No error
+1 = &quot;File MD5 Check Failed&quot;     // File integrity verification failed
+2 = &quot;File Read Failed&quot;          // Cannot read print file
+3 = &quot;Resolution Mismatch&quot;       // File resolution doesn&#39;t match printer
+4 = &quot;Format Mismatch&quot;           // Unsupported file format
+5 = &quot;Machine Model Mismatch&quot;    // File not compatible with printer model
+</code></pre></div>
+<h3 id="extended-error-status-reasons-errorstatusreason">Extended Error Status Reasons (ErrorStatusReason)</h3>
+<p>This implementation includes detailed error reporting via <code>ErrorStatusReason</code> field in task details:</p>
+<div class="highlight"><pre><span></span><code>SDCP_PRINT_CAUSE_OK = 0                     // Normal
+SDCP_PRINT_CAUSE_TEMP_ERROR = 1             // Over-temperature (nozzle/bed)
+SDCP_PRINT_CAUSE_FILAMENT_RUNOUT = 3        // Filament runout detected
+SDCP_PRINT_CAUSE_FILAMENT_JAM = 6           // Filament jam or clog detected
+SDCP_PRINT_CAUSE_LEVEL_FAILED = 7           // Auto-bed leveling failed
+SDCP_PRINT_CAUSE_HOME_FAILED_X = 13         // X-axis motor/endstop failure
+SDCP_PRINT_CAUSE_HOME_FAILED_Z = 14         // Z-axis motor/endstop failure
+SDCP_PRINT_CAUSE_HOME_FAILED_Y = 23         // Y-axis motor/endstop failure
+SDCP_PRINT_CAUSE_HOME_FAILED = 17           // General homing failure
+SDCP_PRINT_CAUSE_BED_ADHESION_FAILED = 18   // Print detachment from bed
+SDCP_PRINT_CAUSE_ERROR = 19                 // General printing exception
+SDCP_PRINT_CAUSE_MOVE_ABNORMAL = 20         // Motor movement abnormality
+SDCP_PRINT_CAUSED_FILE_ERROR = 24           // G-code file error
+SDCP_PRINT_CAUSED_CAMERA_ERROR = 25         // Camera connection error
+SDCP_PRINT_CAUSED_NETWORK_ERROR = 26        // Network connection error
+SDCP_PRINT_CAUSED_SERVER_CONNECT_FAILED = 27 // Server connection failed
+SDCP_PRINT_CAUSED_DISCONNECT_APP = 28       // App disconnected during print
+SDCP_PRINT_CAUSE_UDISK_REMOVE = 12          // USB drive removed during print
+SDCP_PRINT_CAUSE_NOZZLE_TEMP_SENSOR_OFFLINE = 33 // Nozzle thermistor offline
+SDCP_PRINT_CAUSE_BED_TEMP_SENSOR_OFFLINE = 34    // Bed thermistor offline
+</code></pre></div>
+<h2 id="attribute-information">Attribute Information</h2>
+<p>Reported automatically when:
+1. Attribute information changes
+2. Upon receiving the attribute refresh command</p>
+<h3 id="attribute-message-format">Attribute Message Format</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri Carbon&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MachineName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri Carbon&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;BrandName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ProtocolVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;V3.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;V1.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;XYZsize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;300x300x400&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000000000001d354&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;NumberOfVideoStreamConnected&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MaximumVideoStreamAllowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;NumberOfCloudSDCPServicesConnected&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MaximumCloudSDCPSercicesAllowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;NetworkStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wlan&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardMAC&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00:11:22:33:44:55&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UsbDiskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;FILE_TRANSFER&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;PRINT_CONTROL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;VIDEO_STREAM&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;SupportFileType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GCODE&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;DevicesStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;ZMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="c1">// Z-axis stepper motor</span>
+<span class="w">            </span><span class="nt">&quot;YMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="c1">// Y-axis stepper motor</span>
+<span class="w">            </span><span class="nt">&quot;XMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="c1">// X-axis stepper motor</span>
+<span class="w">            </span><span class="nt">&quot;ExtruderMotorStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">       </span><span class="c1">// Extruder stepper motor</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;CameraStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;RemainingMemory&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123455</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;SDCPStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/attributes/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="command-reference">Command Reference</h2>
+<h3 id="information-commands">Information Commands</h3>
+<h4 id="request-status-refresh-cmd-0">Request Status Refresh (Cmd: 0)</h4>
+<p>Forces motherboard to report current status.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="request-attributes-cmd-1">Request Attributes (Cmd: 1)</h4>
+<p>Forces motherboard to report current attributes.</p>
+<p><strong>Request/Response:</strong> Same format as status refresh with <code>"Cmd": 1</code></p>
+<h3 id="print-control-commands">Print Control Commands</h3>
+<h4 id="start-print-cmd-128">Start Print (Cmd: 128)</h4>
+<p>Initiates printing of a specified file.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;model.gcode&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;StartLayer&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response Ack Codes:</strong>
+<div class="highlight"><pre><span></span><code>SDCP_PRINT_CTRL_ACK_OK = 0
+SDCP_PRINT_CTRL_ACK_BUSY = 1
+SDCP_PRINT_CTRL_ACK_NOT_FOUND = 2
+SDCP_PRINT_CTRL_ACK_MD5_FAILED = 3
+SDCP_PRINT_CTRL_ACK_FILEIO_FAILED = 4
+SDCP_PRINT_CTRL_ACK_INVALID_RESOLUTION = 5
+SDCP_PRINT_CTRL_ACK_UNKNOWN_FORMAT = 6
+SDCP_PRINT_CTRL_ACK_UNKNOWN_MODEL = 7
+</code></pre></div></p>
+<h4 id="pause-print-cmd-129">Pause Print (Cmd: 129)</h4>
+<p>Pauses current print job.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="stop-print-cmd-130">Stop Print (Cmd: 130)</h4>
+<p>Stops current print job.</p>
+<p><strong>Request:</strong> Same format as pause with <code>"Cmd": 130</code></p>
+<h4 id="continue-print-cmd-131">Continue Print (Cmd: 131)</h4>
+<p>Resumes paused print job.</p>
+<p><strong>Request:</strong> Same format as pause with <code>"Cmd": 131</code></p>
+<h4 id="stop-material-feeding-cmd-132">Stop Material Feeding (Cmd: 132)</h4>
+<p>Stops automatic material feeding.</p>
+<p><strong>Request:</strong> Same format as pause with <code>"Cmd": 132</code></p>
+<h4 id="skip-preheating-cmd-133">Skip Preheating (Cmd: 133)</h4>
+<p>Skips preheating phase.</p>
+<p><strong>Request:</strong> Same format as pause with <code>"Cmd": 133</code></p>
+<h3 id="configuration-commands">Configuration Commands</h3>
+<h4 id="change-printer-name-cmd-192">Change Printer Name (Cmd: 192)</h4>
+<p>Updates the printer's display name.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Centauri Carbon Lab&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="file-management-commands">File Management Commands</h3>
+<h4 id="retrieve-file-list-cmd-258">Retrieve File List (Cmd: 258)</h4>
+<p>Gets list of files in specified directory.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">258</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usb/yourPath&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Path Conventions:</strong></p>
+<ul>
+<li><code>/usb/</code> - USB storage space</li>
+<li><code>/local/</code> - Onboard storage space</li>
+<li>Default: <code>/local/</code> if no path specified</li>
+</ul>
+<p><strong>Response:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">258</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;FileList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usb/xxx&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;usedSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;totalSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;storageType&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>File/Folder Types:</strong></p>
+<ul>
+<li><code>type: 0</code> - Folder</li>
+<li><code>type: 1</code> - File</li>
+</ul>
+<p><strong>Storage Types:</strong></p>
+<ul>
+<li><code>storageType: 0</code> - Internal Storage</li>
+<li><code>storageType: 1</code> - External Storage</li>
+</ul>
+<h4 id="batch-delete-files-cmd-259">Batch Delete Files (Cmd: 259)</h4>
+<p>Deletes multiple files and folders.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">259</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;FileList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usb/file1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/usb/file2&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;FolderList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usb/folder1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/usb/folder2&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">259</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;ErrData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/failed/path&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="history-commands">History Commands</h3>
+<h4 id="retrieve-historical-tasks-cmd-320">Retrieve Historical Tasks (Cmd: 320)</h4>
+<p>Gets list of historical print tasks.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;HistoryData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;task-uuid-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;task-uuid-2&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="retrieve-task-details-cmd-321">Retrieve Task Details (Cmd: 321)</h4>
+<p>Gets detailed information for specific tasks.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;task-uuid-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;task-uuid-2&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;HistoryDetailList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;Thumbnail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2/thumb.jpg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;TaskName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;print_job_name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;BeginTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1689217424</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;EndTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1689221024</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;TaskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;SliceInformation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="nt">&quot;AlreadyPrintLayer&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;TaskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task-uuid&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;MD5&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-hash&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;CurrentLayerTalVolume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;TimeLapseVideoStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;TimeLapseVideoUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2/video.mp4&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;ErrorStatusReason&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Task Status:</strong></p>
+<ul>
+<li><code>0</code> - Other Status</li>
+<li><code>1</code> - Completed</li>
+<li><code>2</code> - Exceptional Status</li>
+<li><code>3</code> - Stopped</li>
+</ul>
+<p><strong>Time-lapse Video Status:</strong></p>
+<ul>
+<li><code>0</code> - Not shot</li>
+<li><code>1</code> - File exists</li>
+<li><code>2</code> - Deleted</li>
+<li><code>3</code> - Generating</li>
+<li><code>4</code> - Generation failed</li>
+</ul>
+<h3 id="video-stream-commands">Video Stream Commands</h3>
+<h4 id="enabledisable-video-stream-cmd-386">Enable/Disable Video Stream (Cmd: 386)</h4>
+<p>Controls video streaming functionality. Returns an MJPEG stream URL for direct image embedding.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">386</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">386</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;VideoUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2:8080/stream.mjpg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/response/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response Ack Codes:</strong></p>
+<ul>
+<li><code>0</code> - Success</li>
+<li><code>1</code> - Exceeded maximum streaming limit</li>
+<li><code>2</code> - Camera does not exist</li>
+<li><code>3</code> - Unknown error</li>
+</ul>
+<p><strong>Video Stream Implementation:</strong>
+The VideoUrl field contains a direct HTTP MJPEG stream URL that can be embedded directly in an HTML <code>&lt;img&gt;</code> element:
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://192.168.1.2:8080/stream.mjpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Live Camera Feed&quot;</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<h4 id="enabledisable-time-lapse-photography-cmd-387">Enable/Disable Time-lapse Photography (Cmd: 387)</h4>
+<p>Controls time-lapse recording functionality for print monitoring.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">387</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="file-transfer-commands">File Transfer Commands</h3>
+<h4 id="terminate-file-transfer-cmd-255">Terminate File Transfer (Cmd: 255)</h4>
+<p>Cancels ongoing file transfer.</p>
+<p><strong>Request:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Uuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transfer-uuid&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;FileName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filename.gcode&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;From&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/request/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response Ack Codes:</strong>
+<div class="highlight"><pre><span></span><code>SDCP_FILE_TRANSFER_ACK_SUCCESS = 0
+SDCP_FILE_TRANSFER_ACK_NOT_TRANSFER = 1
+SDCP_FILE_TRANSFER_ACK_CHECKING = 2
+SDCP_FILE_TRANSFER_ACK_NOT_FOUND = 3
+</code></pre></div></p>
+<h2 id="error-messages">Error Messages</h2>
+<p>Error messages are sent proactively by the motherboard:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;ErrorCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error-code&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/error/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Error Codes:</strong>
+<div class="highlight"><pre><span></span><code>SDCP_ERROR_CODE_MD5_FAILED = 1
+SDCP_ERROR_CODE_FORMAT_FAILED = 2
+</code></pre></div></p>
+<h2 id="notification-messages">Notification Messages</h2>
+<p>General notification messages from motherboard:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;notification-content&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687069655</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sdcp/notice/{MainboardID}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Notification Types:</strong>
+- <code>1</code> - History synchronization successful</p>
+<h2 id="command-source-identification">Command Source Identification</h2>
+<p>The <code>From</code> field identifies the command source:</p>
+<div class="highlight"><pre><span></span><code>SDCP_FROM_PC = 0
+SDCP_FROM_WEB_PC = 1
+SDCP_FROM_WEB = 2
+SDCP_FROM_APP = 3
+SDCP_FROM_SERVER = 4
+</code></pre></div>
+<h2 id="http-file-transfer-interface">HTTP File Transfer Interface</h2>
+<p>For file uploads, use HTTP POST to:</p>
+<ul>
+<li><strong>URL:</strong> <code>http://{MainboardIP}:3030/uploadFile/upload</code></li>
+<li><strong>Method:</strong> POST (multipart/form-data)</li>
+<li><strong>Headers:</strong></li>
+<li><code>S-File-MD5: {file-md5-hash}</code></li>
+<li><code>Check: 1</code> (enable verification)</li>
+<li><code>Offset: 0</code> (file offset)</li>
+<li><code>Uuid: {transfer-uuid}</code> (unique per transfer)</li>
+<li><code>TotalSize: {file-size}</code> (total file size)</li>
+</ul>
+<p><strong>Success Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Error Response:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;111111&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;common_field&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Error Codes:</strong></p>
+<ul>
+<li><code>-1</code> - Offset error</li>
+<li><code>-2</code> - Offset not match</li>
+<li><code>-3</code> - File open failed</li>
+<li><code>-4</code> - Unknown error</li>
+</ul>
+<h2 id="implementation-notes">Implementation Notes</h2>
+<ol>
+<li>All timestamps are Unix epoch in seconds</li>
+<li>UUIDs should be RFC 4122 compliant</li>
+<li>File transfers are performed in 1MB chunks</li>
+<li>Video streams use MJPEG over HTTP for direct image embedding</li>
+<li>WebSocket connections should implement reconnection logic</li>
+<li>Status updates are pushed automatically, not polled</li>
+<li>All string fields are UTF-8 encoded</li>
+<li>Numeric values use standard JSON number format</li>
+</ol>
+<h2 id="implementation-specific-behavior">Implementation-Specific Behavior</h2>
+<p>This documentation reflects the actual implementation behavior for the Centauri Carbon FDM printer, which includes:</p>
+<ul>
+<li><strong>FDM-Specific Temperature Control</strong>: Nozzle, heated bed, and chamber temperature management</li>
+<li><strong>String-based Coordinates</strong>: Position data in "x,y,z" string format rather than object</li>
+<li><strong>FDM-Focused Error Reporting</strong>: Comprehensive error status reasons for filament, temperature, and mechanical issues</li>
+<li><strong>Flexible Field Handling</strong>: Status data can appear at multiple nesting levels</li>
+<li><strong>Auto-discovery and Connection</strong>: UDP broadcast discovery with automatic WebSocket connection</li>
+<li><strong>MJPEG Video Streaming</strong>: Direct HTTP MJPEG stream embedding in HTML img elements</li>
+<li><strong>Real-time Status Updates</strong>: Automatic status polling and push notifications</li>
+<li><strong>G-code File Support</strong>: Supports standard G-code files for FDM printing</li>
+</ul>
+<h2 id="video-stream-implementation-details">Video Stream Implementation Details</h2>
+<p>When video streaming is enabled via Command 386:</p>
+<ol>
+<li>The printer responds with a VideoUrl containing an MJPEG stream endpoint</li>
+<li>The client displays the stream by setting the URL as the <code>src</code> of an HTML <code>&lt;img&gt;</code> element</li>
+<li>The MJPEG stream provides continuous frame updates automatically</li>
+<li>No additional video processing or conversion is required</li>
+<li>Stream type is identified as "http_image" in the implementation</li>
+</ol>
+<h3 id="client-side-video-display">Client-Side Video Display</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Video stream URL received from printer</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">videoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2:8080/stream.mjpg&quot;</span><span class="p">;</span>
+
+<span class="c1">// Display in HTML img element</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">videoPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;video-player&#39;</span><span class="p">);</span>
+<span class="nx">videoPlayer</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    &lt;img src=&quot;</span><span class="si">${</span><span class="nx">videoUrl</span><span class="si">}</span><span class="sb">&quot; </span>
+<span class="sb">         alt=&quot;Live Camera Feed&quot;</span>
+<span class="sb">         onload=&quot;console.log(&#39;Video stream connected&#39;)&quot;</span>
+<span class="sb">         onerror=&quot;console.log(&#39;Video stream failed&#39;)&quot;&gt;</span>
+<span class="sb">`</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="video-stream-events">Video Stream Events</h3>
+<p>The implementation emits WebSocket events for video stream status:
+- <code>video_stream_url</code> - When video URL is received from printer
+- <code>video_stream_stopped</code> - When video streaming is disabled
+- Events include <code>printer_id</code>, <code>video_url</code>, and <code>stream_type: "http_image"</code></p>
+<h2 id="field-location-flexibility">Field Location Flexibility</h2>
+<p>Status and attribute data may appear in multiple locations within messages:</p>
+<ul>
+<li>Direct in <code>last_status</code> object</li>
+<li>Nested under <code>Status</code> property  </li>
+<li>Within <code>Data</code> wrapper objects</li>
+<li>As separate <code>Attributes</code> objects</li>
+</ul>
+<p><strong>Important</strong>: Due to protocol field naming inconsistencies, clients should check multiple field name variations:
+<div class="highlight"><pre><span></span><code><span class="c1">// Handle spelling variations</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">currentCoord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">status</span><span class="p">.</span><span class="nx">CurrenCoord</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">status</span><span class="p">.</span><span class="nx">CurrentCoord</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;0,0,0&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">filmState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">devices</span><span class="p">.</span><span class="nx">RelaseFilmState</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">devices</span><span class="p">.</span><span class="nx">ReleaseFilmState</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Clients should check multiple locations and handle both correct and misspelled field names when parsing responses.</p>
 
 
 
@@ -1077,7 +2633,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 22:01:33 UTC">April 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 20, 2025 21:02:31 UTC">June 20, 2025</span>
   </span>
 
     
