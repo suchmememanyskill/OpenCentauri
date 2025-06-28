@@ -18,3 +18,5 @@ Executes the following 2 system commands:
 - `cp /mnt/exUDISK/user_printer.cfg /board-resource/user_printer.cfg`
 
 (Note: exUDISK is the USB Stick)
+
+WARNING!! Invalid configs cause the printer to not boot!
