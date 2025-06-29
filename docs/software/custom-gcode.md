@@ -19,4 +19,5 @@ Executes the following 2 system commands:
 
 (Note: exUDISK is the USB Stick)
 
-WARNING!! Invalid configs cause the printer to not boot!
+!!! warning 
+    Invalid configs cause the printer to not boot!
