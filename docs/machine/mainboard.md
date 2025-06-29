@@ -31,7 +31,7 @@ Type: JST-**XA**-4P
 |4| 1B|1B||
 
 
-### filament sensor
+### Filament sensor
 Type: JST-**XA**-3P
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
