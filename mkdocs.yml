@@ -35,6 +35,7 @@ nav:
     - API: software/api.md
     - Custom gcode: software/custom-gcode.md
     - Embedded Firmware: software/embedded-firmware.md
+    - FEL: software/FEL-mode.md
   - Klipper via mainboard replacement:
     - Main: klipper-via-mainboard-replacement/index.md
     - Recognize Hotend: klipper-via-mainboard-replacement/recognize-hotend.md
