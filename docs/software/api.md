@@ -766,7 +766,7 @@ Controls video streaming functionality. Returns an MJPEG stream URL for direct i
         "Cmd": 386,
         "Data": {
             "Ack": 0,
-            "VideoUrl": "http://192.168.1.2:8080/stream.mjpg"
+            "VideoUrl": "http://192.168.1.2:3031/video"
         },
         "RequestID": "uuid-string",
         "MainboardID": "string",
@@ -786,7 +786,7 @@ Controls video streaming functionality. Returns an MJPEG stream URL for direct i
 **Video Stream Implementation:**
 The VideoUrl field contains a direct HTTP MJPEG stream URL that can be embedded directly in an HTML `<img>` element:
 ```html
-<img src="http://192.168.1.2:8080/stream.mjpg" alt="Live Camera Feed">
+<img src="http://192.168.1.2:3031/video" alt="Live Camera Feed">
 ```
 
 #### Enable/Disable Time-lapse Photography (Cmd: 387)
@@ -906,12 +906,13 @@ For file uploads, use HTTP POST to:
 
 - **URL:** `http://{MainboardIP}:3030/uploadFile/upload`
 - **Method:** POST (multipart/form-data)
-- **Headers:**
+- **Form data:**
   - `S-File-MD5: {file-md5-hash}`
   - `Check: 1` (enable verification)
   - `Offset: 0` (file offset)
   - `Uuid: {transfer-uuid}` (unique per transfer)
   - `TotalSize: {file-size}` (total file size)
+  - `File: {multipart-file}` (uploaded file contents + name)
 
 **Success Response:**
 ```json
@@ -944,6 +945,35 @@ For file uploads, use HTTP POST to:
 - `-2` - Offset not match
 - `-3` - File open failed
 - `-4` - Unknown error
+
+**Python example**
+
+```py
+import requests, hashlib
+
+def upload_to_cc(printer_ip : str, filename : str, file : bytes):
+    print(f"Uploading '{filename}' ({len(file)} bytes) to printer...")
+    url = f"http://{printer_ip}/uploadFile/upload"
+
+    m = hashlib.md5()
+    m.update(file)
+    file_md5 = m.hexdigest()
+
+    data = {
+        "TotalSize": len(file),
+        "Uuid": "cc2694a2676b436daec74e53220f87b0",
+        "Offset": "0",
+        "Check": "1",
+        "S-File-MD5": file_md5,
+    }
+
+    files = {
+        "File": (filename, file, "application/octet-stream")
+    }
+
+    response = requests.post(url, data=data, files=files)
+    print("Status Code:", response.status_code)
+```
 
 ## Implementation Notes
 
@@ -982,7 +1012,7 @@ When video streaming is enabled via Command 386:
 ### Client-Side Video Display
 ```javascript
 // Video stream URL received from printer
-const videoUrl = "http://192.168.1.2:8080/stream.mjpg";
+const videoUrl = "http://192.168.1.2:3031/video";
 
 // Display in HTML img element
 const videoPlayer = document.getElementById('video-player');
