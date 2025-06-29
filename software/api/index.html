@@ -2400,7 +2400,7 @@ SDCP_PRINT_CTRL_ACK_UNKNOWN_MODEL = 7
 <span class="w">        </span><span class="nt">&quot;Cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">386</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;Ack&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;VideoUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2:8080/stream.mjpg&quot;</span>
+<span class="w">            </span><span class="nt">&quot;VideoUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2:3031/video&quot;</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;RequestID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;MainboardID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
@@ -2418,7 +2418,7 @@ SDCP_PRINT_CTRL_ACK_UNKNOWN_MODEL = 7
 </ul>
 <p><strong>Video Stream Implementation:</strong>
 The VideoUrl field contains a direct HTTP MJPEG stream URL that can be embedded directly in an HTML <code>&lt;img&gt;</code> element:
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://192.168.1.2:8080/stream.mjpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Live Camera Feed&quot;</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://192.168.1.2:3031/video&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Live Camera Feed&quot;</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <h4 id="enabledisable-time-lapse-photography-cmd-387">Enable/Disable Time-lapse Photography (Cmd: 387)</h4>
 <p>Controls time-lapse recording functionality for print monitoring.</p>
@@ -2512,12 +2512,13 @@ SDCP_FROM_SERVER = 4
 <ul>
 <li><strong>URL:</strong> <code>http://{MainboardIP}:3030/uploadFile/upload</code></li>
 <li><strong>Method:</strong> POST (multipart/form-data)</li>
-<li><strong>Headers:</strong></li>
+<li><strong>Form data:</strong></li>
 <li><code>S-File-MD5: {file-md5-hash}</code></li>
 <li><code>Check: 1</code> (enable verification)</li>
 <li><code>Offset: 0</code> (file offset)</li>
 <li><code>Uuid: {transfer-uuid}</code> (unique per transfer)</li>
 <li><code>TotalSize: {file-size}</code> (total file size)</li>
+<li><code>File: {multipart-file}</code> (uploaded file contents + name)</li>
 </ul>
 <p><strong>Success Response:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -2547,6 +2548,32 @@ SDCP_FROM_SERVER = 4
 <li><code>-3</code> - File open failed</li>
 <li><code>-4</code> - Unknown error</li>
 </ul>
+<p><strong>Python example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">hashlib</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">upload_to_cc</span><span class="p">(</span><span class="n">printer_ip</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">filename</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span> <span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uploading &#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39; (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes) to printer...&quot;</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">printer_ip</span><span class="si">}</span><span class="s2">/uploadFile/upload&quot;</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">file_md5</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;TotalSize&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">file</span><span class="p">),</span>
+        <span class="s2">&quot;Uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;cc2694a2676b436daec74e53220f87b0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Offset&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Check&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;S-File-MD5&quot;</span><span class="p">:</span> <span class="n">file_md5</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Status Code:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="implementation-notes">Implementation Notes</h2>
 <ol>
 <li>All timestamps are Unix epoch in seconds</li>
@@ -2581,7 +2608,7 @@ SDCP_FROM_SERVER = 4
 </ol>
 <h3 id="client-side-video-display">Client-Side Video Display</h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// Video stream URL received from printer</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">videoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2:8080/stream.mjpg&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">videoUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://192.168.1.2:3031/video&quot;</span><span class="p">;</span>
 
 <span class="c1">// Display in HTML img element</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">videoPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;video-player&#39;</span><span class="p">);</span>
@@ -2633,7 +2660,7 @@ SDCP_FROM_SERVER = 4
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 20, 2025 21:02:31 UTC">June 20, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 29, 2025 18:29:22 UTC">June 29, 2025</span>
   </span>
 
     
