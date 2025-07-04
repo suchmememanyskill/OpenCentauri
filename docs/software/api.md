@@ -543,7 +543,7 @@ Update the print speed percentage for the current print job. You can find the pr
 
 #### Set The Fan Speeds
 
-Update the print speed percentage for the current print job. You can find the preset speed values on the [Software Page](/OpenCentauri/software/#speed-profiles).
+Update the fan speeds for the different fans on the printer.
 
 **Request:**
 ```json
