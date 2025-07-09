@@ -1,28 +1,29 @@
 use std::path::PathBuf;
 
-use serde::Deserialize;
 use clap::Parser;
+use serde::Deserialize;
 use serialport::TTYPort;
 
-pub struct SerialEntry 
-{
+pub struct SerialEntry {
     pub name: String,
-    pub device : TTYPort,
+    pub device: TTYPort,
     pub id: u8,
 }
 
 #[derive(Debug, Deserialize)]
-pub struct SerialEntryRaw
-{
+pub struct SerialEntryRaw {
     pub device_path: String,
     pub baud_rate: u32,
-    pub id : u8,
+    pub id: u8,
 }
 
 #[derive(Parser, Debug)]
-#[command(name = "serial-multiplexer", about = "Send multiple serial devices over a single serial", version = "0.1")]
-pub struct Args 
-{
+#[command(
+    name = "serial-multiplexer",
+    about = "Send multiple serial devices over a single serial",
+    version = "0.1"
+)]
+pub struct Args {
     #[arg(long, default_value_t = false)]
     pub with_virtual_ports: bool,
 
@@ -36,5 +37,5 @@ pub struct Args
     pub config: PathBuf,
 
     #[arg(long, default_value_t = 115200)]
-    pub baud : u32,
+    pub baud: u32,
 }

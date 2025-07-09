@@ -2,7 +2,13 @@ use clap::Parser;
 use serialport::{SerialPort, TTYPort};
 use st3::fifo::Worker;
 use std::{
-    collections::HashMap, fs::{self, create_dir, remove_file}, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, time::Duration
+    collections::HashMap,
+    fs::{self, create_dir, remove_file},
+    io::{Read, Write},
+    os::unix::fs::symlink,
+    path::PathBuf,
+    process::exit,
+    time::Duration,
 };
 
 use crate::config::{Args, SerialEntry, SerialEntryRaw};
@@ -11,7 +17,9 @@ mod config;
 fn main() {
     println!("Hello, world!");
     let args = Args::parse();
-    if (!args.with_virtual_ports && !args.with_real_ports) || (args.with_virtual_ports && args.with_real_ports) {
+    if (!args.with_virtual_ports && !args.with_real_ports)
+        || (args.with_virtual_ports && args.with_real_ports)
+    {
         eprintln!("You must specify either --with_virtual_ports or --with_real_ports");
         exit(1);
     }
@@ -31,7 +39,8 @@ fn main() {
 
     let mut multiplexed_port = match serialport::new(&args.device, args.baud)
         .timeout(Duration::MAX)
-        .open_native() {
+        .open_native()
+    {
         Ok(port) => port,
         Err(e) => {
             eprintln!(
@@ -53,10 +62,16 @@ fn main() {
                     entry.id as u32,
                     config::SerialEntry {
                         name: f.0.clone(),
-                        device: match serialport::new(&entry.device_path, entry.baud_rate).timeout(Duration::from_millis(100u64)).open_native() {
+                        device: match serialport::new(&entry.device_path, entry.baud_rate)
+                            .timeout(Duration::from_millis(100u64))
+                            .open_native()
+                        {
                             Ok(port) => port,
                             Err(e) => {
-                                eprintln!("Failed to open serial port {}: {}", entry.device_path, e);
+                                eprintln!(
+                                    "Failed to open serial port {}: {}",
+                                    entry.device_path, e
+                                );
                                 exit(4);
                             }
                         },
@@ -67,9 +82,8 @@ fn main() {
             .collect();
 
         communicate(&mut multiplexed_port, &mut serial_ports);
-    }
-    else {
-        let mut serial_ports : HashMap<u32, SerialEntry> = serial_ports_raw
+    } else {
+        let mut serial_ports: HashMap<u32, SerialEntry> = serial_ports_raw
             .iter()
             .map(|f| {
                 let entry = f.1;
@@ -82,8 +96,7 @@ fn main() {
                 let mut link_path = std::env::home_dir().unwrap_or(PathBuf::from("/dev"));
 
                 link_path.push("vtty");
-                if !link_path.exists()
-                {
+                if !link_path.exists() {
                     create_dir(&link_path).unwrap();
                 }
 
@@ -98,7 +111,7 @@ fn main() {
                         name: f.0.clone(),
                         id: entry.id,
                         device: master,
-                    }
+                    },
                 )
             })
             .collect();
@@ -107,48 +120,41 @@ fn main() {
     }
 }
 
-fn communicate(
-    multiplexed_port: &mut TTYPort,
-    serial_ports: &mut HashMap<u32, SerialEntry>,
-) {
+fn communicate(multiplexed_port: &mut TTYPort, serial_ports: &mut HashMap<u32, SerialEntry>) {
     let mut multiplexed_port_clone = multiplexed_port.try_clone_native().unwrap();
 
     let mut serial_ports_clone: HashMap<u32, SerialEntry> = HashMap::new();
-    let mut serial_ports_queue : HashMap<u32, Worker<Vec<u8>>> = HashMap::new();
+    let mut serial_ports_queue: HashMap<u32, Worker<Vec<u8>>> = HashMap::new();
 
     serial_ports.iter().for_each(|port| {
         serial_ports_clone.insert(
             port.0.clone(),
-            SerialEntry { 
-                name: port.1.name.clone(), 
-                device: port.1.device.try_clone_native().unwrap(), 
-                id: port.1.id
+            SerialEntry {
+                name: port.1.name.clone(),
+                device: port.1.device.try_clone_native().unwrap(),
+                id: port.1.id,
             },
         );
 
         let worker: Worker<Vec<u8>> = Worker::new(1024);
         let stealer = worker.stealer();
         let serial_clone = port.1.device.try_clone_native().unwrap();
-        
+
         std::thread::spawn(move || {
             let local_stealer = stealer;
             let mut local_serial = serial_clone;
 
-            loop 
-            {
+            loop {
                 let local_worker = Worker::new(64);
                 local_stealer.steal(&local_worker, |_| 64).unwrap();
 
-                while let Some(data) = local_worker.pop()
-                {
+                while let Some(data) = local_worker.pop() {
                     local_serial.write_all(&data).unwrap();
-                };
+                }
             }
         });
 
-        serial_ports_queue.insert(
-            port.0.clone(),
-            worker);
+        serial_ports_queue.insert(port.0.clone(), worker);
     });
 
     std::thread::spawn(move || {
@@ -157,10 +163,8 @@ fn communicate(
         loop {
             local_map.iter_mut().for_each(|port| {
                 let mut buff = [0u8; 255];
-                if let Ok(bytes_to_read) = port.1.device.bytes_to_read()
-                {
-                    if bytes_to_read > 0
-                    {
+                if let Ok(bytes_to_read) = port.1.device.bytes_to_read() {
+                    if bytes_to_read > 0 {
                         if let Ok(bytes_read) = port.1.device.read(&mut buff) {
                             if bytes_read > 0 {
                                 let mut mini_buff = [0u8; 2];
@@ -168,7 +172,9 @@ fn communicate(
                                 mini_buff[1] = bytes_read as u8;
 
                                 multiplexed_port_clone.write_all(&mini_buff).unwrap();
-                                multiplexed_port_clone.write_all(&buff[..bytes_read]).unwrap();
+                                multiplexed_port_clone
+                                    .write_all(&buff[..bytes_read])
+                                    .unwrap();
                                 #[cfg(debug_assertions)]
                                 {
                                     println!("Sent {} bytes for device {}", bytes_read, port.0);
@@ -194,16 +200,20 @@ fn communicate(
                     println!("Received {} bytes for device {}", length, id);
                 }
 
-                if let Some(worker) = serial_ports_queue.get_mut(&(id as u32))
-                {
+                if let Some(worker) = serial_ports_queue.get_mut(&(id as u32)) {
                     worker.push(buff).unwrap();
-                }
-                else
-                {
-                    eprintln!("Device with id {} does not exist. Assuming we're not in sync! Waiting 1s and trying again...", id);
-                    multiplexed_port.clear(serialport::ClearBuffer::Input).unwrap();
+                } else {
+                    eprintln!(
+                        "Device with id {} does not exist. Assuming we're not in sync! Waiting 1s and trying again...",
+                        id
+                    );
+                    multiplexed_port
+                        .clear(serialport::ClearBuffer::Input)
+                        .unwrap();
                     std::thread::sleep(Duration::from_secs(1u64));
-                    multiplexed_port.clear(serialport::ClearBuffer::Input).unwrap();
+                    multiplexed_port
+                        .clear(serialport::ClearBuffer::Input)
+                        .unwrap();
                 }
             }
         }
