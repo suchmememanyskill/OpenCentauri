@@ -1,31 +1,34 @@
 use std::{fs, io::Cursor, path::PathBuf};
 mod ymodem;
+use clap::Parser;
 use md5::{Digest, Md5};
 use ymodem::Ymodem;
-use clap::Parser;
 
 #[derive(Parser, Debug)]
-#[command(name = "mcu-flasher", about = "Flash a new firmware over the Elegoo bootloader", version = "0.1")]
-struct Args
-{
+#[command(
+    name = "mcu-flasher",
+    about = "Flash a new firmware over the Elegoo bootloader",
+    version = "0.1"
+)]
+struct Args {
     /// Don't pad with 0x4000 bytes. The program auto-detects padded firmware by the magic (0x1418011A) at the start of the file, and adds it if the firmware isn't padded. This option force disables this functionality.
     #[arg(long, default_value_t = false)]
     pub no_pad_firmware: bool,
 
     // Don't flash firmware and just boot the existing firmware.
     #[arg(long, default_value_t = false)]
-    pub skip : bool,
+    pub skip: bool,
 
     // Wait until the serial port is available.
     #[arg(long, default_value_t = true)]
-    pub wait : bool,
+    pub wait: bool,
 
     // Path to the firmware file
     #[arg(long, default_value = "")]
     pub firmware: String,
 
     #[arg(long, default_value_t = 115200)]
-    pub baud : u32,    
+    pub baud: u32,
 
     // Path to the device
     #[arg(required = true)]
@@ -34,22 +37,13 @@ struct Args
 
 fn main() {
     let mut args = Args::parse();
-    let mut found = !args.wait;
 
-    while !found
-    {
+    'outer: loop {
         let ports = serialport::available_ports().expect("No ports found!");
         for p in ports {
-            if p.port_name == args.device
-            {
-                found = true;
+            if p.port_name == args.device {
+                break 'outer;
             }
-        }
-
-        if !found
-        {
-            println!("Waiting for device at {}...", args.device);
-            std::thread::sleep(std::time::Duration::from_secs(2));
         }
     }
 
@@ -59,18 +53,17 @@ fn main() {
         .open()
         .expect("Failed to open port");
 
-    if args.skip
-    {
-        println!("Skipping flash. Booting existing firmware on device: {}", args.device);
-        let mut buf = [0u8; 1];
-        buf[0] = 'a' as u8;
-        port.write(&buf).expect("Failed to write to port");
+    if args.skip {
+        println!(
+            "Skipping flash. Booting existing firmware on device: {}",
+            args.device
+        );
+        port.write(b"a").expect("Failed to write to port");
         port.flush().unwrap();
         return;
     }
 
-    if args.firmware.is_empty() || !PathBuf::from(&args.firmware).exists()
-    {
+    if args.firmware.is_empty() || !PathBuf::from(&args.firmware).exists() {
         println!("No firmware file provided or file does not exist. Exiting.");
         return;
     }
@@ -81,19 +74,16 @@ fn main() {
         .to_string_lossy()
         .to_string();
 
-    let mut file_bytes = std::fs::read(&args.firmware)
-        .expect("Failed to read firmware file");
+    let mut file_bytes = std::fs::read(&args.firmware).expect("Failed to read firmware file");
 
     let mut file_size_in_bytes = file_bytes.len() as u64;
 
-    if file_bytes.starts_with(&vec![0x14, 0x18, 0x01, 0x1A])
-    {
+    if file_bytes.starts_with(&vec![0x14, 0x18, 0x01, 0x1A]) {
         println!("Firmware file already has a header. No need to pad.");
         args.no_pad_firmware = true;
     }
 
-    if !args.no_pad_firmware
-    {
+    if !args.no_pad_firmware {
         let file_size = file_size_in_bytes as u32;
 
         let mut header = [0u8; 0x10];

@@ -1,5 +1,6 @@
 use clap::Parser;
 use serialport::{SerialPort, TTYPort};
+use st3::fifo::Worker;
 use std::{
     collections::HashMap, fs::{self, create_dir, remove_file}, io::{Read, Write}, os::unix::fs::symlink, path::PathBuf, process::exit, time::Duration
 };
@@ -15,7 +16,7 @@ fn main() {
         exit(1);
     }
 
-    let config_path = PathBuf::from(&args.config);
+    let config_path = args.config;
     if !config_path.exists() {
         eprintln!("Config file does not exist: {}", config_path.display());
         exit(2);
@@ -113,6 +114,7 @@ fn communicate(
     let mut multiplexed_port_clone = multiplexed_port.try_clone_native().unwrap();
 
     let mut serial_ports_clone: HashMap<u32, SerialEntry> = HashMap::new();
+    let mut serial_ports_queue : HashMap<u32, Worker<Vec<u8>>> = HashMap::new();
 
     serial_ports.iter().for_each(|port| {
         serial_ports_clone.insert(
@@ -123,6 +125,30 @@ fn communicate(
                 id: port.1.id
             },
         );
+
+        let worker: Worker<Vec<u8>> = Worker::new(1024);
+        let stealer = worker.stealer();
+        let serial_clone = port.1.device.try_clone_native().unwrap();
+        
+        std::thread::spawn(move || {
+            let local_stealer = stealer;
+            let mut local_serial = serial_clone;
+
+            loop 
+            {
+                let local_worker = Worker::new(64);
+                local_stealer.steal(&local_worker, |_| 64).unwrap();
+
+                while let Some(data) = local_worker.pop()
+                {
+                    local_serial.write_all(&data).unwrap();
+                };
+            }
+        });
+
+        serial_ports_queue.insert(
+            port.0.clone(),
+            worker);
     });
 
     std::thread::spawn(move || {
@@ -168,9 +194,9 @@ fn communicate(
                     println!("Received {} bytes for device {}", length, id);
                 }
 
-                if let Some(port) = serial_ports.get_mut(&(id as u32))
+                if let Some(worker) = serial_ports_queue.get_mut(&(id as u32))
                 {
-                    port.device.write_all(&buff).unwrap();
+                    worker.push(buff).unwrap();
                 }
                 else
                 {

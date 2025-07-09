@@ -1,7 +1,7 @@
 // Heavily based on https://github.com/TGMM/xymodem.rs
 
+use log::{info, log, warn};
 use std::io::{self, Read, Write};
-use log::{info, warn, log};
 
 pub fn calc_crc(data: &[u8]) -> u16 {
     crc16::State::<crc16::XMODEM>::calculate(data)
@@ -178,7 +178,7 @@ impl Ymodem {
         dev: &mut D,
         file_name: String,
         file_size_in_bytes: u64,
-        package_count : u32,
+        package_count: u32,
     ) -> Result<()> {
         let mut buff = vec![0x00; 1024 as usize + 3];
         buff[0] = STX;
@@ -223,7 +223,13 @@ impl Ymodem {
         buff.push(((crc >> 8) & 0xFF) as u8);
         buff.push((crc & 0xFF) as u8);
 
-        println!("{}", buff.iter().map(|b| format!("{:02X}", b)).collect::<Vec<String>>().join(""));
+        println!(
+            "{}",
+            buff.iter()
+                .map(|b| format!("{:02X}", b))
+                .collect::<Vec<String>>()
+                .join("")
+        );
 
         (dev.write_all(&buff))?;
         (dev.flush())?;

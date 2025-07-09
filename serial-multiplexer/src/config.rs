@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use serde::Deserialize;
 use clap::Parser;
 use serialport::TTYPort;
@@ -31,7 +33,7 @@ pub struct Args
     pub device: String,
 
     #[arg(required = true)]
-    pub config : String,
+    pub config: PathBuf,
 
     #[arg(long, default_value_t = 115200)]
     pub baud : u32,
