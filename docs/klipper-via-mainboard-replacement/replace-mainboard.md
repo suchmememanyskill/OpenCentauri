@@ -16,7 +16,7 @@ You will also need a Linux computer to run the Klipper host on, which can be a R
 
 !!! warning
 
-    The Raspberry Pi Zero W and Zero 2 W are not recommended due to their limited performance and occasional dropouts when restarting Klipper.
+    The Raspberry Pi Zero W and Zero 2 W are not recommended due to their limited performance and occasional USB dropouts when restarting Klipper.
 
 From our testing, the following boards are known to work:
 
@@ -24,38 +24,51 @@ From our testing, the following boards are known to work:
 
 - [BigTreeTech SKR Mini E3 V3.0](https://biqu.equipment/products/bigtreetech-skr-mini-e3-v2-0-32-bit-control-board-for-ender-3)
 - [BigTreeTech Octopus v1.1](https://biqu.equipment/products/bigtreetech-octopus-v1-1)
-  - On the BTT Octopus, you will have to snip off the JST-XA lever because the sockets are too close together
+    - On the BTT Octopus, you will have to snip off the JST-XA retention lever because the sockets are too close together
 
-## Wiring up the mainboard
+## Making adapter cables
 
-You will need to make three custom cables to connect various components to the new mainboard:
+You will need to make four custom cables to connect various components to the new mainboard:
+
+### Toolhead cable
+
+The toolhead uses a USB-C cable but it expects 24V power on the VBUS pin, so you will need to make a custom cable that connects the VBUS and GND pins to a 24V power source.
+
+I recommend getting a USB-C breakout board with four or six pins and soldering the cables to it.
+
+!!! note
+
+    TODO(devminer): Add picture
 
 ### Bed heater cable
 
-The bed heater cable is a 2-pin JST-XA connector, but most mainboards use a 2-pin terminal block instead.
+The bed heater cable is a 2-pin JST-XA connector, but most mainboards use a 2-pin terminal block or 2 pin screw terminal instead.
 
-There is not much power going through this cable, so we recommend finding a 2-pin JST-XA socket, soldering two cables to it, then crimping the other ends with ferrules to connect to the terminal block.
+There is not much power going through this cable, so we recommend finding a 2-pin JST-XA or JST-XH socket and soldering two cables to it.
+
+Depending on if your mainboard uses a screw terminal, then crimp the other ends with ferrules.
+If it uses a terminal block instead, then you should crimp the other ends with spade/fork connectors.
 
 !!! note
 
     Make sure you connect the bed heater cable in the correct polarity. If you connect it backwards, the bed won't heat up.
 
-!!! warning
-
-    TODO(devminer): add picture of the cable
-
-### Optical Z endstop cable
-
-The endstop needs 24V power, ground and a signal wire, but most mainboards only either have a 2-pin connector for ground and signal or a 3-pin connector for power, ground and signal, where the power pin is 3.3V or 5V. Because of this we have to wire up our own harness for this.
-
-!!! warning
-
-    TODO(devminer): add picture of the cable
+![Bed signal adapter cable](../assets/bed-signal-adapter-cable.png)
 
 ### Mainboard fan cable
 
-The mainboard fan cable is a 4-pin JST-XA connector, but most mainboards use a 3-pin JST-XH instead. We need to omit the 4th pin (the tachometer pin) since it's a signal pin on 24V level and needs some more wiring to a octocoupler to work properly.
+The mainboard fan cable is a 3-pin JST-XA connector, but most mainboards use a 2-pin JST-XH instead. We need to omit the 3rd pin since it's the tachometer pin that operates at a voltage not suitable for directly injecting into the MCU of the mainboard. It [needs some extra wiring](https://www.nicksherlock.com/2022/01/driving-a-4-pin-computer-pwm-fan-on-the-btt-octopus-using-klipper/).
 
-!!! warning
+![Mainboard fan adapter cable](../assets/mainboard-fan-adapter-cable.png)
 
-    TODO(devminer): add picture of the cable
+### Camera cable
+
+The camera is a normal USB camera, but it's connected via a JST-XA connector, so you will need to wire an adapter cable from JST-XA/XH to USB-A. 
+
+You can cut off the other side of an old USB cable and solder it to a JST-XA/XH connector, or you can buy a USB-A male kit from Aliexpress to make your own.
+
+!!! note
+
+    Remember to not flip the colors in USB cables. The red wire is +5V, black is GND, white is D- and green is D+.
+
+![Camera fan adapter cable](../assets/camera-adapter-cable.png)

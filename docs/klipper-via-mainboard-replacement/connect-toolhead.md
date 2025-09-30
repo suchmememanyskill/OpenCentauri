@@ -23,7 +23,7 @@ Some cheap chinese USB cable were spotted with white/green wires mixed up. If po
 
 ## Klipper Connection
 
-The hotend -still- won't connect properly on some Klipper install, as it's an ACM device. If you installe Klipper with the Pi-Imager tool, chances are you don't have the `cdc-acm` kernel module loaded. Doing it manually would require constantly SSH-ing in and running the command. To make the Linux automatically load it, we need to edit the `/etc/modules` file to include a new line `cdc-acm`, then reboot the Raspberry.
+The hotend -still- won't connect properly on some Klipper install, as it's an ACM device. If you installed Klipper with the Pi-Imager tool, chances are you don't have the `cdc-acm` kernel module loaded. Doing it manually would require constantly SSH-ing in and running the command. To make the Linux automatically load it, we need to edit the `/etc/modules` file to include a new line `cdc-acm`, then reboot the Raspberry.
 
 ### Klipper [mcu] Config
 
