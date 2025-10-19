@@ -22,7 +22,7 @@ Type: 2-Pin Barrier terminal with 9.6mm pin pitch
 
 
 ### Steppers X,Y and Z
-Type: JST-**XA**-4P 
+Type: JST-**XHB**-4P 
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -33,7 +33,7 @@ Type: JST-**XA**-4P
 
 
 ### Filament sensor
-Type: JST-**XA**-3P
+Type: JST-**XHB**-3P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -43,7 +43,7 @@ Type: JST-**XA**-3P
 
 
 ### Chamber temp sensor (marked "BOX-T" on the board)
-Type: JST-**XA**-2P
+Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -52,7 +52,7 @@ Type: JST-**XA**-2P
 
 
 ### Light
-Type: JST-**XA**-2P
+Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -60,7 +60,7 @@ Type: JST-**XA**-2P
 |2| - | GND_PWM| |
 
 ### Side fan (Marked "FAN-1" on the board)
-Type: JST-**XA**-2P
+Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -68,7 +68,7 @@ Type: JST-**XA**-2P
 |2| - | GND_PWM ||
 
 ### Rear exhaust Fan (marked "BOX-F" on the board)
-Type: JST-**XA**-2P
+Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -77,7 +77,7 @@ Type: JST-**XA**-2P
 
 
 ### Camera
-Type: JST-**XA**-4P
+Type: JST-**XHB**-4P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -87,7 +87,7 @@ Type: JST-**XA**-4P
 |4| 5v | +5V ||
 
 ### UART0
-Type: JST-**XA**-2P + 4-Pin 2.54mm pin header
+Type: JST-**XHB**-2P + 4-Pin 2.54mm pin header
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -106,7 +106,7 @@ JST:
 
 
 ### Multicolor
-Type: JST-**XA**-5P
+Type: JST-**XHB**-5P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -124,18 +124,18 @@ Type: USB-C (USB 2.0 only)
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
-|A1 |no markings | GND  | |
-|A2 | | | |
-|A3 | | | |
-|A4 | | **24V!** VCC | Switched 24V |
-|A5 | | | |
-|A6 | |USB 2.0 DP | |
-|A7 | |USB 2.0 DM | |
-|A8 | | | |
-|A9 | | **24V!** VCC | Switched 24V |
-|A10| | | |
-|A11| | | |
-|A12| | GND | |
+|A1/12 |no markings | GND  | |
+|A2/B11 | | NC | |
+|A3/B10 | | NC | |
+|A4/B9 | | **24V!** Vbus | Switched 24V |
+|A5/B5 | | CC1 | not used |
+|A6/B7 | |USB 2.0 DP | |
+|A7/B6 | |USB 2.0 DM | |
+|A8/B8 | | CC2 | not used |
+|A9/B4 | | **24V!** Vbus | Switched 24V |
+|A10/B3| | NC | |
+|A11/B2| | NC | |
+|A12/B1| | GND | |
 
 
 ### Display
@@ -155,7 +155,7 @@ Type: USB-A
 |4| 5v | +5V ||
 
 ### Z-endstop (Marked "EXT" on the board)
-Type: JST-**XA**-3P
+Type: JST-**XHB**-3P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -164,7 +164,7 @@ Type: JST-**XA**-3P
 |3| | SIG |3.3V pullup, LOW/0v when bed is not in sensor|
 
 ### Mainboard fan "BFAN"
-Type: JST-**XA**-3P
+Type: JST-**XHB**-3P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -174,7 +174,7 @@ Type: JST-**XA**-3P
 
 
 ### Bed MCU (RS-232)
-Type: JST-**XA**-5P
+Type: JST-**XHB**-5P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -186,7 +186,7 @@ Type: JST-**XA**-5P
 
 
 ### Bed heater "HBED"
-Type: JST-**XA**-2P
+Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
@@ -195,7 +195,7 @@ Type: JST-**XA**-2P
 
 
 ### Bed temperature sensoor "BED-T"
-Type: JST-**XA**-2P
+Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
