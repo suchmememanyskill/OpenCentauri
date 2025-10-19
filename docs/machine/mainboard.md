@@ -124,14 +124,14 @@ Type: USB-C (USB 2.0 only)
 
 |pin nr|marking|Function|remarks|
 |--|---|----|---|
-|A1/12 |no markings | GND  | |
+|A1/12 |none | GND  | |
 |A2/B11 | | NC | |
 |A3/B10 | | NC | |
 |A4/B9 | | **24V!** Vbus | Switched 24V |
-|A5/B5 | | CC1 | not used |
+|A5/B8 | | A5=CC1  B8=SBU2 | not used |
 |A6/B7 | |USB 2.0 DP | |
 |A7/B6 | |USB 2.0 DM | |
-|A8/B8 | | CC2 | not used |
+|A8/B5 | | A8=SBU1  B5=CC2 | not used |
 |A9/B4 | | **24V!** Vbus | Switched 24V |
 |A10/B3| | NC | |
 |A11/B2| | NC | |
