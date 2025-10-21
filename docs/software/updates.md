@@ -40,6 +40,39 @@ Internally, the following commands are used, where %s is the path to the .swu fi
 
 The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&machineId=0&version=1.1.0&lan=en&firmwareType=1) to check if a new firmware update is available. Below are archives of what this endpoint provided at the stated date.
 
+### v1.1.46 (Released 21/10/2025)
+
+[Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/01.01.46/2025-10-22/f9bd2b9b1926408ca238de8e7eac69b6.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
+
+Changelog:
+
+1. Fixed some UI display issues.
+2. Fixed abnormal display of the Wi-Fi list.
+3. Optimized the printing time calculation method.
+4. Fixed abnormal material consumption display on the file details page.
+5. Improved synchronization between the device screen and the web interface for files.
+6. Enhanced printing stability.
+
+Raw response:
+```json
+{
+  "code": "000000",
+  "messages": null,
+  "data": {
+    "update": true,
+    "version": "1.1.46",
+    "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/01.01.46/2025-10-22/f9bd2b9b1926408ca238de8e7eac69b6.bin",
+    "firmwareType": 1,
+    "packageHash": "055d4c3c3ff97a9aa5d5e9ba0671739e",
+    "updateStrategy": 1,
+    "log": "1. Fixed some UI display issues.\n2. Fixed abnormal display of the Wi-Fi list.\n3. Optimized the printing time calculation method.\n4. Fixed abnormal material consumption display on the file details page.\n5. Improved synchronization between the device screen and the web interface for files.\n6. Enhanced printing stability.",
+    "timeMS": 1761066906571,
+    "dataInfoId": "770b3a5993c04011bcb1c3a23df1fa5a"
+  },
+  "success": true
+}
+```
+
 ### v1.1.42 (Released 18/09/2025)
 
 [Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.1.42/2025-09-18/5de8bf345f044452a815dcf91241ddc0.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
