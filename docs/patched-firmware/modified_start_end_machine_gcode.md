@@ -35,7 +35,7 @@ M729 ;Clean Nozzle
 ;=============turn on fans to prevent PLA jamming=================
 {if filament_type[initial_no_support_extruder]=="PLA"}
     {if (bed_temperature[initial_no_support_extruder] >50)||(bed_temperature_initial_layer[initial_no_support_extruder] >50)}
-    M106 P3 S180
+    M106 P3 S255
     {elsif (bed_temperature[initial_no_support_extruder] >45)||(bed_temperature_initial_layer[initial_no_support_extruder] >45)}
     M106 P3 S180
     {endif};Prevent PLA from jamming
