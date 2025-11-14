@@ -6,7 +6,7 @@ It also includes instructions on replacing the existing resistor to increase the
 The Centauri Carbon includes a MOSFET circuit for a nozzle LED, but the LED itself is unpopulated.  
 The installed current-limiting resistor (100 Ω) results in a dim output, drawing only about 20 mA. With a few quick soldering steps, you can enable and tune this feature.  
 
-This modification is compatible with all firmware versions and does not require the OpenCentauri firmware.
+This modification is compatible with all firmware versions and does not require the OpenCentauri firmware. The Centauri Carbon 2 is not compatible.  
 
 If you need any support, feel free to [join the Discord](https://discord.gg/t6Cft3wNJ3)  
 
@@ -23,9 +23,10 @@ If you need any support, feel free to [join the Discord](https://discord.gg/t6Cf
 - **Hot air gun**  
   Helpful when soldering the 5730 LED, as it has three pads.  
   The center pad is used for heat transfer to the PCB, but it’s not required for this mod since the LED runs well below its maximum temperature, even in warm chambers.
-- **Resistor:** [27 Ω SMD resistor (0603 size)](https://aliexpress.com/item/1005005677654015.html)  
-  Replaces the stock **100 Ω** resistor to make the LED brighter, increases the current from 20mA to 75mA. The forward voltage increases from 2.72V to 2.92V.  
-  These values will differ slightly from LED to LED. 
+- **Resistor:** [33 Ω SMD resistor (0805 size)](https://aliexpress.com/item/1005006144658512.html)  
+  Replaces the stock **100 Ω** 0603 size resistor to make the LED brighter, increases the current from 20mA to 60mA*. The forward voltage increases from 2.72V to 2.85V*.  
+  A larger resistor package is used compared to the stock component to handle the increased power dissipation.  
+    **These values will differ slightly from LED to LED.*  
 
 
 ## Overview  
@@ -54,13 +55,13 @@ If you need any support, feel free to [join the Discord](https://discord.gg/t6Cf
 It should look something like this:  
 ![LED Soldered](assets/LED_SOLDERED.jpg) 
 
-### 3. (Optional) Replace resistor R18 with 27 Ω if higher brightness is desired.  
+### 3. (Optional) Replace resistor R18 with 33 Ω if higher brightness is desired.  
   ![Resistor R18](assets/R18.jpg)  
 
 ### 4. Reassemble the toolhead.  
 
 !!! warning "Note"   
-    We recommend against going below 27 Ω, as the LED may overheat in high-temperature chamber conditions.
+    We recommend not using values below 33 Ω. At lower resistance, the LED can overheat under high-temperature chamber conditions, and the resistor’s power rating may be exceeded.
 
 
 ## Testing  
@@ -110,6 +111,7 @@ The pictures below were taken with a 30 Ω resistor installed. Expect noticeably
 
 ## Credits
 Guide and images by _sjoerd on the OpenCentauri Discord.  
+R18 SMD size increase and power dissipation analysis by ydrRC on the OpenCentauri Discord.
 
 [Synthetic Electron 3D](https://www.youtube.com/@SyntheticElectron3D) on YouTube for finding the unused footprint on the PCB, [his video on this topic](https://www.youtube.com/watch?v=1B1BzOQMkCI&lc=UgzqtT4OAFaG_nfkXIB4AaABAg) can be found on his channel.  
 
