@@ -88,3 +88,5 @@ extra:
   social:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/t6Cft3wNJ3
+extra_css:
+  - extra.css

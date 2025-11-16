@@ -33,6 +33,7 @@ pub struct DspSharespace {
     pub debug_msg: DebugMessage,
 }
 
+#[derive(Debug)]
 enum ChooseShareSpace {
     ChooseDspWriteSpace = 0,
     ChooseArmWriteSpace = 1,
@@ -49,12 +50,12 @@ fn choose_sharespace(
     let raw_fd = fd.as_raw_fd();
     wrap_ioctl_negative_invalid(unsafe { read_debug_message(raw_fd, msg) })?;
 
-    println!("Before choose: {:#?}", msg);
-
     msg.mmap_phy_addr = match choose {
         ChooseShareSpace::ChooseDspWriteSpace => msg.dsp_write_addr,
         ChooseShareSpace::ChooseArmWriteSpace => msg.arm_write_addr,
     };
+
+    println!("Init sharespace {:?} to 0x{:x}", choose, msg.mmap_phy_addr);
 
     wrap_ioctl_negative_invalid(unsafe { write_debug_message(raw_fd, msg) })?;
 

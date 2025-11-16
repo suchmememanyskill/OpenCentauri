@@ -1,4 +1,4 @@
-use std::{ffi::c_void, time::Duration};
+use std::{ffi::c_void, fmt::Debug, time::Duration};
 
 use nix::libc::{msync, MS_INVALIDATE};
 
@@ -6,11 +6,21 @@ use crate::{kbuf::UserWrapperBufData, msgbox::MsgboxEndpoint, sharespace::Shares
 
 
 #[repr(C)]
-#[derive(Default, Debug)]
+#[derive(Default)]
 pub struct MsgHead {
     pub read_addr: u32,
     pub write_addr: u32,
     pub init_state: u32,
+}
+
+impl Debug for MsgHead {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "MsgHead {{ read_addr: 0x{:x}, write_addr: 0x{:x}, init_state: 0x{:x} }}",
+            self.read_addr, self.write_addr, self.init_state
+        )
+    }
 }
 
 impl MsgHead {
@@ -83,7 +93,9 @@ impl CommunicationHandler {
         head.write_addr = self.user_buf.buf.pa;
 
         self.sharespace.write_buffer.as_mut()[SHARE_SPACE_HEAD_OFFSET..]
-            .copy_from_slice(&head.to_bytes())
+            .copy_from_slice(&head.to_bytes());
+
+        println!("Wrote ARM head to sharespace mmap at offset 0x{:x}: {:?}", SHARE_SPACE_HEAD_OFFSET, head);
     }
 
     // pVirArmBuf
