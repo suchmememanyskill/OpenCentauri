@@ -1,4 +1,4 @@
-![Screen back](../assets/centauri-screen.jpg){ width="600" }
+![Screen back](./assets/centauri-screen.jpg){ width="600" }
 /// caption
 Credit to rabirx on the OpenCentauri Discord.
 ///

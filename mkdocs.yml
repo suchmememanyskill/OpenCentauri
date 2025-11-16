@@ -23,14 +23,24 @@ plugins:
       enable_creation_date: true
 nav:
   - Home: index.md
-  - Machine:
-    - Machine: machine/index.md
-    - Mainboard: machine/mainboard.md
-    - Toolhead: machine/toolhead.md
-    - Camera: machine/camera.md
-    - Bed: machine/bed.md
-    - Screen: machine/screen.md
-    - EMMC Tap Points: machine/emmc-tapping.md
+  - Hardware:
+    - CC1:
+      - Hardware: hardware/CC1/index.md
+      - Mainboard: hardware/CC1/mainboard.md
+      - EMMC Tap Points: hardware/CC1/emmc-tapping.md
+      - Toolhead: hardware/CC1/toolhead.md
+      - Camera: hardware/CC1/camera.md
+      - Bed: hardware/CC1/bed.md
+      - Screen: hardware/CC1/screen.md
+      - Miscellaneous: hardware/CC1/misc.md
+    - CC2:
+      - Hardware: hardware/CC2/index.md
+      - Mainboard: hardware/CC2/mainboard.md
+      - Toolhead: hardware/CC2/toolhead.md
+      - Miscellaneous: hardware/CC2/misc.md
+      - Screen: hardware/CC2/screen.md
+      - CANVAS: hardware/CC2/CANVAS.md
+
   - Software: 
     - Software: software/index.md
     - Partitions: software/partitions.md
@@ -51,7 +61,7 @@ nav:
       - UDEV Setup: klipper-via-mainboard-replacement/udev-setup.md
     - Patched firmware:
       - Patched firmware: patched-firmware/index.md
-      - Modified slicer machine gcode: patched-firmware/modified_start_end_machine_gcode.md
+      - Modified slicer hardware gcode: patched-firmware/modified_start_end_hardware_gcode.md
 theme:
   name: material
   features:

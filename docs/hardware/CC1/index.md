@@ -14,7 +14,7 @@
 -   <iframe src="https://smith150.autodesk360.com/shares/public/SH286ddQT78850c0d8a46fdb9127d46ff4ba?mode=embed" width="800" height="600" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
 </div>
 
-![Centauri bottom image](../assets/centauri-bottom.jpg){ width="600" }
+![Centauri bottom image](./assets/centauri-bottom.jpg){ width="600" }
 /// caption
 Credit to thijskunst on the OpenCentauri Discord.
 ///

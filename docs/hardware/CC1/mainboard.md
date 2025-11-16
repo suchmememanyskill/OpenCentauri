@@ -7,7 +7,7 @@ Stepper drivers|tmc2209
 
 Front|Back
 ---|---
-![Mainboard image](../assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](../assets/centauri-mobo-back.jpg){ width="800" }
+![Mainboard image](./assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](./assets/centauri-mobo-back.jpg){ width="800" }
 Credit to the Elegoo discord.|Credit to thijskunst on the OpenCentauri Discord.
 
 ## Mainboard Pins

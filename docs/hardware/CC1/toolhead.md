@@ -1,6 +1,6 @@
 Front|Back
 ---|---
-![Toolhead board image](../assets/centauri-hotend.jpg){ width="800" }|![Toolhead board back image](../assets/centauri-hotend-back.jpg){ width="800" }
+![Toolhead board image](./assets/centauri-hotend.jpg){ width="800" }|![Toolhead board back image](./assets/centauri-hotend-back.jpg){ width="800" }
 Credit to thijskunst on the OpenCentauri Discord.|Credit to thijskunst on the OpenCentauri Discord.
 
 The toolhead board is connected over a USB-C cable. This USB-C interface carries 24v. Communication is done via a serial-over-usb interface. The MCU provides a virtual com port when booted. The toolhead board runs Klipper MCU firmware, specifically [v0.9.1-616-g28f60f7e-dirty-20220408_035823-fluiddpi](https://github.com/Klipper3d/klipper/commit/28f60f7ef69847f1514371d1c6788c3c0df98533)
@@ -14,7 +14,7 @@ The toolhead board is connected over a USB-C cable. This USB-C interface carries
 
 ## Supplementary board
 
-![Toolhead supplementary board image](../assets/centauri-hotend-supplementary.jpg){ width="600" }
+![Toolhead supplementary board image](./assets/centauri-hotend-supplementary.jpg){ width="600" }
 /// caption
 Credit to rabirx on the OpenCentauri Discord.
 ///
