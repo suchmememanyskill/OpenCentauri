@@ -10,6 +10,10 @@ Stepper drivers|tmc2209
 /// caption
 Credit to keefe826 on the OpenCentauri Discord.
 ///
+![Mainboard diagram](./assets/cc2_diagram.jpg){ width="800" }
+/// caption
+Credit to Savion on the OpenCentauri Discord.
+///
 
 ## Mainboard Pins
 
