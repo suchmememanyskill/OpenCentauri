@@ -1,0 +1,4 @@
+.grid.cards > ul > li > p:first-child {
+    display: flex;
+    gap: 10px;
+}

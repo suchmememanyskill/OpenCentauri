@@ -1,15 +1,53 @@
 # Welcome to the OpenCentauri documentation
 
-Currently, this project is only documentation to help in discovery of the secrets within the Centauri Carbon.
+<div class="grid cards" markdown>
 
-Feel free to contribute [on Github](https://github.com/suchmememanyskill/OpenCentauri)
+-   :fontawesome-solid-band-aid:{ .lg .middle } __Patched firmware__
 
-There is also a [Discord server](https://discord.gg/t6Cft3wNJ3) for collaboration
+    ---
 
-## Local docs development
+    [:octicons-arrow-right-24: Install OpenCentauri patched firmware](/patched-firmware/)
 
-1. Install [Python](https://www.python.org/). On windows, don't forget to check 'add to path' in the installer.
-1. Install [Git](https://git-scm.com/)
-1. Clone this repository `git clone https://github.com/suchmememanyskill/OpenCentauri`
-1. Inside the repository's folder, run `pip install -r requirements.txt`
-1. Run `mkdocs serve` for a live preview of the site
+    Install a patched version of Elegoo's firmware that contains fixes for bugs and unwanted behaviour. No extra hardware required!
+
+-   :material-tools:{ .lg .middle } __Klipper via mainboard replacement__
+
+    ---
+
+    [:octicons-arrow-right-24: Set up a replacement mainboard](/klipper-via-mainboard-replacement/)
+
+    Run full klipper by replacing your mainboard using off-the-shelf parts. 
+
+-   :material-nut:{ .lg .middle } __Hardware documentation__
+
+    ---
+
+    [:octicons-arrow-right-24: Read up on the hardware used](/machine)
+
+    Information about the hardware used inside the Centauri Carbon. Including full CAD models.
+
+-   :material-bug:{ .lg .middle } __Software documentation__
+
+    ---
+
+    [:octicons-arrow-right-24: Read up on the software stack](/software)
+
+    Information about the software stack used on the Centauri Carbon.
+
+-   :fontawesome-brands-discord:{ .lg .middle } __Discord__
+
+    ---
+
+    [:octicons-arrow-right-24: Talk on Discord](https://discord.gg/t6Cft3wNJ3)
+
+    Join our discord for asking for help on issues, discuss patches and improvements and overall talk to the community
+    
+-   :fontawesome-brands-github:{ .lg .middle } __Github__
+
+    ---
+
+    [:octicons-arrow-right-24: Contribute on GitHub](https://github.com/OpenCentauri)
+
+    Check out our work on the OpenCentauri Github. Contributions are welcome!
+
+</div>

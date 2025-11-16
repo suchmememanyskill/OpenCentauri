@@ -45,7 +45,7 @@ If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/op
 2. Insert a fat32-formatted thumbdrive into your pc.
 3. Remove `update.bin` if this is present on your thumbdrive.
 4. Create an `update` folder on the thumbdrive if it does not exist already.
-5. Download `update.swu` from [the latest OC firmware](https://github.com/OpenCentauri/cc-fw-tools/releases){target="_blank"}, and copy it into the `update` folder on your thumbdrive.
+5. Download `update.swu` from [the latest OC firmware](https://github.com/OpenCentauri/cc-fw-tools/releases/download/v0.2.0/update.swu){target="_blank"}, and copy it into the `update` folder on your thumbdrive.
 6. Eject your thumbdrive from your pc and insert it into your Centauri Carbon.
 7. On your Centauri Carbon, navigate to settings, then to `Check for updates`. There should be a red dot to the right of `Check for updates`.
 8. Click on `new version detected`. Check if the update prompt says the following: `Update local FW`. If it does, click on Update.

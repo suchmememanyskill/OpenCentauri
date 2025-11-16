@@ -58,9 +58,9 @@ pub fn kbuf_use_new_buf(arm_write_addr: u32) -> Result<UserWrapperBufData, Appli
     let mgr_fd = open("/dev/kbuf-mgr-0", OFlag::O_RDWR, Mode::empty())?;
     let mgr_fd_raw = mgr_fd.as_raw_fd();
 
-    println!("{:#?}", &buf_data);
-
     unsafe { wrap_ioctl_negative_invalid(kbuf_mgr_dev_create_buf(mgr_fd_raw, &mut buf_data))? };
+
+    println!("Created kbuf at physical address 0x{:x}", buf_data.pa);
 
     let map_dev_path = format!("/dev/kbuf-map-{}-{}", buf_data.minor, u8_slice_to_string(&buf_data.name));
 
