@@ -32,7 +32,12 @@ Credit to keefe826 on the OpenCentauri Discord.
 
 ## Unknown hotend fan shroud board
 
-A small board screwed into the hotend fan shroud can be seen. the function of this board is currently unknown.
+A small board screwed into the hotend fan shroud can be seen. the function of this board is currently unknown but it may contain a hall effect sensor used to detect filament cutter actuation.
+
+![Fan shroud board](./assets/cc2_fanductboard.jpg){ width="400" }
+/// caption
+Fan shroud board. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+///
 
 ## MCU
 

@@ -32,7 +32,7 @@ Product Id|614e
 Device BCD|2.00
 Product|STM32 Virtual ComPort
 Manufacturer|ShenZhenCBD
-Stepper driver|tmc2209
+Stepper driver|TMC2209
 
 ## Hardware
 
