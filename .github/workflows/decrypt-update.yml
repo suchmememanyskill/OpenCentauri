@@ -1,0 +1,56 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "decrypt-update/**"
+
+jobs:
+  release:
+    name: Release - ${{ matrix.platform.os-name }}
+    environment: ci
+    strategy:
+      matrix:
+        platform:
+          - os-name: Linux-armv7
+            runs-on: ubuntu-24.04
+            target: armv7-unknown-linux-musleabihf
+
+    runs-on: ${{ matrix.platform.runs-on }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set secrets
+        run: |
+          cd decrypt-update/
+          sed -i "s/DECRYPTION_KEY_PLACEHOLDER/${DECRYPTION_KEY}/g" src/key.rs
+          sed -i "s/DECRYPTION_IV_PLACEHOLDER/${DECRYPTION_IV}/g" src/key.rs
+        env:
+          DECRYPTION_KEY: ${{ secrets.DECRYPTION_KEY }}
+          DECRYPTION_IV: ${{ secrets.DECRYPTION_IV }}
+
+      - name: Build container
+        run: |
+          cd decrypt-update/
+          docker build -t cross-armv7:latest -f armv7.dockerfile .
+
+      - name: Install Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          rustflags: ""
+
+      - name: Install cross
+        run: cargo install cross --git https://github.com/cross-rs/cross
+
+      - name: Build binary
+        run: |
+          cd decrypt-update/ 
+          cross build --target ${{ matrix.platform.target }} --locked --release
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: decrypt-update-${{ matrix.platform.os-name }}
+          path: decrypt-update/target/${{ matrix.platform.target }}/release/decrypt-update

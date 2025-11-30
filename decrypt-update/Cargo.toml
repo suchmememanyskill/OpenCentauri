@@ -1,0 +1,24 @@
+[package]
+name = "decrypt-update"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+crypto = "0"
+md-5 = "0"
+openssl = { version = "0.10", features = ["vendored"] }
+zip = "6"
+hex-literal = "1"
+
+[build-dependencies]
+hex-literal = "1"
+sha2 = "0"
+
+[profile.release]
+strip = true
+lto = true
+opt-level = "z"
+codegen-units = 1
+
+[workspace.metadata.cross.target.armv7-unknown-linux-musleabihf]
+image = "cross-armv7:latest"
