@@ -61,7 +61,7 @@ nav:
       - UDEV Setup: klipper-via-mainboard-replacement/udev-setup.md
     - Patched firmware:
       - Patched firmware: patched-firmware/index.md
-      - Modified slicer hardware gcode: patched-firmware/modified_start_end_hardware_gcode.md
+      - Modified slicer machine gcode: patched-firmware/modified_start_end_machine_gcode.md
 theme:
   name: material
   features:
