@@ -6,28 +6,28 @@
       
       
       
-        <link rel="prev" href="../machine_mods/">
+        <link rel="prev" href="../mainboard/">
       
       
-        <link rel="next" href="../light_mods/">
+        <link rel="next" href="../emmc-tapping/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Printable Mods - OpenCentauri</title>
+        <title>FEL &amp; UART Setup - OpenCentauri</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,15 +46,15 @@
       
     
     
-      <link rel="stylesheet" href="../../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#printable-mods" class="md-skip">
+        <a href="#fel-uart-bench-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="OpenCentauri" class="md-header__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
+    <a href="../../.." title="OpenCentauri" class="md-header__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15 6.04 7.5 12 10.85l5.96-3.35z"></path></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Printable Mods
+              FEL &amp; UART Setup
             
           </span>
         </div>
@@ -198,7 +198,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -215,6 +215,8 @@
   
   
   
+    
+  
   
     
     
@@ -222,11 +224,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../hardware/CC1/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -249,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../software/" class="md-tabs__link">
+        <a href="../../../software/" class="md-tabs__link">
           
   
   
@@ -265,13 +269,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../machine_mods/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../mods/machine_mods/" class="md-tabs__link">
           
   
   
@@ -307,7 +309,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="OpenCentauri" class="md-nav__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
+    <a href="../../.." title="OpenCentauri" class="md-nav__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15 6.04 7.5 12 10.85l5.96-3.35z"></path></svg>
@@ -337,7 +339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -361,26 +363,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -398,7 +403,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -413,8 +418,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -423,13 +430,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -450,7 +455,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -468,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -496,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/mainboard/" class="md-nav__link">
+      <a href="../mainboard/" class="md-nav__link">
         
   
   
@@ -521,10 +526,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../hardware/CC1/fel-uart-setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEL &amp; UART Setup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -540,6 +572,148 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-warnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critical Warnings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-hookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Hookup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Hookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-power-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Power Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-uart-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UART Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fel-usb-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. FEL / USB Connection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. FEL / USB Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-ab-usb-c-cable-connection-recommended-for-temporary-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method A/B: USB-C Cable Connection (Recommended for Temporary Setup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-c-soldered-usb-header-recommended-for-permanent-bench-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method C: Soldered USB Header (Recommended for Permanent Bench Setup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-full-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Full Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -552,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/emmc-tapping/" class="md-nav__link">
+      <a href="../emmc-tapping/" class="md-nav__link">
         
   
   
@@ -580,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/toolhead/" class="md-nav__link">
+      <a href="../toolhead/" class="md-nav__link">
         
   
   
@@ -608,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/camera/" class="md-nav__link">
+      <a href="../camera/" class="md-nav__link">
         
   
   
@@ -636,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/bed/" class="md-nav__link">
+      <a href="../bed/" class="md-nav__link">
         
   
   
@@ -664,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/screen/" class="md-nav__link">
+      <a href="../screen/" class="md-nav__link">
         
   
   
@@ -692,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC1/misc/" class="md-nav__link">
+      <a href="../misc/" class="md-nav__link">
         
   
   
@@ -780,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC2/" class="md-nav__link">
+      <a href="../../CC2/" class="md-nav__link">
         
   
   
@@ -808,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC2/mainboard/" class="md-nav__link">
+      <a href="../../CC2/mainboard/" class="md-nav__link">
         
   
   
@@ -836,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC2/toolhead/" class="md-nav__link">
+      <a href="../../CC2/toolhead/" class="md-nav__link">
         
   
   
@@ -864,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC2/screen/" class="md-nav__link">
+      <a href="../../CC2/screen/" class="md-nav__link">
         
   
   
@@ -892,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC2/misc/" class="md-nav__link">
+      <a href="../../CC2/misc/" class="md-nav__link">
         
   
   
@@ -920,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/CC2/CANVAS/" class="md-nav__link">
+      <a href="../../CC2/CANVAS/" class="md-nav__link">
         
   
   
@@ -1015,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/" class="md-nav__link">
+      <a href="../../../software/" class="md-nav__link">
         
   
   
@@ -1043,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/partitions/" class="md-nav__link">
+      <a href="../../../software/partitions/" class="md-nav__link">
         
   
   
@@ -1071,7 +1245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/updates/" class="md-nav__link">
+      <a href="../../../software/updates/" class="md-nav__link">
         
   
   
@@ -1099,7 +1273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/api/" class="md-nav__link">
+      <a href="../../../software/api/" class="md-nav__link">
         
   
   
@@ -1127,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/custom-gcode/" class="md-nav__link">
+      <a href="../../../software/custom-gcode/" class="md-nav__link">
         
   
   
@@ -1155,7 +1329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/embedded-firmware/" class="md-nav__link">
+      <a href="../../../software/embedded-firmware/" class="md-nav__link">
         
   
   
@@ -1183,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/FEL-mode/" class="md-nav__link">
+      <a href="../../../software/FEL-mode/" class="md-nav__link">
         
   
   
@@ -1215,29 +1389,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -1255,7 +1426,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1273,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine_mods/" class="md-nav__link">
+      <a href="../../../mods/machine_mods/" class="md-nav__link">
         
   
   
@@ -1298,19 +1469,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../mods/printable_mods/" class="md-nav__link">
         
   
   
@@ -1326,7 +1488,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1339,7 +1500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../light_mods/" class="md-nav__link">
+      <a href="../../../mods/light_mods/" class="md-nav__link">
         
   
   
@@ -1419,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../klipper-via-mainboard-replacement/" class="md-nav__link">
+      <a href="../../../klipper-via-mainboard-replacement/" class="md-nav__link">
         
   
   
@@ -1447,7 +1608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../klipper-via-mainboard-replacement/recognize-hotend/" class="md-nav__link">
+      <a href="../../../klipper-via-mainboard-replacement/recognize-hotend/" class="md-nav__link">
         
   
   
@@ -1475,7 +1636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../klipper-via-mainboard-replacement/printer-config/" class="md-nav__link">
+      <a href="../../../klipper-via-mainboard-replacement/printer-config/" class="md-nav__link">
         
   
   
@@ -1503,7 +1664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../klipper-via-mainboard-replacement/mainsail-config/" class="md-nav__link">
+      <a href="../../../klipper-via-mainboard-replacement/mainsail-config/" class="md-nav__link">
         
   
   
@@ -1531,7 +1692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../klipper-via-mainboard-replacement/udev-setup/" class="md-nav__link">
+      <a href="../../../klipper-via-mainboard-replacement/udev-setup/" class="md-nav__link">
         
   
   
@@ -1619,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patched-firmware/" class="md-nav__link">
+      <a href="../../../patched-firmware/" class="md-nav__link">
         
   
   
@@ -1647,7 +1808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patched-firmware/modified_start_end_machine_gcode/" class="md-nav__link">
+      <a href="../../../patched-firmware/modified_start_end_machine_gcode/" class="md-nav__link">
         
   
   
@@ -1703,8 +1864,141 @@
   
 
 
-<h1 id="printable-mods">Printable mods</h1>
-<p>TODO</p>
+<h1 id="fel-uart-bench-setup">FEL &amp; UART Bench Setup</h1>
+<p>This guide describes how to set up a Centauri Carbon mainboard on a bench for FEL access/eMMC recovery and UART access to u-Boot and Linux.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This setup is useful for:</p>
+<ul>
+<li>Accessing FEL mode for eMMC recovery</li>
+<li>Serial console access to u-Boot and Linux</li>
+<li>Advanced debugging and development work</li>
+</ul>
+</div>
+<h2 id="hardware-requirements">Hardware Requirements</h2>
+<p>You will need the following components:</p>
+<ul>
+<li><strong>24V Power Supply</strong></li>
+<li><strong>3.3V USB Serial UART Dongle</strong> (e.g., <a href="https://amzn.to/3La06pv">Amazon Link</a>)<ul>
+<li><em>Alternative:</em> A Raspberry Pi or ESP32 acting as a serial interface</li>
+</ul>
+</li>
+<li><strong>FEL USB Connection</strong> – Choose one of the following options:<ul>
+<li><em>Option A:</em> <strong>Modified USB-A to USB-C Cable</strong> (connects to board's USB-C port) – The VCC (Red) wire must be severed inside the cable, leaving DATA+, DATA-, and Ground intact</li>
+<li><em>Option B:</em> <strong>USB Power Blocker</strong> (connects to a USB-A to C cable via board's USB-C port) – A USB-A power blocker dongle combined with a normal USB-A to C cable (e.g., <a href="https://amzn.to/49mVp3F">Amazon Link</a>)</li>
+<li><em>Option C:</em> <strong>Soldered J5 USB Header</strong> (requires soldering) – Solder headers to the unpopulated J5 connector and use a USB-A male to dupont female cable</li>
+</ul>
+</li>
+<li><strong>Dupont Jumper Cables</strong> (<a href="https://amzn.to/44RJQAe">Link 1</a>, <a href="https://amzn.to/3NsB5GE">Link 2</a>)</li>
+</ul>
+<h2 id="critical-warnings">Critical Warnings</h2>
+<div class="admonition danger">
+<p class="admonition-title">VOLTAGE DANGER</p>
+<p>The CC mainboard outputs <strong>24V</strong> over the USB-C VCC wire. If you use a standard USB cable without a power blocker or modification, <strong>you will destroy whatever device you plug it into.</strong></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Safety Precautions</p>
+<ul>
+<li><strong>Ground Continuity:</strong> Ensure continuity of Ground between all peripherals</li>
+<li><strong>Loose Wires:</strong> If a 24V power/ground wire comes loose, it can cause power to flow across the UART, which <strong>will destroy one or more board chips</strong></li>
+<li><strong>Power Sequencing:</strong> <strong>Do not</strong> plug or unplug components (even the USB) while anything is powered up. Insert the USB and USB-UART connections while the board is <strong>powered down</strong></li>
+</ul>
+</div>
+<h2 id="step-by-step-hookup">Step-by-Step Hookup</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Complete all steps with the power supply <strong>disconnected</strong>. Only apply power after all connections are securely in place.</p>
+</div>
+<h3 id="1-power-connection">1. Power Connection</h3>
+<p>Connect the <strong>24V VCC</strong> and <strong>Ground</strong> wires to your external power supply.</p>
+<p>See the <a href="../mainboard/#24v-input">mainboard pinout</a> for the exact pin locations.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/24V-HOOKUP.jpg" data-desc-position="bottom"><img alt="24V Hookup" src="../assets/24V-HOOKUP.jpg"></a></p>
+<h3 id="2-uart-connection">2. UART Connection</h3>
+<p>Connect the <strong>3.3V Serial UART Tx, Rx, and Ground</strong> between the CC mainboard UART headers and your serial interface (USB Dongle, Pi, etc.).</p>
+<p><strong>Pin Connections:</strong></p>
+<ul>
+<li>TX (Transmit from board) → RX on your serial adapter</li>
+<li>RX (Receive to board) → TX on your serial adapter  </li>
+<li>GND → GND</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Do not connect the VCC pin on the Serial UART</p>
+</div>
+<p>See the <a href="../mainboard/#uart0">mainboard UART0 pinout</a> for the exact pin locations.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/CC-Board-UART.jpg" data-desc-position="bottom"><img alt="CC Board UART" src="../assets/CC-Board-UART.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/USB-UART.jpg" data-desc-position="bottom"><img alt="USB-UART Adapter" src="../assets/USB-UART.jpg"></a></p>
+<h3 id="3-fel-usb-connection">3. FEL / USB Connection</h3>
+<p>There are two methods to connect to the board for FEL mode access. Choose the method that works best for your setup.</p>
+<h4 id="method-ab-usb-c-cable-connection-recommended-for-temporary-setup">Method A/B: USB-C Cable Connection (Recommended for Temporary Setup)</h4>
+<p>Connect a modified USB cable (or cable + blocker) from the USB-C port to your host computer.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Ensure VCC is severed/blocked</li>
+<li>Ensure Data+, Data-, and Ground are intact</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/USBC-CABLE-Mod.jpg" data-desc-position="bottom"><img alt="USB-C Cable Mod" src="../assets/USBC-CABLE-Mod.jpg"></a></p>
+<h4 id="method-c-soldered-usb-header-recommended-for-permanent-bench-setup">Method C: Soldered USB Header (Recommended for Permanent Bench Setup)</h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method requires soldering headers to the unpopulated J5 USB connector on the board.</p>
+</div>
+<p><strong>Step 1: Solder the unpopulated USB header J5</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../software/assets/J5circled.jpg" data-desc-position="bottom"><img alt="J5 Location" src="../../../software/assets/J5circled.jpg" width="400"></a></p>
+<p><strong>Step 2: Connect to your computer</strong></p>
+<p>Connect the mainboard to your PC using a USB-A male to dupont female cable.
+The pinout of the dupont connectors is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Pin NR</th>
+<th>Marking</th>
+<th>Function</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>5V</td>
+<td>5V</td>
+<td>Closest to the type-C connector</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DP</td>
+<td>DP</td>
+<td>DP and DM are switched compared to standard USB pinout</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DM</td>
+<td>DM</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that DP and DM are switched compared to standard USB pinout.</p>
+</div>
+<hr>
+<p>For instructions on entering FEL mode and installing drivers, see the <a href="../../../software/FEL-mode/">FEL mode software guide</a>.</p>
+<h3 id="4-full-setup">4. Full Setup</h3>
+<p>The complete system when connected should look like this:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/USBCFEL-plus-UART.jpg" data-desc-position="bottom"><img alt="Full System Connected" src="../assets/USBCFEL-plus-UART.jpg"></a></p>
+<h2 id="related-documentation">Related Documentation</h2>
+<ul>
+<li><a href="../mainboard/">Mainboard Pinout</a> - Detailed mainboard pin information</li>
+<li><a href="../../../software/FEL-mode/">FEL Mode</a> - How to boot into FEL mode</li>
+<li><a href="../emmc-tapping/">eMMC Tap Points</a> - eMMC recovery via tap points</li>
+</ul>
 
 
 
@@ -1727,7 +2021,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 21:56:38 UTC">April 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 26, 2026 22:10:24 UTC">January 26, 2026</span>
   </span>
 
     
@@ -1737,7 +2031,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 21:56:38 UTC">April 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 26, 2026 22:10:24 UTC">January 26, 2026</span>
   </span>
 
     
@@ -1755,9 +2049,19 @@
     
     <nav>
       
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
+        <a href="https://github.com/pdscomp" class="md-author" title="@pdscomp">
           
-          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
+          <img src="https://avatars.githubusercontent.com/u/1937248?v=4&amp;size=72" alt="pdscomp">
+        </a>
+      
+        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
+          
+          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
+        </a>
+      
+        <a href="https://github.com/Copilot" class="md-author" title="@Copilot">
+          
+          <img src="https://avatars.githubusercontent.com/in/946600?v=4&amp;size=72" alt="GitHub user">
         </a>
       
       
@@ -1825,10 +2129,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.expand", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.expand", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

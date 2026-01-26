@@ -524,6 +524,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../hardware/CC1/fel-uart-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEL &amp; UART Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../hardware/CC1/emmc-tapping/" class="md-nav__link">
         
   
@@ -1218,43 +1246,160 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solder-the-unpopulated-usb-header-j5" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solder the unpopulated usb header J5.
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-sunxi-fel-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install sunxi-fel Tool
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#connect-to-to-your-computer" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#install-xfel-tool" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connect to to your computer
+        Install xfel Tool
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#boot-to-fel-mode" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#windows-install-usb-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Boot to FEL mode
+        Windows: Install USB Driver
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#installing-driver" class="md-nav__link">
+  <a href="#entering-fel-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing driver
+        Entering FEL Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entering FEL Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-hardware-reset-from-power-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 1: Hardware Reset (From Power-On)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-software-boot-from-u-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 2: Software Boot (From u-Boot)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-fel-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working with FEL Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with FEL Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-verify-fel-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Verify FEL Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-test-with-hello-world-spl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Test with Hello World SPL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-initialize-ddr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Initialize DDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-load-and-execute-u-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Load and Execute u-Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emmc-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eMMC Recovery
       
     </span>
   </a>
@@ -1765,62 +1910,148 @@
 <p class="admonition-title">Danger</p>
 <p>Making mistakes while in FEL mode CAN break your board! Be careful!</p>
 </div>
-<h2 id="solder-the-unpopulated-usb-header-j5">Solder the unpopulated usb header J5.</h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/J5circled.jpg" data-desc-position="bottom"><img alt="img" src="../assets/J5circled.jpg" width="400"></a></p>
-<h2 id="connect-to-to-your-computer">Connect to to your computer</h2>
-<p>Connect the mainboard to your PC using a USB-A male to dupont female cable.
-The pinout of the dupont connectors is as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Pin NR</th>
-<th>marking</th>
-<th>Function</th>
-<th>remarks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>5V</td>
-<td>5V</td>
-<td>closest to the type-C connector</td>
-</tr>
-<tr>
-<td>2</td>
-<td>DP</td>
-<td>DP</td>
-<td>DP and DM are switched compared to standard usb pinout</td>
-</tr>
-<tr>
-<td>3</td>
-<td>DM</td>
-<td>DM</td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>GND</td>
-<td>GND</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="boot-to-fel-mode">Boot to FEL mode</h2>
-<p>Press the reset button while shorting R53 with tweezers.
-the board should boot into FEL mode and connect to your PC.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/FelMode.jpg" data-desc-position="bottom"><img alt="FEL_MODE" src="../assets/FelMode.jpg" width="400"></a></p>
-<h2 id="installing-driver">Installing driver</h2>
+<div class="admonition info">
+<p class="admonition-title">Hardware Setup Required</p>
+<p>Before following this guide, ensure you have properly connected your board for FEL access. You will need either:</p>
+<ul>
+<li><strong>USB-C cable connection</strong> (with VCC blocked), OR</li>
+<li><strong>Soldered header to FEL pins</strong> (J5 connector)</li>
+</ul>
+<p>See the <a href="../../hardware/CC1/fel-uart-setup/">FEL &amp; UART Bench Setup Guide</a> for detailed hardware connection instructions including both USB connection methods, UART setup, and power/safety considerations.</p>
+</div>
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="install-sunxi-fel-tool">Install sunxi-fel Tool</h3>
+<p>Install the sunxi-fel utility (provides <code>sunxi-fel</code> command):</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>sunxi-tools
+</code></pre></div>
+<h3 id="install-xfel-tool">Install xfel Tool</h3>
+<p>Clone and build the allwinner-xfel repository:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.alerv.net/clone/allwinner-xfel.git
+<span class="nb">cd</span><span class="w"> </span>allwinner-xfel
+make
+</code></pre></div>
+<h3 id="windows-install-usb-driver">Windows: Install USB Driver</h3>
+<p>If you're on Windows, you'll need to install the WinUSB driver:</p>
 <ol>
 <li>Use <a href="https://zadig.akeo.ie/">Zadig</a> to install the WinUSB driver. <ul>
 <li><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/DriverInstall.jpg" data-desc-position="bottom"><img alt="img" src="../assets/DriverInstall.jpg" width="400"></a></li>
 </ul>
 </li>
 <li>Check the USB ID of the device. It has to be <code>1F3A</code> <code>EFE8</code>.</li>
-<li>rename the unknown device to a name of your choice by enabling "Edit"</li>
+<li>Rename the unknown device to a name of your choice by enabling "Edit"</li>
 <li>Make sure the correct driver is selected: <code>WinUSB</code></li>
 <li>Click the install button</li>
 </ol>
+<h2 id="entering-fel-mode">Entering FEL Mode</h2>
+<p>There are two methods to boot into FEL mode:</p>
+<h3 id="method-1-hardware-reset-from-power-on">Method 1: Hardware Reset (From Power-On)</h3>
+<p>Press the reset button while shorting R53 with tweezers. The board should boot into FEL mode and connect to your PC.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/FelMode.jpg" data-desc-position="bottom"><img alt="FEL_MODE" src="../assets/FelMode.jpg" width="400"></a></p>
+<p>When successful, you should see on the UART console:</p>
+<div class="highlight"><pre><span></span><code>[25]HELLO! BOOT0 is starting!
+[27]BOOT0 commit : 4d16602
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This UART output will only display if you are booting from u-Boot (using the <code>efex</code> command) and your BOOT0 has UART enabled. OpenCentauri enables UART by default in the latest versions. If booting directly into FEL mode via hardware reset, you may not see this output.</p>
+</div>
+<h3 id="method-2-software-boot-from-u-boot">Method 2: Software Boot (From u-Boot)</h3>
+<p>If you already have u-Boot running and UART access, you can boot directly to FEL mode by issuing this command in u-Boot:</p>
+<div class="highlight"><pre><span></span><code>efex
+</code></pre></div>
+<p>This will reboot the system directly into FEL mode without needing to short the resistor.</p>
+<h2 id="working-with-fel-mode">Working with FEL Mode</h2>
+<h3 id="step-1-verify-fel-communication">Step 1: Verify FEL Communication</h3>
+<p>First, verify that FEL mode is working and you can communicate with the chip:</p>
+<div class="highlight"><pre><span></span><code>xfel<span class="w"> </span>version
+</code></pre></div>
+<p>You should see output similar to:</p>
+<div class="highlight"><pre><span></span><code>AWUSBFEX ID=0x00185900(R528/T113) dflag=0x44 dlength=0x08 scratchpad=0x00045000
+</code></pre></div>
+<p>This confirms that FEL mode is active and communication is working.</p>
+<h3 id="step-2-test-with-hello-world-spl">Step 2: Test with Hello World SPL</h3>
+<p>Run a simple test to verify everything is functioning correctly:</p>
+<div class="highlight"><pre><span></span><code>sunxi-fel<span class="w"> </span>spl<span class="w"> </span>uart0-helloworld-sdboot.sunxi
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>uart0-helloworld-sdboot.sunxi</code> file can be found in the <a href="https://github.com/OpenCentauri/cc-fw-tools">cc-fw-tools</a> repository at <code>/extra-stuff/emmc/uart0-helloworld-sdboot.sunxi</code>.</p>
+</div>
+<p>You should see on the UART console:</p>
+<div class="highlight"><pre><span></span><code>Hello from Allwinner R528/T113!
+Returning back to FEL.
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>If you see this message, everything is working! You can run the <code>xfel version</code> and <code>sunxi-fel spl</code> commands multiple times and they should continue to function.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">UART Initialization Required</p>
+<p>This command appears to be required to run at least once to correctly initialize the Serial UART on the R528 chip before proceeding with DDR initialization and loading u-Boot.</p>
+</div>
+<h3 id="step-3-initialize-ddr">Step 3: Initialize DDR</h3>
+<p>Now that FEL mode is verified, initialize the DDR memory:</p>
+<div class="highlight"><pre><span></span><code>./xfel<span class="w"> </span>ddr<span class="w"> </span>r528-s3
+</code></pre></div>
+<p>The UART console should display:</p>
+<div class="highlight"><pre><span></span><code>[33211]fes begin commit:4d16602
+[33214]set pll start
+[33220]periph0 has been enabled
+[33223]set pll end
+[33225][pmu]: bus read error
+[33228]board init ok
+[33230]beign to init dram
+[33232]ZQ value = 0x2f
+[33234]get_pmu_exist() = -1
+[33237]ddr_efuse_type: 0xf
+[33239]trefi:7.8ms
+[33242][AUTO DEBUG] single rank and full DQ!
+[33246]ddr_efuse_type: 0xf
+[33248]trefi:7.8ms
+[33251][AUTO DEBUG] rank 0 row = 13
+[33254][AUTO DEBUG] rank 0 bank = 8
+[33257][AUTO DEBUG] rank 0 page size = 2 KB
+[33261]DRAM BOOT DRIVE INFO: V0.33
+[33265]DRAM CLK = 792 MHz
+[33267]DRAM Type = 3 (2:DDR2,3:DDR3)
+[33270]DRAMC read ODT  off.
+[33273]DRAM ODT value: 0x42.
+[33276]ddr_efuse_type: 0xf
+[33279]DRAM SIZE =128 M
+[33281]dram_tpr4:0x0
+[33283]PLL_DDR_CTRL_REG:0xf8004100
+[33286]DRAM_CLK_REG:0xc0000000
+[33289][TIMING DEBUG] MR2= 0x18
+[33293]DRAM simple test OK.
+[33295]rtc standby flag is 0x0, super standby flag is 0x0
+[33301]init dram ok
+</code></pre></div>
+<h3 id="step-4-load-and-execute-u-boot">Step 4: Load and Execute u-Boot</h3>
+<p>Load a u-Boot image to DRAM via FEL:</p>
+<div class="highlight"><pre><span></span><code>xfel<span class="w"> </span>write<span class="w"> </span>0x43000000<span class="w"> </span>uboot239.bin
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>uboot239.bin</code> file can be found in the <a href="https://github.com/OpenCentauri/cc-fw-tools">cc-fw-tools</a> repository at <code>/extra-stuff/emmc/uboot239.bin</code>.</p>
+</div>
+<p>Execute the loaded u-Boot:</p>
+<div class="highlight"><pre><span></span><code>xfel<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>0x43000b50
+</code></pre></div>
+<p>Hold down <code>s</code> on the UART console to boot into interactive mode.</p>
+<h2 id="emmc-recovery">eMMC Recovery</h2>
+<p>Once you have u-Boot running, you can recover the eMMC from a USB stick.</p>
+<div class="admonition tip">
+<p class="admonition-title">Complete eMMC Recovery Guide</p>
+<p>For detailed instructions on eMMC recovery, backup, and restore procedures, see the <a href="https://github.com/OpenCentauri/cc-fw-tools/blob/main/docs/EMMC_RESTORE.md">EMMC_RESTORE.md</a> documentation in the <a href="https://github.com/OpenCentauri/cc-fw-tools">cc-fw-tools</a> repository.</p>
+<p>This guide covers:</p>
+<ul>
+<li>Loading files from USB stick</li>
+<li>Flashing to eMMC partitions</li>
+<li>Creating custom <code>.scr</code> scripts for automated recovery</li>
+<li>Pre-built scripts for full eMMC backup and restore (found in <code>./extra-stuff/emmc/</code>)</li>
+</ul>
+</div>
+<p>With u-Boot, you can load files from a USB stick and flash them to any eMMC partition by creating and building custom <code>.txt</code> scripts into <code>.scr</code> files.</p>
 
 
 
@@ -1843,7 +2074,7 @@ the board should boot into FEL mode and connect to your PC.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 27, 2025 22:32:23 UTC">July 27, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 26, 2026 22:10:24 UTC">January 26, 2026</span>
   </span>
 
     
@@ -1871,9 +2102,9 @@ the board should boot into FEL mode and connect to your PC.</p>
     
     <nav>
       
-        <a href="https://github.com/Thijskunst" class="md-author" title="@Thijskunst">
+        <a href="https://github.com/pdscomp" class="md-author" title="@pdscomp">
           
-          <img src="https://avatars.githubusercontent.com/u/95662508?v=4&amp;size=72" alt="Thijskunst">
+          <img src="https://avatars.githubusercontent.com/u/1937248?v=4&amp;size=72" alt="pdscomp">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
@@ -1881,12 +2112,23 @@ the board should boot into FEL mode and connect to your PC.</p>
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
+        <a href="https://github.com/Thijskunst" class="md-author" title="@Thijskunst">
           
-          <img src="https://avatars.githubusercontent.com/u/38142618?u=61a34ddba080efcf11b2b0c5d23e14c3deb152d0&amp;v=4&amp;size=72" alt="Sims">
+          <img src="https://avatars.githubusercontent.com/u/95662508?v=4&amp;size=72" alt="Thijskunst">
+        </a>
+      
+        <a href="https://github.com/Copilot" class="md-author" title="@Copilot">
+          
+          <img src="https://avatars.githubusercontent.com/in/946600?v=4&amp;size=72" alt="GitHub user">
         </a>
       
       
+      
+        
+          <a href="https://github.com/suchmememanyskill/OpenCentauri/blob/master/docs/software/FEL-mode.md" class="md-author md-author--more">
+            +1
+          </a>
+        
       
     </nav>
   </span>
