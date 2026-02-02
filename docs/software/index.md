@@ -1,8 +1,24 @@
 # Software
 
-Information about the software running on the centauri carbon
+Information about the software running on the Centauri Carbon printers.
 
 State: Research
+
+## API Documentation
+
+The Centauri Carbon printers use different communication protocols depending on the model:
+
+| Printer | Protocol | Discovery | Main Transport |
+|---------|----------|-----------|----------------|
+| CC1 (Centauri Carbon) | SDCP v3.0.0 | UDP port 3000 | WebSocket |
+| CC2 (Centauri Carbon 2) | MQTT-based | UDP port 52700 | MQTT |
+
+See the API documentation for each printer:
+
+- [CC1 API Documentation](CC1/api.md) - SDCP WebSocket protocol
+- [CC2 API Documentation](CC2/api.md) - MQTT-based protocol with printer as broker
+
+## General Notes
 
 This page contains some misc notes.
 

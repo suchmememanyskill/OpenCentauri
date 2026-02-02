@@ -44,11 +44,14 @@ nav:
       - Miscellaneous: hardware/CC2/misc.md
       - CANVAS: hardware/CC2/CANVAS.md
 
-  - Software: 
+  - Software:
     - Software: software/index.md
     - Partitions: software/partitions.md
     - Updates: software/updates.md
-    - API: software/api.md
+    - CC1:
+      - API: software/CC1/api.md
+    - CC2:
+      - API: software/CC2/api.md
     - Custom gcode: software/custom-gcode.md
     - Embedded Firmware: software/embedded-firmware.md
     - FEL: software/FEL-mode.md
