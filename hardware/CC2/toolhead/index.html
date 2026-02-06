@@ -718,6 +718,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CC1/documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Official Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -911,7 +939,7 @@
   <a href="#filament-detector-board" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Filament detector Board
+        Filament Detector Board
       
     </span>
   </a>
@@ -919,10 +947,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unknown-hotend-fan-shroud-board" class="md-nav__link">
+  <a href="#filament-cutter-actuation-sensor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Unknown hotend fan shroud board
+        Filament cutter actuation sensor
       
     </span>
   </a>
@@ -1031,6 +1059,34 @@
     
   
     CANVAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Official Documentation
   
 
     
@@ -1810,8 +1866,8 @@
 </figcaption>
 </figure>
 <p>The Toolhead board has an 2x4 pin port at the bottom of the board. This connector connects to a separate pcb, that breaks out the necessary connectors for the hotend (Temperature sensor, heater, hotend fan).</p>
-<h2 id="filament-detector-board">Filament detector Board</h2>
-<p>The CC2 has an additional filament detector board that connects to the bottom port on the opposite side of the supplementary board pins on the toolhead board. This board uses an optical sensor the detect the if filament has entered the extruder, a spring is soldered to the back side of the board that retains a lever that is actuated to block the optical sensor when filament enters the extruder. A new front and rear extruder shell are used to accommodate the filament detector and filament multiplexer. This board additionally hosts forward and rear facing hall effect sensors. The forward hall effect sensor is on the middle of the board and is used for toolhead cover detection by means of a small magnet that has been added to the CC2 toolhead. The rear hall effect sensor is on the top back side of the board and extends over the metal tube of the multiplexer and is likely used to detect its presence.</p>
+<h2 id="filament-detector-board">Filament Detector Board</h2>
+<p>The CC2 has an additional filament detector board that connects to the bottom port on the opposite side of the supplementary board pins on the toolhead board. This board uses an optical sensor the detect the if filament has entered the extruder, a spring is soldered to the back side of the board that retains a lever that is actuated to block the optical sensor when filament enters the extruder. A new front and rear extruder shell are used to accommodate the filament detector and filament <a href="../CANVAS/#filament-multiplexer">multiplexer</a>. This board additionally hosts forward and rear facing hall effect sensors. The forward hall effect sensor is on the middle of the board and is used for toolhead cover detection by means of a small magnet that has been added to the CC2 toolhead. The rear hall effect sensor is on the top back side of the board and extends over the metal tube of the multiplexer and is likely used to detect its presence.</p>
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_filamentdetector.jpg" data-desc-position="bottom"><img alt="Filament detector board image" src="../assets/cc2_filamentdetector.jpg" width="800"></a></p>
 <figcaption>
@@ -1830,12 +1886,18 @@
 <p>Filament detector board annotated with hall effect-based cover detection. Credit to keefe826 on the OpenCentauri Discord.</p>
 </figcaption>
 </figure>
-<h2 id="unknown-hotend-fan-shroud-board">Unknown hotend fan shroud board</h2>
-<p>A small board screwed into the hotend fan shroud can be seen. the function of this board is currently unknown but it may be a hall effect sensor used to detect filament cutter actuation. It is connected to the right side of the filament detector board.</p>
+<h2 id="filament-cutter-actuation-sensor">Filament cutter actuation sensor</h2>
+<p>A small board screwed into the hotend uses a hall effect sensor used to detect filament cutter actuation by a magnet mounted in the filament cutter arm. It is connected to the right side of the filament detector board.</p>
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_fanductboard.jpg" data-desc-position="bottom"><img alt="Fan shroud board" src="../assets/cc2_fanductboard.jpg" width="400"></a></p>
 <figcaption>
 <p>Fan shroud board. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/filamentcutter_magnet.jpg" data-desc-position="bottom"><img alt="Filament cutter magnet" src="../assets/filamentcutter_magnet.jpg" width="380"></a></p>
+<figcaption>
+<p>Filament cutter magnet location highlighted in red</p>
 </figcaption>
 </figure>
 <h2 id="mcu">MCU</h2>
@@ -1978,7 +2040,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 7, 2025 21:24:33 UTC">December 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 6, 2026 00:04:36 UTC">February 6, 2026</span>
   </span>
 
     
