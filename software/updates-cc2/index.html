@@ -6,6 +6,10 @@
       
       
       
+        <link rel="prev" href="../updates/">
+      
+      
+        <link rel="next" href="../api/">
       
       
         
@@ -16,7 +20,7 @@
     
     
       
-        <title>Klipperconfig - OpenCentauri</title>
+        <title>Updates (CC2) - OpenCentauri</title>
       
     
     
@@ -79,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#raw-dump" class="md-skip">
+        <a href="#cc2-update-archive" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Klipperconfig
+              Updates (CC2)
             
           </span>
         </div>
@@ -241,10 +245,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -1010,26 +1016,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -1047,7 +1056,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1146,10 +1155,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../updates-cc2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Updates (CC2)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1165,6 +1201,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v01031689-released-09012025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v01.03.16.89 (Released 09/01/2025)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v01011664-released-11122025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v01.01.16.64 (Released 11/12/2025)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v01011640-released-17112025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v01.01.16.40 (Released 17/11/2025)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v01011621-released-31102025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v01.01.16.21 (Released 31/10/2025)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1768,43 +1868,223 @@
   
 
 
-<p>The machine.cfg dumped from the core dumps.</p>
-<p><strong>!! Not complete !!</strong></p>
-<h1 id="raw-dump">Raw Dump</h1>
-<p>This is just copied from the dumps and is not structured into a valid machine.cfg</p>
-<div class="highlight"><pre><span></span><code>step_pin: stm32:PC13
-dir_pin: stm32:PC14
-enable_pin: !stm32:PC15
-heater_pin: stm32:PB6
-sensor_pin: stm32:PA3
-microsteps: 16.0
-rotation_distance: 28.8
-filament_diameter: 1.75
-full_steps_per_rotation: (lost) (actually this may be a float in memory i will lose my shit)
-gear_ratio: 52:10
-nozzle_diameter: 0.4
-pid_Kp: 28.993265
-pid_Ki: 6.103818
-pid_Kd: 34.429656
-min_temp: -200
-max_temp: 335
-min_extrude_temp: 170
-pressure_advance: 0.04
-max_extrude_only_accel: 5000.0
-max_extrude_only_velocity: 60.0
-pressure_advance_smooth_time: 0.01
-sensor_type: NTC 100K beta 4300
-
-accel_chip: adxl345 X
-
-cs_pin: stm32:PA4
-
-spi_speed: 5000000
-spi_bus: stm32:spi1
-adxl_type: lis2dw12
-axes_map: x,z,-y
-rate: 1600
+<h1 id="cc2-update-archive">CC2 update archive</h1>
+<h3 id="v01031689-released-09012025">v01.03.16.89 (Released 09/01/2025)</h3>
+<p><a class="md-button md-button--primary" href="https://iot-p.elegoo.com/devs/ota/76784743-9db1-4e1e-a440-4ae01e429b1c_1767955403127_ec_eeb001_01.03.01.89_20251226194337.zip.sig" referrerpolicy="no-referrer">Download Global (abroad)</a>
+<a class="md-button md-button--primary" href="https://iot-p.elegoo.com.cn/devs/ota/76784743-9db1-4e1e-a440-4ae01e429b1c_1767955403127_ec_eeb001_01.03.01.89_20251226194337.zip.sig" referrerpolicy="no-referrer">Download China (homeland)</a></p>
+<p>Changelog:</p>
+<ol>
+<li>Added ELEGOO Matrix APP binding function (APP requires v1.0.11 or later)</li>
+<li>Added ElegooSlicer binding function (requires v1.3.0.11 or later)</li>
+<li>Optimized occasional screen flickering during LAN video streaming</li>
+<li>Optimized filament breakage handling during multi-color printing</li>
+<li>Enhanced CANVAS plug/unplug handling during printing</li>
+<li>Fixed abnormal settings and reset issues in filament selection</li>
+<li>Fixed occasional WiFi disconnection</li>
+</ol>
+<details class="info">
+<summary>Raw update server response</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">abroad</label><label for="__tabbed_1_2">homeland</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.03.01.89"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[FEATURE Function optimization]\n1. Added ELEGOO Matrix APP binding function (APP requires v1.0.11 or later).\n2. Added ElegooSlicer binding function (requires v1.3.0.11 or later).\n3. Optimized occasional screen flickering during LAN video streaming.\n4. Optimized filament breakage handling during multi-color printing.\n5. Enhanced CANVAS plug/unplug handling during printing.\n\n[FIX Problem fix]\n1. Fixed abnormal settings and reset issues in filament selection\n2. Fixed occasional WiFi disconnection \n"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com.cn/devs/ota/76784743-9db1-4e1e-a440-4ae01e429b1c_1767955403127_ec_eeb001_01.03.01.89_20251226194337.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1767984436207</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86d6bb442930238e31011c335b3fa98c"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">88366158</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18d82e89afe354a5801102751e838fcb"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.03.01.89"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[FEATURE Function optimization]\n1. Added ELEGOO Matrix APP binding function (APP requires v1.0.11 or later).\n2. Added ElegooSlicer binding function (requires v1.3.0.11 or later).\n3. Optimized occasional screen flickering during LAN video streaming.\n4. Optimized filament breakage handling during multi-color printing.\n5. Enhanced CANVAS plug/unplug handling during printing.\n\n[FIX Problem fix]\n1. Fixed abnormal settings and reset issues in filament selection\n2. Fixed occasional WiFi disconnection \n"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com.cn/devs/ota/76784743-9db1-4e1e-a440-4ae01e429b1c_1767955403127_ec_eeb001_01.03.01.89_20251226194337.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1767955636207</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b2265170e35dc7744aebb00d8c24670"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">88366158</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18d82e89afe354a5801102751e838fcb"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="v01011664-released-11122025">v01.01.16.64 (Released 11/12/2025)</h3>
+<p><a class="md-button md-button--primary" href="https://iot-p.elegoo.com.cn/devs/ota/e2c5d7cc-d2c6-41c6-969d-2cf25d079d0a_1765438770696_ec_eeb001_01.01.16.64_20251208164215.zip.sig" referrerpolicy="no-referrer">Download Global (abroad)</a>
+<a class="md-button md-button--primary" href="https://iot-p.elegoo.com.cn/devs/ota/e2c5d7cc-d2c6-41c6-969d-2cf25d079d0a_1765438770696_ec_eeb001_01.01.16.64_20251208164215.zip.sig" referrerpolicy="no-referrer">Download China (homeland)</a></p>
+<p>Note: In the abroad and homeland update response, both updates point to the same URL. Unsure why. Seems like a mistake.</p>
+<p>Changelog:</p>
+<ol>
+<li>Optimized the process of material feeding and unloading</li>
+<li>Optimized the flushing process during material change</li>
+<li>Adjusted the material exhaustion handling process in multi-color mode</li>
+<li>Added material breakage alarm function</li>
+<li>Added screen off after 25 minutes option</li>
+<li>Fixed the issue with abnormal cavity temperature alarm</li>
+<li>Fixed the problem of incomplete material display</li>
+<li>Improved the stability of connection with slicing soft</li>
+</ol>
+<details class="info">
+<summary>Raw update server response</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">abroad</label><label for="__tabbed_2_2">homeland</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.64"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[FEATURE Function optimization]\n1. Optimized the process of material feeding and unloading;\n2. Optimized the flushing process during material change;\n3. Adjusted the material exhaustion handling process in multi-color mode;\n4. Added material breakage alarm function;\n5. Added screen off after 25 minutes option.\n[FIX Problem fix]\n1. Fixed the issue with abnormal cavity temperature alarm;\n2. Fixed the problem of incomplete material display;\n3. Improved the stability of connection with slicing soft."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com.cn/devs/ota/e2c5d7cc-d2c6-41c6-969d-2cf25d079d0a_1765438770696_ec_eeb001_01.01.16.64_20251208164215.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1765467707144</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24586f6668b00c2fede52e854e32ccca"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">87448375</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e8e05b1a71e193e1cf428db7280c664"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.64"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[FEATURE Function optimization]\n1. Optimized the process of material feeding and unloading;\n2. Optimized the flushing process during material change;\n3. Adjusted the material exhaustion handling process in multi-color mode;\n4. Added material breakage alarm function;\n5. Added screen off after 25 minutes option.\n[FIX Problem fix]\n1. Fixed the issue with abnormal cavity temperature alarm;\n2. Fixed the problem of incomplete material display;\n3. Improved the stability of connection with slicing soft."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com.cn/devs/ota/e2c5d7cc-d2c6-41c6-969d-2cf25d079d0a_1765438770696_ec_eeb001_01.01.16.64_20251208164215.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1765438907144</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a91f3f87b3c7373c98e25fca8b716351"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">87448375</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e8e05b1a71e193e1cf428db7280c664"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="v01011640-released-17112025">v01.01.16.40 (Released 17/11/2025)</h3>
+<p><a class="md-button md-button--primary" href="https://iot-p.elegoo.com/devs/ota/c7dc4280-e8c4-402b-881b-b267fd3a5df3_1763383548971_ec_eeb001_01.01.16.40_20251113120758.zip.sig" referrerpolicy="no-referrer">Download Global (abroad)</a>
+<a class="md-button md-button--primary" href="https://iot-p.elegoo.com.cn/devs/ota/e21bf3a3-cb93-423e-899f-7313fbe84cfa_1763456959889_ec_eeb001_01.01.16.40_20251113120758.zip.sig" referrerpolicy="no-referrer">Download China (homeland)</a></p>
+<p>Changelog:</p>
+<ol>
+<li>Optimized the retry mechanism for feeding failures under CANVAS</li>
+<li>Fixed the issue where the tool head consumable detection failed to trigger under certain conditions</li>
+<li>Resolved the abnormal triggering count issue of filament entanglement detection</li>
+<li>Fixed the abnormal display issue during Wi-Fi search</li>
+<li>Adjusted the RFID recognition status to avoid detection during self-check</li>
+<li>Fixed the file display abnormality issue</li>
+<li>Added multi-language display support</li>
+</ol>
+<details class="info">
+<summary>Raw update server response</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">abroad</label><label for="__tabbed_3_2">homeland</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.40"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1. Optimized the retry mechanism for feeding failures under CANVAS;\n2. Fixed the issue where the tool head consumable detection failed to trigger under certain conditions;\n3. Resolved the abnormal triggering count issue of filament entanglement detection;\n4. Fixed the abnormal display issue during Wi-Fi search;\n5. Adjusted the RFID recognition status to avoid detection during self-check;\n6. Fixed the file display abnormality issue;\n7. Added multi-language display support;"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com/devs/ota/c7dc4280-e8c4-402b-881b-b267fd3a5df3_1763383548971_ec_eeb001_01.01.16.40_20251113120758.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1763412397870</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2bfcc76deef01bb381271048b882eafc"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">86923924</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3b88c664cbd7e5a29bcd44868321971d"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.40"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1. Optimized the retry mechanism for feeding failures under CANVAS.\n2. Fixed an issue where the tool head consumable detection might not trigger in certain cases.\n3. Resolved the abnormal triggering frequency of the filament entanglement detection.\n4. Fixed the abnormal display issue during Wi-Fi searches.\n5. Adjusted the RFID recognition status to avoid detection during self-check processes.\n6. Fixed the abnormal file display issue.\n7. Added multilingual display support."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com.cn/devs/ota/e21bf3a3-cb93-423e-899f-7313fbe84cfa_1763456959889_ec_eeb001_01.01.16.40_20251113120758.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1763457048255</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d25dff8332e9037b406ec1170fd12cb3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">86923924</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3b88c664cbd7e5a29bcd44868321971d"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="v01011621-released-31102025">v01.01.16.21 (Released 31/10/2025)</h3>
+<p><a class="md-button md-button--primary" href="https://iot-p.elegoo.com/devs/ota/9b1b59db-98a1-4abe-bbc5-4260f7783045_1761879403470_ec_eeb001_01.01.16.21_20251030205543.zip.sig" referrerpolicy="no-referrer">Download Global (abroad)</a>
+<a class="md-button md-button--primary" href="https://iot-p.elegoo.com.cn/devs/ota/9b1b59db-98a1-4abe-bbc5-4260f7783045_1761879403470_ec_eeb001_01.01.16.21_20251030205543.zip.sig" referrerpolicy="no-referrer">Download China (homeland)</a></p>
+<details class="info">
+<summary>Raw update server response</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">abroad</label><label for="__tabbed_4_2">homeland</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.21"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.21"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com/devs/ota/9b1b59db-98a1-4abe-bbc5-4260f7783045_1761879403470_ec_eeb001_01.01.16.21_20251030205543.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1761908286424</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6d41cba0bac7efde0d67323100658b04"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">87055041</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a20c212081d7287869bf094cb1522106"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.21"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.16.21"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://iot-p.elegoo.com.cn/devs/ota/9b1b59db-98a1-4abe-bbc5-4260f7783045_1761879403470_ec_eeb001_01.01.16.21_20251030205543.zip.sig"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"releaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1761879486424</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe50b7a27cc3370d3b75b2491491d361"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdm"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">87055041</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"fileMd5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a20c212081d7287869bf094cb1522106"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"updateType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
 
 
 
@@ -1827,7 +2107,7 @@ rate: 1600
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2025 21:17:39 UTC">May 1, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 22:01:55 UTC">February 8, 2026</span>
   </span>
 
     
@@ -1837,7 +2117,7 @@ rate: 1600
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2025 21:17:39 UTC">May 1, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 22:01:55 UTC">February 8, 2026</span>
   </span>
 
     
@@ -1855,14 +2135,9 @@ rate: 1600
     
     <nav>
       
-        <a href="https://github.com/rabirland" class="md-author" title="@rabirland">
+        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
           
-          <img src="https://avatars.githubusercontent.com/u/17327831?v=4&amp;size=72" alt="rabirland">
-        </a>
-      
-        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
-          
-          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
+          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
         </a>
       
       
