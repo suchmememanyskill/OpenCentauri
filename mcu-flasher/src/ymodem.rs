@@ -402,32 +402,6 @@ impl Ymodem {
             }
         }
 
-        loop {
-            match (get_byte_timeout(dev))? {
-                Some(c) => {
-                    if c == CRC {
-                        info!("YMODEM transmission successful");
-                        break;
-                    } else {
-                        log::warn!("Expected ACK, got {}", c);
-                    }
-                }
-                None => warn!("Timeout waiting for ACK for EOT"),
-            }
-
-            self.errors += 1;
-
-            if self.errors >= self.max_errors {
-                eprint!(
-                    "Exhausted max retries ({}) while waiting for ACK for EOT",
-                    self.max_errors
-                );
-                return Err(Error::ExhaustedRetries);
-            }
-        }
-
-        self.send_end_frame(dev)?;
-
         Ok(())
     }
 
