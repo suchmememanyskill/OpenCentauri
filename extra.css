@@ -2,3 +2,8 @@
     display: flex;
     gap: 10px;
 }
+
+iframe { 
+    border: none; 
+    background-color: transparent;
+}

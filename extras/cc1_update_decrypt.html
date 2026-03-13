@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC1 — Firmware Unpacker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        :root {
+            --accent: #4051b5;
+            --accent-dark: #3949a3;
+            --accent-alpha: rgba(64, 81, 181, 0.08);
+            --on-accent: #fff;
+            --surface: #fff;
+            --on-surface: rgba(0,0,0,0.87);
+            --on-surface-medium: rgba(0,0,0,0.6);
+            --outline: rgba(0,0,0,0.38);
+            --error: #f44336;
+            --success: #4caf50;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--on-surface);
+            display: flex;
+            justify-content: center;
+            padding-top: 16px;
+            min-height: 100vh;
+        }
+        .container { width: 100%; max-width: 600px; }
+
+        /* Card Row */
+        .row {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        .row-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--on-surface-medium);
+            margin-bottom: 16px;
+        }
+
+        /* MD2 Outlined Text Field */
+        .text-field {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .text-field:last-child { margin-bottom: 0; }
+        .text-field input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--outline);
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Roboto', monospace;
+            background: transparent;
+            outline: none;
+            color: var(--on-surface);
+            transition: border-color 0.2s;
+        }
+        .text-field input:focus { border-color: var(--accent); }
+        .text-field label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: var(--on-surface-medium);
+            background: var(--surface);
+            padding: 0 4px;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        .text-field input:focus + label,
+        .text-field input:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 12px;
+            color: var(--accent);
+        }
+        .text-field input.valid { border-color: var(--success); }
+        .text-field input.valid + label { color: var(--success); }
+        .text-field input.valid:focus { border-color: var(--success); }
+        .text-field input.invalid { border-color: var(--error); }
+        .text-field input.invalid + label { color: var(--error); }
+        .text-field input.invalid:focus { border-color: var(--error); }
+
+        /* File Picker */
+        .file-field {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .file-field label.file-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--surface);
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .file-field label.file-btn:hover { background: var(--accent-alpha); }
+        .file-field .file-name {
+            font-size: 14px;
+            color: var(--on-surface-medium);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
+        }
+        .file-field input[type="file"] { display: none; }
+
+        /* Full-page drop overlay */
+        .drop-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(64, 81, 181, 0.12);
+            backdrop-filter: blur(4px);
+            z-index: 900;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .drop-overlay.active { display: flex; }
+        .drop-overlay-inner {
+            border: 3px dashed var(--accent);
+            border-radius: 16px;
+            padding: 48px 64px;
+            text-align: center;
+            background: rgba(255,255,255,0.92);
+            box-shadow: 0 8px 32px rgba(64,81,181,0.18);
+        }
+        .drop-overlay-inner .material-icons {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+        .drop-overlay-inner span:last-child {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--accent);
+            color: var(--on-accent);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.25px;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(64,81,181,0.3);
+        }
+        .btn:hover { background: var(--accent-dark); box-shadow: 0 4px 8px rgba(64,81,181,0.4); }
+        .btn:active { background: #303f9f; }
+        .btn:disabled {
+            background: rgba(0,0,0,0.12);
+            color: rgba(0,0,0,0.38);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Progress */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(64,81,181,0.12);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 16px;
+            display: none;
+        }
+        .progress-bar.active { display: block; }
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.15s linear;
+            width: 0%;
+        }
+
+        /* Snackbar */
+        .snackbar {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #323232;
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            max-width: 90vw;
+            text-align: center;
+        }
+        .snackbar.show { transform: translateX(-50%) translateY(0); }
+        .snackbar.error { background: #d32f2f; }
+        .snackbar.success { background: #388e3c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Row 1: Key & IV -->
+        <div class="row">
+            <div class="row-label">Decryption Credentials</div>
+            <div class="text-field">
+                <input type="text" id="keyInput" placeholder=" " autocomplete="off" spellcheck="false">
+                <label for="keyInput">Key</label>
+            </div>
+            <div class="text-field">
+                <input type="text" id="ivInput" placeholder=" " autocomplete="off" spellcheck="false">
+                <label for="ivInput">Initialization Vector (IV)</label>
+            </div>
+        </div>
+
+        <!-- Row 2: File Picker -->
+        <div class="row">
+            <div class="row-label">Firmware File</div>
+            <div class="file-field">
+                <label class="file-btn" for="fileInput">
+                    <span class="material-icons" style="font-size:20px">upload_file</span>
+                    Choose .bin
+                </label>
+                <span class="file-name" id="fileName">No file selected</span>
+                <input type="file" id="fileInput" accept=".bin">
+            </div>
+        </div>
+
+        <!-- Row 3: Unpack -->
+        <div class="row">
+            <button class="btn" id="unpackBtn">Unpack</button>
+            <div class="progress-bar" id="progressBar">
+                <div class="fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="drop-overlay" id="dropOverlay">
+        <div class="drop-overlay-inner">
+            <span class="material-icons">cloud_upload</span>
+            <span>Drop .bin file to select</span>
+        </div>
+    </div>
+
+    <div class="snackbar" id="snackbar"></div>
+
+    <script>
+    /* ===== Utility Helpers ===== */
+    function hexToBytes(hex) {
+        const bytes = new Uint8Array(hex.length / 2);
+        for (let i = 0; i < hex.length; i += 2)
+            bytes[i / 2] = parseInt(hex.substring(i, i + 2), 16);
+        return bytes;
+    }
+
+    function bytesToHex(bytes) {
+        return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function arraysEqual(a, b) {
+        if (a.length !== b.length) return false;
+        for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+        return true;
+    }
+
+    /* ===== SHA-256 (synchronous, for brute-force & validation) ===== */
+    const SHA256_K = new Uint32Array([
+        0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+        0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+        0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+        0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+        0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+        0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+        0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+        0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+    ]);
+
+    function rotr(x, n) { return ((x >>> n) | (x << (32 - n))) >>> 0; }
+
+    function sha256(input) {
+        const msg = typeof input === 'string' ? new TextEncoder().encode(input) : new Uint8Array(input);
+        const len = msg.length;
+        const bitLen = len * 8;
+        const padLen = ((len + 9 + 63) & ~63);
+        const buf = new ArrayBuffer(padLen);
+        const padded = new Uint8Array(buf);
+        const dv = new DataView(buf);
+        padded.set(msg);
+        padded[len] = 0x80;
+        dv.setUint32(padLen - 4, bitLen, false);
+
+        let h0=0x6a09e667, h1=0xbb67ae85, h2=0x3c6ef372, h3=0xa54ff53a,
+            h4=0x510e527f, h5=0x9b05688c, h6=0x1f83d9ab, h7=0x5be0cd19;
+        const W = new Uint32Array(64);
+
+        for (let off = 0; off < padLen; off += 64) {
+            for (let i = 0; i < 16; i++) W[i] = dv.getUint32(off + i * 4, false);
+            for (let i = 16; i < 64; i++) {
+                const s0 = (rotr(W[i-15],7) ^ rotr(W[i-15],18) ^ (W[i-15]>>>3)) >>> 0;
+                const s1 = (rotr(W[i-2],17) ^ rotr(W[i-2],19) ^ (W[i-2]>>>10)) >>> 0;
+                W[i] = (W[i-16] + s0 + W[i-7] + s1) >>> 0;
+            }
+            let a=h0, b=h1, c=h2, d=h3, e=h4, f=h5, g=h6, h=h7;
+            for (let i = 0; i < 64; i++) {
+                const S1 = (rotr(e,6) ^ rotr(e,11) ^ rotr(e,25)) >>> 0;
+                const ch = ((e & f) ^ ((~e) & g)) >>> 0;
+                const t1 = (h + S1 + ch + SHA256_K[i] + W[i]) >>> 0;
+                const S0 = (rotr(a,2) ^ rotr(a,13) ^ rotr(a,22)) >>> 0;
+                const maj = ((a & b) ^ (a & c) ^ (b & c)) >>> 0;
+                const t2 = (S0 + maj) >>> 0;
+                h=g; g=f; f=e; e=(d+t1)>>>0; d=c; c=b; b=a; a=(t1+t2)>>>0;
+            }
+            h0=(h0+a)>>>0; h1=(h1+b)>>>0; h2=(h2+c)>>>0; h3=(h3+d)>>>0;
+            h4=(h4+e)>>>0; h5=(h5+f)>>>0; h6=(h6+g)>>>0; h7=(h7+h)>>>0;
+        }
+        return [h0,h1,h2,h3,h4,h5,h6,h7].map(v => v.toString(16).padStart(8,'0')).join('');
+    }
+
+    /* ===== MD5 (synchronous, binary) ===== */
+    const MD5_T = new Uint32Array([
+        0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,
+        0x698098d8,0x8b44f7af,0xffff5bb1,0x895cd7be,0x6b901122,0xfd987193,0xa679438e,0x49b40821,
+        0xf61e2562,0xc040b340,0x265e5a51,0xe9b6c7aa,0xd62f105d,0x02441453,0xd8a1e681,0xe7d3fbc8,
+        0x21e1cde6,0xc33707d6,0xf4d50d87,0x455a14ed,0xa9e3e905,0xfcefa3f8,0x676f02d9,0x8d2a4c8a,
+        0xfffa3942,0x8771f681,0x6d9d6122,0xfde5380c,0xa4beea44,0x4bdecfa9,0xf6bb4b60,0xbebfbc70,
+        0x289b7ec6,0xeaa127fa,0xd4ef3085,0x04881d05,0xd9d4d039,0xe6db99e5,0x1fa27cf8,0xc4ac5665,
+        0xf4292244,0x432aff97,0xab9423a7,0xfc93a039,0x655b59c3,0x8f0ccc92,0xffeff47d,0x85845dd1,
+        0x6fa87e4f,0xfe2ce6e0,0xa3014314,0x4e0811a1,0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391
+    ]);
+    const MD5_S = [
+        7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,
+        5, 9,14,20,5, 9,14,20,5, 9,14,20,5, 9,14,20,
+        4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,
+        6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21
+    ];
+
+    function md5(data) {
+        const len = data.length;
+        const bitLen = len * 8;
+        const padLen = ((len + 9 + 63) & ~63);
+        const buf = new ArrayBuffer(padLen);
+        const padded = new Uint8Array(buf);
+        const dv = new DataView(buf);
+        padded.set(data);
+        padded[len] = 0x80;
+        dv.setUint32(padLen - 8, bitLen & 0xFFFFFFFF, true);
+        dv.setUint32(padLen - 4, 0, true);
+
+        let a0=0x67452301, b0=0xefcdab89, c0=0x98badcfe, d0=0x10325476;
+
+        for (let off = 0; off < padLen; off += 64) {
+            const M = new Uint32Array(16);
+            for (let i = 0; i < 16; i++) M[i] = dv.getUint32(off + i * 4, true);
+            let A=a0, B=b0, C=c0, D=d0;
+            for (let i = 0; i < 64; i++) {
+                let F, g;
+                if (i < 16)      { F = (B & C) | ((~B) & D); g = i; }
+                else if (i < 32) { F = (D & B) | ((~D) & C); g = (5*i+1) % 16; }
+                else if (i < 48) { F = B ^ C ^ D;             g = (3*i+5) % 16; }
+                else             { F = C ^ (B | (~D));         g = (7*i) % 16; }
+                F = F >>> 0;
+                const sum = (A + F + MD5_T[i] + M[g]) >>> 0;
+                const rot = ((sum << MD5_S[i]) | (sum >>> (32 - MD5_S[i]))) >>> 0;
+                A = D; D = C; C = B; B = (B + rot) >>> 0;
+            }
+            a0=(a0+A)>>>0; b0=(b0+B)>>>0; c0=(c0+C)>>>0; d0=(d0+D)>>>0;
+        }
+        const result = new Uint8Array(16);
+        const rv = new DataView(result.buffer);
+        rv.setUint32(0, a0, true);
+        rv.setUint32(4, b0, true);
+        rv.setUint32(8, c0, true);
+        rv.setUint32(12, d0, true);
+        return result;
+    }
+
+    /* ===== AES-256-CBC decryption (no padding, via Web Crypto) ===== */
+    async function decryptAesCbcNoPad(keyBytes, ivBytes, ciphertext) {
+        const cryptoKey = await crypto.subtle.importKey(
+            'raw', keyBytes, { name: 'AES-CBC' }, false, ['encrypt', 'decrypt']
+        );
+        // Trick: append an encrypted PKCS7-padding block so Web Crypto strips it,
+        // giving us the raw (un-padded) plaintext.
+        const lastBlock = ciphertext.slice(ciphertext.length - 16);
+        const paddingPlain = new Uint8Array(16).fill(16); // valid PKCS7 full-block pad
+
+        const encPadResult = await crypto.subtle.encrypt(
+            { name: 'AES-CBC', iv: lastBlock }, cryptoKey, paddingPlain
+        );
+        const encPadBlock = new Uint8Array(encPadResult).slice(0, 16);
+
+        const combined = new Uint8Array(ciphertext.length + 16);
+        combined.set(ciphertext);
+        combined.set(encPadBlock, ciphertext.length);
+
+        const decrypted = await crypto.subtle.decrypt(
+            { name: 'AES-CBC', iv: ivBytes }, cryptoKey, combined
+        );
+        return new Uint8Array(decrypted);
+    }
+
+    /* ===== Brute-force key correction ===== */
+    const KEY_HASH_EXACT  = '71f1dd02796351fcdcf27e12ae578eec46411234a4a4fcb91d3caa498788c303';
+    const KEY_HASH_BRUTE  = '72a072fe99dcea381e3bf6e604788a16da43c4581bf788008345c14ba36bf3fe';
+    const IV_HASH         = 'a4d8ffb1b39dde120a951f27fa71bf99e5435df20196ccd4a131d181a8cda7b6';
+
+    async function bruteForceKey(partialKey) {
+        const startKey = partialKey.substring(0, partialKey.length - 6);
+        const batchSize = 100000;
+        for (let start = 0; start <= 0xFFFFFF; start += batchSize) {
+            await new Promise(r => setTimeout(r, 0)); // yield to UI
+            const end = Math.min(start + batchSize, 0xFFFFFF + 1);
+            for (let i = start; i < end; i++) {
+                const guess = startKey + i.toString(16).toUpperCase().padStart(6, '0');
+                if (sha256(guess) === KEY_HASH_EXACT) return guess;
+            }
+            setProgress((start + batchSize) / 0x1000000);
+        }
+        return null;
+    }
+
+    /* ===== UI Helpers ===== */
+    let snackTimer = null;
+    function showSnackbar(msg, type) {
+        const el = document.getElementById('snackbar');
+        el.textContent = msg;
+        el.className = 'snackbar show' + (type ? ' ' + type : '');
+        clearTimeout(snackTimer);
+        snackTimer = setTimeout(() => el.className = 'snackbar', 4000);
+    }
+
+    function setProgress(pct) {
+        const bar = document.getElementById('progressBar');
+        const fill = document.getElementById('progressFill');
+        bar.classList.add('active');
+        fill.style.width = Math.min(100, pct * 100).toFixed(1) + '%';
+    }
+
+    function hideProgress() {
+        document.getElementById('progressBar').classList.remove('active');
+        document.getElementById('progressFill').style.width = '0%';
+    }
+
+    function setButtonBusy(busy) {
+        const btn = document.getElementById('unpackBtn');
+        btn.disabled = busy;
+        btn.textContent = busy ? 'Processing\u2026' : 'Unpack';
+    }
+
+    /* ===== Live Validation ===== */
+    function validateField(input, validHashes) {
+        const val = input.value.trim();
+        if (!val) { input.className = ''; return; }
+        const h = sha256(val.toUpperCase());
+        input.className = validHashes.includes(h) ? 'valid' : 'invalid';
+    }
+
+    document.getElementById('keyInput').addEventListener('input', function() {
+        validateField(this, [KEY_HASH_EXACT, KEY_HASH_BRUTE]);
+    });
+
+    document.getElementById('ivInput').addEventListener('input', function() {
+        validateField(this, [IV_HASH]);
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function() {
+        document.getElementById('fileName').textContent =
+            this.files.length ? this.files[0].name : 'No file selected';
+    });
+
+    /* ===== Full-page Drag & Drop ===== */
+    const overlay = document.getElementById('dropOverlay');
+    let dragCounter = 0;
+    document.addEventListener('dragenter', e => {
+        e.preventDefault();
+        dragCounter++;
+        overlay.classList.add('active');
+    });
+    document.addEventListener('dragover', e => e.preventDefault());
+    document.addEventListener('dragleave', e => {
+        e.preventDefault();
+        dragCounter--;
+        if (dragCounter <= 0) { dragCounter = 0; overlay.classList.remove('active'); }
+    });
+    document.addEventListener('drop', e => {
+        e.preventDefault();
+        dragCounter = 0;
+        overlay.classList.remove('active');
+        const file = e.dataTransfer.files[0];
+        if (file && file.name.toLowerCase().endsWith('.bin')) {
+            document.getElementById('fileInput').files = e.dataTransfer.files;
+            document.getElementById('fileName').textContent = file.name;
+        } else {
+            showSnackbar('Please drop a .bin file.', 'error');
+        }
+    });
+
+    /* ===== Main Unpack ===== */
+    document.getElementById('unpackBtn').addEventListener('click', async () => {
+        const keyRaw = document.getElementById('keyInput').value.trim().toUpperCase();
+        const ivRaw  = document.getElementById('ivInput').value.trim().toUpperCase();
+        const fileEl = document.getElementById('fileInput');
+
+        if (!keyRaw) { showSnackbar('Please enter a decryption key.', 'error'); return; }
+        if (!ivRaw)  { showSnackbar('Please enter an IV.', 'error'); return; }
+        if (!fileEl.files.length) { showSnackbar('Please select a .bin file.', 'error'); return; }
+
+        setButtonBusy(true);
+        setProgress(0);
+
+        try {
+            /* --- Validate & resolve key --- */
+            let key = keyRaw;
+            const keyHash = sha256(key);
+
+            if (keyHash === KEY_HASH_BRUTE) {
+                showSnackbar('Brute-forcing key correction, please wait\u2026');
+                const found = await bruteForceKey(key);
+                if (!found) { showSnackbar('Key brute-force failed.', 'error'); return; }
+                key = found;
+                showSnackbar('Key corrected!', 'success');
+            } else if (keyHash !== KEY_HASH_EXACT) {
+                document.getElementById('keyInput').className = 'invalid';
+                showSnackbar('Invalid key.', 'error');
+                return;
+            }
+
+            /* --- Validate IV --- */
+            if (sha256(ivRaw) !== IV_HASH) {
+                document.getElementById('ivInput').className = 'invalid';
+                showSnackbar('Invalid IV.', 'error');
+                return;
+            }
+
+            setProgress(0.15);
+
+            /* --- Read & verify file --- */
+            const raw = new Uint8Array(await fileEl.files[0].arrayBuffer());
+            const expectedMd5 = raw.slice(0x10, 0x20);
+            const payload = raw.slice(0x20);
+
+            const actualMd5 = md5(payload);
+            if (!arraysEqual(actualMd5, expectedMd5)) {
+                showSnackbar('MD5 integrity check failed.', 'error');
+                return;
+            }
+
+            setProgress(0.35);
+            showSnackbar('Decrypting\u2026');
+
+            /* --- Decrypt AES-256-CBC (no pad) --- */
+            const keyBytes = hexToBytes(key);
+            const ivBytes  = hexToBytes(ivRaw);
+            const decrypted = await decryptAesCbcNoPad(keyBytes, ivBytes, payload);
+
+            setProgress(0.70);
+            showSnackbar('Extracting firmware\u2026');
+
+            /* --- Unzip & extract update.swu --- */
+            const zip = await JSZip.loadAsync(decrypted);
+            const swuFile = zip.file('update/update.swu');
+            if (!swuFile) {
+                showSnackbar('update/update.swu not found in archive.', 'error');
+                return;
+            }
+            const swuData = await swuFile.async('uint8array');
+
+            setProgress(1);
+
+            /* --- Download --- */
+            const blob = new Blob([swuData], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'update.swu';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+
+            showSnackbar('Done — update.swu downloaded!', 'success');
+        } catch (err) {
+            console.error(err);
+            showSnackbar('Error: ' + err.message, 'error');
+        } finally {
+            setButtonBusy(false);
+            setTimeout(hideProgress, 600);
+        }
+    });
+    </script>
+</body>
+</html>
