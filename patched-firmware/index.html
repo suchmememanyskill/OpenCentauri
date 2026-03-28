@@ -2132,10 +2132,10 @@
 
 <h1 id="patched-firmware">Patched firmware</h1>
 <p>This section describes the installation process and features of OpenCentauri's patched firmware.</p>
-<p>This firmware is based on Elegoo's 1.1.40 firmware, with patches applied to patch out unwanted behaviour and bugs.</p>
-<p>If you find any bugs with this firmware, or want to suggest new features, please do so on the <a href="https://github.com/OpenCentauri/cc-fw-tools" target="_blank">cc-fw-tools</a> repository. Not everything is possible within the limits of patching existing firmware, specifically large features or overhauls are unattainable.</p>
-<p>This project is in a beta state currently, expect some issues!</p>
-<p>If you need any support, feel free to <a href="https://discord.gg/t6Cft3wNJ3">join the discord</a></p>
+<p>This firmware is based on Elegoo's 1.1.40 firmware, with patches that address unwanted behavior and bugs.</p>
+<p>If you find bugs or want to suggest new features, please use the <a href="https://github.com/OpenCentauri/cc-fw-tools" target="_blank">cc-fw-tools</a> repository. Not everything is possible within the limits of patching existing firmware, especially large features or full overhauls.</p>
+<p>This project is currently in beta, so expect some issues.</p>
+<p>If you need support, feel free to <a href="https://discord.gg/t6Cft3wNJ3">join the Discord</a>.</p>
 <p>If you'd like to support our work, you can do so on <a href="https://ko-fi.com/opencentauri">Ko-Fi</a> <img alt="❤" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2764.svg" title=":heart:">! If spending money isn't your thing, we also have a <a href="https://makerworld.com/en/models/1924078-opencentauri-logo#profileId-2064746">Makerworld page</a> where you can throw some boosts towards!</p>
 <h2 id="features-as-of-v030">Features (as of v0.3.0)</h2>
 <ul>
@@ -2160,7 +2160,7 @@
 <li>Filament usage is reported via the API </li>
 <li>Connectivity checks are blocked (web traffic issue)</li>
 <li>Official OTA updates have been replaced by OpenCentauri OTA updates</li>
-<li>Support for usb ethernet adapters</li>
+<li>Support for USB Ethernet adapters</li>
 <li>New gcode commands: <ul>
 <li><code>M8212</code> to turn off the chamber light</li>
 <li><code>M8213</code> to turn on the chamber light</li>
@@ -2203,9 +2203,9 @@
 </div>
 </div>
 <p>You should now be greeted by the OpenCentauri splash screen <img alt="🎉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg" title=":tada:"></p>
-<p>This new firmware goes well with <a href="modified_start_end_machine_gcode/">modified machine start and end gcode in OrcaSlicer</a>. Specifically to center the purge line and to turn on the light of the chamber after starting a print. Installing this is optional but reccomended.</p>
+<p>This firmware works well with <a href="modified_start_end_machine_gcode/">modified machine start and end gcode in OrcaSlicer</a>, which centers the purge line and turns on the chamber light at print start. Installing this is optional but recommended.</p>
 <h2 id="update">Update</h2>
-<p>Either accept OTA updates from the device itself, or follow the steps again in the <a href="#installation">Installation section</a></p>
+<p>You can either accept OTA updates directly on the device or repeat the steps in the <a href="#installation">Installation section</a>.</p>
 <h2 id="uninstall">Uninstall</h2>
 <p>Follow the steps again in the <a href="#installation">Installation section</a>. Instead of running <code>Install OpenCentauri (Online)</code>, run <code>Install Official 1.1.40 (Online)</code></p>
 
@@ -2230,7 +2230,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 19, 2025 15:39:14 UTC">December 19, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 28, 2026 00:51:10 UTC">March 28, 2026</span>
   </span>
 
     
@@ -2258,6 +2258,16 @@
     
     <nav>
       
+        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
+          
+          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
+        </a>
+      
+        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
+          
+          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
+        </a>
+      
         <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
           
           <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
@@ -2266,11 +2276,6 @@
         <a href="https://github.com/airtonzanon" class="md-author" title="@airtonzanon">
           
           <img src="https://avatars.githubusercontent.com/u/6540546?v=4&amp;size=72" alt="airtonzanon">
-        </a>
-      
-        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
-          
-          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
       
