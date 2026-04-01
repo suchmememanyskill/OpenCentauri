@@ -48,9 +48,14 @@ Extruder hobbed gear diameter|10mm nominal
 Heater type|Ceramic plate-type PTC heater
 Heater resistance|~9.6Ω
 Heater power|60W
+Thermistor Type| Glass bead NTC-100k
+Thermistor Beta| 4300
+Fan manufacturer| Shenzhen Hua Xinrong Plastic Electronics Co., Ltd
 Part cooling fan type|5020 Wide mouth radial fan, 4 pin (tach+5V PWM)
 Part cooling fan P/N|EFC-05D24D
 Part cooling fan power|0.50A @ 24V
+Part cooling fan speed|8,000 RPM
 Hotend fan type|3010 axial fan, 3 pin (tach)
 Hotend fan P/N|BFC-03A24L
 Hotend fan power|0.10A @ 24V
+Hotend fan speed|8,000 RPM

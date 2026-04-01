@@ -4,12 +4,20 @@
 
 Metric|Value
 ---|---
+Fan manufacturer| Shenzhen Hua Xinrong Plastic Electronics Co., Ltd
 Auxiliary fan type|7530mm radial fan, 2 pin
 Auxiliary fan P/N|EFC-07E24W
 Auxiliary fan power|0.65A @ 24V
+Auxiliary fan speed|
 Exhaust fan type|8020 radial fan, 2 pin
 Exhaust fan P/N|EFC-08D24M
 Exhaust fan power|0.15A @ 24V
+Exhaust fan speed|
+Mainboard fan type|4020 axial fan, 4 pin
+Mainboard fan P/N|EFS-04024L
+Mainboard fan power|0.10A @ 24V
+Mainboard fan speed|6,200 RPM
+
 
 ## LED strips
 
