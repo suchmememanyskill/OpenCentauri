@@ -85,11 +85,11 @@ Fan manufacturer| Shenzhen Hua Xinrong Plastic Electronics Co., Ltd
 Part cooling fan type|5020 custom radial fan integrated into duct, 4 pin (tach+5V PWM)
 Part cooling fan P/N|EFC-05D24D
 Part cooling fan power|0.50A @ 24V
-Part cooling fan speed|8,000 RPM
+Part cooling fan speed|12,000 RPM
 Hotend fan type|3010 axial fan, 3 pin (tach)
 Hotend fan P/N|
 Hotend fan power|0.10A @ 24V
-Hotend fan speed|8,000 RPM
+Hotend fan speed|12,000 RPM
 
 /// caption
 Credit to reddit user 6Y3ts_32a for thermistor resistance measurements.
