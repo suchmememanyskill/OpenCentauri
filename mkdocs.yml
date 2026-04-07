@@ -62,8 +62,10 @@ nav:
     - Klipper Conversion Methods: klipper-conversion/index.md
     - Klipper via mainboard replacement:
       - Documentation: klipper-conversion/klipper-via-mainboard-replacement/index.md
-    - Klipper via DSP Control:
-      - Main: klipper-conversion/klipper-via-dsp/dsp.md
+    - Klipper on official mainboard (COSMOS):
+      - Main: klipper-conversion/cosmos/cosmos.md
+      - Install: klipper-conversion/cosmos/install.md
+      - Features: klipper-conversion/cosmos/features.md
   - Mods:
     - Machine Mods: mods/machine_mods.md
     - Printable Mods: 
