@@ -6,10 +6,10 @@
       
       
       
-        <link rel="prev" href="../../klipper-via-mainboard-replacement/">
+        <link rel="prev" href="../cosmos/">
       
       
-        <link rel="next" href="../../../mods/machine_mods/">
+        <link rel="next" href="../features/">
       
       
         
@@ -20,7 +20,7 @@
     
     
       
-        <title>Main - OpenCentauri</title>
+        <title>Install - OpenCentauri</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#klipper-via-dsp" class="md-skip">
+        <a href="#install-cosmos" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Main
+              Install
             
           </span>
         </div>
@@ -1721,7 +1721,7 @@
   <span class="md-ellipsis">
     
   
-    Klipper via DSP Control
+    Klipper on official mainboard (COSMOS)
   
 
     
@@ -1737,11 +1737,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Klipper via DSP Control
+    Klipper on official mainboard (COSMOS)
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cosmos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Main
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1759,6 +1787,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1766,7 +1812,7 @@
   <span class="md-ellipsis">
     
   
-    Main
+    Install
   
 
     
@@ -1776,6 +1822,86 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uninstall
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2047,9 +2173,101 @@
   
 
 
-<h1 id="klipper-via-dsp">Klipper via DSP</h1>
-<p>Coming Soon</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/teaser.jpg" data-desc-position="bottom"><img alt="Toolhead supplementary board image" src="../assets/teaser.jpg" width="900"></a></p>
+<h1 id="install-cosmos">Install COSMOS</h1>
+<div class="admonition warning">
+<p class="admonition-title">Beta Software!</p>
+<p>COSMOS is still under heavy development. Don't install this firmware if you actually depend on using your printer. Functionality is not set in stone and may change at any time.</p>
+</div>
+<h2 id="installation">Installation</h2>
+<p><em>COSMOS is not considered stable yet. When it is stable, it will be added to the OpenCentauri Installer</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As COSMOS is still under heavy development, it is important to read <a href="https://github.com/OpenCentauri/cosmos/releases">the changelogs</a> on GitHub before installing a new version. It may contain additional instructions for migration from an old version.</p>
+</div>
+<p>The process for installing COSMOS is pretty much the same as for installing patched-OC firmware.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Local/Offline</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li><a href="https://github.com/OpenCentauri/oc-installer/releases/latest/download/oc-installer.zip">Download</a> the latest OpenCentauri installer release.</li>
+<li>Insert a fat32-formatted thumbdrive into your pc.</li>
+<li>Extract the install_opencentauri folder from oc-installer.zip onto the root of the thumbdrive</li>
+<li><a href="https://github.com/OpenCentauri/cosmos/releases/latest/download/update.swu">Download the latest COSMOS update.swu</a> and place it inside the install_opencentauri folder on your thumbdrive.</li>
+<li>Eject your thumbdrive from your pc and insert it into your Centauri Carbon.</li>
+<li>On your Centauri Carbon, navigate to the files tab, then tap the Usb Drive menu, then tap the install_opencentauri folder.</li>
+<li>Touch hold the IMPORT_ME_DO_NOT_PRINT file, then tap Import.</li>
+<li>Run Install OpenCentauri (Local).</li>
+<li>Restart when the install process finished.</li>
+<li>Remove the thumbdrive.</li>
+</ol>
+</div>
+</div>
+</div>
+<h2 id="update">Update</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Via Screen (Online)</label><label for="__tabbed_2_2">Via SSH (Online)</label><label for="__tabbed_2_3">Via USB (Offline)</label><label for="__tabbed_2_4">Via SSH (Manual, Offline)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Navigate to the settings tab on the printer's screen.</li>
+<li>Click <code>Update COSMOS</code>.</li>
+<li>Wait for the process to complete.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Log into your printer via SSH.</li>
+<li>Run the command <code>update-cosmos</code></li>
+<li>Wait for the process to complete.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li><a href="https://github.com/OpenCentauri/cosmos/releases/latest/download/update.swu">Download the latest COSMOS update.swu</a>.</li>
+<li>Rename it to <code>emergency.swu</code></li>
+<li>Insert a fat32-formatted thumbdrive into your pc.</li>
+<li>Put <code>emergency.swu</code> on the root of the thumbdrive.</li>
+<li>Eject your thumbdrive from your pc and insert it into your Centauri Carbon.</li>
+<li>Wait for the update process to complete. This should be indicated by an on-screen UI prompt (only appears if Klipper is loaded)</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>You can also flash an arbitrary .swu via SSH. Just place the .swu somewhere accessible to the machine (like in /user-resource via SCP/SSH), SSH into your machine, then run <code>flash /path/to/.swu</code>.</p>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">After Setup</p>
+<p>After setup, connect your printer to the internet via the on screen UI. Connect via a web browser to your printer's IP, this will load up the web interface of the printer. Under the Macros section, run <code>FULL CALIBRATION</code> to run through basic machine calibrations (resonance compensation, bed mesh, extruder pid calibration).</p>
+<p>If you are using OrcaSlicer, don't forget to change the connectivity settings. New settings are:</p>
+<ul>
+<li>Host Type: Octo/Klipper</li>
+<li>Hostname, IP or URL: ip.of.your.printer:7125</li>
+<li>Device UI: ip.of.your.printer</li>
+</ul>
+</div>
+<h2 id="uninstall">Uninstall</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please do not try to flash an official .swu or OpenCentauri patched .swu directly. This will skip downgrading the toolhead/bed and will cause a brick!</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Via Screen (Online)</label><label for="__tabbed_3_2">Via SSH (Online)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Navigate to the settings tab on the printer's screen.</li>
+<li>Click <code>Switch to OC Patched</code>.</li>
+<li>Wait for the process to complete.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Log into your printer via SSH.</li>
+<li>Run the command <code>switch-to-oc-patched</code></li>
+<li>Wait for the process to complete.</li>
+</ol>
+</div>
+</div>
+</div>
 
 
 
@@ -2072,7 +2290,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 28, 2026 00:51:10 UTC">March 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2026 21:55:42 UTC">April 7, 2026</span>
   </span>
 
     
@@ -2082,7 +2300,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 22, 2026 23:45:11 UTC">March 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2026 21:55:42 UTC">April 7, 2026</span>
   </span>
 
     
@@ -2100,9 +2318,9 @@
     
     <nav>
       
-        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
+        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
           
-          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
+          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
@@ -2110,23 +2328,7 @@
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
-        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
-          
-          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
-        </a>
       
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
-          
-          <img src="https://avatars.githubusercontent.com/u/38142618?u=61a34ddba080efcf11b2b0c5d23e14c3deb152d0&amp;v=4&amp;size=72" alt="Sims">
-        </a>
-      
-      
-      
-        
-          <a href="https://github.com/suchmememanyskill/OpenCentauri/blob/master/docs/klipper-conversion/klipper-via-dsp/dsp.md" class="md-author md-author--more">
-            +1
-          </a>
-        
       
     </nav>
   </span>
