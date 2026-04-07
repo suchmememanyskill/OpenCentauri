@@ -12,8 +12,10 @@ Front|Back
 ![Mainboard image](./assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](./assets/centauri-mobo-back.jpg){ width="800" }
 Credit to the Elegoo discord.|Credit to thijskunst on the OpenCentauri Discord.
 
-![Mainboard diagram](./assets/cc1_diagram.jpg){ width="800" }
-
+![Mainboard diagram](./assets/cc1_diagram.svg){ width="800" }
+/// caption
+Credit to Morgyn on the OpenCentauri Discord.
+///
 
 ## Mainboard Pins
 
