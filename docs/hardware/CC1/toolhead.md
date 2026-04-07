@@ -45,6 +45,7 @@ Motor P/N|BJY36D12-04V28
 Motor MFG|SHENZHEN  KELI MOTOR  LTD
 Extruder gear ratio|52:10
 Extruder hobbed gear diameter|10mm nominal
+Extruder hobbed gear material|SDK11 tool steel
 Heater type|Ceramic plate-type PTC heater
 Heater resistance|~9.6Ω
 Heater power|60W
