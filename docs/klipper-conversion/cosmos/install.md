@@ -22,7 +22,7 @@ The process for installing COSMOS is pretty much the same as for installing patc
     1. Touch hold the IMPORT_ME_DO_NOT_PRINT file, then tap Import.
     1. Run Install OpenCentauri (Local).
     1. Restart when the install process finished.
-    1.  Remove the thumbdrive and connect the keyboard.
+    1. Remove the thumbdrive.
 
 ## Update
 
@@ -55,7 +55,7 @@ The process for installing COSMOS is pretty much the same as for installing patc
     After setup, connect your printer to the internet via the on screen UI. Connect via a web browser to your printer's IP, this will load up the web interface of the printer. Under the Macros section, run `FULL CALIBRATION` to run through basic machine calibrations (resonance compensation, bed mesh, extruder pid calibration).
 
     If you are using OrcaSlicer, don't forget to change the connectivity settings. New settings are:
-    
+
     - Host Type: Octo/Klipper
     - Hostname, IP or URL: ip.of.your.printer:7125
     - Device UI: ip.of.your.printer
