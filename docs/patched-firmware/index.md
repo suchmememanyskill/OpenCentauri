@@ -12,6 +12,10 @@ If you need support, feel free to [join the Discord](https://discord.gg/t6Cft3wN
 
 If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/opencentauri) :heart:! If spending money isn't your thing, we also have a [Makerworld page](https://makerworld.com/en/models/1924078-opencentauri-logo#profileId-2064746) where you can throw some boosts towards!
 
+!!! warning "**Looking for Full Klipper/COSMOS?**"
+
+    This is regular OpenCentauri patched from official Elegoo firmware, for Beta full Klipper/Kalico firmwarewith COSMOS go [here](../klipper-conversion/cosmos/cosmos)
+
 ## Features (as of v0.3.0)
 
 - SSH (user: "root", password: "OpenCentauri")
