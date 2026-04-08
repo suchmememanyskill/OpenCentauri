@@ -14,7 +14,7 @@ If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/op
 
 !!! warning "**Looking for Full Klipper/COSMOS?**"
 
-    This is regular OpenCentauri patched from official Elegoo firmware, for Beta full Klipper/Kalico firmwarewith COSMOS go [here](../klipper-conversion/cosmos/cosmos)
+    This is regular OpenCentauri patched from official Elegoo firmware, for Beta full Klipper/Kalico firmwarewith COSMOS go [here](../klipper-conversion/cosmos/cosmos.md)
 
 ## Features (as of v0.3.0)
 

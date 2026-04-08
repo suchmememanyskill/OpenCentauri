@@ -13,7 +13,7 @@ Read the [custom features](./features.md) offered by COSMOS.
 
 !!! warning "**Looking for regular Opencentauri?**"
 
-    This is a Beta full Klipper/Kalico firmware, for regular OpenCentauri patched from official Elegoo firmware go [here](../../../patched-firmware)
+    This is a Beta full Klipper/Kalico firmware, for regular OpenCentauri patched from official Elegoo firmware go [here](../../patched-firmware/index.md)
 
 ## FAQ
 
