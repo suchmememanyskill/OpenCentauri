@@ -36,6 +36,7 @@ nav:
       - Bed: hardware/CC1/bed.md
       - Screen: hardware/CC1/screen.md
       - Miscellaneous: hardware/CC1/misc.md
+      - CANVAS: hardware/CC1/CANVAS.md
       - Official Documentation: hardware/CC1/documentation.md
     - CC2:
       - Hardware: hardware/CC2/index.md
