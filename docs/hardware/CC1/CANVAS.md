@@ -1,4 +1,4 @@
-# CC2 CANVAS
+# CC1 CANVAS
 
 ## Overview
 
@@ -12,7 +12,9 @@ The contents of a CC1 CANVAS upgrade kit excluding cables, a top cover is not in
 ## CANVAS Module
 
 ![CANVAS core module](./assets/canvas.jpg){ width="800" }
-
+/// caption
+Credit to anna_devminer on the OpenCentauri Discord.
+///
 
 The CANVAS core module mounts on the top frame insert of the CC2 alongside the tophat. It is mechanically identical to the CC2 CANVAS but it uses alternate boards though with the same MCU.
 
@@ -31,7 +33,8 @@ Stepper driver|4xAT8833 (DRV8833 clone)
 
 ![CANVAS Mainboard](./assets/canvas_mainboard.jpg){ width="800" }
 /// caption
-Comparison of CANVAS mainboards. Left: CC1 upgrade Right: CC2 combo
+Comparison of CANVAS mainboards. Left: CC1 upgrade Right: CC2 combo.
+Credit to suchmememanyskill on the OpenCentauri Discord. 
 ///
 
 ### RFID Board
@@ -40,6 +43,7 @@ An RFID reader board is present in the front of the shell to read filament infor
 ![CANVAS RFID Board](./assets/canvas_rfidboard.jpg){ width="800" }
 /// caption
 CANVAS RFID Board.
+Credit to anna_devminer on the OpenCentauri Discord. 
 ///
 
 ## Spool Holders
@@ -57,6 +61,10 @@ In order to support the Filament cutter actuator hall effect sensor and front co
 Front|Back
 ---|---
 ![Toolhead board image](./assets/canvas_toolheadboard_front.jpg){ width="800" }|![Toolhead board back image](./assets/canvas_toolheadboard_rear.jpg){ width="800" }
+/// caption
+CANVAS RFID Board.
+Credit to anna_devminer on the OpenCentauri Discord. 
+///
 
 
 ### Toolhead Board MCU
@@ -86,5 +94,5 @@ Additionally as the filament detector board also faces a forward-facing hall eff
 ![Revised toolhead cover](./assets/canvas_toolheadcover.jpg){ width="800" }
 /// caption
 The revised toolhead cover with new magnet annotated with a red box.
+Credit to anna_devminer on the OpenCentauri Discord. 
 ///
-

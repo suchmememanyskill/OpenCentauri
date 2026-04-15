@@ -3,6 +3,10 @@
 !!! Warning "Beta Software!"
     COSMOS is still under heavy development. Don't install this firmware if you actually depend on using your printer. Functionality is not set in stone and may change at any time.
 
+!!! Danger "**Stop: Before you add any plugins**"
+
+    The stock mainboard is extremely resource limited and there is currently very little overhead to run any plugins, packages, or features not in standard klipper/kalico. Do not attempt to install others unless you _really_ know what you are doing!
+
 ## Installation
 *COSMOS is not considered stable yet. When it is stable, it will be added to the OpenCentauri Installer*
 
