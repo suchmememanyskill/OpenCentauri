@@ -41,6 +41,13 @@ struct Args {
     // Path to the device
     #[arg(required = true)]
     pub device: String,
+
+    /// Use the Elegoo Canvas bootloader dialect (X0303 / E400 Lite):
+    /// skip the initial wait for 'C', send SOH+128 block 0 with a plain
+    /// `name\0size ` body, and retransmit on NAK.  Required for Canvas
+    /// devices; stock Ymodem receivers without this flag.
+    #[arg(long, default_value_t = false)]
+    pub canvas: bool,
 }
 
 fn main() {
@@ -160,7 +167,9 @@ fn main() {
 
     let mut cursor = Cursor::new(&mut file_bytes);
 
-    Ymodem::new()
+    let mut ymodem = Ymodem::new();
+    ymodem.canvas = args.canvas;
+    ymodem
         .send(&mut port, &mut cursor, file_name, file_size_in_bytes)
         .unwrap();
 }
