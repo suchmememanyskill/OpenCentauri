@@ -1302,6 +1302,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#v1444-released-on-28042026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.4.44 (Released on 28/04/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v1146-released-21102025" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2319,6 +2330,36 @@
 </ul>
 <h2 id="firmware-update-archive">Firmware update archive</h2>
 <p>The Centauri Carbon during startup checks <a href="https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&amp;machineId=0&amp;version=1.1.0&amp;lan=en&amp;firmwareType=1">an endpoint on chituiot.com</a> to check if a new firmware update is available. Below are archives of what this endpoint provided at the stated date.</p>
+<h3 id="v1444-released-on-28042026">v1.4.44 (Released on 28/04/2026)</h3>
+<p><a class="md-button md-button--primary" href="https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.44/2026-04-28/c514df905a4243eab4a84a77d349a998.bin" referrerpolicy="no-referrer">Download</a></p>
+<p>Changelog:</p>
+<ol>
+<li>Added CANVAS support for multi-color printing.</li>
+<li>Enabled purge G-code during printing and added support for purge parameters via M6211.</li>
+<li>Upgraded the UI from the basic version to the standard version.</li>
+<li>Added support for sending multi-color files from ElegooSlicer on Centauri Carbon.</li>
+<li>Added multi-color channel selection in the Centauri Carbo WebUI.</li>
+<li>Updated the RFID tag reading area.</li>
+<li>Updated built-in filament profiles and related restrictions in the filament settings page.</li>
+</ol>
+<p>Raw response:
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.4.44"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"packageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.44/2026-04-28/c514df905a4243eab4a84a77d349a998.bin"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"firmwareType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"packageHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9185ff9ea6fcb670d2779bd68691097"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updates:\n1. Added CANVAS support for multi-color printing.\n2. Enabled purge G-code during printing and added support for purge parameters via M6211.\n3. Upgraded the UI from the basic version to the standard version.\n4. Added support for sending multi-color files from ElegooSlicer on Centauri Carbon.\n5. Added multi-color channel selection in the Centauri Carbo WebUI.\n6. Updated the RFID tag reading area.\n7. Updated built-in filament profiles and related restrictions in the filament settings page."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"timeMS"</span><span class="p">:</span><span class="w"> </span><span class="mi">1777381323664</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dataInfoId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc24555db8f44e158de3bf5b3a1518f8"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
 <h3 id="v1146-released-21102025">v1.1.46 (Released 21/10/2025)</h3>
 <p><a class="md-button md-button--primary" href="https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/01.01.46/2025-10-22/f9bd2b9b1926408ca238de8e7eac69b6.bin" referrerpolicy="no-referrer">Download</a></p>
 <p>Changelog:</p>
@@ -2495,7 +2536,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 28, 2026 00:51:10 UTC">March 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 13:24:26 UTC">April 28, 2026</span>
   </span>
 
     
@@ -2523,9 +2564,9 @@
     
     <nav>
       
-        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
+        <a href="https://github.com/TheDevMinerTV" class="md-author" title="@TheDevMinerTV">
           
-          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
+          <img src="https://avatars.githubusercontent.com/u/29845135?v=4&amp;size=72" alt="TheDevMinerTV">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
@@ -2533,14 +2574,14 @@
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
+        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
+          
+          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
+        </a>
+      
         <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
           
           <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
-        </a>
-      
-        <a href="https://github.com/TheDevMinerTV" class="md-author" title="@TheDevMinerTV">
-          
-          <img src="https://avatars.githubusercontent.com/u/29845135?v=4&amp;size=72" alt="TheDevMinerTV">
         </a>
       
       
