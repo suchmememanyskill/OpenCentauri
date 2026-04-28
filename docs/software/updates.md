@@ -44,6 +44,40 @@ Internally, the following commands are used, where %s is the path to the .swu fi
 
 The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&machineId=0&version=1.1.0&lan=en&firmwareType=1) to check if a new firmware update is available. Below are archives of what this endpoint provided at the stated date.
 
+### v1.4.44 (Released on 28/04/2026)
+
+[Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.44/2026-04-28/c514df905a4243eab4a84a77d349a998.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
+
+Changelog:
+
+1. Added CANVAS support for multi-color printing.
+2. Enabled purge G-code during printing and added support for purge parameters via M6211.
+3. Upgraded the UI from the basic version to the standard version.
+4. Added support for sending multi-color files from ElegooSlicer on Centauri Carbon.
+5. Added multi-color channel selection in the Centauri Carbo WebUI.
+6. Updated the RFID tag reading area.
+7. Updated built-in filament profiles and related restrictions in the filament settings page.
+
+Raw response:
+```json
+{
+  "code": "000000",
+  "messages": [],
+  "data": {
+    "update": true,
+    "version": "1.4.44",
+    "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.44/2026-04-28/c514df905a4243eab4a84a77d349a998.bin",
+    "firmwareType": 1,
+    "packageHash": "c9185ff9ea6fcb670d2779bd68691097",
+    "updateStrategy": 1,
+    "log": "Updates:\n1. Added CANVAS support for multi-color printing.\n2. Enabled purge G-code during printing and added support for purge parameters via M6211.\n3. Upgraded the UI from the basic version to the standard version.\n4. Added support for sending multi-color files from ElegooSlicer on Centauri Carbon.\n5. Added multi-color channel selection in the Centauri Carbo WebUI.\n6. Updated the RFID tag reading area.\n7. Updated built-in filament profiles and related restrictions in the filament settings page.",
+    "timeMS": 1777381323664,
+    "dataInfoId": "cc24555db8f44e158de3bf5b3a1518f8"
+  },
+  "success": true
+}
+```
+
 ### v1.1.46 (Released 21/10/2025)
 
 [Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/01.01.46/2025-10-22/f9bd2b9b1926408ca238de8e7eac69b6.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
