@@ -1302,6 +1302,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#v1446-released-on-08052026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.4.46 (Released on 08/05/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v1444-released-on-28042026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2329,7 +2340,39 @@
 <li>B-&gt;A: <code>swupdate -i %s -e stable,now_B_next_A -k /etc/swupdate_public.pem -p reboot &amp;</code></li>
 </ul>
 <h2 id="firmware-update-archive">Firmware update archive</h2>
-<p>The Centauri Carbon during startup checks <a href="https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&amp;machineId=0&amp;version=1.1.0&amp;lan=en&amp;firmwareType=1">an endpoint on chituiot.com</a> to check if a new firmware update is available. Below are archives of what this endpoint provided at the stated date.</p>
+<p>The Centauri Carbon during startup checks <a href="https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&amp;machineId=0&amp;version=1.4.46&amp;lan=en&amp;firmwareType=1">an endpoint on chituiot.com</a> to check if a new firmware update is available. Note that that endpoint requires a relatively new version of the firmware to be provided in the URL.
+Below are archives of what this endpoint provided at the stated date.</p>
+<h3 id="v1446-released-on-08052026">v1.4.46 (Released on 08/05/2026)</h3>
+<p><a class="md-button md-button--primary" href="https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.46/2026-05-08/104101205ee740a68a3bc049f0b03c70.bin" referrerpolicy="no-referrer">Download</a></p>
+<p>Changelog:</p>
+<p>Updates:
+1. Added CANVAS support for multi-color printing.
+2. Enabled purge G-code during printing and added support for purge parameters via M6211.
+3. Upgraded the UI from the basic version to the standard version.</p>
+<p>Bug Fixes:
+1. Fixed various UI issues.
+2. Fixed an issue where incorrect filament was used for the wipe line when printing multi-color models after loading. filament into slot 1.
+3. Fixed multiple system freeze issues.</p>
+<details class="info">
+<summary>Raw response:</summary>
+<p>{
+  "code": "000000",
+  "messages": [],
+  "data": {
+    "update": true,
+    "version": "1.4.46",
+    "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.46/2026-05-08/104101205ee740a68a3bc049f0b03c70.bin",
+    "firmwareType": 1,
+    "packageHash": "a33ee84d6d74e77d07a8f24865d81f1e",
+    "updateStrategy": 1,
+    "log": "Updates\n1. Added CANVAS support for multi-color printing.\n2. Enabled purge G-code during printing and added support for purge parameters via M6211.\n3. Upgraded the UI from the basic version to the standard version.\nBug Fixes\n1. Fixed various UI issues.\n2. Fixed an issue where incorrect filament was used for the wipe line when printing multi-color models after loading. filament into slot 1.\n3. Fixed multiple system freeze issues.",
+    "timeMS": 1778233188021,
+    "dataInfoId": "badcd92cdbb14c93a4f64d48cfaf0c6b"
+  },
+  "success": true
+}
+```</p>
+</details>
 <h3 id="v1444-released-on-28042026">v1.4.44 (Released on 28/04/2026)</h3>
 <p><a class="md-button md-button--primary" href="https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.44/2026-04-28/c514df905a4243eab4a84a77d349a998.bin" referrerpolicy="no-referrer">Download</a></p>
 <p>Changelog:</p>
@@ -2568,7 +2611,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 18:15:05 UTC">April 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 13:10:47 UTC">May 8, 2026</span>
   </span>
 
     
@@ -2596,9 +2639,9 @@
     
     <nav>
       
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
+        <a href="https://github.com/TheDevMinerTV" class="md-author" title="@TheDevMinerTV">
           
-          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
+          <img src="https://avatars.githubusercontent.com/u/29845135?v=4&amp;size=72" alt="TheDevMinerTV">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
@@ -2606,9 +2649,9 @@
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
-        <a href="https://github.com/TheDevMinerTV" class="md-author" title="@TheDevMinerTV">
+        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
           
-          <img src="https://avatars.githubusercontent.com/u/29845135?v=4&amp;size=72" alt="TheDevMinerTV">
+          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
         </a>
       
         <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
