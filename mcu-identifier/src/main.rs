@@ -17,8 +17,8 @@ const SYNC_BYTE: u8 = 0x7e;
 fn main() -> io::Result<()> {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        eprintln!("Usage: {} <serial_port> [baud_rate]", args[0]);
-        eprintln!("Example: {} /dev/ttyACM0 250000", args[0]);
+        eprintln!("Usage: {} <serial_port> [baud_rate] [--verbose]", args[0]);
+        eprintln!("Example: {} /dev/ttyACM0 250000 --verbose", args[0]);
         return Ok(());
     }
 
@@ -27,38 +27,42 @@ fn main() -> io::Result<()> {
         .get(2)
         .and_then(|s| s.parse().ok())
         .unwrap_or(DEFAULT_BAUD);
+    let verbose = args.iter().any(|arg| arg == "--verbose" || arg == "-v");
 
     println!("\x1b[1;35m====================================================\x1b[0m");
     println!("\x1b[1;35m       Centauri Carbon MCU Identification Tool      \x1b[0m");
     println!("\x1b[1;35m====================================================\x1b[0m");
-    println!("[CONFIG] Port: {}, Baud: {}", port_name, baud_rate);
+    println!(
+        "[CONFIG] Port: {}, Baud: {}, Verbose: {}",
+        port_name, baud_rate, verbose
+    );
 
     let mut port = serialport::new(port_name, baud_rate)
-        .timeout(Duration::from_millis(500))
+        .timeout(Duration::from_millis(100))
         .open()
         .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?;
 
     println!("\x1b[1;34m[1/4] Opened serial port. Sending Klipper Sync sequence...\x1b[0m");
 
-    // Send 20 sync bytes to trigger dictionary dump
-    let sync_seq = vec![SYNC_BYTE; 20];
+    // Send 40 sync bytes to trigger dictionary dump.
+    let sync_seq = vec![SYNC_BYTE; 40];
     port.write_all(&sync_seq)?;
     port.flush()?;
-    println!("      -> Sent 20x 0x7e (Klipper Sync)");
+    println!("      -> Sent 40x 0x7e (Klipper Sync)");
 
     println!("\x1b[1;34m[2/4] Reading data from MCU (Waiting for Dictionary)...\x1b[0m");
     let mut buffer = Vec::new();
     let start_time = Instant::now();
-    let timeout = Duration::from_secs(3);
+    let timeout = Duration::from_secs(5);
 
     while start_time.elapsed() < timeout {
         let mut read_buf = [0u8; 1024];
         match port.read(&mut read_buf) {
             Ok(n) if n > 0 => {
                 buffer.extend_from_slice(&read_buf[..n]);
-                if buffer.len() > 8000 {
+                if buffer.len() > 32000 {
                     break;
-                } // Sufficient for dictionary
+                }
             }
             Ok(_) => thread_wait(10),
             Err(ref e) if e.kind() == io::ErrorKind::TimedOut => thread_wait(10),
@@ -67,6 +71,32 @@ fn main() -> io::Result<()> {
     }
 
     println!("      -> Received {} bytes from MCU.", buffer.len());
+
+    if verbose && !buffer.is_empty() {
+        println!("\n\x1b[1;33m[DEBUG] Raw Hex Dump:\x1b[0m");
+        for (i, chunk) in buffer.chunks(16).enumerate() {
+            print!("{:04x}: ", i * 16);
+            for byte in chunk {
+                print!("{:02x} ", byte);
+            }
+            if chunk.len() < 16 {
+                for _ in 0..(16 - chunk.len()) {
+                    print!("   ");
+                }
+            }
+            print!(" | ");
+            for byte in chunk {
+                if byte.is_ascii_graphic() || *byte == b' ' {
+                    print!("{}", *byte as char);
+                } else {
+                    print!(".");
+                }
+            }
+            println!();
+        }
+        println!();
+    }
+
     if buffer.is_empty() {
         println!("\x1b[1;31m[ERROR]\x1b[0m No response from MCU. Check baud rate or cabling.");
         return Ok(());
@@ -81,13 +111,6 @@ fn main() -> io::Result<()> {
     // 1. Pins Per Bank Check
     let mut variant_old = false;
     let mut variant_new = false;
-
-    // We look for "pins_per_bank" string which is usually in the dictionary
-    if raw_data.contains("pins_per_bank") {
-        println!("      [DEBUG] Found 'pins_per_bank' string in response.");
-        // Binary logic: look for the value near the string
-        // For simplicity in this basic tool, we use the evidence of other peripherals
-    }
 
     // 2. Accelerometer Check
     let has_adxl345 = raw_data.contains("adxl345");
@@ -143,6 +166,7 @@ fn main() -> io::Result<()> {
     } else {
         println!("\n\x1b[1;33m[RESULT]\x1b[0m Unknown STM32 Board variant.");
         println!("  Received data did not contain conclusive strings for variant matching.");
+        println!("  TIP: Try running with --verbose to see raw data.");
     }
 
     Ok(())

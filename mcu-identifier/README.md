@@ -54,6 +54,8 @@ To identify an MCU on `/dev/ttyACM0` at `250000` baud:
 ./target/armv7-unknown-linux-musleabihf/release/mcu-identifier /dev/ttyACM0 250000
 ```
 
+Add `--verbose` or `-v` to print a hex dump of the raw MCU dictionary response.
+
 ## Protocol Details
 The tool sends a sequence of `0x7e` (Klipper SYNC bytes) to the serial port. This forces the MCU to restart its internal parser and re-transmit its configuration constants and command dictionary, which are then parsed by this tool's heuristics.
 
@@ -72,10 +74,10 @@ If the tool reports a board as **"Unknown"**, you can capture the raw data dicti
 
 1.  **Capture a dump**:
     ```bash
-    ./target/armv7-unknown-linux-musleabihf/release/mcu-identifier /dev/ttyACM0 250000 > dictionary_dump.bin
+    ./target/armv7-unknown-linux-musleabihf/release/mcu-identifier /dev/ttyACM0 250000 --verbose > dictionary_dump.txt
     ```
 2.  **Inspect for strings**:
     ```bash
-    strings dictionary_dump.bin | grep -iE "sensor|adc|config"
+    grep -iE "sensor|adc|config" dictionary_dump.txt
     ```
     New identifiers found here can be added to the matching logic in `src/main.rs`.
