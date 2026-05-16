@@ -39,6 +39,12 @@ By default this writes:
 printer.cfg-elegoon
 ```
 
+Each generated config records how it was produced near the top of the file. The
+header includes the command line used to invoke the generator and the resolved
+argument values after defaults are applied. This makes it easier to compare test
+tables later without guessing which beta, resistor, range, or sampling settings
+were used.
+
 To write somewhere else:
 
 ```bash
