@@ -292,6 +292,149 @@ Change the generated sensor name:
 ./thermistor-tablegen.py --sensor-name elegoo_hotend_parallel_100k
 ```
 
+## Stock Firmware Comparison Tool
+
+`stock-thermistor-check.py` replays the generated table through the same
+thermistor math used by the source-equivalent / decompiled Elegoo 1.4.44
+firmware.
+
+Run it from the repository root:
+
+```bash
+python3 thermistor-tablegen/stock-thermistor-check.py
+```
+
+Or from this directory:
+
+```bash
+./stock-thermistor-check.py
+```
+
+By default it reads:
+
+```text
+thermistor-tablegen/printer.cfg-elegoon
+```
+
+It then:
+
+- Parses every `temperatureN` / `resistanceN` entry.
+- Converts each table resistance to the same ADC fraction Kalico would see.
+- Runs that ADC fraction through an equivalent of stock
+  `Thermistor::calc_temp(...)`.
+- Prints the difference between the table temperature and the stock firmware
+  calculation.
+- Compares the default observed measurements:
+  `50:44,100:90,150:136,200:180,250:219,300:260`.
+- Fits the observed measurements against several constrained thermistor models
+  so we can see whether `R25`, beta, or the parallel resistor assumption is most
+  likely wrong.
+
+The `--observed` format is:
+
+```text
+KalicoTemp:ExternalTemp,KalicoTemp:ExternalTemp,...
+```
+
+Example:
+
+```bash
+./stock-thermistor-check.py --observed "50:44,100:90,150:136"
+```
+
+To disable observed-measurement comparison and only self-check the table:
+
+```bash
+./stock-thermistor-check.py --observed ""
+```
+
+The defaults match the current table:
+
+```bash
+./stock-thermistor-check.py \
+  --pullup-resistor 4700 \
+  --inline-resistor 100000 \
+  --r25 100000 \
+  --beta 4300 \
+  --reference-temp 25
+```
+
+The fit report includes these model families:
+
+- Current inputs: `R25=100000`, `beta=4300`, `parallel=100000`.
+- Fit beta only while keeping `R25` and the parallel resistor fixed.
+- Fit `R25` and beta while keeping the parallel resistor fixed.
+- Fit the parallel resistor only while keeping `R25` and beta fixed.
+- Fit beta and the parallel resistor while keeping `R25` fixed.
+- Fit `R25`, beta, and the parallel resistor together.
+
+Treat the fitted values as diagnostic hints, not final truth. With only a few
+external measurements, the math can fit probe placement error or heat-block
+gradients just as easily as it can fit the actual thermistor curve.
+
+### Stock 1.4.44 `inline_resistor` Behavior
+
+The stock firmware config name is `inline_resistor`, but the 1.4.44
+source-equivalent code applies parallel-resistor math:
+
+```text
+r_thermistor = (r_total * inline_resistor) / (inline_resistor - r_total)
+r_total = (r_thermistor * inline_resistor) / (r_thermistor + inline_resistor)
+```
+
+So in the stock Elegoo firmware, `inline_resistor: 100000` behaves like a 100K
+resistor in parallel with the thermistor, not like Kalico's series-style
+`inline_resistor` behavior.
+
+### Current Observed Comparison
+
+Using the currently generated `printer.cfg-elegoon` table and the measured pairs:
+
+```text
+Kalico Temp - External Temp
+50          - 44
+100         - 90
+150         - 136
+200         - 180
+250         - 219
+300         - 260
+```
+
+the checker reports that the generated table replays through the stock 1.4.44
+parallel-inline math with a maximum table-vs-stock difference of about
+`0.048 C`. That small difference is from writing rounded resistance values into
+`printer.cfg`.
+
+The same run shows Kalico reporting hotter than the external measurement by
+`6 C` to `40 C`. In table terms, the resistance inferred from the Kalico reading
+is lower than the 100K beta 4300 thermistor plus 100K parallel model expects at
+the externally measured temperatures.
+
+That means the table is internally consistent with the stock firmware formula,
+but the model or measurement does not match the real hotend behavior. Likely
+things to verify next:
+
+- The external thermometer location and thermal coupling.
+- Whether the actual thermistor beta differs from `4300`.
+- Whether the board's parallel resistor differs from `100000` ohms.
+- Whether the heater config's `pullup_resistor` matches the actual pullup.
+- Whether the stock firmware used the same sensor model and resistor settings
+  for this exact board/configuration.
+
+With the six measurements above, the checker currently reports:
+
+```text
+fit beta and parallel; keep R25      R25=100000.0  beta=4680.5  parallel=65041.0
+fit R25, beta, and parallel          R25=93577.4   beta=4626.1  parallel=73393.8
+fit R25 and beta; keep parallel      R25=83955.4   beta=4538.4  parallel=100000.0
+fit beta only; keep R25 and parallel R25=100000.0  beta=4691.2  parallel=100000.0
+```
+
+The important takeaway is that changing only the parallel resistor while leaving
+beta at `4300` does not explain the measured data. The observations mostly ask
+for a steeper thermistor curve, roughly beta `4680..4690`, with an optional lower
+effective parallel resistance if we also fit the shunt value.
+
 ## Interpreting Script Output
 
 The script is intentionally verbose. It prints:
@@ -349,4 +492,3 @@ Temperature sensor configs affect heater safety. After changing this table:
 - Heat slowly and compare against an independent temperature reference if
   possible.
 - Re-run PID or MPC calibration after changing the sensor model.
-
