@@ -31,14 +31,17 @@ M104 S140
 G90
 {if chamber_temperature[initial_no_support_extruder] >35} ; Heat the Chamber
 G28 ; cold Homing
- {if bed_temperature[initial_no_support_extruder] >60}
- M140 S110
- {elsif bed_temperature[initial_no_support_extruder] <60}
- M140 S60
- {endif}
+;(Uncomment if Recirculation Mod is installed) M106 P3 S255 ; Turn on Chamber Fan for Recirulation and Air Filtration
+;(Uncomment if [Recirculation Mod](https://www.printables.com/model/1642188-elegoo-centauri-carbon-double-muffler-w-air-recirc) is installed) M106 P2 S128 ; Turn on Aux Fan to aid Chambber Heating
 G1 Z130 ; Set Buildplate at half height for better heat dissipation
+{if bed_temperature[initial_no_support_extruder] >60}
+M190 S110
+{elsif bed_temperature[initial_no_support_extruder] <60}
+M190 S60
+{endif}
 TEMPERATURE_WAIT SENSOR=box MINIMUM=[chamber_temperature]
 M140 S[bed_temperature_initial_layer_single] ; initiate cooldown for printing
+M106 P2 S0
 {endif}
 M190 S[bed_temperature_initial_layer_single]
 G28 ; home
