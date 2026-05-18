@@ -34,9 +34,20 @@ struct Args {
     #[arg(long, default_value_t = 115200)]
     pub baud: u32,
 
+    // Serial port timeout in seconds (minimum 1)
+    #[arg(long, default_value_t = 2, value_parser = clap::value_parser!(u32).range(1..))]
+    pub timeout: u32,
+
     // Path to the device
     #[arg(required = true)]
     pub device: String,
+
+    /// Use the Elegoo Canvas bootloader dialect (X0303 / E400 Lite):
+    /// skip the initial wait for 'C', send SOH+128 block 0 with a plain
+    /// `name\0size ` body, and retransmit on NAK.  Required for Canvas
+    /// devices; stock Ymodem receivers without this flag.
+    #[arg(long, default_value_t = false)]
+    pub canvas: bool,
 }
 
 fn main() {
@@ -89,7 +100,7 @@ fn main() {
     }
 
     let mut port = serialport::new(&args.device, args.baud)
-        .timeout(std::time::Duration::from_secs(10))
+        .timeout(std::time::Duration::from_secs(args.timeout as u64))
         .dtr_on_open(true)
         .open()
         .expect("Failed to open port");
@@ -156,7 +167,9 @@ fn main() {
 
     let mut cursor = Cursor::new(&mut file_bytes);
 
-    Ymodem::new()
+    let mut ymodem = Ymodem::new();
+    ymodem.canvas = args.canvas;
+    ymodem
         .send(&mut port, &mut cursor, file_name, file_size_in_bytes)
         .unwrap();
 }

@@ -1,3 +1,5 @@
+# Embedded Firmware
+
 The CC uses two different embedded firmware for the bed and the hotend boards with allegedly the same bootloader. The firmwares as of 2025-05-19 are a substitute of Klipper commit `28f60f7e` with a lot of changes.
 
 ## Official update method
@@ -5,7 +7,7 @@ The CC uses two different embedded firmware for the bed and the hotend boards wi
 To update both the hotend and the bed boards, the main firmware attempts to send a file through YModem protocol when the said boards are power cycled during bootup. The firmware files are not encrypted and are stored
 on the `rootfsA` or `rootfsB` partition (whichever is active) in the `/lib/firmware` folder. The hotend firmware is called `upgrade-hotend.bin` and the bed board's is `upgrade-bed.bin`. On firmware 1.1.29 the hotend/bed firmware got moved into the `/app/resources` folder.
 
-To replicate this behaviour outside of elegoo's official software, a [flasher has been developed](https://github.com/suchmememanyskill/OpenCentauri/tree/main/mcu-flasher) that is able to push new firmware.
+To replicate this behaviour outside of Elegoo's official software, a [flasher has been developed](https://github.com/suchmememanyskill/OpenCentauri/tree/main/mcu-flasher) that is able to push new firmware.
 
 ## STM32 flash structure
 
@@ -19,7 +21,7 @@ The firmware upgrade files include the 16Kb of unknown (mostly 0xFF with some ra
 
 ## Flashing custom firmware (mcu-flasher)
 
-Using [mcu-flasher](https://github.com/suchmememanyskill/OpenCentauri/tree/main/mcu-flasher) a custom firwmare can be flashed through the official elegoo bootloader. Run the program with `-h` for more information.
+Using [mcu-flasher](https://github.com/OpenCentauri/OpenCentauri/tree/main/mcu-flasher) a custom firmware can be flashed through the official Elegoo bootloader. Run the program with `-h` for more information.
 
 ## Flashing custom firmware (STM32CubeProgrammer)
 
@@ -39,7 +41,7 @@ The hotend and bed boards come with the readout protection enabled by default. A
 1. Remove the hotend board (only the main one, the supplementary board is not needed).
 1. On the back side, there is a 2x4 copper pad row. Short the `3.3v` and the `BOOT` with a tweezer
     - ![img](assets/HotendFlashPinShort.png){ width="400" }
-1. Connect it to your PC via an USB-C cable (no adapter is needed) while shorting the pins
+1. Connect it to your PC via a USB-C cable (no adapter is needed) while shorting the pins
 1. Keep it shorted for ~2 seconds, then you can let go
 1. Open STM32CubeProgrammer software
 1. On the top right, select the USB mode. If you shorted the pins correctly, it should find the hotend board. if not, you'll get a "No DFU detected".
@@ -50,7 +52,7 @@ The hotend and bed boards come with the readout protection enabled by default. A
 
 ### Bed
 
-1. Either via an added connector or solder jumper wires directly to the right side serial pins to an USB-TTL transciever as
+1. Either via an added connector or solder jumper wires directly to the right side serial pins to a USB-TTL transceiver as
 
     - |Bed Board|USB-TTL|
     |--|--|

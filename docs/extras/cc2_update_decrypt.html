@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC2 — Package Unpacker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #4051b5;
+            --accent-dark: #3949a3;
+            --accent-alpha: rgba(64, 81, 181, 0.08);
+            --on-accent: #fff;
+            --surface: #fff;
+            --on-surface: rgba(0,0,0,0.87);
+            --on-surface-medium: rgba(0,0,0,0.6);
+            --outline: rgba(0,0,0,0.38);
+            --error: #f44336;
+            --success: #4caf50;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--on-surface);
+            display: flex;
+            justify-content: center;
+            padding-top: 16px;
+            min-height: 100vh;
+        }
+
+        .container { width: 100%; max-width: 600px; }
+
+        /* Card Row */
+        .row {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        .row-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--on-surface-medium);
+            margin-bottom: 16px;
+        }
+
+        /* File Picker */
+        .file-field {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .file-field label.file-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--surface);
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .file-field label.file-btn:hover { background: var(--accent-alpha); }
+        .file-field .file-name {
+            font-size: 14px;
+            color: var(--on-surface-medium);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
+        }
+        .file-field input[type="file"] { display: none; }
+
+        /* Full-page drop overlay */
+        .drop-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(64, 81, 181, 0.12);
+            backdrop-filter: blur(4px);
+            z-index: 900;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .drop-overlay.active { display: flex; }
+        .drop-overlay-inner {
+            border: 3px dashed var(--accent);
+            border-radius: 16px;
+            padding: 48px 64px;
+            text-align: center;
+            background: rgba(255,255,255,0.92);
+            box-shadow: 0 8px 32px rgba(64,81,181,0.18);
+        }
+        .drop-overlay-inner .material-icons {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+        .drop-overlay-inner span:last-child {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        /* Info table */
+        .info-table {
+            margin-top: 16px;
+            width: 100%;
+            border-collapse: collapse;
+            display: none;
+        }
+        .info-table.visible { display: table; }
+        .info-table td {
+            padding: 6px 8px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            vertical-align: top;
+        }
+        .info-table td:first-child {
+            font-weight: 500;
+            color: var(--on-surface-medium);
+            white-space: nowrap;
+            width: 130px;
+        }
+        .info-table td:last-child {
+            font-family: 'Roboto Mono', monospace;
+            word-break: break-all;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--accent);
+            color: var(--on-accent);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.25px;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(64,81,181,0.3);
+        }
+        .btn:hover { background: var(--accent-dark); box-shadow: 0 4px 8px rgba(64,81,181,0.4); }
+        .btn:active { background: #303f9f; }
+        .btn:disabled {
+            background: rgba(0,0,0,0.12);
+            color: rgba(0,0,0,0.38);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Progress */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(64,81,181,0.12);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 16px;
+            display: none;
+        }
+        .progress-bar.active { display: block; }
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.15s linear;
+            width: 0%;
+        }
+
+        /* Snackbar */
+        .snackbar {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #323232;
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            max-width: 90vw;
+            text-align: center;
+        }
+        .snackbar.show { transform: translateX(-50%) translateY(0); }
+        .snackbar.error { background: #d32f2f; }
+        .snackbar.success { background: #388e3c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Row 1: File Picker -->
+        <div class="row">
+            <div class="row-label">Encrypted Package</div>
+            <div class="file-field">
+                <label class="file-btn" for="fileInput">
+                    <span class="material-icons" style="font-size:20px">upload_file</span>
+                    Choose .sig
+                </label>
+                <span class="file-name" id="fileName">No file selected</span>
+                <input type="file" id="fileInput" accept=".sig">
+            </div>
+            <table class="info-table" id="infoTable">
+                <tr><td>Filename</td><td id="infoFilename">—</td></tr>
+                <tr><td>Version</td><td id="infoVersion">—</td></tr>
+                <tr><td>Encrypted</td><td id="infoEncrypted">—</td></tr>
+                <tr><td>File size</td><td id="infoFilesize">—</td></tr>
+            </table>
+        </div>
+
+        <!-- Row 2: Unpack -->
+        <div class="row">
+            <button class="btn" id="unpackBtn">Unpack</button>
+            <div class="progress-bar" id="progressBar">
+                <div class="fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="drop-overlay" id="dropOverlay">
+        <div class="drop-overlay-inner">
+            <span class="material-icons">cloud_upload</span>
+            <span>Drop .sig file to select</span>
+        </div>
+    </div>
+
+    <div class="snackbar" id="snackbar"></div>
+
+    <script>
+    /* ===== Constants ===== */
+    const AES_KEY = new Uint8Array([
+        0xD1,0x4E,0x15,0x08,0x43,0xE9,0xD1,0x68,0x93,0x89,0x07,0x56,0xD8,0xF7,0x7F,0x67,
+        0x4E,0x16,0x1A,0x8B,0xEB,0xB8,0xF7,0x20,0x73,0x7E,0xE6,0x0E,0x7F,0x8C,0x7E,0x68
+    ]);
+
+    /* ===== Utility ===== */
+    function bytesToHex(bytes) {
+        return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function formatBytes(n) {
+        if (n < 1024) return n + ' B';
+        if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
+        return (n / 1048576).toFixed(2) + ' MB';
+    }
+
+    /* ===== AES-256-CBC decryption (no padding, via Web Crypto) ===== */
+    async function decryptAesCbcNoPad(keyBytes, ivBytes, ciphertext) {
+        const cryptoKey = await crypto.subtle.importKey(
+            'raw', keyBytes, { name: 'AES-CBC' }, false, ['encrypt', 'decrypt']
+        );
+        const lastBlock = ciphertext.slice(ciphertext.length - 16);
+        const paddingPlain = new Uint8Array(16).fill(16);
+
+        const encPadResult = await crypto.subtle.encrypt(
+            { name: 'AES-CBC', iv: lastBlock }, cryptoKey, paddingPlain
+        );
+        const encPadBlock = new Uint8Array(encPadResult).slice(0, 16);
+
+        const combined = new Uint8Array(ciphertext.length + 16);
+        combined.set(ciphertext);
+        combined.set(encPadBlock, ciphertext.length);
+
+        const decrypted = await crypto.subtle.decrypt(
+            { name: 'AES-CBC', iv: ivBytes }, cryptoKey, combined
+        );
+        return new Uint8Array(decrypted);
+    }
+
+    /* ===== Header Parser ===== */
+    function parseHeader(headerData) {
+        if (headerData.length < 512) throw new Error('Header must be at least 512 bytes');
+        const dv = new DataView(headerData.buffer, headerData.byteOffset, headerData.byteLength);
+
+        const magic = dv.getUint32(0, false); // big-endian "ELEG"
+        if (magic !== 0x454C4547) throw new Error('Invalid file: missing ELEG magic (' + magic.toString(16) + ')');
+
+        const packageType = dv.getUint8(0x04);
+        const isEncrypted = (packageType & 0x80) !== 0;
+        const pkgType = packageType & 0x7F;
+
+        const versionMajor = dv.getUint8(0x05);
+        const versionMinor = dv.getUint8(0x06);
+
+        // 64-bit little-endian reads (safe for files < 2^53 bytes)
+        const filesize = Number(dv.getBigUint64(0x08, true));
+
+        // Filename: 48 bytes null-terminated ASCII at 0x10
+        let filename = '';
+        for (let i = 0x10; i < 0x40; i++) {
+            const c = headerData[i];
+            if (c === 0) break;
+            filename += String.fromCharCode(c);
+        }
+
+        const encryptOffset = Number(dv.getBigUint64(0x90, true));
+        const encryptLength = Number(dv.getBigUint64(0x98, true));
+        const iv = headerData.slice(0xA0, 0xB0);
+        const encryptFilesize = Number(dv.getBigUint64(0xB0, true));
+        const sha256Hash = bytesToHex(headerData.slice(0xE0, 0x100));
+
+        return {
+            pkgType, isEncrypted,
+            version: versionMajor + '.' + versionMinor,
+            filesize, filename,
+            encryptOffset, encryptLength,
+            iv, encryptFilesize, sha256: sha256Hash
+        };
+    }
+
+    /* ===== UI Helpers ===== */
+    let snackTimer = null;
+    function showSnackbar(msg, type) {
+        const el = document.getElementById('snackbar');
+        el.textContent = msg;
+        el.className = 'snackbar show' + (type ? ' ' + type : '');
+        clearTimeout(snackTimer);
+        snackTimer = setTimeout(() => el.className = 'snackbar', 4000);
+    }
+
+    function setProgress(pct) {
+        const bar = document.getElementById('progressBar');
+        const fill = document.getElementById('progressFill');
+        bar.classList.add('active');
+        fill.style.width = Math.min(100, pct * 100).toFixed(1) + '%';
+    }
+
+    function hideProgress() {
+        document.getElementById('progressBar').classList.remove('active');
+        document.getElementById('progressFill').style.width = '0%';
+    }
+
+    function setButtonBusy(busy) {
+        const btn = document.getElementById('unpackBtn');
+        btn.disabled = busy;
+        btn.textContent = busy ? 'Processing\u2026' : 'Unpack';
+    }
+
+    function showInfo(header) {
+        document.getElementById('infoFilename').textContent  = header.filename || '—';
+        document.getElementById('infoVersion').textContent    = header.version;
+        document.getElementById('infoEncrypted').textContent  = header.isEncrypted ? 'Yes' : 'No';
+        document.getElementById('infoFilesize').textContent   = formatBytes(header.filesize);
+        document.getElementById('infoTable').classList.add('visible');
+    }
+
+    /* ===== Full-page Drag & Drop ===== */
+    const overlay = document.getElementById('dropOverlay');
+    let dragCounter = 0;
+    document.addEventListener('dragenter', e => {
+        e.preventDefault();
+        dragCounter++;
+        overlay.classList.add('active');
+    });
+    document.addEventListener('dragover', e => e.preventDefault());
+    document.addEventListener('dragleave', e => {
+        e.preventDefault();
+        dragCounter--;
+        if (dragCounter <= 0) { dragCounter = 0; overlay.classList.remove('active'); }
+    });
+    document.addEventListener('drop', e => {
+        e.preventDefault();
+        dragCounter = 0;
+        overlay.classList.remove('active');
+        const file = e.dataTransfer.files[0];
+        if (file && file.name.toLowerCase().endsWith('.sig')) {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.files = e.dataTransfer.files;
+            fileInput.dispatchEvent(new Event('change'));
+        } else {
+            showSnackbar('Please drop a .sig file.', 'error');
+        }
+    });
+
+    /* ===== File change — preview header ===== */
+    document.getElementById('fileInput').addEventListener('change', async function() {
+        const table = document.getElementById('infoTable');
+        table.classList.remove('visible');
+
+        if (!this.files.length) {
+            document.getElementById('fileName').textContent = 'No file selected';
+            return;
+        }
+        document.getElementById('fileName').textContent = this.files[0].name;
+
+        try {
+            const buf = await this.files[0].slice(0, 512).arrayBuffer();
+            const header = parseHeader(new Uint8Array(buf));
+            showInfo(header);
+        } catch (_) { /* silently ignore preview errors */ }
+    });
+
+    /* ===== Main Unpack ===== */
+    document.getElementById('unpackBtn').addEventListener('click', async () => {
+        const fileEl = document.getElementById('fileInput');
+        if (!fileEl.files.length) { showSnackbar('Please select a .sig file.', 'error'); return; }
+
+        setButtonBusy(true);
+        setProgress(0);
+
+        try {
+            const file = fileEl.files[0];
+            const raw = new Uint8Array(await file.arrayBuffer());
+
+            /* --- Parse header --- */
+            const headerData = raw.slice(0, 512);
+            const encryptedData = raw.slice(512);
+            const header = parseHeader(headerData);
+            showInfo(header);
+
+            setProgress(0.20);
+
+            let output;
+
+            if (!header.isEncrypted) {
+                showSnackbar('File is not encrypted, extracting\u2026');
+                output = encryptedData.slice(0, header.filesize);
+            } else {
+                showSnackbar('Decrypting with AES-256-CBC\u2026');
+                const decrypted = await decryptAesCbcNoPad(AES_KEY, header.iv, encryptedData);
+                setProgress(0.70);
+
+                // Trim padding
+                output = header.filesize < decrypted.length
+                    ? decrypted.slice(0, header.filesize)
+                    : decrypted;
+            }
+
+            setProgress(0.90);
+
+            /* --- Determine output filename --- */
+            let outputName = file.name;
+            if (outputName.toLowerCase().endsWith('.sig')) {
+                outputName = outputName.slice(0, -4);
+            } else {
+                outputName = outputName + '.decrypted';
+            }
+
+            /* --- Download --- */
+            const blob = new Blob([output], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = outputName;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+
+            setProgress(1);
+            showSnackbar('Done — ' + outputName + ' downloaded!', 'success');
+        } catch (err) {
+            console.error(err);
+            showSnackbar('Error: ' + err.message, 'error');
+        } finally {
+            setButtonBusy(false);
+            setTimeout(hideProgress, 600);
+        }
+    });
+    </script>
+</body>
+</html>

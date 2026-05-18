@@ -1,3 +1,5 @@
+# Partitions
+
 The Centauri Carbon uses an A/B partition scheme for updates. When an update is performed, it will be written to the inactive partition and will be marked as active, so the next boot will use this previously unused partition. The current A/B slot is stored in the `env` partition.
 
 The Centauri Carbon contains the following partitions:

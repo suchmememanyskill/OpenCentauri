@@ -80,6 +80,11 @@ pub struct Ymodem {
     /// in the start frame (Ex. 12345V becomes 12345)
     pub ignore_non_digits_on_file_size: bool,
 
+    /// Elegoo Canvas bootloader dialect (X0303/E400 Lite). Bootloader
+    /// does NOT emit 'C' at session start, expects SOH+128 block 0 with
+    /// a plain `name\0size ` body, and uses NAK for retransmit requests.
+    pub canvas: bool,
+
     errors: u32,
     initial_errors: u32,
 }
@@ -96,6 +101,7 @@ impl Ymodem {
             errors: 0,
             initial_errors: 0,
             ignore_non_digits_on_file_size: false,
+            canvas: false,
         }
     }
 
@@ -133,6 +139,10 @@ impl Ymodem {
     }
 
     fn start_send<D: Read + Write>(&mut self, dev: &mut D) -> Result<()> {
+        if self.canvas {
+            dbg!("Canvas mode: skipping wait for 'C'; bootloader is silent at session start");
+            return Ok(());
+        }
         let mut cancels = 0u32;
         loop {
             match (get_byte_timeout(dev))? {
@@ -180,44 +190,68 @@ impl Ymodem {
         file_size_in_bytes: u64,
         package_count: u32,
     ) -> Result<()> {
-        let mut buff = vec![0x00; 1024 as usize + 3];
-        buff[0] = STX;
-        buff[1] = 0x00;
-        buff[2] = 0xFF;
+        let mut buff = if self.canvas {
+            // Canvas bootloader: SOH + 128-byte block 0, `name\0size ` body,
+            // null-padded.  No mtime/package-count fields (parser only reads
+            // name into a 64-byte scratch and size into a 16-byte scratch).
+            let mut b = vec![0u8; 128 + 3];
+            b[0] = SOH;
+            b[1] = 0x00;
+            b[2] = 0xFF;
+            let mut idx = 3usize;
+            for byte in file_name.as_bytes() {
+                b[idx] = *byte;
+                idx += 1;
+            }
+            b[idx] = 0;
+            idx += 1;
+            for byte in format!("{}", file_size_in_bytes).as_bytes() {
+                b[idx] = *byte;
+                idx += 1;
+            }
+            b[idx] = b' ';
+            b
+        } else {
+            let mut b = vec![0x00; 1024 as usize + 3];
+            b[0] = STX;
+            b[1] = 0x00;
+            b[2] = 0xFF;
 
-        let mut curr_buff_idx = 3;
-        for byte in file_name.as_bytes() {
-            buff[curr_buff_idx] = *byte;
+            let mut curr_buff_idx = 3;
+            for byte in file_name.as_bytes() {
+                b[curr_buff_idx] = *byte;
+                curr_buff_idx += 1;
+            }
+
+            // We leave one 0 to indicate the name ends here
             curr_buff_idx += 1;
-        }
 
-        // We leave one 0 to indicate the name ends here
-        curr_buff_idx += 1;
+            println!("{}", file_size_in_bytes);
 
-        println!("{}", file_size_in_bytes);
+            for byte in format!("{}", file_size_in_bytes).as_bytes() {
+                b[curr_buff_idx] = *byte;
+                curr_buff_idx += 1;
+            }
 
-        for byte in format!("{}", file_size_in_bytes).as_bytes() {
-            buff[curr_buff_idx] = *byte;
+            b[curr_buff_idx] = ' ' as u8;
             curr_buff_idx += 1;
-        }
 
-        buff[curr_buff_idx] = ' ' as u8;
-        curr_buff_idx += 1;
+            for byte in "15016031235".as_bytes() {
+                b[curr_buff_idx] = *byte;
+                curr_buff_idx += 1;
+            }
 
-        for byte in "15016031235".as_bytes() {
-            buff[curr_buff_idx] = *byte;
+            b[curr_buff_idx] = ' ' as u8;
             curr_buff_idx += 1;
-        }
 
-        buff[curr_buff_idx] = ' ' as u8;
-        curr_buff_idx += 1;
+            for byte in format!("{:o}", package_count).as_bytes() {
+                b[curr_buff_idx] = *byte;
+                curr_buff_idx += 1;
+            }
 
-        for byte in format!("{:o}", package_count).as_bytes() {
-            buff[curr_buff_idx] = *byte;
-            curr_buff_idx += 1;
-        }
-
-        buff[curr_buff_idx] = ' ' as u8;
+            b[curr_buff_idx] = ' ' as u8;
+            b
+        };
 
         let crc = calc_crc(&buff[3..]);
         buff.push(((crc >> 8) & 0xFF) as u8);
@@ -320,30 +354,35 @@ impl Ymodem {
             buff.push((crc & 0xFF) as u8);
 
             println!("Sending block {}", block_num);
-            (dev.write_all(&buff))?;
-            (dev.flush())?;
 
-            match (get_byte_timeout(dev))? {
-                Some(c) => {
-                    if c == ACK {
+            let mut block_tries = 0u32;
+            loop {
+                (dev.write_all(&buff))?;
+                (dev.flush())?;
+
+                match (get_byte_timeout(dev))? {
+                    Some(ACK) => {
                         dbg!("Received ACK for block {}", block_num);
-                        continue;
-                    } else {
+                        break;
+                    }
+                    Some(NAK) if self.canvas => {
+                        warn!("NAK for block {}, retransmitting", block_num);
+                    }
+                    Some(c) => {
                         warn!("Expected ACK, got {}", c);
                     }
-                    // TODO handle CAN bytes
+                    None => warn!("Timeout waiting for ACK for block {}", block_num),
                 }
-                None => warn!("Timeout waiting for ACK for block {}", block_num),
-            }
 
-            self.errors += 1;
-
-            if self.errors >= self.max_errors {
-                eprint!(
-                    "Exhausted max retries ({}) while sending block {} in YMODEM transfer",
-                    self.max_errors, block_num
-                );
-                return Err(Error::ExhaustedRetries);
+                block_tries += 1;
+                self.errors += 1;
+                if block_tries >= 10 || self.errors >= self.max_errors {
+                    eprint!(
+                        "Exhausted max retries ({}) while sending block {} in YMODEM transfer",
+                        self.max_errors, block_num
+                    );
+                    return Err(Error::ExhaustedRetries);
+                }
             }
         }
     }
@@ -401,32 +440,6 @@ impl Ymodem {
                 return Err(Error::ExhaustedRetries);
             }
         }
-
-        loop {
-            match (get_byte_timeout(dev))? {
-                Some(c) => {
-                    if c == CRC {
-                        info!("YMODEM transmission successful");
-                        break;
-                    } else {
-                        log::warn!("Expected ACK, got {}", c);
-                    }
-                }
-                None => warn!("Timeout waiting for ACK for EOT"),
-            }
-
-            self.errors += 1;
-
-            if self.errors >= self.max_errors {
-                eprint!(
-                    "Exhausted max retries ({}) while waiting for ACK for EOT",
-                    self.max_errors
-                );
-                return Err(Error::ExhaustedRetries);
-            }
-        }
-
-        self.send_end_frame(dev)?;
 
         Ok(())
     }

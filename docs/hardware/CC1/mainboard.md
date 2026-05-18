@@ -1,19 +1,34 @@
+## CC1 Mainboard
+
 Metric|Value
 ---|---
 SoC|AllWinner R528-S3
 Memory|128 MB in-chip
 Storage|8gb eMMC
 Stepper drivers|tmc2209
+Part Number|EF-M2-V1.2.045 after 2/2026
+	   |EF-M2-V1.2.084 before 2/2026
 
+
+### EF-M2-V1.2.045 Mainboard
 Front|Back
 ---|---
 ![Mainboard image](./assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](./assets/centauri-mobo-back.jpg){ width="800" }
 Credit to the Elegoo discord.|Credit to thijskunst on the OpenCentauri Discord.
 
-![Mainboard diagram](./assets/cc1_diagram.jpg){ width="800" }
-
+### EF-M2-V1.2.084 Mainboard
+![Mainboard front image](./assets/Centauri-mobo-m084.jpg){ width="750" }
+/// caption
+February 2024 EF-M2-V1.2.084 mainboard with zoomed view of alternate QUETEL FCU760K-NL WiFi chip on right.
+Credit to briantdaniel on the OpenCentauri Discord.
+///
 
 ## Mainboard Pins
+
+![Mainboard diagram](./assets/cc1_diagram.svg){ width="800" }
+/// caption
+Credit to Morgyn on the OpenCentauri Discord.
+///
 
 ### 24V input
 Type: 2-Pin Barrier terminal with 9.6mm pin pitch
@@ -197,7 +212,7 @@ Type: JST-**XHB**-2P
 |2| + | +24V||
 
 
-### Bed temperature sensoor "BED-T"
+### Bed temperature sensor "BED-T"
 Type: JST-**XHB**-2P
 
 |pin nr|marking|Function|remarks|

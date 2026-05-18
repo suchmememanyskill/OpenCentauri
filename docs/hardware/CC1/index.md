@@ -1,3 +1,5 @@
+# CC1 Hardware
+
 <div class="grid cards" markdown>
 
 -   Centauri Carbon Printer specifications:
@@ -10,6 +12,9 @@
     Max power usage|1100W@220V, 350W@110V
     Weight|17.5kg
     Machine size|398x404x490mm
+    /// caption
+    CC1 model and FDM-optimized replacement parts available through the [OpenCentauri CAD repository](https://github.com/OpenCentauri/cad)
+    ///
 
 -   <iframe src="https://smith150.autodesk360.com/shares/public/SH286ddQT78850c0d8a46fdb9127d46ff4ba?mode=embed" width="800" height="600" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
 </div>

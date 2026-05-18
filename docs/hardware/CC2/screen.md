@@ -1,3 +1,5 @@
+# CC2 Screen
+
 ![Screen front](./assets/cc2_screen.jpg){ width="600" }
 /// caption
 Credit to keefe826 on the OpenCentauri Discord.

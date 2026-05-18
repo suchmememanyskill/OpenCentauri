@@ -2,20 +2,29 @@
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-band-aid:{ .lg .middle } __Patched firmware__
+-   :material-tools:{ .lg .middle } __Replacement Parts__
 
     ---
 
-    [:octicons-arrow-right-24: Install OpenCentauri patched firmware](../patched-firmware/index.md)
+    [:octicons-arrow-right-24: Download Printable Replacement Parts](./optimized_parts.md)
 
-    Install a patched version of Elegoo's firmware that contains fixes for bugs and unwanted behaviour. No extra hardware required!
+    Download FDM-optimized versions of the official Elegoo parts.
 
--   :material-tools:{ .lg .middle } __Klipper via mainboard replacement__
+-   :octicons-arrow-down-24:{ .lg .middle } __Print Replacement Parts__
 
     ---
 
-    [:octicons-arrow-right-24: Set up a replacement mainboard](../klipper-via-mainboard-replacement/index.md)
+    [:octicons-arrow-right-24: Download Printable Mods and Replacement Parts](./printable_mods.md)
 
-    Run full klipper by replacing your mainboard using off-the-shelf parts. 
+    Download community-designed printable mods
+
+-   :octicons-light-bulb-24:{ .lg .middle } __Light Mods__
+
+    ---
+
+    [:octicons-arrow-right-24: LED and Lighting modifications](./light_mods.md)
+
+    Improve visibility with toolhead mounted lighting directly on the OEM supplementary board.
+
 
 </div>

@@ -521,7 +521,7 @@ Updates the printer's display name.
 ```
 
 #### Set Print Speed
-Update the print speed percentage for the current print job. You can find the preset speed values on the [Software Page](/OpenCentauri/software/#speed-profiles).
+Update the print speed percentage for the current print job. You can find the preset speed values on the [Software Page](index.md#speed-profiles).
 
 **Request:**
 ```json

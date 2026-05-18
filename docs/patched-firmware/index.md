@@ -2,15 +2,19 @@
 
 This section describes the installation process and features of OpenCentauri's patched firmware.
 
-This firmware is based on Elegoo's 1.1.40 firmware, with patches applied to patch out unwanted behaviour and bugs.
+This firmware is based on Elegoo's 1.1.40 firmware, with patches that address unwanted behavior and bugs.
 
-If you find any bugs with this firmware, or want to suggest new features, please do so on the [cc-fw-tools](https://github.com/OpenCentauri/cc-fw-tools){target="_blank"} repository. Not everything is possible within the limits of patching existing firmware, specifically large features or overhauls are unattainable.
+If you find bugs or want to suggest new features, please use the [cc-fw-tools](https://github.com/OpenCentauri/cc-fw-tools){target="_blank"} repository. Not everything is possible within the limits of patching existing firmware, especially large features or full overhauls.
 
-This project is in a beta state currently, expect some issues!
+This project is currently in beta, so expect some issues.
 
-If you need any support, feel free to [join the discord](https://discord.gg/t6Cft3wNJ3)
+If you need support, feel free to [join the Discord](https://discord.gg/t6Cft3wNJ3).
 
 If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/opencentauri) :heart:! If spending money isn't your thing, we also have a [Makerworld page](https://makerworld.com/en/models/1924078-opencentauri-logo#profileId-2064746) where you can throw some boosts towards!
+
+!!! warning "**Looking for Full Klipper/COSMOS?**"
+
+    This is regular OpenCentauri patched from official Elegoo firmware, for Beta full Klipper/Kalico firmwarewith COSMOS go [here](../klipper-conversion/cosmos/cosmos.md)
 
 ## Features (as of v0.3.0)
 
@@ -31,7 +35,7 @@ If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/op
 - Filament usage is reported via the API 
 - Connectivity checks are blocked (web traffic issue)
 - Official OTA updates have been replaced by OpenCentauri OTA updates
-- Support for usb ethernet adapters
+- Support for USB Ethernet adapters
 - New gcode commands: 
     - `M8212` to turn off the chamber light
     - `M8213` to turn on the chamber light
@@ -67,11 +71,11 @@ If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/op
 
 You should now be greeted by the OpenCentauri splash screen :tada:
 
-This new firmware goes well with [modified machine start and end gcode in OrcaSlicer](./modified_start_end_machine_gcode.md). Specifically to center the purge line and to turn on the light of the chamber after starting a print. Installing this is optional but reccomended.
+This firmware works well with [modified machine start and end gcode in OrcaSlicer](./modified_start_end_machine_gcode.md), which centers the purge line and turns on the chamber light at print start. Installing this is optional but recommended.
 
 ## Update
 
-Either accept OTA updates from the device itself, or follow the steps again in the [Installation section](#installation)
+You can either accept OTA updates directly on the device or repeat the steps in the [Installation section](#installation).
 
 ## Uninstall
 

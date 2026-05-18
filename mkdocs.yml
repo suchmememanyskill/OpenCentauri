@@ -29,12 +29,15 @@ nav:
     - CC1:
       - Hardware: hardware/CC1/index.md
       - Mainboard: hardware/CC1/mainboard.md
+      - FEL & UART Setup: hardware/CC1/fel-uart-setup.md
       - EMMC Tap Points: hardware/CC1/emmc-tapping.md
       - Toolhead: hardware/CC1/toolhead.md
       - Camera: hardware/CC1/camera.md
       - Bed: hardware/CC1/bed.md
       - Screen: hardware/CC1/screen.md
       - Miscellaneous: hardware/CC1/misc.md
+      - CANVAS: hardware/CC1/CANVAS.md
+      - Official Documentation: hardware/CC1/documentation.md
     - CC2:
       - Hardware: hardware/CC2/index.md
       - Mainboard: hardware/CC2/mainboard.md
@@ -42,28 +45,38 @@ nav:
       - Screen: hardware/CC2/screen.md
       - Miscellaneous: hardware/CC2/misc.md
       - CANVAS: hardware/CC2/CANVAS.md
-
-  - Software: 
+      - Official Documentation: hardware/CC2/documentation.md
+  - Official Firmware: 
     - Software: software/index.md
     - Partitions: software/partitions.md
     - Updates: software/updates.md
+    - Updates (CC2): software/updates-cc2.md
     - API: software/api.md
     - Custom gcode: software/custom-gcode.md
     - Embedded Firmware: software/embedded-firmware.md
     - FEL: software/FEL-mode.md
-  - Mods:
-    - Machine Mods: mods/machine_mods.md
-    - Printable Mods: mods/printable_mods.md
-    - Light Mods: mods/light_mods.md
-    - Klipper via mainboard replacement:
-      - Main: klipper-via-mainboard-replacement/index.md
-      - Recognize Hotend: klipper-via-mainboard-replacement/recognize-hotend.md
-      - Printer Config: klipper-via-mainboard-replacement/printer-config.md
-      - Mainsail Config: klipper-via-mainboard-replacement/mainsail-config.md
-      - UDEV Setup: klipper-via-mainboard-replacement/udev-setup.md
+  - Patched Firmware:
     - Patched firmware:
       - Patched firmware: patched-firmware/index.md
       - Modified slicer machine gcode: patched-firmware/modified_start_end_machine_gcode.md
+  - Klipper Conversion:
+    - Klipper Conversion Methods: klipper-conversion/index.md
+    - Klipper via mainboard replacement:
+      - Documentation: klipper-conversion/klipper-via-mainboard-replacement/index.md
+    - Klipper on official mainboard (COSMOS):
+      - About COSMOS: klipper-conversion/cosmos/cosmos.md
+      - Install: klipper-conversion/cosmos/install.md
+      - Features: klipper-conversion/cosmos/features.md
+  - Mods:
+    - Machine Mods: mods/machine_mods.md
+    - Printable Mods: 
+      - FDM-Optimized replacement parts: mods/optimized_parts.md
+      - Printable Mods: mods/printable_mods.md
+    - Light Mods: mods/light_mods.md
+
+
+
+
 theme:
   name: material
   features:
