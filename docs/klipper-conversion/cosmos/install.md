@@ -61,8 +61,7 @@ The process for installing COSMOS is pretty much the same as for installing patc
     If you are using OrcaSlicer, don't forget to change the connectivity settings. New settings are:
 
     - Host Type: Octo/Klipper
-    - Hostname, IP or URL: ip.of.your.printer:7125
-    - Device UI: ip.of.your.printer
+    - Hostname, IP or URL: ip.of.your.printer
 
 ## Uninstall
 
