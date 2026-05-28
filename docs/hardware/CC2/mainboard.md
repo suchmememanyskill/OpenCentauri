@@ -7,15 +7,10 @@ Memory|128 MB in-chip
 Storage|8gb eMMC
 Stepper drivers|tmc2209
 
+Front|Back
+---|---
+![Mainboard image](./assets/cc2_mainboard.jpg){ width="800" }|![Mainboard back image](./assets/cc2_mainboard2.jpg){ width="800" }
 
-![Mainboard image](./assets/cc2_mainboard.jpg){ width="800" }
-/// caption
-Credit to keefe826 on the OpenCentauri Discord.
-///
-![Mainboard diagram](./assets/cc2_diagram.jpg){ width="800" }
-/// caption
-Credit to Savion on the OpenCentauri Discord.
-///
 
 ## Mainboard Pins
 

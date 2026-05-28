@@ -74,6 +74,10 @@ Read the [custom features](./features.md) offered by COSMOS.
 
     Maybe, but developer efforts are focused on the CC1 for the time being
 
+??? question "**Will COSMOS work with the Canvas upgrade for the Centauri Carbon 1?**"
+
+    Not yet, but we are working on it!
+
 ??? question "**Is COSMOS related to the OpenCentauri board?**"
 
     No, the OpenCentauri board is another ongoing project to create a much more powerful drop in mainboard replacement for the Centauri Carbon. 

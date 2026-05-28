@@ -42,6 +42,8 @@ nav:
       - Hardware: hardware/CC2/index.md
       - Mainboard: hardware/CC2/mainboard.md
       - Toolhead: hardware/CC2/toolhead.md
+      - Camera: hardware/CC2/camera.md
+      - Bed: hardware/CC2/bed.md
       - Screen: hardware/CC2/screen.md
       - Miscellaneous: hardware/CC2/misc.md
       - CANVAS: hardware/CC2/CANVAS.md

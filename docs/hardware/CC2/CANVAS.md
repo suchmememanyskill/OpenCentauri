@@ -16,14 +16,12 @@ The CANVAS core module mounts on the top frame insert of the CC2 alongside the t
 
 
 ![CANVAS internals](./assets/canvas_internals.jpg){ width="800" }
-
-![CANVAS internals](./assets/canvas_internals3.jpg){ width="800" }
 /// caption
-CANVAS internals. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+CANVAS internals.
 ///
 ![CANVAS motors](./assets/canvas_motors.jpg){ width="800" }
 /// caption
-CANVAS motors. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+CANVAS motors.
 ///
 
 ### CANVAS Mainboard
@@ -38,9 +36,12 @@ Product|
 Manufacturer|GigaDevice Semicon Beijing
 Stepper driver|4xAT8833 (DRV8833 clone)
 
-![CANVAS Mainboard](./assets/canvas_mainboard.jpg){ width="800" }
+
+Front|Back
+---|---
+![CANVAS Mainboard](./assets/canvas_mainboard.jpg){ width="800" }|![CANVAS Mainboard back image](./assets/canvas_mainboard_back.jpg){ width="800" }
 /// caption
-CANVAS Mainboard. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+CANVAS Mainboard. Credit to Savion on the OpenCentauri Discord.
 ///
 
 ### RFID Board
@@ -50,13 +51,11 @@ An RFID reader board is present in the front of the shell to read filament infor
 /// caption
 CANVAS RFID Board. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
 ///
-![CANVAS RFID connection](./assets/canvas_internals2.jpg){ width="400" }
-/// caption
-RFID board seen connected to the rear of the CANVAS mainboard. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
-///
 
 ### Filament Detector Boards
-Filament detector boards are sent along the filament path for each channel and appear to use Hall effect sensors similarly to the IFS
+Filament detector boards are sent along the filament path for each channel and appear to use Hall effect sensors similarly to the IFS, seen above mouted alongside motors. The sensor is visible on the rear of the board.
+
+![rear photo of canvas filament detector boards](./assets/hall2.jpg){ width="400" }
 
 
 ## Spool Holders

@@ -4,17 +4,25 @@
 
 Metric|Value
 ---|---
-Auxiliary fan type|12032 radial fan, 4 pin (tach+5V PWM)
+Auxiliary fan type|Custom 12032 radial fan, 4 pin (tach+5V PWM)
 Auxiliary fan manufacturer| Shenzhen Hua Xinrong Plastic Electronics Co., Ltd
 Auxiliary fan P/N|EFC-12J24H
 Auxiliary fan power|0.8A @ 24V
 Auxiliary fan speed|
 
-The CC2 Aux fan is mounted on the left panel with intake from the lower half of the chamber. This enables its use for heat soaking the printer and reduces external noise compared to the external intake aux fan on the CC1.
+The CC2 Aux fan is mounted on the left panel with intake from the lower half of the chamber. This enables its use for heat soaking the printer and reduces external noise compared to the external intake aux fan on the CC1. It is secured to the chamber wall with VHB tape, and similar to the CC2 toolhead fan, is a custom fan with an integrated injection molded duct.
 
-![CC2 Aux fan](./assets/cc2_auxfan.jpg){ width="800" }
+Front|Back
+---|---
+![CC2 Aux fan](./assets/cc2_auxfan.jpg){ width="500" }|![CC2 Aux fan rear](./assets/cc2_auxfan2.jpg){ width="500" }
 /// caption
-Credit to pdscomp on the OpenCentauri Discord.
+Credit to Savion on the OpenCentauri Discord.
+///
+Front|Back
+---|---
+![CC2 Aux fan inner front shell](./assets/cc2_auxfan3.jpg){ width="500" }|![CC2 Aux fan inner rear shell](./assets/cc2_auxfan4.jpg){ width="500" }
+/// caption
+Credit to Savion on the OpenCentauri Discord.
 ///
 
 ## Exhaust/filtering system
