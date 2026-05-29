@@ -34,7 +34,7 @@ Product Id|
 Device BCD|
 Product|
 Manufacturer|GigaDevice Semicon Beijing
-Stepper driver|4xAT8833 (DRV8833 clone)
+Stepper driver|4xAT8833 (DRV8833 clone)s
 
 
 Front|Back
@@ -60,7 +60,12 @@ Filament detector boards are sent along the filament path for each channel and a
 
 ## Spool Holders
 
-Canvas spool holders are secured to the frame by means of two holes tapped into the vertical extrusions. They are mechanically similar to Flashforge IFS spool holders and have an internal spring to rewind filament to prevent tangling during filament unloading.
+Canvas spool holders are secured to the frame by means of two holes tapped into the vertical extrusions. They are mechanically similar to Flashforge IFS spool holders and have an internal spring to rewind filament to prevent tangling during filament unloading. If the spool holder is clicking the numbered face plate can be taken off and small amount of grease applied to the spring loaded ratcheting mechanism to reduce noise.
+
+![CANVAS spool holder exploded diagram](./assets/canvasspool.jpg){ width="600" }
+/// caption
+CANVAS spool holder exploded diagram showing inner construction and one half of the ratcheting mechanism in pink
+///
 
 ## Filament Multiplexer
 
@@ -78,7 +83,7 @@ The CC2 detects tangles by means of a rear facing Hall effect sensor at the top 
 The multiplexer tangle detection tab shown in non-triggered (left), and triggered (right) positions. Credit to laser_velociraptor on the Elegoo Discord.
 ///
 
-The multiplexer uses a spring loaded mechanism to maintain the pneumatic fitting hub against the top surface of the multiplexer housing. When a tangle occurs the extruder continues increasing filament tension until it exceeds the force applied by the spring. The spring is compressed thus pushing the metal tab in front of the Hall effect sensor, triggering a tangle error and pausing the print.
+The multiplexer uses a spring loaded mechanism to maintain the pneumatic fitting hub against the top surface of the multiplexer housing. When a tangle occurs the extruder continues increasing filament tension until it exceeds the force applied by the spring. The spring is compressed thus pushing the metal tab in front of the Hall effect sensor, triggering a tangle error and pausing the print. It is held together with plastic clip features in the injection molded housing, these can be gently pressed inward to separate the two halves so that broken scraps of filament that may clog the multiplexer can be removed.
 
 ![Multiplexer internals](./assets/hubinternals.jpg){ width="600" }
 /// caption
