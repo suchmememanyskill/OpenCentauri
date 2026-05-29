@@ -14,114 +14,105 @@ Front|Back
 
 ## Mainboard Pins
 
-### 24V input
-Type: 2-Pin Barrier terminal with 9.6mm pin pitch
+=== "24V Input"
+    Type: 2-Pin Barrier terminal with 9.6mm pin pitch
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| - | GND |Closest to the stepper connectors|
-|1| + | +24V |Do not overtighten as it is very flimsy|
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| - | GND |Closest to the stepper connectors|
+    |1| + | +24V |Do not overtighten as it is very flimsy|
 
+=== "Steppers X,Y,Z"
+    Type: JST-**XHB**-4P
 
-### Steppers X,Y and Z
-Type: JST-**XHB**-4P 
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| 2B|2B||
+    |2| 1A|1A||
+    |3| 2A|2A||
+    |4| 1B|1B||
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| 2B|2B||
-|2| 1A|1A||
-|3| 2A|2A||
-|4| 1B|1B||
+=== "Chamber Temp"
+    Type: JST-**XHB**-2P
 
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| none | Sig |standard NTC100k B3950|
+    |2| none | GND ||
 
+=== "Light"
+    Type: JST-**XHB**-2P
 
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| + | +24V | Max 1A |
+    |2| - | GND_PWM| |
 
+=== "Side Fan (FAN-1)"
+    Type: JST-**XHB**-2P
 
-### Chamber temp sensor 
-Type: JST-**XHB**-2P
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| + | +24V | MAX 1A|
+    |2| - | GND_PWM ||
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| none | Sig |standard NTC100k B3950| 
-|2| none | GND ||
+=== "Display"
+    Type: xx Pin FFC
 
+    RGB888 display + touch\
+    ``unknown pinout``
 
-### Light
-Type: JST-**XHB**-2P
+=== "Front USB"
+    Type: USB-A
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| + | +24V | Max 1A | 
-|2| - | GND_PWM| |
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| GND | GND | regular usb-A port|
+    |2| DP | DP ||
+    |3| DM | DM ||
+    |4| 5v | +5V ||
 
-### Side fan (Marked "FAN-1" on the board)
-Type: JST-**XHB**-2P
+=== "Z-Endstop (EXT)"
+    Type: JST-**XHB**-3P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| + | +24V | MAX 1A|
-|2| - | GND_PWM ||
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| | +24V||
+    |2| | GND||
+    |3| | SIG |3.3V pullup, LOW/0v when bed is not in sensor|
 
+=== "Mainboard Fan (BFAN)"
+    Type: JST-**XHB**-3P
 
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1|  | +24V ||
+    |2|  | GND_PWM | Controlled by MCU|
+    |3|  | Tacho ||
 
-### Display
-Type: xx Pin FFC
+=== "Bed MCU (RS-232)"
+    Type: JST-**XHB**-5P
 
-RGB888 display + touch\
-``unknown pinout``
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| 24V | +24V | Not used on the leveling mcu board|
+    |2| GND | GND |
+    |3| 5V | +5V | 5v is switched to reset the bed MCU |
+    |4| TX | TX||
+    |5| RX | RX||
 
-### Front  USB
-Type: USB-A
+=== "Bed Heater (HBED)"
+    Type: JST-**XHB**-2P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| GND | GND | regular usb-A port|
-|2| DP | DP ||
-|3| DM | DM ||
-|4| 5v | +5V ||
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| - | GND_PWM | Controlled by MCU|
+    |2| + | +24V||
 
-### Z-endstop (Marked "EXT" on the board)
-Type: JST-**XHB**-3P
+=== "Bed Temp Sensor (BED-T)"
+    Type: JST-**XHB**-2P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| | +24V||
-|2| | GND||
-|3| | SIG |3.3V pullup, LOW/0v when bed is not in sensor|
-
-
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1|  | +24V ||
-|2|  | GND_PWM | Controlled by MCU
-|3|  | Tacho ||
-
-
-### Bed MCU (RS-232)
-Type: JST-**XHB**-5P
-
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| 24V | +24V | Not used on the leveling mcu board|
-|2| GND | GND |
-|3| 5V | +5V | 5v is switched to reset the bed MCU |
-|4| TX | TX||
-|5| RX | RX||
-
-
-### Bed heater "HBED"
-Type: JST-**XHB**-2P
-
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| - | GND_PWM | Controlled by MCU|
-|2| + | +24V||
-
-
-### Bed temperature sensor "BED-T"
-Type: JST-**XHB**-2P
-
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-1|  | SIG|  NTC100k B3950|
-2|  | GND|  |
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1|  | SIG|  NTC100k B3950|
+    |2|  | GND|  |

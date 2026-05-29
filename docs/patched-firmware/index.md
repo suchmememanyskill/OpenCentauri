@@ -1,82 +1,83 @@
-# Patched firmware
+# Patched Firmware
 
-This section describes the installation process and features of OpenCentauri's patched firmware.
+Install a patched version of Elegoo's official CC1 firmware with bug fixes, quality-of-life improvements, and developer features — no extra hardware required.
 
-This firmware is based on Elegoo's 1.1.40 firmware, with patches that address unwanted behavior and bugs.
+Read the [installation instructions](./install.md)
+
+Read the [full features list](./features.md)
 
 If you find bugs or want to suggest new features, please use the [cc-fw-tools](https://github.com/OpenCentauri/cc-fw-tools){target="_blank"} repository. Not everything is possible within the limits of patching existing firmware, especially large features or full overhauls.
-
-This project is currently in beta, so expect some issues.
-
-If you need support, feel free to [join the Discord](https://discord.gg/t6Cft3wNJ3).
 
 If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/opencentauri) :heart:! If spending money isn't your thing, we also have a [Makerworld page](https://makerworld.com/en/models/1924078-opencentauri-logo#profileId-2064746) where you can throw some boosts towards!
 
 !!! warning "**Looking for Full Klipper/COSMOS?**"
 
-    This is regular OpenCentauri patched from official Elegoo firmware, for Beta full Klipper/Kalico firmwarewith COSMOS go [here](../klipper-conversion/cosmos/cosmos.md)
+    This is regular OpenCentauri patched from official Elegoo firmware, for Beta full Klipper/Kalico firmware with COSMOS go [here](../klipper-conversion/cosmos/cosmos.md)
 
-## Features (as of v0.3.0)
+!!! note "Beta Software"
+    This project is currently in beta, so expect some issues. If you need support, feel free to [join the Discord](https://discord.gg/t6Cft3wNJ3).
 
-- SSH (user: "root", password: "OpenCentauri")
-- Developer features (package manager, prevent booting Klipper, etc)
-- Bootlogo can be replaced
-    - [See available bootlogos on github](https://github.com/OpenCentauri/cc-fw-tools/tree/main/oc-patches/replace-bootlogo-patch){target="_blank"}
-- Exhaust fan no longer automatically turns on during a print
-    - Note: In OrcaSlicer the default profile still turns on this fan using a M106 P3 command when using PLA.
-    - Note: On Elegoo filaments present in OrcaSlicer, the `Exhaust fan` section present on the Cooling tab inside of a Filament profile is respected. If it is enabled, then exhaust fan will turn on at the specified speed.
-- Homing position has been set to the front right instead of the front left
-- The webui (and other integrations like octoeverywhere and home assistant) now accepts modifications during a print (bug introduced in firmware 1.1.29. This was fixed in firmware 1.1.42 but has been backported to 1.1.40)
-- The webui's store button has been removed
-- The webui's logo has been replaced with an OpenCentauri logo
-- The webui's corner radius (white pixels near the corners) has been fixed
-- Z offset can be adjusted while the printer is idle
-- Files can be uploaded while the printer is printing
-- Filament usage is reported via the API 
-- Connectivity checks are blocked (web traffic issue)
-- Official OTA updates have been replaced by OpenCentauri OTA updates
-- Support for USB Ethernet adapters
-- New gcode commands: 
-    - `M8212` to turn off the chamber light
-    - `M8213` to turn on the chamber light
-    - `TEMPERATURE_WAIT SENSOR=box MINIMUM=XX` to wait until a certain temperature has been reached in the chamber
+## FAQ
 
-## Installation
+??? question "**What is OpenCentauri patched firmware?**"
 
-=== "Online"
-    !!! warning "Online requirement"
+    A modified version of Elegoo's official CC1 firmware (based on 1.1.40) that adds bug fixes, quality-of-life improvements, and developer features — without replacing the underlying software stack.
 
-        Your Centauri Carbon needs to be connected to the internet in order to download OpenCentauri firmware. Choose the `Local/Offline` installation method if your Centauri Carbon is not connected to the internet.
+??? question "**What does the patched firmware get me that stock firmware doesn't?**"
 
-    1. [Download](https://github.com/OpenCentauri/oc-installer/releases/latest/download/oc-installer.zip) the latest OpenCentauri installer release
-    1. Insert a fat32-formatted thumbdrive into your pc
-    1. Extract the `install_opencentauri` folder from `oc-installer.zip` onto the root of the thumbdrive
-    1. Eject your thumbdrive from your pc and insert it into your Centauri Carbon
-    1. On your Centauri Carbon, navigate to the files tab, then tap the `Usb Drive` menu, then tap the `install_opencentauri` folder
-    1. Touch hold the `IMPORT_ME_DO_NOT_PRINT` file, then tap `Import`
-    1. Run `Install OpenCentauri (Online)`
-    1. Restart when the install process finished
+    - SSH access (user: `root`, password: `OpenCentauri`)
+    - Developer tools including a package manager and the ability to prevent Klipper from booting
+    - Configurable boot logo
+    - Exhaust fan no longer turns on automatically during prints
+    - Homing position changed to front right to prevent USB toolhead cable damage
+    - WebUI accepts modifications during a print (backported fix from 1.1.42)
+    - WebUI store button removed and logo replaced with OpenCentauri branding
+    - Z offset can be adjusted while the printer is idle
+    - Files can be uploaded while printing
+    - Filament usage reported via the API
+    - Outgoing connectivity checks blocked
+    - OpenCentauri OTA updates instead of official Elegoo updates
+    - USB Ethernet adapter support
+    - New gcode commands: `M8212`/`M8213` for chamber light and `TEMPERATURE_WAIT SENSOR=box`
 
-=== "Local/Offline"
+    See the [Features page](./features.md) for the full annotated list.
 
-    1. [Download](https://github.com/OpenCentauri/oc-installer/releases/latest/download/oc-installer.zip) the latest OpenCentauri installer release
-    1. Insert a fat32-formatted thumbdrive into your pc
-    1. Extract the `install_opencentauri` folder from `oc-installer.zip` onto the root of the thumbdrive
-    1. [Download update.swu](https://github.com/OpenCentauri/cc-fw-tools/releases/latest/download/update.swu) and place it inside the `install_opencentauri` folder on your thumbdrive
-    1. Eject your thumbdrive from your pc and insert it into your Centauri Carbon
-    1. On your Centauri Carbon, navigate to the files tab, then tap the `Usb Drive` menu, then tap the `install_opencentauri` folder
-    1. Touch hold the `IMPORT_ME_DO_NOT_PRINT` file, then tap `Import`
-    1. Run `Install OpenCentauri (Local)`
-    1. Restart when the install process finished
+??? question "**Why was the homing position changed to the front right?**"
 
-You should now be greeted by the OpenCentauri splash screen :tada:
+    The stock front-left homing position routes the USB toolhead cable in a way that causes wear and eventual failure over time. Homing to the front right keeps the cable in a less stressful position and significantly increases its lifespan.
 
-This firmware works well with [modified machine start and end gcode in OrcaSlicer](./modified_start_end_machine_gcode.md), which centers the purge line and turns on the chamber light at print start. Installing this is optional but recommended.
+??? question "**Do I need any extra hardware?**"
 
-## Update
+    No. The patched firmware runs entirely on stock hardware. Only a FAT32-formatted USB drive is needed for installation.
 
-You can either accept OTA updates directly on the device or repeat the steps in the [Installation section](#installation).
+??? question "**Is this the same as COSMOS?**"
 
-## Uninstall
+    No. Patched firmware is still based on Elegoo's official software stack with targeted patches applied on top. [COSMOS](../klipper-conversion/cosmos/cosmos.md) is a full replacement firmware based on Klipper/Kalico that gives complete control over the hardware, but is currently in beta.
 
-Follow the steps again in the [Installation section](#installation). Instead of running `Install OpenCentauri (Online)`, run `Install Official 1.1.40 (Online)`
+??? question "**Is it compatible with the Centauri Carbon 2?**"
+
+    Not currently. The patched firmware is based on Elegoo's CC1 firmware (1.1.40). CC2 support is not available at this time.
+
+??? question "**How do I install it?**"
+
+    Instructions are on the [Install page](./install.md).
+
+??? question "**How do I update it?**"
+
+    You can accept OTA updates directly on the printer screen, or repeat the installation steps. See the [Install page](./install.md#update).
+
+??? question "**How do I uninstall it?**"
+
+    Follow the installation steps again and run `Install Official 1.1.40` instead of `Install OpenCentauri`. See the [Install page](./install.md#uninstall).
+
+??? question "**Does installing the patched firmware break my warranty?**"
+
+    While we cannot say with certainty what Elegoo's position is, we have not heard of any reports of customers being denied warranty service or part replacements after installing third-party firmware such as OpenCentauri.
+
+??? question "**What do I do if I find a bug?**"
+
+    Open an issue on the [cc-fw-tools GitHub repository](https://github.com/OpenCentauri/cc-fw-tools) with a description of the issue and steps to reproduce it. You can also drop by the [OpenCentauri Discord](https://discord.gg/t6Cft3wNJ3) to report it.
+
+??? question "**How can I support the project?**"
+
+    You can make a one-time or monthly donation on [Ko-Fi](https://ko-fi.com/opencentauri), or boost our models on [Makerworld](https://makerworld.com/en/models/1924078-opencentauri-logo#profileId-2064746)!

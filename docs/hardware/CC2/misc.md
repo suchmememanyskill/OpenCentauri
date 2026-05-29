@@ -16,13 +16,13 @@ Front|Back
 ---|---
 ![CC2 Aux fan](./assets/cc2_auxfan.jpg){ width="500" }|![CC2 Aux fan rear](./assets/cc2_auxfan2.jpg){ width="500" }
 /// caption
-Credit to Savion on the OpenCentauri Discord.
+Aux fan exterior. Credit to Savion on the OpenCentauri Discord.
 ///
 Front|Back
 ---|---
 ![CC2 Aux fan inner front shell](./assets/cc2_auxfan3.jpg){ width="500" }|![CC2 Aux fan inner rear shell](./assets/cc2_auxfan4.jpg){ width="500" }
 /// caption
-Credit to Savion on the OpenCentauri Discord.
+Aux fan inner shell. Credit to Savion on the OpenCentauri Discord.
 ///
 
 ## Exhaust/filtering system

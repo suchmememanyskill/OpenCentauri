@@ -59,12 +59,12 @@ Filament cutter magnet location highlighted in red
 
 Metric|Value
 ---|---
-MCU|
-Vendor Id|
-Product Id|
-Device BCD|
-Product|
-Manufacturer|
+MCU|Unknown
+Vendor Id|Unknown
+Product Id|Unknown
+Device BCD|Unknown
+Product|Unknown
+Manufacturer|Unknown
 Stepper driver|tmc2209
 
 ## Hardware

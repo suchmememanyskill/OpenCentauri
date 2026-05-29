@@ -3,7 +3,22 @@
     gap: 10px;
 }
 
-iframe { 
-    border: none; 
+iframe {
+    border: none;
     background-color: transparent;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background-image: url('assets/watermark.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom left;
+    pointer-events: none;
+    z-index: 0;
 }

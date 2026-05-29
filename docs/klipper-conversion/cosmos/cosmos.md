@@ -52,7 +52,7 @@ Read the [custom features](./features.md) offered by COSMOS.
 
 ??? question "**How do I install COSMOS?**"
 
-    Instructions are available on the [here](./install.md)
+    Instructions are available [here](./install.md)
 
 ??? question "**How long does it take to install COSMOS?**"
 

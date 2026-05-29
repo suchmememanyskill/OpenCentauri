@@ -2,15 +2,14 @@
 
 Information about the software running on the Centauri Carbon.
 
-State: Research
+!!! note "Documentation Status: Research"
+    This page contains miscellaneous notes and may be incomplete.
 
-This page contains miscellaneous notes.
-
-### OS
+## OS
 
 The Centauri Carbon runs on top of Tinalinux. The kernel has version 5.4.61. The installed version of glibc is 2.23.
 
-### Is the Centauri Carbon running Klipper
+## Is the Centauri Carbon running Klipper
 
 The hotend and bed use a fairly standard Klipper setup, with bed-specific extensions (hx711s and dirctl) for the pressure sensors. The DSP (used as a Klipper MCU) runs Klipper MCU code that has been extended and modified for DSP use.
 
@@ -23,7 +22,7 @@ See the [Custom Gcode](custom-gcode.md) page for instructions on dumping the .cf
 !!! note
     Because Klippy is heavily modified, not everything is supported. Modifying the Klipper .cfg may lead to a bricked machine.
 
-### Speed profiles
+## Speed profiles
 
 Speed setting | Speed multiplier
 ---|---

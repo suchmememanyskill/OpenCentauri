@@ -1,4 +1,7 @@
 site_name: OpenCentauri
+site_url: https://docs.opencentauri.cc
+site_description: Community documentation for the Elegoo Centauri Carbon 3D printer
+copyright: Copyright &copy; OpenCentauri contributors
 repo_url: https://github.com/suchmememanyskill/OpenCentauri
 repo_name: OpenCentauri
 markdown_extensions:
@@ -16,6 +19,8 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 plugins:
+  - search:
+      lang: en
   - glightbox
   - git-committers:
       repository: suchmememanyskill/OpenCentauri
@@ -57,24 +62,23 @@ nav:
     - Custom gcode: software/custom-gcode.md
     - Embedded Firmware: software/embedded-firmware.md
     - FEL: software/FEL-mode.md
+  - COSMOS Firmware:
+    - About COSMOS: klipper-conversion/cosmos/cosmos.md
+    - Install: klipper-conversion/cosmos/install.md
+    - Features: klipper-conversion/cosmos/features.md
   - Patched Firmware:
-    - Patched firmware:
-      - Patched firmware: patched-firmware/index.md
-      - Modified slicer machine gcode: patched-firmware/modified_start_end_machine_gcode.md
-  - Klipper Conversion:
-    - Klipper Conversion Methods: klipper-conversion/index.md
-    - Klipper via mainboard replacement:
-      - Documentation: klipper-conversion/klipper-via-mainboard-replacement/index.md
-    - Klipper on official mainboard (COSMOS):
-      - About COSMOS: klipper-conversion/cosmos/cosmos.md
-      - Install: klipper-conversion/cosmos/install.md
-      - Features: klipper-conversion/cosmos/features.md
+    - About: patched-firmware/index.md
+    - Install: patched-firmware/install.md
+    - Features: patched-firmware/features.md
+    - Modified slicer gcode: patched-firmware/modified_start_end_machine_gcode.md
+  - Mainboard Replacement: klipper-conversion/klipper-via-mainboard-replacement/index.md
   - Mods:
     - Machine Mods: mods/machine_mods.md
     - Printable Mods: 
       - FDM-Optimized replacement parts: mods/optimized_parts.md
       - Printable Mods: mods/printable_mods.md
     - Light Mods: mods/light_mods.md
+    - Camera Replacement: mods/camera_mods.md
 
 
 
@@ -84,10 +88,14 @@ theme:
   features:
     - navigation.instant
     - navigation.instant.prefetch
+    - navigation.instant.progress
     - navigation.tabs
     - navigation.expand
-    - toc.integrate
+    - navigation.top
+    - navigation.footer
     - content.code.copy
+    - search.suggest
+    - search.highlight
   palette:
   # Palette toggle for automatic mode
   - media: "(prefers-color-scheme)"
