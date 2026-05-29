@@ -18,12 +18,14 @@ Credit to Morgyn on the OpenCentauri Discord.|Credit to thijskunst on the OpenCe
 
 ### EF-M2-V1.2.084 Mainboard
 
+A revised mainboard with an alternate QUETEL FCU760K-NL wifi chip went into production at some point between August and October 2026.
+
 Front|Back
 ---|---
 ![Mainboard front image](./assets/Centauri-mobo-m084.jpg){ width="750" }|![Mainboard back image](./assets/m045_wifi.jpg){ width="400" }
 Credit to briantdaniel on the OpenCentauri Discord.| 
 /// caption
-February 2024 EF-M2-V1.2.084 mainboard with zoomed view of alternate QUETEL FCU760K-NL WiFi chip in the middle. Compare to EF-M2-V1.2.045 Wifi chip on right.
+EF-M2-V1.2.084 mainboard with zoomed view of alternate QUETEL FCU760K-NL WiFi chip in the middle. Compare to EF-M2-V1.2.045 Wifi chip on right.
 ///
 
 ## Mainboard Pins
