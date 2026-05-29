@@ -1,6 +1,6 @@
 # Partitions
 
-The Centauri Carbon uses an A/B partition scheme for updates. When an update is performed, it will be written to the inactive partition and will be marked as active, so the next boot will use this previously unused partition. The current A/B slot is stored in the `env` partition.
+The Centauri Carbon uses an A/B partition scheme for updates. See [Updates](./updates.md) for how this scheme is used in practice. When an update is performed, it will be written to the inactive partition and will be marked as active, so the next boot will use this previously unused partition. The current A/B slot is stored in the `env` partition.
 
 The Centauri Carbon contains the following partitions:
 
@@ -19,3 +19,6 @@ rootfs_data@mmcblk0p10|0x8017800|0x12959000|
 user@mmcblk0p11|0x8017800|0x1A970800|Seemingly the storage location for logging
 private@mmcblk0p12|0xFC000|0x22988000|Entirely empty
 UDISK@mmcblk0p13|0x1A5577E00|0x22A84000|
+
+!!! note
+    The `dsp0A` and `dsp0B` partitions contain embedded firmware for the hotend and bed MCUs. See [Embedded Firmware](./embedded-firmware.md) for details on flashing and building custom MCU firmware.

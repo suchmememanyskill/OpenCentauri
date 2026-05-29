@@ -28,6 +28,7 @@ plugins:
       enabled: !ENV [CI, false]
   - git-revision-date-localized:
       enable_creation_date: true
+      enable_git_follow: false
 nav:
   - Home: index.md
   - Hardware:

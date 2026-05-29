@@ -16,9 +16,10 @@ Exhaust fan speed|
 Mainboard fan type|4020 axial fan, 4 pin
 Mainboard fan P/N|EFS-04024L
 Mainboard fan power|0.10A @ 24V
-Mainboard fan speed|6,200 RPM*
+Mainboard fan speed|6,200 RPM
 
-*mainboard fan speed determined by COSMOS, likely to underestimate actual fan speed. Tach testing by oscilloscope pending.
+!!! note
+    Mainboard fan speed was measured using [COSMOS](../../klipper-conversion/cosmos/cosmos.md) and may underestimate the actual speed. Oscilloscope tach testing is pending.
 
 ## LED strips
 

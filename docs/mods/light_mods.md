@@ -72,7 +72,10 @@ You can manually test the nozzle LED by running the following G-code files direc
 If your LED lights up correctly when running `LED_ON.gcode` and turns off with `LED_OFF.gcode`, the installation is successful.
 
 
-## G-code Usage  
+## G-code Usage
+
+!!! note
+    The gcode commands below require the nozzle LED to be configured in your Klipper configuration. This is supported on [COSMOS](../klipper-conversion/cosmos/cosmos.md). On stock or patched firmware, modifying the Klipper configuration carries risk — see the [Software Overview](../software/index.md) for context.
 
 Add the following lines to your slicer’s machine start and end G-code to automatically control the nozzle LED:
 

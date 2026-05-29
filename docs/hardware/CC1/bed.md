@@ -27,11 +27,13 @@ Credit to baconmilkshake on the OpenCentauri Discord.
 Front|Back
 ---|---
 ![Bed board image](./assets/centauri-bed.jpg){ width="800" }|![Bed board back image](./assets/centauri-bed-back.jpg){ width="800" }
-Credit to rabirx on the OpenCentauri Discord.|Credit to rabirx on the OpenCentauri Discord.
+/// caption
+Credit to rabirx on the OpenCentauri Discord.
+///
 
 The bed is its own Klipper MCU with an accelerometer and some pressure sensors.
 
-The bed leveling board connects with serial (not over USB) to the mainboard.
+The bed leveling board connects with serial (not over USB) to the mainboard — see the **Bed MCU (RS-232)** tab on the [mainboard pinout](./mainboard.md) for connector details.
 
 ## MCU
 
