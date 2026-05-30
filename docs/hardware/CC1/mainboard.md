@@ -5,7 +5,7 @@ Metric|Value
 SoC|AllWinner R528-S3
 Memory|128 MB in-chip
 Storage|8gb eMMC
-Stepper drivers|tmc2209
+Stepper drivers|TMC2209
 Part Number|EF-M2-V1.2.045 after 2/2026
 	   |EF-M2-V1.2.084 before 2/2026
 
@@ -14,9 +14,7 @@ Part Number|EF-M2-V1.2.045 after 2/2026
 Front|Back
 ---|---
 ![Mainboard image](./assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](./assets/centauri-mobo-back.jpg){ width="800" }
-/// caption
-Front: Credit to Morgyn on the OpenCentauri Discord. Back: Credit to thijskunst on the OpenCentauri Discord.
-///
+Credit to Morgyn on the OpenCentauri Discord.|Credit to Thijskunst on the OpenCentauri Discord.
 
 ### EF-M2-V1.2.084 Mainboard
 
@@ -31,9 +29,9 @@ EF-M2-V1.2.084 mainboard with zoomed view of alternate QUETEL FCU760K-NL WiFi ch
 
 ## Mainboard Pins
 
-![Mainboard diagram](./assets/cc1_diagram.svg){ width="800" }
+![Mainboard diagram](./assets/cc1revised_diagram.svg){ width="1600" }
 /// caption
-Credit to Morgyn on the OpenCentauri Discord.
+Credit to Morgyn and Baconmilkshake on the OpenCentauri Discord.
 ///
 
 === "24V Input"
@@ -57,7 +55,7 @@ Credit to Morgyn on the OpenCentauri Discord.
 === "Filament Sensor"
     Type: JST-**XHB**-3P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| S | Signal | **3.3v** when filament is detected|
     |2| - | GND ||
@@ -66,39 +64,39 @@ Credit to Morgyn on the OpenCentauri Discord.
 === "Chamber Temp (BOX-T)"
     Type: JST-**XHB**-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
-    |1| none | Sig |standard NTC100k B3950|
+    |1| none | PB13 |standard NTC100k B3950|
     |2| none | GND ||
 
 === "Light"
     Type: JST-**XHB**-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| + | +24V | Max 1A |
-    |2| - | GND_PWM| |
+    |2| - | PG15|GND_PWM|
 
 === "Side Fan (FAN-1)"
     Type: JST-**XHB**-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| + | +24V | MAX 1A|
-    |2| - | GND_PWM ||
+    |2| - | PG17 |GND_PWM|
 
 === "Exhaust Fan (BOX-F)"
     Type: JST-**XHB**-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| + | +24V | MAX 1A|
-    |2| - | GND_PWM ||
+    |2| - | PG18 |GND_PWM|
 
 === "Camera"
     Type: JST-**XHB**-4P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| GND | GND | regular usb port but with a JST connector|
     |2| DP | USB-DP ||
@@ -108,27 +106,37 @@ Credit to Morgyn on the OpenCentauri Discord.
 === "UART0"
     Type: JST-**XHB**-2P + 4-Pin 2.54mm pin header
 
-    JST:
+    JST: JST-*XHB*-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| TX | RS232-TX | connected to 4-pin header|
     |2| RX | RS232-RX |
 
     4-Pin Header:
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| GND | GND | square pad |
     |2| TX | RS232-TX |
     |3| RX | RS232-RX |
     |4| 5v | +5V | J4 marking|
 
-=== "Multicolor"
-    Type: JST-**XHB**-5P
-    External port: ams port 2x2 Micro-Fit 3.0
+=== "FEL"
+    4-Pin Header:
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| 5V | 5V | square pad |
+    |2| UP | DP |
+    |3| UM | DM |
+    |4| GND | GND | J4 marking|
+
+=== "CANVAS"
+    Type: JST-**XHB**-5P
+    External port: AMS port 2x2 Micro-Fit 3.0
+
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| 24V  | +24V | 24v for motors inside the MMU|
     |2| GND | GND ||
@@ -142,7 +150,7 @@ Credit to Morgyn on the OpenCentauri Discord.
     !!! warning
         Do not plug in anything other than the extruder board. This type-C connector has 24V VCC instead of 5V. Anything you plug in WILL GET FRIED!!
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |A1/12 |none | GND  | |
     |A2/B11 | | NC | |
@@ -166,7 +174,7 @@ Credit to Morgyn on the OpenCentauri Discord.
 === "Front USB"
     Type: USB-A
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| GND | GND | regular usb-A port|
     |2| DP | DP ||
@@ -176,25 +184,25 @@ Credit to Morgyn on the OpenCentauri Discord.
 === "Z-Endstop (EXT)"
     Type: JST-**XHB**-3P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| | +24V||
     |2| | GND||
-    |3| | SIG |3.3V pullup, LOW/0v when bed is not in sensor|
+    |3| | PG8 |3.3V pullup, LOW/0v when bed is not in sensor|
 
 === "Mainboard Fan (BFAN)"
     Type: JST-**XHB**-3P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1|  | +24V ||
-    |2|  | GND_PWM | Controlled by MCU|
-    |3|  | Tacho ||
+    |2|  | PG16 | GND_PWM, Controlled by MCU|
+    |3|  | PG6 | Tachometer |
 
 === "Bed MCU (RS-232)"
     Type: JST-**XHB**-5P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
     |1| 24V | +24V | Not used on the leveling mcu board|
     |2| GND | GND |
@@ -205,15 +213,15 @@ Credit to Morgyn on the OpenCentauri Discord.
 === "Bed Heater (HBED)"
     Type: JST-**XHB**-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
-    |1| - | GND_PWM | Controlled by MCU|
+    |1| - | PG13 | GND_PWM, Controlled by MCU|
     |2| + | +24V||
 
 === "Bed Temp Sensor (BED-T)"
     Type: JST-**XHB**-2P
 
-    |pin nr|marking|Function|remarks|
+    |pin nr|marking|pin|remarks|
     |--|---|----|---|
-    |1|  | SIG|  NTC100k B3950|
-    |2|  | GND|  |
+    |1|  | PB14 |  NTC100k B3950|
+    |2|  | GND ||

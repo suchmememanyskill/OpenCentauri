@@ -12,6 +12,11 @@ Front|Back
 ![SSR board image](./assets/SSR1.jpg){ width="525" }|![SSR board back image](./assets/SSR2.jpg){ width="600" }
 
 
+![Mainboard diagram](./assets/ssr_diagram.svg){ width="500" }
+/// caption
+Credit to Morgyn on the OpenCentauri Discord.
+///
+
 ## Bed Leveling Board
 ![Bed overview](./assets/centauri-bed-overview.jpg){ width="600" }
 /// caption
