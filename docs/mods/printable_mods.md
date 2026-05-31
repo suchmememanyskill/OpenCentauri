@@ -21,15 +21,15 @@ Three popular types of alternate hotends/extruders. From left to right Microswis
 
 A [commercial solution](https://store.micro-swiss.com/products/flowtech-hotend-for-elegoo-centauri-carbon) using flowtech nozzles and a similar heatblock to that used on the Bambu Lab X1/P1 flowtech hotend. Allows use of CHT nozzles, but has a shorter melt zone than the stock CC hotend. 
 
-- Pros: Drop in compatibility, nozzle shared across other flowtech hotends, easy nozzle swaps, nonstructural heatbreak 
+- Pros: Drop in compatibility, nozzle shared across other flowtech hotends, easy nozzle swaps, nonstructural heatbreak, available for CC1 and CC2.
 - Cons: High cost, not compatible with CC2, may not be rated up to 320C.
 
 **H2D/A1 hotend retrofit**
 
-Several options are available in the form of printable models and premade solutions on etsy such as the ECCH2A1. Allows use of H2D/A1 nozzles. 
+Several options are available in the form of printable models and premade solutions on etsy such as the ECCH2A1. Allows use of H2D/A1 nozzles.
 
-- Pros: Premade solutions available, rapid nozzle changes, nonstructural heatbreak, low to moderate cost when self-sourced
-- Cons: Requires annealing and high performance materials for heat resistance (PPS, PPA, PA6/12, or PET composites). Moderate cost when purchased premade.
+- Pros: Premade solutions available, rapid nozzle changes, nonstructural heatbreak, low to moderate cost when self-sourced, compatible with CC1, CC2, and CANVAS.
+- Cons: Requires annealing and high performance materials for heat resistance (PPS, PPA, PA6/12, or PET composites). Moderate cost when purchased premade. Hotends cannot be swapped between CC1 and CC2.
 
 
 **Constellation extruder**
@@ -37,7 +37,7 @@ Several options are available in the form of printable models and premade soluti
 A full extruder housing [replacement](https://www.printables.com/model/1382168-constellation-extruder-for-elegoo-centauri-carbon) that reuses the stock extruder internals and allows native mounting of Bambu X1/P1 compatible hotends such as the TZ clone ecosystem, or the pika hotend. Three versions for different configurations available 
 
 - Pros: Nonstructural heatbreak, low cost, high flow or revo-like cold swap options available, uses standard V6 nozzles, doesn't require annealing. 
-- Cons: Many parts must be self sourced, relatively high assembly difficulty.
+- Cons: Many parts must be self sourced, relatively high assembly difficulty, not compatible with CC2 or CANVAS yet.
 
 ## Alternate Toolhead covers
 ![Alternate toolhead covers](./assets/toolheadcovers.jpg){ width="800" }
