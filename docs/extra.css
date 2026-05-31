@@ -55,6 +55,12 @@ iframe {
   outline-color: rgba(117, 117, 117, 0.5);
 }
 
+/* Ensure all page content sits above the watermark */
+.md-content__inner {
+    position: relative;
+    z-index: 1;
+}
+
 body::after {
     content: '';
     position: fixed;
