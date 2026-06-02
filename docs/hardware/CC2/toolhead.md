@@ -59,12 +59,12 @@ Filament cutter magnet location highlighted in red
 
 Metric|Value
 ---|---
-MCU|
-Vendor Id|
-Product Id|
-Device BCD|
-Product|
-Manufacturer|
+MCU|Unknown
+Vendor Id|Unknown
+Product Id|Unknown
+Device BCD|Unknown
+Product|Unknown
+Manufacturer|Unknown
 Stepper driver|tmc2209
 
 ## Hardware
@@ -80,8 +80,8 @@ Extruder hobbed gear material|SDK11 tool steel
 Heater type|Ceramic plate-type PTC heater
 Heater resistance|~9.6Ω
 Heater power|60W
-Thermistor Type| Glass bead NTC-150k*
-Thermistor Beta| 4300
+Thermistor Type| Glass bead NTC-200k*
+Thermistor Beta| Unknown, likely 3950 or 4300
 Fan manufacturer| Shenzhen Hua Xinrong Plastic Electronics Co., Ltd
 Part cooling fan type|5020 custom radial fan integrated into duct, 4 pin (tach+5V PWM)
 Part cooling fan P/N|EFC-05D24D

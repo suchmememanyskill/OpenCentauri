@@ -41,7 +41,7 @@ You will need the following components:
 
 Connect the **24V VCC** and **Ground** wires to your external power supply.
 
-See the [mainboard pinout](mainboard.md#24v-input) for the exact pin locations.
+See the **24V Input** tab on the [mainboard pinout](mainboard.md) page for the exact pin locations.
 
 ![24V Hookup](assets/24V-HOOKUP.jpg)
 
@@ -58,7 +58,7 @@ Connect the **3.3V Serial UART Tx, Rx, and Ground** between the CC mainboard UAR
 !!! important
     Do not connect the VCC pin on the Serial UART
 
-See the [mainboard UART0 pinout](mainboard.md#uart0) for the exact pin locations.
+See the **UART0** tab on the [mainboard pinout](mainboard.md) page for the exact pin locations.
 
 ![CC Board UART](assets/CC-Board-UART.jpg)
 

@@ -33,7 +33,7 @@ Credit to Sims on the OpenCentauri Discord.
 ??? "Online Firmware unpacker"
     <iframe src="/extras/cc1_update_decrypt.html" width="100%" height="500"></iframe>
 
-The Centauri Carbon makes use of an A/B partition scheme. When an update is applied, the update is applied to the inactive slot. After the update is applied, the machine switches A/B around so the next boot uses the previously inactive slot. The Centauri Carbon makes use of `swupdate` for updates.
+The Centauri Carbon makes use of an [A/B partition scheme](./partitions.md). When an update is applied, the update is applied to the inactive slot. After the update is applied, the machine switches A/B around so the next boot uses the previously inactive slot. The Centauri Carbon makes use of `swupdate` for updates.
 
 Internally, the following commands are used, where %s is the path to the .swu file:
 
@@ -192,6 +192,9 @@ Known issues:
 
 ### v1.1.40 (Released 15/08/2025)
 
+!!! info
+    v1.1.40 is the base for [OpenCentauri patched firmware](../patched-firmware/index.md).
+
 [Download](https://s3.devminer.xyz/archive/ELEGOO_Centauri_Update_1.1.40.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
 
 Changelog:
@@ -243,6 +246,9 @@ Known issues:
 
 ### v1.1.25 (Released 9/05/2025)
 
+!!! danger "Known Issue: Thermal Runaway"
+    This firmware version has a known thermal runaway issue.
+
 [Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.1.25/2025-05-09/219b4c9e67de4a1d99c7680164911ab5.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
 
 Changelog:
@@ -252,10 +258,6 @@ Changelog:
 3. Optimized material handling processes during feeding/retraction operations.
 4. Addressed unresponsive errors and improved stability in the web interface.
 5. Mitigated miscellaneous issues impacting overall system reliability.
-
-Known issues:
-
-- Thermal runaway
 
 ??? info "Raw response:"
     ```json

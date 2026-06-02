@@ -21,5 +21,8 @@ Executes the following 2 system commands:
 
 (Note: exUDISK is the USB Stick)
 
-!!! warning 
+!!! warning
     Invalid configs cause the printer to not boot!
+
+!!! tip
+    On [COSMOS](../klipper-conversion/cosmos/cosmos.md), Klipper configuration can be edited safely via the webUI. See [Klipper Configuration](../klipper-conversion/cosmos/features.md#klipper-configuration) for details.

@@ -18,7 +18,7 @@ Built-in support has not been added to all models where it is required. Further 
 
 Additionally not all models are particularly well suited for direct FDM optimization and better scratch designs from the community are available. In particular this applies to:
 
-- XY Bearing blocks:  [clogged_nozzl3's bearing blocks](https://www.printables.com/model/1535090-centauri-carbon-runice-toothed-idler-blocks) are recommended
+- XY Bearing blocks: [clogged_nozzl3's bearing blocks](./printable_mods.md#toothed-idler-blocks) are recommended. Compatible with both toothed and standard smooth idlers.
 - Toolhead cowling/shell: There are numerous toolhead cowling options that are more suitable for FDM printing including the following:
     - [clogged_nozzl3's ACCTC cowling](https://www.printables.com/model/1575497-another-centauri-carbon-toolhead-cover) heavily modified low mass gamma-variant
     - [layer.shifted's cowling](https://www.printables.com/model/1511606-centauri-carbon-lightweight-cowling) which offers a close to stock styling
