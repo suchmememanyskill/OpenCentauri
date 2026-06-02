@@ -3,7 +3,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Community documentation for the Elegoo Centauri Carbon 3D printer">
       
+      
+      
+        <link rel="canonical" href="https://docs.opencentauri.cc/hardware/CC2/mainboard/">
       
       
         <link rel="prev" href="../">
@@ -165,6 +169,48 @@
     
     
     
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
     
       <div class="md-header__source">
         <a href="https://github.com/suchmememanyskill/OpenCentauri" title="Go to repository" class="md-source" data-md-component="source">
@@ -272,7 +318,20 @@
   
     
     
+      <li class="md-tabs__item">
+        <a href="../../../klipper-conversion/cosmos/cosmos/" class="md-tabs__link">
+          
+  
+  
+  COSMOS Firmware
+
+        </a>
+      </li>
+    
+  
+
       
+        
   
   
   
@@ -291,27 +350,23 @@
     
   
 
-    
-  
-
       
         
   
   
   
   
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../klipper-conversion/" class="md-tabs__link">
-          
+    <li class="md-tabs__item">
+      <a href="../../../klipper-conversion/klipper-via-mainboard-replacement/" class="md-tabs__link">
+        
   
   
-  Klipper Conversion
+    
+  
+  Mainboard Replacement
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
       
@@ -355,9 +410,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="OpenCentauri" class="md-nav__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
       
@@ -987,133 +1040,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Mainboard Pins">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#24v-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        24V input
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#steppers-xy-and-z" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Steppers X,Y and Z
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chamber-temp-sensor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chamber temp sensor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#light" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Light
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#side-fan-marked-fan-1-on-the-board" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Side fan (Marked "FAN-1" on the board)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#display" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Display
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#front-usb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Front USB
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z-endstop-marked-ext-on-the-board" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Z-endstop (Marked "EXT" on the board)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bed-mcu-rs-232" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bed MCU (RS-232)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bed-heater-hbed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bed heater "HBED"
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bed-temperature-sensor-bed-t" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bed temperature sensor "BED-T"
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1140,6 +1066,62 @@
     
   
     Toolhead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bed
   
 
     
@@ -1593,7 +1575,7 @@
   <span class="md-ellipsis">
     
   
-    Patched Firmware
+    COSMOS Firmware
   
 
     
@@ -1609,350 +1591,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Patched Firmware
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1">
-        
-          
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Patched firmware
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Patched firmware
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../patched-firmware/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Patched firmware
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../patched-firmware/modified_start_end_machine_gcode/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modified slicer machine gcode
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper Conversion
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Klipper Conversion
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../klipper-conversion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper Conversion Methods
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2">
-        
-          
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper via mainboard replacement
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Klipper via mainboard replacement
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../klipper-conversion/klipper-via-mainboard-replacement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Documentation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3">
-        
-          
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper on official mainboard (COSMOS)
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Klipper on official mainboard (COSMOS)
+    COSMOS Firmware
   
 
           </label>
@@ -2048,11 +1687,201 @@
     </li>
   
 
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patched Firmware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Patched Firmware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/modified_start_end_machine_gcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modified slicer gcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../klipper-conversion/klipper-via-mainboard-replacement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mainboard Replacement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2077,10 +1906,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -2098,8 +1927,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2157,10 +1986,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2">
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -2178,8 +2007,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2281,6 +2110,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mods/camera_mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera Replacement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2294,6 +2151,43 @@
                 </div>
               </div>
             
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#mainboard-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mainboard Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
             
           
           
@@ -2331,24 +2225,42 @@
 </tr>
 <tr>
 <td>Stepper drivers</td>
-<td>tmc2209</td>
+<td>TMC2209</td>
+</tr>
+<tr>
+<td>Part Number</td>
+<td>EF-M5-V1.0.073</td>
 </tr>
 </tbody>
 </table>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_mainboard.jpg" data-desc-position="bottom"><img alt="Mainboard image" src="../assets/cc2_mainboard.jpg" width="800"></a></p>
-<figcaption>
-<p>Credit to keefe826 on the OpenCentauri Discord.</p>
-</figcaption>
-</figure>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_diagram.jpg" data-desc-position="bottom"><img alt="Mainboard diagram" src="../assets/cc2_diagram.jpg" width="800"></a></p>
-<figcaption>
-<p>Credit to Savion on the OpenCentauri Discord.</p>
-</figcaption>
-</figure>
+<table>
+<thead>
+<tr>
+<th>Front</th>
+<th>Back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_mainboard.jpg" data-desc-position="bottom"><img alt="Mainboard image" src="../assets/cc2_mainboard.jpg" width="800"></a></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_mainboard2.jpg" data-desc-position="bottom"><img alt="Mainboard back image" src="../assets/cc2_mainboard2.jpg" width="800"></a></td>
+</tr>
+<tr>
+<td>Credit to Thijskunst on the OpenCentauri Discord.</td>
+<td>Credit to Thijskunst on the OpenCentauri Discord.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="mainboard-pins">Mainboard Pins</h2>
-<h3 id="24v-input">24V input</h3>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2revised_diagram.svg" data-desc-position="bottom"><img alt="Mainboard diagram" src="../assets/cc2revised_diagram.svg" width="1600"></a></p>
+<figcaption>
+<p>Credit to Savion and Baconmilkshake on the OpenCentauri Discord.</p>
+</figcaption>
+</figure>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:22"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><input id="__tabbed_1_6" name="__tabbed_1" type="radio"><input id="__tabbed_1_7" name="__tabbed_1" type="radio"><input id="__tabbed_1_8" name="__tabbed_1" type="radio"><input id="__tabbed_1_9" name="__tabbed_1" type="radio"><input id="__tabbed_1_10" name="__tabbed_1" type="radio"><input id="__tabbed_1_11" name="__tabbed_1" type="radio"><input id="__tabbed_1_12" name="__tabbed_1" type="radio"><input id="__tabbed_1_13" name="__tabbed_1" type="radio"><input id="__tabbed_1_14" name="__tabbed_1" type="radio"><input id="__tabbed_1_15" name="__tabbed_1" type="radio"><input id="__tabbed_1_16" name="__tabbed_1" type="radio"><input id="__tabbed_1_17" name="__tabbed_1" type="radio"><input id="__tabbed_1_18" name="__tabbed_1" type="radio"><input id="__tabbed_1_19" name="__tabbed_1" type="radio"><input id="__tabbed_1_20" name="__tabbed_1" type="radio"><input id="__tabbed_1_21" name="__tabbed_1" type="radio"><input id="__tabbed_1_22" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">24V Input</label><label for="__tabbed_1_2">Steppers X,Y,Z</label><label for="__tabbed_1_3">Filament Sensor</label><label for="__tabbed_1_4">Chamber Temp (BOX-T)</label><label for="__tabbed_1_5">Light</label><label for="__tabbed_1_6">Side Fan (FAN-1)</label><label for="__tabbed_1_7">Exhaust Fan (BOX-F)</label><label for="__tabbed_1_8">Exhaust Servo</label><label for="__tabbed_1_9">Exhaust Endstrop</label><label for="__tabbed_1_10">Camera</label><label for="__tabbed_1_11">UART0/DSP</label><label for="__tabbed_1_12">FEL</label><label for="__tabbed_1_13">CANVAS</label><label for="__tabbed_1_14">Toolhead Board Connection</label><label for="__tabbed_1_15">Display</label><label for="__tabbed_1_16">Front USB</label><label for="__tabbed_1_17">Z-Endstop (EXT)</label><label for="__tabbed_1_18">Mainboard Fan (BFAN)</label><label for="__tabbed_1_19">Bed MCU (RS-232)</label><label for="__tabbed_1_20">Bed Heater (HBED)</label><label for="__tabbed_1_21">Bed Temp Sensor (BED-T)</label><label for="__tabbed_1_22">Buzzer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>Type: 2-Pin Barrier terminal with 9.6mm pin pitch</p>
 <table>
 <thead>
@@ -2374,8 +2286,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="steppers-xy-and-z">Steppers X,Y and Z</h3>
-<p>Type: JST-<strong>XHB</strong>-4P </p>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-4P</p>
 <table>
 <thead>
 <tr>
@@ -2412,96 +2325,508 @@
 </tr>
 </tbody>
 </table>
-<h3 id="chamber-temp-sensor">Chamber temp sensor</h3>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-4P</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>M-DET</td>
+<td>PB3</td>
+<td>Filament presence/absence</td>
+</tr>
+<tr>
+<td>3</td>
+<td>S-DET</td>
+<td>PB4</td>
+<td>Filament motion detection</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>+5V</td>
+<td>+5V</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
 <p>Type: JST-<strong>XHB</strong>-2P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>none</td>
-<td>Sig</td>
+<td>S</td>
+<td>PH0</td>
 <td>standard NTC100k B3950</td>
 </tr>
 <tr>
 <td>2</td>
-<td>none</td>
+<td>GND</td>
 <td>GND</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="light">Light</h3>
-<p>Type: JST-<strong>XHB</strong>-2P</p>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-3P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>+</td>
+<td>+24V</td>
 <td>+24V</td>
 <td>Max 1A</td>
 </tr>
 <tr>
 <td>2</td>
-<td>-</td>
-<td>GND_PWM</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>S</td>
+<td>PB5</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="side-fan-marked-fan-1-on-the-board">Side fan (Marked "FAN-1" on the board)</h3>
-<p>Type: JST-<strong>XHB</strong>-2P</p>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-4P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>+</td>
-<td>+24V</td>
-<td>MAX 1A</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
 </tr>
 <tr>
 <td>2</td>
-<td>-</td>
-<td>GND_PWM</td>
+<td>+24V</td>
+<td>+24V</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>FS-A</td>
+<td>PD14</td>
+<td>Tachometer</td>
+</tr>
+<tr>
+<td>4</td>
+<td>FP-A</td>
+<td>PD15</td>
+<td>PWM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-4P</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>+24V</td>
+<td>+24V</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>FS-B</td>
+<td>PD16</td>
+<td>Tachometer</td>
+</tr>
+<tr>
+<td>4</td>
+<td>FP-B</td>
+<td>PD17</td>
+<td>PWM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-3P</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PWM</td>
+<td>PB2</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>5V</td>
+<td>5V</td>
+<td>Servo control signal</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-3P</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>S</td>
+<td>PB7</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>5V</td>
+<td>5V</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="display">Display</h3>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-4P</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GND</td>
+<td>GND</td>
+<td>regular usb port but with a JST connector</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DP</td>
+<td>USB-DP</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>DM</td>
+<td>USB-DM</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>5v</td>
+<td>+5V</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: 2x4-Pin 2.54mm pin header</p>
+<p>Upper 4-Pin Header: DSP</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>+5V</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>TX</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>RX</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>GND</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Lower 4-Pin Header: UART0</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>+5V</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>TX</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>RX</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>GND</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>4-Pin Header:</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>DP</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>DM</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>5V</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-5P
+External port: AMS port 2x2 Micro-Fit 3.0</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>485B</td>
+<td>RS485-A</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>485A</td>
+<td>RS485-B</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>24V</td>
+<td>+24V</td>
+<td>24v for motors inside the MMU</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>NC</td>
+<td>+5V</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: 2x2 Micro-Fit 3.0
+Toolhead side port: USB-C (USB 2.0 only)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not plug in anything other than the extruder board. This type-C connector has 24V VCC instead of 5V. Anything you plug in WILL GET FRIED!!</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GND</td>
+<td>GND</td>
+<td>upper portion of connector, screen side</td>
+</tr>
+<tr>
+<td>2</td>
+<td>24V</td>
+<td><strong>24V!</strong> Vbus</td>
+<td>upper portion of connector camera side</td>
+</tr>
+<tr>
+<td>3</td>
+<td>TX</td>
+<td>TX</td>
+<td>lower portion of connector screen side</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RX</td>
+<td>RX</td>
+<td>lower portion of connector camera side</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
 <p>Type: xx Pin FFC</p>
 <p>RGB888 display + touch\
 <code>unknown pinout</code></p>
-<h3 id="front-usb">Front  USB</h3>
+</div>
+<div class="tabbed-block">
 <p>Type: USB-A</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
@@ -2532,76 +2857,81 @@
 </tr>
 </tbody>
 </table>
-<h3 id="z-endstop-marked-ext-on-the-board">Z-endstop (Marked "EXT" on the board)</h3>
+</div>
+<div class="tabbed-block">
 <p>Type: JST-<strong>XHB</strong>-3P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td></td>
+<td>24V</td>
 <td>+24V</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
-<td></td>
+<td>-</td>
 <td>GND</td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
-<td></td>
-<td>SIG</td>
+<td>S</td>
+<td>PB10</td>
 <td>3.3V pullup, LOW/0v when bed is not in sensor</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<p>Type: JST-<strong>XHB</strong>-3P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td></td>
+<td>24V</td>
 <td>+24V</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
-<td></td>
-<td>GND_PWM</td>
-<td>Controlled by MCU</td>
+<td>GND</td>
+<td>PG16</td>
+<td>GND_PWM, Controlled by MCU</td>
 </tr>
 <tr>
 <td>3</td>
-<td></td>
-<td>Tacho</td>
-<td></td>
+<td>S</td>
+<td>PG6</td>
+<td>Tachometer</td>
 </tr>
 </tbody>
 </table>
-<h3 id="bed-mcu-rs-232">Bed MCU (RS-232)</h3>
+</div>
+<div class="tabbed-block">
 <p>Type: JST-<strong>XHB</strong>-5P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
@@ -2638,40 +2968,69 @@
 </tr>
 </tbody>
 </table>
-<h3 id="bed-heater-hbed">Bed heater "HBED"</h3>
+</div>
+<div class="tabbed-block">
 <p>Type: JST-<strong>XHB</strong>-2P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>-</td>
-<td>GND_PWM</td>
-<td>Controlled by MCU</td>
+<td>PWM</td>
+<td>PG13</td>
+<td>GND_PWM, Controlled by MCU</td>
 </tr>
 <tr>
 <td>2</td>
-<td>+</td>
+<td>24V</td>
 <td>+24V</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="bed-temperature-sensor-bed-t">Bed temperature sensor "BED-T"</h3>
+</div>
+<div class="tabbed-block">
 <p>Type: JST-<strong>XHB</strong>-2P</p>
 <table>
 <thead>
 <tr>
 <th>pin nr</th>
 <th>marking</th>
-<th>Function</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>S</td>
+<td>PB14</td>
+<td>NTC100k B3950</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-</td>
+<td>GND</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: Onboard piezoelectric buzzer</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
 <th>remarks</th>
 </tr>
 </thead>
@@ -2679,17 +3038,14 @@
 <tr>
 <td>1</td>
 <td></td>
-<td>SIG</td>
-<td>NTC100k B3950</td>
-</tr>
-<tr>
-<td>2</td>
-<td></td>
-<td>GND</td>
-<td></td>
+<td>PB12</td>
+<td>Piezo buzzer for filament runout alert</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
 
 
 
@@ -2712,7 +3068,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 28, 2026 00:51:10 UTC">March 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 22:55:01 UTC">June 2, 2026</span>
   </span>
 
     
@@ -2740,9 +3096,9 @@
     
     <nav>
       
-        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
+        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
           
-          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
+          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
@@ -2750,9 +3106,9 @@
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
-        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
+        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
           
-          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
+          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
         </a>
       
         <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
@@ -2780,13 +3136,63 @@
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
       </main>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hardware">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Hardware
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../toolhead/" class="md-footer__link md-footer__link--next" aria-label="Next: Toolhead">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Toolhead
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © OpenCentauri contributors
+    </div>
   
   
     Made with
@@ -2821,11 +3227,13 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.expand", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>

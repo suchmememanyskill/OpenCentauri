@@ -3,31 +3,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Community documentation for the Elegoo Centauri Carbon 3D printer">
       
       
       
-        <link rel="prev" href="../patched-firmware/modified_start_end_machine_gcode/">
+        <link rel="canonical" href="https://docs.opencentauri.cc/hardware/CC2/camera/">
       
       
-        <link rel="next" href="klipper-via-mainboard-replacement/">
+        <link rel="prev" href="../toolhead/">
+      
+      
+        <link rel="next" href="../bed/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Klipper Conversion Methods - OpenCentauri</title>
+        <title>Camera - OpenCentauri</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,15 +50,15 @@
       
     
     
-      <link rel="stylesheet" href="../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -83,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#klipper-conversion" class="md-skip">
+        <a href="#cc2-camera" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +101,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OpenCentauri" class="md-header__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
+    <a href="../../.." title="OpenCentauri" class="md-header__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15 6.04 7.5 12 10.85l5.96-3.35z"></path></svg>
@@ -117,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Klipper Conversion Methods
+              Camera
             
           </span>
         </div>
@@ -165,6 +169,48 @@
     
     
     
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
     
       <div class="md-header__source">
         <a href="https://github.com/suchmememanyskill/OpenCentauri" title="Go to repository" class="md-source" data-md-component="source">
@@ -198,7 +244,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -215,6 +261,8 @@
   
   
   
+    
+  
   
     
     
@@ -222,11 +270,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../hardware/CC1/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../CC1/" class="md-tabs__link">
           
   
   
@@ -249,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/" class="md-tabs__link">
+        <a href="../../../software/" class="md-tabs__link">
           
   
   
@@ -268,7 +318,20 @@
   
     
     
+      <li class="md-tabs__item">
+        <a href="../../../klipper-conversion/cosmos/cosmos/" class="md-tabs__link">
+          
+  
+  
+  COSMOS Firmware
+
+        </a>
+      </li>
+    
+  
+
       
+        
   
   
   
@@ -276,7 +339,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../patched-firmware/" class="md-tabs__link">
+        <a href="../../../patched-firmware/" class="md-tabs__link">
           
   
   
@@ -287,29 +350,23 @@
     
   
 
-    
-  
-
       
         
   
   
   
-    
+  
+    <li class="md-tabs__item">
+      <a href="../../../klipper-conversion/klipper-via-mainboard-replacement/" class="md-tabs__link">
+        
   
   
     
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
-          
   
-  
-  Klipper Conversion
+  Mainboard Replacement
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
       
@@ -321,7 +378,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../mods/machine_mods/" class="md-tabs__link">
+        <a href="../../../mods/machine_mods/" class="md-tabs__link">
           
   
   
@@ -353,11 +410,9 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OpenCentauri" class="md-nav__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
+    <a href="../../.." title="OpenCentauri" class="md-nav__button md-logo" aria-label="OpenCentauri" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15 6.04 7.5 12 10.85l5.96-3.35z"></path></svg>
@@ -387,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -411,26 +466,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -448,7 +506,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -518,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/" class="md-nav__link">
+      <a href="../../CC1/" class="md-nav__link">
         
   
   
@@ -546,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/mainboard/" class="md-nav__link">
+      <a href="../../CC1/mainboard/" class="md-nav__link">
         
   
   
@@ -574,7 +632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/fel-uart-setup/" class="md-nav__link">
+      <a href="../../CC1/fel-uart-setup/" class="md-nav__link">
         
   
   
@@ -602,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/emmc-tapping/" class="md-nav__link">
+      <a href="../../CC1/emmc-tapping/" class="md-nav__link">
         
   
   
@@ -630,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/toolhead/" class="md-nav__link">
+      <a href="../../CC1/toolhead/" class="md-nav__link">
         
   
   
@@ -658,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/camera/" class="md-nav__link">
+      <a href="../../CC1/camera/" class="md-nav__link">
         
   
   
@@ -686,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/bed/" class="md-nav__link">
+      <a href="../../CC1/bed/" class="md-nav__link">
         
   
   
@@ -714,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/screen/" class="md-nav__link">
+      <a href="../../CC1/screen/" class="md-nav__link">
         
   
   
@@ -742,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/misc/" class="md-nav__link">
+      <a href="../../CC1/misc/" class="md-nav__link">
         
   
   
@@ -770,7 +828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/CANVAS/" class="md-nav__link">
+      <a href="../../CC1/CANVAS/" class="md-nav__link">
         
   
   
@@ -798,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC1/documentation/" class="md-nav__link">
+      <a href="../../CC1/documentation/" class="md-nav__link">
         
   
   
@@ -831,8 +889,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -841,13 +901,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked="">
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -868,7 +926,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -886,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -914,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/mainboard/" class="md-nav__link">
+      <a href="../mainboard/" class="md-nav__link">
         
   
   
@@ -942,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/toolhead/" class="md-nav__link">
+      <a href="../toolhead/" class="md-nav__link">
         
   
   
@@ -967,10 +1025,124 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#camera-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/screen/" class="md-nav__link">
+      <a href="../bed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../screen/" class="md-nav__link">
         
   
   
@@ -998,7 +1170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/misc/" class="md-nav__link">
+      <a href="../misc/" class="md-nav__link">
         
   
   
@@ -1026,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/CANVAS/" class="md-nav__link">
+      <a href="../CANVAS/" class="md-nav__link">
         
   
   
@@ -1054,7 +1226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/CC2/documentation/" class="md-nav__link">
+      <a href="../documentation/" class="md-nav__link">
         
   
   
@@ -1149,7 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/" class="md-nav__link">
+      <a href="../../../software/" class="md-nav__link">
         
   
   
@@ -1177,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/partitions/" class="md-nav__link">
+      <a href="../../../software/partitions/" class="md-nav__link">
         
   
   
@@ -1205,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/updates/" class="md-nav__link">
+      <a href="../../../software/updates/" class="md-nav__link">
         
   
   
@@ -1233,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/updates-cc2/" class="md-nav__link">
+      <a href="../../../software/updates-cc2/" class="md-nav__link">
         
   
   
@@ -1261,7 +1433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/api/" class="md-nav__link">
+      <a href="../../../software/api/" class="md-nav__link">
         
   
   
@@ -1289,7 +1461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/custom-gcode/" class="md-nav__link">
+      <a href="../../../software/custom-gcode/" class="md-nav__link">
         
   
   
@@ -1317,7 +1489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/embedded-firmware/" class="md-nav__link">
+      <a href="../../../software/embedded-firmware/" class="md-nav__link">
         
   
   
@@ -1345,7 +1517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/FEL-mode/" class="md-nav__link">
+      <a href="../../../software/FEL-mode/" class="md-nav__link">
         
   
   
@@ -1403,7 +1575,7 @@
   <span class="md-ellipsis">
     
   
-    Patched Firmware
+    COSMOS Firmware
   
 
     
@@ -1419,59 +1591,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Patched Firmware
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1">
-        
-          
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Patched firmware
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Patched firmware
+    COSMOS Firmware
   
 
           </label>
@@ -1484,311 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../patched-firmware/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Patched firmware
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../patched-firmware/modified_start_end_machine_gcode/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modified slicer machine gcode
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper Conversion
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Klipper Conversion
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper Conversion Methods
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2">
-        
-          
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper via mainboard replacement
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Klipper via mainboard replacement
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="klipper-via-mainboard-replacement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Documentation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3">
-        
-          
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Klipper on official mainboard (COSMOS)
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Klipper on official mainboard (COSMOS)
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cosmos/cosmos/" class="md-nav__link">
+      <a href="../../../klipper-conversion/cosmos/cosmos/" class="md-nav__link">
         
   
   
@@ -1816,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cosmos/install/" class="md-nav__link">
+      <a href="../../../klipper-conversion/cosmos/install/" class="md-nav__link">
         
   
   
@@ -1844,7 +1660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cosmos/features/" class="md-nav__link">
+      <a href="../../../klipper-conversion/cosmos/features/" class="md-nav__link">
         
   
   
@@ -1860,14 +1676,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1900,10 +1708,208 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patched Firmware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Patched Firmware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../patched-firmware/modified_start_end_machine_gcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modified slicer gcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../klipper-conversion/klipper-via-mainboard-replacement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mainboard Replacement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -1921,8 +1927,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1939,7 +1945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mods/machine_mods/" class="md-nav__link">
+      <a href="../../../mods/machine_mods/" class="md-nav__link">
         
   
   
@@ -1980,10 +1986,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2">
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -2001,8 +2007,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2019,7 +2025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mods/optimized_parts/" class="md-nav__link">
+      <a href="../../../mods/optimized_parts/" class="md-nav__link">
         
   
   
@@ -2047,7 +2053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mods/printable_mods/" class="md-nav__link">
+      <a href="../../../mods/printable_mods/" class="md-nav__link">
         
   
   
@@ -2083,7 +2089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mods/light_mods/" class="md-nav__link">
+      <a href="../../../mods/light_mods/" class="md-nav__link">
         
   
   
@@ -2091,6 +2097,34 @@
     
   
     Light Mods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mods/camera_mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera Replacement
   
 
     
@@ -2118,6 +2152,43 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#camera-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -2131,23 +2202,116 @@
   
 
 
-<h1 id="klipper-conversion">Klipper Conversion</h1>
-<div class="grid cards">
-<ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 9V7h-2V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2h2v-2h-2v-2h2v-2h-2V9zm-4 10H4V5h14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"></path></svg></span> <strong>Klipper via mainboard replacement</strong></p>
-<hr>
-<p><a href="https://wiki.i.devminer.xyz/s/4935760a-7863-494c-918f-72373130d619"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"></path></svg></span> View Devminer's mainboard replacement docs</a></p>
-<p>Run full klipper by replacing your mainboard using off-the-shelf parts. </p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.75 8h6.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-6.5a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 8.75 8m.75 6.5h5v-5h-5Z"></path><path d="M15.25 1a.75.75 0 0 1 .75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 0 1 0 1.5H20v5h2.25a.75.75 0 0 1 0 1.5H20v2.25A1.75 1.75 0 0 1 18.25 20H16v2.25a.75.75 0 0 1-1.5 0V20h-5v2.25a.75.75 0 0 1-1.5 0V20H5.75A1.75 1.75 0 0 1 4 18.25V16H1.75a.75.75 0 0 1 0-1.5H4v-5H1.75a.75.75 0 0 1 0-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 0 1 1.5 0V4h5V1.75a.75.75 0 0 1 .75-.75m3 17.5a.25.25 0 0 0 .25-.25V5.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25Z"></path></svg></span> <strong>Run Klipper on the stock mainboard (COSMOS)</strong></p>
-<hr>
-<p><a href="cosmos/cosmos/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"></path></svg></span> Run Klipper on stock mainboard</a></p>
-<p>Run Klipper on your stock mainboard through DSP control.</p>
-</li>
-</ul>
-</div>
+<h1 id="cc2-camera">CC2 Camera</h1>
+<p>The CC2 camera is slightly different, but unremarkable from, the various CC1 camera revisions.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resolution</td>
+<td>720p(1280x720)</td>
+</tr>
+<tr>
+<td>Aspect Ratio</td>
+<td>16:9</td>
+</tr>
+<tr>
+<td>Max Refresh Rate</td>
+<td>30 Hz</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Fixed (glued barrel adjustment)</td>
+</tr>
+<tr>
+<td>FOV</td>
+<td>90-110°?</td>
+</tr>
+<tr>
+<td>Exposure</td>
+<td>Auto</td>
+</tr>
+<tr>
+<td>PCB Dimensions</td>
+<td>30mmx30mm</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>4 pin JST-ZH (1.5mm pitch)</td>
+</tr>
+<tr>
+<td>Communication Protocol</td>
+<td>USB 2.0</td>
+</tr>
+<tr>
+<td>Display Name</td>
+<td>"Integrated Camera"</td>
+</tr>
+<tr>
+<td>Listed Power</td>
+<td>500 mA @5Vs</td>
+</tr>
+<tr>
+<td>USB Transceiver</td>
+<td></td>
+</tr>
+<tr>
+<td>Flash</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<figure>
+<table>
+<thead>
+<tr>
+<th>Front</th>
+<th>Back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/camerafront.jpg" data-desc-position="bottom"><img alt="Camera back front image" src="../assets/camerafront.jpg" width="800"></a></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cameraback.jpg" data-desc-position="bottom"><img alt="Camera back image" src="../assets/cameraback.jpg" width="800"></a></td>
+</tr>
+</tbody>
+</table>
+<figcaption>
+<p>Credit to chiaia on the OpenCentauri Discord.</p>
+</figcaption>
+</figure>
+<h2 id="camera-pins">Camera Pins</h2>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>2/DP</td>
+<td>D+</td>
+</tr>
+<tr>
+<td>3/DN</td>
+<td>D-</td>
+</tr>
+<tr>
+<td>4/5V</td>
+<td>+5v</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2170,7 +2334,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2026 21:55:42 UTC">April 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 22:55:01 UTC">June 2, 2026</span>
   </span>
 
     
@@ -2180,7 +2344,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 22, 2026 23:45:11 UTC">March 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 22:55:01 UTC">June 2, 2026</span>
   </span>
 
     
@@ -2198,9 +2362,9 @@
     
     <nav>
       
-        <a href="https://github.com/suchmememanyskill" class="md-author" title="@suchmememanyskill">
+        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
           
-          <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
+          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
         </a>
       
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
@@ -2208,23 +2372,7 @@
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
         </a>
       
-        <a href="https://github.com/Atomique13" class="md-author" title="@Atomique13">
-          
-          <img src="https://avatars.githubusercontent.com/u/31422391?v=4&amp;size=72" alt="Atomique13">
-        </a>
       
-        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
-          
-          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
-        </a>
-      
-      
-      
-        
-          <a href="https://github.com/suchmememanyskill/OpenCentauri/blob/master/docs/klipper-conversion/index.md" class="md-author md-author--more">
-            +1
-          </a>
-        
       
     </nav>
   </span>
@@ -2244,13 +2392,63 @@
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
       </main>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../toolhead/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Toolhead">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Toolhead
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../bed/" class="md-footer__link md-footer__link--next" aria-label="Next: Bed">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Bed
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © OpenCentauri contributors
+    </div>
   
   
     Made with
@@ -2285,14 +2483,16 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.expand", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

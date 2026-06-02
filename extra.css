@@ -3,7 +3,75 @@
     gap: 10px;
 }
 
-iframe { 
-    border: none; 
+iframe {
+    border: none;
     background-color: transparent;
+}
+
+/* Neutral grey for collapsible sections (abstract + info admonition types) */
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract,
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-color: #757575;
+}
+
+.md-typeset .admonition.abstract > .admonition-title,
+.md-typeset details.abstract > summary,
+.md-typeset .admonition.info > .admonition-title,
+.md-typeset details.info > summary {
+  background-color: rgba(117, 117, 117, 0.12);
+}
+
+.md-typeset .admonition.abstract > .admonition-title::before,
+.md-typeset details.abstract > summary::before,
+.md-typeset .admonition.info > .admonition-title::before,
+.md-typeset details.info > summary::before {
+  background-color: #757575;
+}
+
+/* Chevron arrow */
+.md-typeset details.abstract > summary::after,
+.md-typeset details.info > summary::after {
+  background-color: #757575;
+}
+
+/* Hover/focus-within glow — replace accent-colour box-shadow with neutral */
+.md-typeset .admonition.abstract:hover,
+.md-typeset details.abstract:hover,
+.md-typeset .admonition.abstract:focus-within,
+.md-typeset details.abstract:focus-within,
+.md-typeset .admonition.info:hover,
+.md-typeset details.info:hover,
+.md-typeset .admonition.info:focus-within,
+.md-typeset details.info:focus-within {
+  border-color: #9e9e9e;
+  box-shadow: none;
+}
+
+/* Focus ring */
+.md-typeset details.abstract > summary:focus,
+.md-typeset details.info > summary:focus {
+  outline-color: rgba(117, 117, 117, 0.5);
+}
+
+/* Ensure all page content sits above the watermark */
+.md-content__inner {
+    position: relative;
+    z-index: 1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background-image: url('assets/watermark.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom left;
+    pointer-events: none;
+    z-index: 0;
 }
