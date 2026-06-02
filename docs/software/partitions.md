@@ -21,4 +21,4 @@ private@mmcblk0p12|0xFC000|0x22988000|Entirely empty
 UDISK@mmcblk0p13|0x1A5577E00|0x22A84000|
 
 !!! note
-    The `dsp0A` and `dsp0B` partitions contain embedded firmware for the hotend and bed MCUs. See [Embedded Firmware](./embedded-firmware.md) for details on flashing and building custom MCU firmware.
+    The `dsp0A` and `dsp0B` partitions contain embedded firmware for the Digital signal processor. See [Embedded Firmware](./embedded-firmware.md) for details on flashing and building custom MCU firmware. These partitions are unused by COSMOS.

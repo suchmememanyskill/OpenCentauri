@@ -16,7 +16,7 @@ The contents of a CC1 CANVAS upgrade kit excluding cables, a top cover is not in
 Credit to anna_devminer on the OpenCentauri Discord.
 ///
 
-The CANVAS core module mounts on the top frame insert of the CC1. It is mechanically identical to the CC2 CANVAS but it uses [alternate boards](../CC2/CANVAS.md/#canvas-mainboard) though with the same MCU.
+The CANVAS core module mounts on the top frame insert of the CC1. It is mechanically identical to the CC2 CANVAS but it uses [alternate boards](../CC2/CANVAS.md/#canvas-mainboard).
 
 
 ### CANVAS Mainboard
