@@ -83,11 +83,11 @@ Community-designed printable modifications for the Centauri Carbon series, organ
 
     | | Stock | Γ/Gamma | ACCTC | SE3D | Proxima |
     |---|---|---|---|---|---|
-    | **Approx. mass** | ~120g | ~95g | ~80g | ~100g | ~60g |
+    | **Approx. mass** | ~120g | ~95g | ~70g | ~100g | ~60g |
     | **Mounting** | Magnetic (weak) | Magnetic (strong) | Screws | Dovetail + screws (mods available) | Screws |
     | **Compatibility** | ~ | CC1 | CC1 | CC1 | All |
     | **Strength** | High | High | High | Low-Medium | High |
-    | **Key feature** | ~ | Tool-free snap fit | Max mass reduction | Most variants/remixes | CFD duct; 5015 fan |
+    | **Key feature** | ~ | Tool-free snap fit | Optimized intake; rigid mount | Most variants/remixes | CFD duct; 5015 fan |
 
     ---
 
