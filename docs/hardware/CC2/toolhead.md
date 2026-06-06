@@ -22,7 +22,7 @@ The Toolhead board has a 2x4 pin port at the bottom. This connector links to a s
 
 
 
-The CC2 has an additional filament detector board connected to the bottom port on the opposite side of the supplementary board pins. It uses an optical sensor to detect filament entry into the extruder. A spring on the back of the board retains a lever that blocks the optical sensor when filament enters the extruder. A redesigned front and rear extruder shell accommodate both this detector board and the filament [multiplexer](CANVAS.md#filament-multiplexer).
+The CC2 has an additional filament detector board connected to the bottom port on the opposite side of the supplementary board pins. It uses an optical sensor to detect filament entry into the extruder. A spring on the back of the board retains a lever that blocks the optical sensor when filament enters the extruder. A redesigned front and rear extruder shell accommodate both this detector board and the filament [multiplexer](../CANVAS/CANVAS_components.md#filament-multiplexer).
 
 This board also includes forward- and rear-facing Hall effect sensors. The forward sensor, located near the middle of the board, detects the toolhead cover using a small magnet in the CC2 toolhead. The rear sensor, located near the top-back side of the board and extending over the multiplexer, is used for tangle detection. A spring-loaded tab in the multiplexer extends under filament tension and triggers this sensor once tension exceeds a threshold.
 

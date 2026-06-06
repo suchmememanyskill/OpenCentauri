@@ -34,26 +34,6 @@ The Centauri Carbon 2 employs an A/B partition scheme managed by `swupdate`. Upd
 
 ## Firmware update archive
 
-### v02.00.02.00 (Released 28/05/2026)
-[Download](https://github.com/suchmememanyskill/cc2-firmwares/raw/refs/heads/main/cc2-02.00.02.00-a3a76f4eb7036027e0927d7f9184a092-release-abroad.zip.sig){  referrerpolicy="no-referrer" .md-button .md-button--primary }
-
-??? warning "SSH disabled"
-    This release removes the SSH process entirely, making it more difficult to perform research on a live device.
-
-??? warning "Downgrades disabled"
-    This release prevents downgrades to any version before this release. If you'd like to downgrade anyway, use the repacked version of v01.03.02.51 below. Use at your own risk.
-
-    [Download repacked v01.03.02.51](https://github.com/suchmememanyskill/cc2-firmwares/raw/refs/heads/main/cc2_eeb001_02.00.00.00_from51.zip.sig){  referrerpolicy="no-referrer" .md-button .md-button--primary }
-
-Changelog:
-
-1. Implemented several UI adjustments.
-1. Added weak network reminder for Wi-Fi connections.
-1. Fixed occasional Error 803 triggered by heating commands.
-1. Fixed the occasional mismatch between timelapse video filenames and print file 
-1. filenames during export.
-1. Fixed the issue where resume printing failed after power loss when using an external spool under certain conditions.
-
 ### v01.03.02.51 (Released 09/05/2026)
 [Download](https://github.com/suchmememanyskill/cc2-firmwares/raw/refs/heads/main/cc2-01.03.02.51-2ab3ffd72854dfd40af180c57fb9bb31-release-abroad.zip.sig){  referrerpolicy="no-referrer" .md-button .md-button--primary }
 

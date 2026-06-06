@@ -54,6 +54,10 @@ nav:
       - Miscellaneous: hardware/CC2/misc.md
       - CANVAS: hardware/CC2/CANVAS.md
       - Official Documentation: hardware/CC2/documentation.md
+    - CANVAS:
+      - Components: hardware/CANVAS/CANVAS_components.md
+      - Drivetrain: hardware/CANVAS/CANVAS_drivetrain.md
+      - Unreleased Designs: hardware/CANVAS/CANVAS_unreleased.md
   - Official Firmware: 
     - Software: software/index.md
     - Partitions: software/partitions.md

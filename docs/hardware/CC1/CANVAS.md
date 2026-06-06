@@ -1,23 +1,22 @@
 # CC1 CANVAS
 
-## Overview
+CANVAS is a multimaterial upgrade kit for the CC1. The CANVAS module hardware is shared with the CC2; shared documentation is on the [CANVAS General](../CANVAS/CANVAS_components.md) page. This page covers CC1-specific integration differences.
 
-CANVAS is a multimaterial/multicolor upgrade kit for the Centauri Carbon 1 that is mechanically similar to the [CC2C canvas system](../CC2/CANVAS.md). It employs a Type B design based on [Happy-Hare nomenclature](https://github.com/moggieuk/Happy-Hare/wiki/Conceptual-MMU) with a filament multiplexer proximal to the toolhead for minimal retraction distance. The official manual is available [here](https://raw.githubusercontent.com/OpenCentauri/tools/refs/heads/main/pdf/CC1_canvas_manual_EN.pdf). Further details about its mechanical operation are available in the [CC2 CANVAS documentation](../CC2/CANVAS.md) as this page will mainly document unique features of the CC1 CANVAS.
+The official manual is available [here](https://raw.githubusercontent.com/OpenCentauri/tools/refs/heads/main/pdf/CC1_canvas_manual_EN.pdf).
 
-![CANVAS core module](./assets/canvas_kit.jpg){ width="800" }
+![CC1 CANVAS upgrade kit contents](./assets/canvas_kit.jpg){ width="800" }
 /// caption
-The contents of a CC1 CANVAS upgrade kit excluding cables, a top cover is not included with the upgrade package.
+Contents of a CC1 CANVAS upgrade kit, excluding cables. A top cover is not included.
 ///
 
 ## CANVAS Module
 
-![CANVAS core module](./assets/canvas.jpg){ width="800" }
+![CC1 CANVAS core module](./assets/canvas.jpg){ width="800" }
 /// caption
 Credit to anna_devminer on the OpenCentauri Discord.
 ///
 
-The CANVAS core module mounts on the top frame insert of the CC1. It is mechanically identical to the CC2 CANVAS but it uses [alternate boards](../CC2/CANVAS.md/#canvas-mainboard).
-
+The CANVAS core module mounts on the top frame insert of the CC1. It is mechanically identical to the CC2 CANVAS but uses a different mainboard revision and a slightly different [RFID board revision](../CANVAS/CANVAS_components.md#rfid-board).
 
 ### CANVAS Mainboard
 
@@ -29,43 +28,30 @@ Product Id|
 Device BCD|
 Product|
 Manufacturer|GigaDevice Semicon Beijing
-Stepper driver|4xAT8833 (DRV8833 clone)
+Stepper driver|4× AT8833 (DRV8833 clone)
 
 Front|Back
 ---|---
-![CANVAS Mainboard](./assets/canvas_mainboard.jpg){ width="800" }|![CANVAS Mainboard back image](./assets/canvas_mainboard_back.jpg){ width="800"}
-
-
-
-### RFID Board
-An RFID reader board is present in the front of the shell to read filament information, It is a slightly different revision from [that on the CC2 combo](../CC2/CANVAS.md/#rfid-board).
-
-![CANVAS RFID Board](./assets/canvas_rfidboard.jpg){ width="800" }
-/// caption
-CANVAS RFID Board.
-Credit to anna_devminer on the OpenCentauri Discord. 
-///
+![CC1 CANVAS Mainboard front](./assets/canvas_mainboard.jpg){ width="800" }|![CC1 CANVAS Mainboard back](./assets/canvas_mainboard_back.jpg){ width="800" }
 
 ## Spool Holders
 
-CC2 spool holders are reused though two adapter brackets are supplied to compensate for the lack of additional tapped holes on the CC1 frame (see [image of full kit contents](#overview))
+The CC2 spool holders are reused. Two adapter brackets are supplied to compensate for the absence of additional tapped holes on the CC1 frame (visible in the kit contents image above). See [CANVAS General — Spool Holders](../CANVAS/CANVAS_components.md#spool-holders) for full details.
 
 ## Filament Multiplexer
 
-An identical filament multiplexer is supplied with the CC1 upgrade as is provided [in the CC2 combo](../CC2/CANVAS.md/#filament-multiplexer).
+An identical filament multiplexer to the CC2 is supplied. See [CANVAS General — Filament Multiplexer](../CANVAS/CANVAS_components.md#filament-multiplexer) for full details.
 
 ## Revised Toolhead Board
 
-In order to support the Filament cutter actuator hall effect sensor and front cover removal hall effect sensor as well as the filament detector a new toolhead PCB is supplied that is distinct from both the original CC1 toolhead board, and the [CC2 board](../CC2/toolhead.md). Notably it includes an additional port for the filament detector but retains the populated LED MOSFET for toolhead lighting, unlike the CC2. A new breakout board is not supplied so the original CC1 breakout board for the thermistor, heater, and hotend fan is reused.
+A new toolhead PCB is included to support the filament cutter actuator Hall effect sensor, front cover removal Hall effect sensor, and filament detector. This board is distinct from both the original CC1 toolhead board and the CC2 board. It retains the populated LED MOSFET for toolhead lighting, unlike the CC2. The original CC1 breakout board for the thermistor, heater, and hotend fan is reused.
 
 Front|Back
 ---|---
-![Toolhead board image](./assets/canvas_toolheadboard_front.jpg){ width="800" }|![Toolhead board back image](./assets/canvas_toolheadboard_rear.jpg){ width="800" }
+![Toolhead board front](./assets/canvas_toolheadboard_front.jpg){ width="800" }|![Toolhead board back](./assets/canvas_toolheadboard_rear.jpg){ width="800" }
 /// caption
-CANVAS RFID Board.
-Credit to anna_devminer on the OpenCentauri Discord. 
+CC1 CANVAS toolhead board. Credit to anna_devminer on the OpenCentauri Discord.
 ///
-
 
 ### Toolhead Board MCU
 
@@ -82,17 +68,15 @@ Stepper driver|TMC2209
 
 ## Extruder Upgrade with Filament Detector
 
-A Centauri Carbon 2 extruder with filament detector board is provided in the upgrade kit to support AMS reliability. The same board revision is used [as on CC2 CANVAS](../CC2/toolhead.md/#filament-detector-board).
+A CC2 extruder with filament detector board is included in the upgrade kit. The same board revision is used [as on the CC2](../CC2/toolhead.md#filament-detector-board).
 
-## Revised front cover and Hotend Fan assembly
+## Revised Front Cover and Hotend Fan Assembly
 
-As the CC2 extruder PCB supports a hall effect sensor attached to the hotend fan duct a new duct and fan are provided with this sensor. It is identical to the [corresponding CC2 part](../CC2/toolhead.md/#filament-cutter-actuation-sensor) and is used to detect filament cutter actuation.
+A new hotend fan duct and fan are provided, with a Hall effect sensor for filament cutter actuation detection. This assembly is identical to the [corresponding CC2 part](../CC2/toolhead.md#filament-cutter-actuation-sensor).
 
-Additionally as the filament detector board also faces a forward-facing hall effect sensor [like the CC2](../CC2/toolhead.md/#filament-detector-board) to detect removal of the toolhead cover a new cover and fan is provided with a magnet for this purpose. However the fan is a standard CC1 5020 fan and not the [integrated custom fan used on the CC2](../CC2/toolhead.md/#hardware).
+A new toolhead cover is also provided. The filament detector board's forward-facing Hall effect sensor detects cover removal via a magnet in the cover, as [on the CC2](../CC2/toolhead.md#filament-detector-board). The fan supplied is a standard CC1 5020, not the [integrated custom fan used on the CC2](../CC2/toolhead.md#hardware).
 
-
-![Revised toolhead cover](./assets/canvas_toolheadcover.jpg){ width="800" }
+![Revised toolhead cover with magnet annotated](./assets/canvas_toolheadcover.jpg){ width="800" }
 /// caption
-The revised toolhead cover with new magnet annotated with a red box.
-Credit to anna_devminer on the OpenCentauri Discord. 
+Revised toolhead cover. The magnet location is indicated by the red box. Credit to anna_devminer on the OpenCentauri Discord.
 ///
