@@ -52,7 +52,7 @@ Read the [custom features](./features.md) offered by COSMOS.
 
 ??? question "**How do I install COSMOS?**"
 
-    Instructions are available on the [here](./install.md)
+    Instructions are available [here](./install.md)
 
 ??? question "**How long does it take to install COSMOS?**"
 
@@ -73,6 +73,10 @@ Read the [custom features](./features.md) offered by COSMOS.
 ??? question "**Will COSMOS be available for the Centauri Carbon 2?**"
 
     Maybe, but developer efforts are focused on the CC1 for the time being
+
+??? question "**Will COSMOS work with the Canvas upgrade for the Centauri Carbon 1?**"
+
+    Not yet, but we are working on it!
 
 ??? question "**Is COSMOS related to the OpenCentauri board?**"
 

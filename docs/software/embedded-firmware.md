@@ -30,7 +30,7 @@ Using [mcu-flasher](https://github.com/OpenCentauri/OpenCentauri/tree/main/mcu-f
 
     Currently the stock mainboard CANNOT boot from custom firmwares nor the stock firmware without the original bootloader. This essentially means you cannot use the stock mainboard anymore after wiping the firmware from the hotend or bed boards!
 
-    Ask in the discord for a backup of the original bootloader.
+    Ask in the [OpenCentauri Discord](https://discord.gg/t6Cft3wNJ3) for a backup of the original bootloader.
 
 ### Readout Protection
 

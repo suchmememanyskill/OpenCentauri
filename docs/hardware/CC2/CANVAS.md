@@ -16,14 +16,12 @@ The CANVAS core module mounts on the top frame insert of the CC2 alongside the t
 
 
 ![CANVAS internals](./assets/canvas_internals.jpg){ width="800" }
-
-![CANVAS internals](./assets/canvas_internals3.jpg){ width="800" }
 /// caption
-CANVAS internals. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+CANVAS internals.
 ///
 ![CANVAS motors](./assets/canvas_motors.jpg){ width="800" }
 /// caption
-CANVAS motors. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+CANVAS motors.
 ///
 
 ### CANVAS Mainboard
@@ -36,11 +34,14 @@ Product Id|
 Device BCD|
 Product|
 Manufacturer|GigaDevice Semicon Beijing
-Stepper driver|4xAT8833 (DRV8833 clone)
+Stepper driver|4xAT8833 (DRV8833 clone)s
 
-![CANVAS Mainboard](./assets/canvas_mainboard.jpg){ width="800" }
+
+Front|Back
+---|---
+![CANVAS Mainboard](./assets/canvas_mainboard.jpg){ width="800" }|![CANVAS Mainboard back image](./assets/canvas_mainboard_back.jpg){ width="800" }
 /// caption
-CANVAS Mainboard. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
+CANVAS Mainboard. Credit to Savion on the OpenCentauri Discord.
 ///
 
 ### RFID Board
@@ -50,18 +51,21 @@ An RFID reader board is present in the front of the shell to read filament infor
 /// caption
 CANVAS RFID Board. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
 ///
-![CANVAS RFID connection](./assets/canvas_internals2.jpg){ width="400" }
-/// caption
-RFID board seen connected to the rear of the CANVAS mainboard. Credit to u/CalligrapherLoud778 on the Elegoo subreddit.
-///
 
 ### Filament Detector Boards
-Filament detector boards are sent along the filament path for each channel and appear to use Hall effect sensors similarly to the IFS
+Filament detector boards are sent along the filament path for each channel and appear to use Hall effect sensors similarly to the IFS, seen above mouted alongside motors. The sensor is visible on the rear of the board.
+
+![rear photo of canvas filament detector boards](./assets/hall2.jpg){ width="400" }
 
 
 ## Spool Holders
 
-Canvas spool holders are secured to the frame by means of two holes tapped into the vertical extrusions. They are mechanically similar to Flashforge IFS spool holders and have an internal spring to rewind filament to prevent tangling during filament unloading.
+Canvas spool holders are secured to the frame by means of two holes tapped into the vertical extrusions. They are mechanically similar to Flashforge IFS spool holders and have an internal spring to rewind filament to prevent tangling during filament unloading. If the spool holder is clicking the numbered face plate can be taken off and small amount of grease applied to the spring loaded ratcheting mechanism to reduce noise.
+
+![CANVAS spool holder exploded diagram](./assets/canvasspool.jpg){ width="600" }
+/// caption
+CANVAS spool holder exploded diagram showing inner construction and one half of the ratcheting mechanism in pink
+///
 
 ## Filament Multiplexer
 
@@ -79,7 +83,7 @@ The CC2 detects tangles by means of a rear facing Hall effect sensor at the top 
 The multiplexer tangle detection tab shown in non-triggered (left), and triggered (right) positions. Credit to laser_velociraptor on the Elegoo Discord.
 ///
 
-The multiplexer uses a spring loaded mechanism to maintain the pneumatic fitting hub against the top surface of the multiplexer housing. When a tangle occurs the extruder continues increasing filament tension until it exceeds the force applied by the spring. The spring is compressed thus pushing the metal tab in front of the Hall effect sensor, triggering a tangle error and pausing the print.
+The multiplexer uses a spring loaded mechanism to maintain the pneumatic fitting hub against the top surface of the multiplexer housing. When a tangle occurs the extruder continues increasing filament tension until it exceeds the force applied by the spring. The spring is compressed thus pushing the metal tab in front of the Hall effect sensor, triggering a tangle error and pausing the print. It is held together with plastic clip features in the injection molded housing, these can be gently pressed inward to separate the two halves so that broken scraps of filament that may clog the multiplexer can be removed.
 
 ![Multiplexer internals](./assets/hubinternals.jpg){ width="600" }
 /// caption

@@ -1,5 +1,6 @@
 # CC2 Hardware
 
+<div class="grid cards" markdown>
 
 -   Centauri Carbon 2 Printer specifications:
     
@@ -11,5 +12,7 @@
     Max power usage|1100W@220V, 350W@110V
     Weight|17.65kg
     Machine size|398x404x490mm
+
+</div>
 
 ![CC2 electronics compartment](./assets/cc2_ebox.jpg){ width="800" }

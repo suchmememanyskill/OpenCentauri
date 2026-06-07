@@ -26,5 +26,13 @@
 
     Improve visibility with toolhead mounted lighting directly on the OEM supplementary board.
 
+-   :material-camera:{ .lg .middle } __Camera Replacement__
+
+    ---
+
+    [:octicons-arrow-right-24: Replace the stock camera](./camera_mods.md)
+
+    Upgrade or replace the stock camera with aftermarket USB webcam PCBs.
+
 
 </div>

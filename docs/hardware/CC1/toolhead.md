@@ -12,7 +12,7 @@ The toolhead board is connected over a USB-C cable. This USB-C interface carries
     The board boots from a simple 5v USB connection.
 
 !!! warning
-    You can make the toolhead board boot into DFU mode by bridging the boot and 3.3v pins on the back during power-on. The board is in Read Out Protection mode.
+    You can make the toolhead board boot into DFU mode by bridging the boot and 3.3v pins on the back during power-on. The board is in Read Out Protection mode. See [Embedded Firmware](../../software/embedded-firmware.md) for flashing instructions and important caveats.
 
 ## Supplementary board
 

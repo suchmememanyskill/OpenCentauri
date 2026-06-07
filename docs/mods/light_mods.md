@@ -72,20 +72,39 @@ You can manually test the nozzle LED by running the following G-code files direc
 If your LED lights up correctly when running `LED_ON.gcode` and turns off with `LED_OFF.gcode`, the installation is successful.
 
 
-## G-code Usage  
+## G-code Usage
+
+!!! note
+    The gcode commands below require the nozzle LED to be configured in your Klipper configuration. This is supported on [COSMOS](../klipper-conversion/cosmos/cosmos.md) but requires slightly different gcode
 
 Add the following lines to your slicer’s machine start and end G-code to automatically control the nozzle LED:
 
+
+COSMOS/Klipper
+
 ### Machine Start G-code
+Stock Firmware/Opencentauri:
 ```
 SET_LED_led1 RED=1 GREEN=1 BLUE=1 WHITE=1 TRANSMIT=1
+```
+
+COSMOS/Klipper:
+```
+SET_LED LED=hotend WHITE=1.00 SYNC=0 TRANSMIT=1
+
 ```
  
 
 ### Machine End G-code  
-
+Stock Firmware/Opencentauri:
 ```
 SET_LED_led1 RED=0 GREEN=0 BLUE=0 WHITE=0 TRANSMIT=1
+```
+
+COSMOS/Klipper:
+```
+SET_LED LED=hotend WHITE=0.00 SYNC=0 TRANSMIT=1
+
 ```
 
 This will automatically turn the LED **on** when a print starts and **off** when it finishes.  

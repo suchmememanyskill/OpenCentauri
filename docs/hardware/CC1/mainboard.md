@@ -1,11 +1,11 @@
-## CC1 Mainboard
+# CC1 Mainboard
 
 Metric|Value
 ---|---
 SoC|AllWinner R528-S3
 Memory|128 MB in-chip
 Storage|8gb eMMC
-Stepper drivers|tmc2209
+Stepper drivers|TMC2209
 Part Number|EF-M2-V1.2.045 after 2/2026
 	   |EF-M2-V1.2.084 before 2/2026
 
@@ -14,208 +14,214 @@ Part Number|EF-M2-V1.2.045 after 2/2026
 Front|Back
 ---|---
 ![Mainboard image](./assets/centauri-mobo.jpg){ width="800" }|![Mainboard back image](./assets/centauri-mobo-back.jpg){ width="800" }
-Credit to the Elegoo discord.|Credit to thijskunst on the OpenCentauri Discord.
+Credit to Morgyn on the OpenCentauri Discord.|Credit to Thijskunst on the OpenCentauri Discord.
 
 ### EF-M2-V1.2.084 Mainboard
-![Mainboard front image](./assets/Centauri-mobo-m084.jpg){ width="750" }
+
+A revised mainboard with an alternate QUETEL FCU760K-NL wifi chip went into production at some point between August and October 2026.
+
+Front|Back
+---|---
+![Mainboard front image](./assets/Centauri-mobo-m084.jpg){ width="750" }|![Mainboard back image](./assets/m045_wifi.jpg){ width="400" }
 /// caption
-February 2024 EF-M2-V1.2.084 mainboard with zoomed view of alternate QUETEL FCU760K-NL WiFi chip on right.
-Credit to briantdaniel on the OpenCentauri Discord.
+EF-M2-V1.2.084 mainboard with zoomed view of alternate QUETEL FCU760K-NL WiFi chip in the middle. Compare to EF-M2-V1.2.045 Wifi chip on right. Credit to briantdaniel on the OpenCentauri Discord.
 ///
 
 ## Mainboard Pins
 
-![Mainboard diagram](./assets/cc1_diagram.svg){ width="800" }
+![Mainboard diagram](./assets/cc1revised_diagram.svg){ width="1600" }
 /// caption
-Credit to Morgyn on the OpenCentauri Discord.
+Credit to Morgyn and Baconmilkshake on the OpenCentauri Discord.
 ///
 
-### 24V input
-Type: 2-Pin Barrier terminal with 9.6mm pin pitch
+=== "24V Input"
+    Type: 2-Pin Barrier terminal with 9.6mm pin pitch
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| - | GND |Closest to the stepper connectors|
-|1| + | +24V |Do not overtighten as it is very flimsy|
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| - | GND |Closest to the stepper connectors|
+    |1| + | +24V |Do not overtighten as it is very flimsy|
 
+=== "Steppers X,Y,Z"
+    Type: JST-**XHB**-4P
 
-### Steppers X,Y and Z
-Type: JST-**XHB**-4P 
+    |pin nr|marking|Function|remarks|
+    |--|---|----|---|
+    |1| 2B|2B||
+    |2| 1A|1A||
+    |3| 2A|2A||
+    |4| 1B|1B||
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| 2B|2B||
-|2| 1A|1A||
-|3| 2A|2A||
-|4| 1B|1B||
+=== "Filament Sensor"
+    Type: JST-**XHB**-3P
 
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| S | Signal | **3.3v** when filament is detected|
+    |2| - | GND ||
+    |3| + | +5V ||
 
-### Filament sensor
-Type: JST-**XHB**-3P
+=== "Chamber Temp (BOX-T)"
+    Type: JST-**XHB**-2P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| S | Signal | **3.3v** when filament is detected|
-|2| - | GND ||
-|3| + | +5V ||
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| none | PB13 |standard NTC100k B3950|
+    |2| none | GND ||
 
+=== "Light"
+    Type: JST-**XHB**-2P
 
-### Chamber temp sensor (marked "BOX-T" on the board)
-Type: JST-**XHB**-2P
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| + | +24V | Max 1A |
+    |2| - | PG15|GND_PWM|
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| none | Sig |standard NTC100k B3950| 
-|2| none | GND ||
+=== "Side Fan (FAN-1)"
+    Type: JST-**XHB**-2P
 
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| + | +24V | MAX 1A|
+    |2| - | PG17 |GND_PWM|
 
-### Light
-Type: JST-**XHB**-2P
+=== "Exhaust Fan (BOX-F)"
+    Type: JST-**XHB**-2P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| + | +24V | Max 1A | 
-|2| - | GND_PWM| |
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| + | +24V | MAX 1A|
+    |2| - | PG18 |GND_PWM|
 
-### Side fan (Marked "FAN-1" on the board)
-Type: JST-**XHB**-2P
+=== "Camera"
+    Type: JST-**XHB**-4P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| + | +24V | MAX 1A|
-|2| - | GND_PWM ||
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| GND | GND | regular usb port but with a JST connector|
+    |2| DP | USB-DP ||
+    |3| DM | USB-DM ||
+    |4| 5v | +5V ||
 
-### Rear exhaust Fan (marked "BOX-F" on the board)
-Type: JST-**XHB**-2P
+=== "UART0"
+    Type: JST-**XHB**-2P + 4-Pin 2.54mm pin header
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| + | +24V | MAX 1A|
-|2| - | GND_PWM ||
+    JST: JST-*XHB*-2P
 
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| TX | RS232-TX | connected to 4-pin header|
+    |2| RX | RS232-RX |
 
-### Camera
-Type: JST-**XHB**-4P
+    4-Pin Header:
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| GND | GND | regular usb port but with a JST connector|
-|2| DP | USB-DP ||
-|3| DM | USB-DM ||
-|4| 5v | +5V ||
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| GND | GND | square pad |
+    |2| TX | RS232-TX |
+    |3| RX | RS232-RX |
+    |4| 5v | +5V | J4 marking|
 
-### UART0
-Type: JST-**XHB**-2P + 4-Pin 2.54mm pin header
+=== "FEL"
+    4-Pin Header:
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-JST:
-|1| TX | RS232-TX | connected to 4-pin header|    
-|2| RX | RS232-RX | 
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| 5V | 5V | square pad |
+    |2| UP | DP |
+    |3| UM | DM |
+    |4| GND | GND | J4 marking|
 
-4-Pin Header:
+=== "CANVAS"
+    Type: JST-**XHB**-5P
+    External port: AMS port 2x2 Micro-Fit 3.0
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| GND | GND | square pad |
-|2| TX | RS232-TX |
-|3| RX | RS232-RX |
-|4| 5v | +5V | J4 marking|
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| 24V  | +24V | 24v for motors inside the MMU|
+    |2| GND | GND ||
+    |3| 5V | +5V | 5v can be turned off to reset MCU in the MMU |
+    |4| DM | USB-DM | standard usb 2.0 |
+    |5| DP | USB-DP | |
 
+=== "USB-C → Extruder Board"
+    Type: USB-C (USB 2.0 only)
 
-### Multicolor
-Type: JST-**XHB**-5P
+    !!! warning
+        Do not plug in anything other than the extruder board. This type-C connector has 24V VCC instead of 5V. Anything you plug in WILL GET FRIED!!
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| 24V  | +24V | 24v for motors inside the MMU|
-|2| GND | GND ||
-|3| 5V | +5V | 5v can be turned off to reset MCU in the MMU |
-|4| DM | USB-DM | standard usb 2.0 |
-|5| DP | USB-DP | |
- 
-### USB-C --> Extruder Board
-Type: USB-C (USB 2.0 only)
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |A1/12 |none | GND  | |
+    |A2/B11 | | NC | |
+    |A3/B10 | | NC | |
+    |A4/B9 | | **24V!** Vbus | Switched 24V |
+    |A5/B8 | | A5=CC1  B8=SBU2 | not used |
+    |A6/B7 | |USB 2.0 DP | |
+    |A7/B6 | |USB 2.0 DM | |
+    |A8/B5 | | A8=SBU1  B5=CC2 | not used |
+    |A9/B4 | | **24V!** Vbus | Switched 24V |
+    |A10/B3| | NC | |
+    |A11/B2| | NC | |
+    |A12/B1| | GND | |
 
-!!! warning 
-    Do not plug in anything other than the extruder board. this type-C connector has 24v vcc instead of 5v. Anything you plug in WILL GET FRIED!!
+=== "Display"
+    Type: xx Pin FFC
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|A1/12 |none | GND  | |
-|A2/B11 | | NC | |
-|A3/B10 | | NC | |
-|A4/B9 | | **24V!** Vbus | Switched 24V |
-|A5/B8 | | A5=CC1  B8=SBU2 | not used |
-|A6/B7 | |USB 2.0 DP | |
-|A7/B6 | |USB 2.0 DM | |
-|A8/B5 | | A8=SBU1  B5=CC2 | not used |
-|A9/B4 | | **24V!** Vbus | Switched 24V |
-|A10/B3| | NC | |
-|A11/B2| | NC | |
-|A12/B1| | GND | |
+    RGB888 display + touch\
+    ``unknown pinout``
 
+=== "Front USB"
+    Type: USB-A
 
-### Display
-Type: xx Pin FFC
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| GND | GND | regular usb-A port|
+    |2| DP | DP ||
+    |3| DM | DM ||
+    |4| 5v | +5V ||
 
-RGB888 display + touch\
-``unknown pinout``
+=== "Z-Endstop (EXT)"
+    Type: JST-**XHB**-3P
 
-### Front  USB
-Type: USB-A
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| | +24V||
+    |2| | GND||
+    |3| | PG8 |3.3V pullup, LOW/0v when bed is not in sensor|
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| GND | GND | regular usb-A port|
-|2| DP | DP ||
-|3| DM | DM ||
-|4| 5v | +5V ||
+=== "Mainboard Fan (BFAN)"
+    Type: JST-**XHB**-3P
 
-### Z-endstop (Marked "EXT" on the board)
-Type: JST-**XHB**-3P
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1|  | +24V ||
+    |2|  | PG16 | GND_PWM, Controlled by MCU|
+    |3|  | PG6 | Tachometer |
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| | +24V||
-|2| | GND||
-|3| | SIG |3.3V pullup, LOW/0v when bed is not in sensor|
+=== "Bed MCU (RS-232)"
+    Type: JST-**XHB**-5P
 
-### Mainboard fan "BFAN"
-Type: JST-**XHB**-3P
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| 24V | +24V | Not used on the leveling mcu board|
+    |2| GND | GND |
+    |3| 5V | +5V | 5v is switched to reset the bed MCU |
+    |4| TX | TX||
+    |5| RX | RX||
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1|  | +24V ||
-|2|  | GND_PWM | Controlled by MCU
-|3|  | Tacho ||
+=== "Bed Heater (HBED)"
+    Type: JST-**XHB**-2P
 
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1| - | PG13 | GND_PWM, Controlled by MCU|
+    |2| + | +24V||
 
-### Bed MCU (RS-232)
-Type: JST-**XHB**-5P
+=== "Bed Temp Sensor (BED-T)"
+    Type: JST-**XHB**-2P
 
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| 24V | +24V | Not used on the leveling mcu board|
-|2| GND | GND |
-|3| 5V | +5V | 5v is switched to reset the bed MCU |
-|4| TX | TX||
-|5| RX | RX||
-
-
-### Bed heater "HBED"
-Type: JST-**XHB**-2P
-
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-|1| - | GND_PWM | Controlled by MCU|
-|2| + | +24V||
-
-
-### Bed temperature sensor "BED-T"
-Type: JST-**XHB**-2P
-
-|pin nr|marking|Function|remarks|
-|--|---|----|---|
-1|  | SIG|  NTC100k B3950|
-2|  | GND|  |
+    |pin nr|marking|pin|remarks|
+    |--|---|----|---|
+    |1|  | PB14 |  NTC100k B3950|
+    |2|  | GND ||
