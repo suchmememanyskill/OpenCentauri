@@ -20,10 +20,10 @@ This guide describes how to set up a Centauri Carbon 2 mainboard on a bench for 
 You will need the following components:
 
 - **24V Power Supply**
-- **3.3V USB Serial UART Dongle** (e.g., [Amazon Link](https://amzn.to/3La06pv))
+- **3.3V USB Serial UART Dongle** (e.g., [Amazon Link](https://a.co/d/0fSMDXwf))
     - *Alternative:* A Raspberry Pi or ESP32 acting as a serial interface
-- **FEL USB Connection** — a **USB-A male to dupont female cable** wired to the board's **FEL header (J6)**. Unlike the CC1 there is no USB-C port to use, so this header is the only FEL entry point. (Sold pre-assembled as "USB to dupont" / "USB to 4-pin," or solder one from a sacrificial USB-A cable.)
-- **Dupont Jumper Cables** ([Link 1](https://amzn.to/44RJQAe), [Link 2](https://amzn.to/3NsB5GE))
+    - Dupont jumper cables for the UART wiring are often included with the dongle
+- **FEL USB Connection** — a **USB-A male to dupont female cable** wired to the board's **FEL header (J6)**. Unlike the CC1 there is no USB-C port to use, so this header is the only FEL entry point. (Sold pre-assembled as "USB to dupont" / "USB to 4-pin" — e.g., [Amazon Link](https://www.amazon.com/dp/B09ZFKFPHS) — or solder one from a sacrificial USB-A cable.)
 
 ## Critical Warnings
 
