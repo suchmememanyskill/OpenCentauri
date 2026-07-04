@@ -4,6 +4,9 @@ CANVAS is a multimaterial upgrade kit for the CC1. The CANVAS module hardware is
 
 The official manual is available [here](https://raw.githubusercontent.com/OpenCentauri/tools/refs/heads/main/pdf/CC1_canvas_manual_EN.pdf).
 
+<iframe src="https://smith150.autodesk360.com/shares/public/SH90d2dQT28d5b602811c32347388b2b10da?mode=embed" width="800" height="800" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
+
+
 ![CC1 CANVAS upgrade kit contents](./assets/canvas_kit.jpg){ width="800" }
 /// caption
 Contents of a CC1 CANVAS upgrade kit, excluding cables. A top cover is not included.
@@ -15,6 +18,7 @@ Contents of a CC1 CANVAS upgrade kit, excluding cables. A top cover is not inclu
 /// caption
 Credit to anna_devminer on the OpenCentauri Discord.
 ///
+
 
 The CANVAS core module mounts on the top frame insert of the CC1. It is mechanically identical to the CC2 CANVAS but uses a different mainboard revision and a slightly different [RFID board revision](../CANVAS/CANVAS_components.md#rfid-board).
 
