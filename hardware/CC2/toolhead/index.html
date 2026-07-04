@@ -1071,6 +1071,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#toolhead-board-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toolhead Board Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#filament-detector-board" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2371,6 +2382,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#toolhead-board-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toolhead Board Pins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#filament-detector-board" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2450,6 +2472,299 @@
 </figcaption>
 </figure>
 <p>The Toolhead board has a 2x4 pin port at the bottom. This connector links to a separate PCB that breaks out the required hotend connectors (temperature sensor, heater, and hotend fan).</p>
+<h2 id="toolhead-board-pins">Toolhead Board Pins</h2>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_pinmap.svg" data-desc-position="bottom"><img alt="Mainboard diagram" src="../assets/cc2_pinmap.svg" width="1000"></a></p>
+<figcaption>
+<p>Credit to Baconmilkshake on the OpenCentauri Discord.</p>
+</figcaption>
+</figure>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><input id="__tabbed_1_6" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Toolhead USB (24V)</label><label for="__tabbed_1_2">Part Cooling Fan</label><label for="__tabbed_1_3">LIS2DW12 (SPI1)</label><label for="__tabbed_1_4">Stepper E</label><label for="__tabbed_1_5">Filament Detector Board</label><label for="__tabbed_1_6">Supplementary Board</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Type: USB-C, carries 24V Vbus</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>D+</td>
+<td>USB D+</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>D-</td>
+<td>USB D-</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: 4-Pin connector</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Tach</td>
+<td>PA8</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>PWM</td>
+<td>PB15</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>24V</td>
+<td>+24V</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gnd</td>
+<td>GND</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Onboard accelerometer test points</p>
+<table>
+<thead>
+<tr>
+<th>marking</th>
+<th>pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS</td>
+<td>PA4</td>
+</tr>
+<tr>
+<td>SCLK</td>
+<td>PA5</td>
+</tr>
+<tr>
+<td>MOSI</td>
+<td>PA7</td>
+</tr>
+<tr>
+<td>MISO</td>
+<td>PA6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: 4-Pin connector (motor coil)</p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2B</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1A</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2A</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>1B</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Driver control test points:</p>
+<table>
+<thead>
+<tr>
+<th>marking</th>
+<th>pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EN</td>
+<td>PB7</td>
+</tr>
+<tr>
+<td>STEP</td>
+<td>PB5</td>
+</tr>
+<tr>
+<td>DIR</td>
+<td>PB6</td>
+</tr>
+<tr>
+<td>UART</td>
+<td>PB11</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: 4-Pin connector, connects to the <a href="#filament-detector-board">filament detector board</a></p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>S5</td>
+<td>PA1</td>
+<td>Top row, tangle detection</td>
+</tr>
+<tr>
+<td>2</td>
+<td>S4</td>
+<td>PA2</td>
+<td>Top row, <a href="#filament-cutter-actuation-sensor">cutter actuation sensor</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>S3</td>
+<td>PA0</td>
+<td>Top row, Model detection- purpose unknown</td>
+</tr>
+<tr>
+<td>4</td>
+<td>S2</td>
+<td>PB1</td>
+<td>Top row, optical filament detect</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NC</td>
+<td></td>
+<td>Bottom row</td>
+</tr>
+<tr>
+<td>6</td>
+<td>S1</td>
+<td>PB0</td>
+<td>Bottom row, toolhead cover detection</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Gnd</td>
+<td>GND</td>
+<td>Bottom row</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3V3</td>
+<td>+3.3V</td>
+<td>Bottom row</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Type: 8-Pin connector (2x4), connects to <a href="#supplementary-board">supplementary board</a></p>
+<table>
+<thead>
+<tr>
+<th>pin nr</th>
+<th>marking</th>
+<th>pin</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>FP</td>
+<td>PB13</td>
+<td>Hotend fan PWM</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LED-</td>
+<td>~</td>
+<td>LED PWM, not connected</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Temp</td>
+<td>PA3</td>
+<td>Top row</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Heat</td>
+<td>PB8</td>
+<td>Top row</td>
+</tr>
+<tr>
+<td>5</td>
+<td>F+</td>
+<td>+24V</td>
+<td>Bottom row, also LED+</td>
+</tr>
+<tr>
+<td>6</td>
+<td>FS</td>
+<td>PB14</td>
+<td>Hotend fan tach, 24v</td>
+</tr>
+<tr>
+<td>7</td>
+<td>F-</td>
+<td>GND</td>
+<td>Bottom row</td>
+</tr>
+<tr>
+<td>8</td>
+<td>F+</td>
+<td>+24V</td>
+<td>Bottom row</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <h2 id="filament-detector-board">Filament Detector Board</h2>
 <p>The CC2 has an additional filament detector board connected to the bottom port on the opposite side of the supplementary board pins. It uses an optical sensor to detect filament entry into the extruder. A spring on the back of the board retains a lever that blocks the optical sensor when filament enters the extruder. A redesigned front and rear extruder shell accommodate both this detector board and the filament <a href="../../CANVAS/CANVAS_components/#filament-multiplexer">multiplexer</a>.</p>
 <p>This board also includes forward- and rear-facing Hall effect sensors. The forward sensor, located near the middle of the board, detects the toolhead cover using a small magnet in the CC2 toolhead. The rear sensor, located near the top-back side of the board and extending over the multiplexer, is used for tangle detection. A spring-loaded tab in the multiplexer extends under filament tension and triggers this sensor once tension exceeds a threshold.</p>
@@ -2654,7 +2969,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 12, 2026 21:24:39 UTC">June 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 4, 2026 06:47:21 UTC">July 4, 2026</span>
   </span>
 
     
