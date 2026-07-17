@@ -1,4 +1,5 @@
-use std::{fs, io::Cursor, path::PathBuf};
+use std::{io::Cursor, path::PathBuf, process::ExitCode};
+mod cc2_bootloader;
 mod ymodem;
 use clap::Parser;
 use md5::{Digest, Md5};
@@ -15,9 +16,14 @@ struct Args {
     #[arg(long, default_value_t = false)]
     pub no_pad_firmware: bool,
 
-    // Don't flash firmware and just boot the existing firmware.
+    /// Don't flash firmware and just boot the existing CC1 firmware.
     #[arg(long, default_value_t = false)]
     pub skip: bool,
+
+    /// Probe the CC2 serial bootloader and ask it to jump to the application.
+    /// This mode never reads or modifies a firmware file.
+    #[arg(long, default_value_t = false)]
+    pub cc2_boot: bool,
 
     // Don't wait until the serial port is available.
     #[arg(long, default_value_t = false)]
@@ -31,8 +37,8 @@ struct Args {
     #[arg(long, default_value = "")]
     pub firmware: String,
 
-    #[arg(long, default_value_t = 115200)]
-    pub baud: u32,
+    #[arg(long)]
+    pub baud: Option<u32>,
 
     // Serial port timeout in seconds (minimum 1)
     #[arg(long, default_value_t = 2, value_parser = clap::value_parser!(u32).range(1..))]
@@ -43,20 +49,24 @@ struct Args {
     pub device: String,
 }
 
-fn main() {
+fn main() -> ExitCode {
     let mut args = Args::parse();
+
+    let baud = args
+        .baud
+        .unwrap_or(if args.cc2_boot { 250000 } else { 115200 });
 
     let split_version = args.firmware_version.split('.').collect::<Vec<&str>>();
     if split_version.len() != 3 {
         eprintln!("Version must be in the format X.Y.Z (e.g., 1.2.3).");
-        return;
+        return ExitCode::from(1);
     }
 
     let major_version = match split_version[0].parse::<u8>() {
         Ok(v) => v,
         _ => {
             eprintln!("Invalid major version. Must be a number between 0 and 255.");
-            return;
+            return ExitCode::from(1);
         }
     };
 
@@ -64,7 +74,7 @@ fn main() {
         Ok(v) => v,
         _ => {
             eprintln!("Invalid minor version. Must be a number between 0 and 255.");
-            return;
+            return ExitCode::from(1);
         }
     };
 
@@ -72,7 +82,7 @@ fn main() {
         Ok(v) => v,
         _ => {
             eprintln!("Invalid patch version. Must be a number between 0 and 255.");
-            return;
+            return ExitCode::from(1);
         }
     };
 
@@ -92,11 +102,36 @@ fn main() {
         }
     }
 
-    let mut port = serialport::new(&args.device, args.baud)
+    let port_builder = serialport::new(&args.device, baud)
         .timeout(std::time::Duration::from_secs(args.timeout as u64))
-        .dtr_on_open(true)
-        .open()
-        .expect("Failed to open port");
+        // CC2 power sequencing is handled by the caller; avoid asserting DTR
+        // while opening the temporary bootloader connection.
+        .dtr_on_open(!args.cc2_boot);
+
+    let mut port = match port_builder.open() {
+        Ok(port) => port,
+        Err(error) => {
+            eprintln!("Failed to open {} at {} baud: {}", args.device, baud, error);
+            return ExitCode::from(1);
+        }
+    };
+
+    if args.cc2_boot {
+        return match cc2_bootloader::boot(&mut *port, args.timeout) {
+            Ok(cc2_bootloader::BootResult::JumpedToApp) => {
+                println!("CC2 bootloader detected; requested application start");
+                ExitCode::SUCCESS
+            }
+            Ok(cc2_bootloader::BootResult::AlreadyInApp) => {
+                println!("CC2 bootloader not detected; leaving application untouched");
+                ExitCode::SUCCESS
+            }
+            Err(error) => {
+                eprintln!("CC2 bootloader initialization failed: {}", error);
+                ExitCode::from(1)
+            }
+        };
+    }
 
     if args.skip {
         println!(
@@ -109,12 +144,12 @@ fn main() {
             port.flush().unwrap();
         }
 
-        return;
+        return ExitCode::SUCCESS;
     }
 
     if args.firmware.is_empty() || !PathBuf::from(&args.firmware).exists() {
         println!("No firmware file provided or file does not exist. Exiting.");
-        return;
+        return ExitCode::SUCCESS;
     }
 
     let file_name = PathBuf::from(&args.firmware)
@@ -163,4 +198,6 @@ fn main() {
     Ymodem::new()
         .send(&mut port, &mut cursor, file_name, file_size_in_bytes)
         .unwrap();
+
+    ExitCode::SUCCESS
 }
