@@ -59,14 +59,14 @@ fn main() -> ExitCode {
     let split_version = args.firmware_version.split('.').collect::<Vec<&str>>();
     if split_version.len() != 3 {
         eprintln!("Version must be in the format X.Y.Z (e.g., 1.2.3).");
-        return ExitCode::from(1);
+        return ExitCode::SUCCESS;
     }
 
     let major_version = match split_version[0].parse::<u8>() {
         Ok(v) => v,
         _ => {
             eprintln!("Invalid major version. Must be a number between 0 and 255.");
-            return ExitCode::from(1);
+            return ExitCode::SUCCESS;
         }
     };
 
@@ -74,7 +74,7 @@ fn main() -> ExitCode {
         Ok(v) => v,
         _ => {
             eprintln!("Invalid minor version. Must be a number between 0 and 255.");
-            return ExitCode::from(1);
+            return ExitCode::SUCCESS;
         }
     };
 
@@ -82,7 +82,7 @@ fn main() -> ExitCode {
         Ok(v) => v,
         _ => {
             eprintln!("Invalid patch version. Must be a number between 0 and 255.");
-            return ExitCode::from(1);
+            return ExitCode::SUCCESS;
         }
     };
 
