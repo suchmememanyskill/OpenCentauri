@@ -1,5 +1,3 @@
-# rusty-shaper
-
 Low-RAM Rust input shaper calibration for 3D printers.
 
 A re-implementation of Kalico's (Klipper) core shaper calibration logic in pure
@@ -43,6 +41,13 @@ cargo run --release -- /path/to/resonances.csv --output csv
 # Multiple outputs at once
 cargo run --release -- /path/to/resonances.csv --output csv --output json --output klippy
 
+# Multiple input files (batched klippy output)
+cargo run --release -- /path/to/resonances_x.csv /path/to/resonances_y.csv --output klippy
+
+# Per-axis shaper overrides (X uses global default, Y uses explicit list)
+cargo run --release -- /path/to/resonances_x.csv /path/to/resonances_y.csv \
+  --shapers-y mzv,ei --output klippy
+
 # Custom workdir (default: /tmp)
 cargo run --release -- /path/to/resonances.csv --output csv --workdir .
 
@@ -75,10 +80,14 @@ cargo run --release -- /path/to/resonances.csv --max-smoothing 0.15
 
 | Parameter | Default | Notes |
 |-----------|---------|-------|
+| `FILE` | *required* | One or more input CSV files. Multiple files are calibrated independently; klippy output is batched into a single Moonraker call |
 | `--output` | *none* | Output format(s): `cfg`, `csv`, `json`, `json-pretty`, `klippy`. Can specify multiple times |
 | `--workdir` | `/tmp` | Directory for output files (CSV, JSON) |
 | `--name` | *timestamp* | Name suffix for output files (`%Y%m%d_%H%M%S`) |
-| `--shapers` | `zv,mzv,ei,2hump_ei,3hump_ei` | Matches Klipper's `AUTOTUNE_SHAPERS` (see `klippy/extras/shaper_calibrate.py`); ZVD excluded |
+| `--shapers` | `zv,mzv,ei,2hump_ei,3hump_ei` | Default shaper list for all axes; Klipper's `AUTOTUNE_SHAPERS` (ZVD excluded) |
+| `--shapers-x` | *--shapers* | Override for files detected as X axis |
+| `--shapers-y` | *--shapers* | Override for files detected as Y axis |
+| `--shapers-z` | *--shapers* | Override for files detected as Z axis |
 | `--damping-ratio` | `0.1` | Primary damping ratio for coefficient generation |
 | `--test-damping-ratios` | `0.075,0.1,0.15` | Tested to find worst-case vibrations |
 | `--scv` | `5.0` | Square corner velocity (mm/s) |
@@ -86,8 +95,16 @@ cargo run --release -- /path/to/resonances.csv --max-smoothing 0.15
 | `--shaper-freq` | *shaper min* to `150.0`, step `0.2` | Frequency search range per shaper |
 | `--max-smoothing` | *none* | Optional hard limit. If unset, Kalico-style selection picks lowest score without smoothing constraint |
 | `--window-t` | `0.5` | Welch window length for raw→PSD conversion (seconds) |
+| `--log-macro` | `M118` | G-code macro for visible log messages when `--output klippy` is set. Use `RESPOND` for `RESPOND MSG='...'` |
+| `--commit` | *false* | Persist params to printer.cfg by sending `SAVE_CONFIG RESTART=0` |
+| `--moonraker-host` | `127.0.0.1` | Moonraker hostname or IP address |
+| `--moonraker-port` | `80` | Moonraker port |
 
 **Note on smoothing:** `max_accel` is always computed using an internal `TARGET_SMOOTHING = 0.12` as the "comfortable operating point" (same as Kalico). This is independent of `--max-smoothing`, which only affects shaper selection. If you don't specify `--max-smoothing`, the scorer uses Kalico's default behavior: pick the lowest score without an explicit smoothing cap.
+
+## Axis detection
+
+Axis is auto-detected from the filename stem (`_y`/`-y` → Y, `_z`/`-z` → Z, `_x`/`-x` or no hint → X; a warning is printed for ambiguous filenames). When multiple files are provided, each file is calibrated independently and the resulting `shaper_type_*` / `shaper_freq_*` parameters are batched together for `--output klippy`.
 
 ## Input Formats
 

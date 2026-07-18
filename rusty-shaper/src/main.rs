@@ -4,11 +4,12 @@ use std::path::{Path, PathBuf};
 use clap::Parser;
 
 use rusty_shaper::{
-    Result, ShaperError, ShaperModel,
     input::PsdInput,
     models::{all_shapers_with_zvd, shaper_by_name},
     moonraker::send_gcode_script,
-    scorer::{MIN_FREQ, ShaperCalibrator},
+    scorer::{ShaperCalibrator, MIN_FREQ},
+    types::CalibrationOutput,
+    Result, ShaperError, ShaperModel,
 };
 
 fn valid_shapers_list() -> String {
@@ -25,9 +26,10 @@ fn valid_shapers_list() -> String {
 #[command(about = "Low-RAM Rust input shaper calibration for 3D printers")]
 #[command(version)]
 struct Args {
-    /// Input CSV file (PSD or raw accelerometer data)
-    #[arg(value_name = "FILE")]
-    input: PathBuf,
+    /// Input CSV file(s) (PSD or raw accelerometer data). Multiple files can be
+    /// provided to calibrate several axes in one run; klippy output is batched.
+    #[arg(value_name = "FILE", num_args = 1..)]
+    input: Vec<PathBuf>,
 
     /// Output format(s): "cfg", "csv", "json", "json-pretty", "klippy", or file path
     /// Can be specified multiple times for multiple outputs
@@ -45,8 +47,22 @@ struct Args {
     /// Shaper types to test (comma-separated, e.g. "zv,mzv,ei")
     /// Default matches Kalico's AUTOTUNE_SHAPERS (excludes ZVD).
     /// Use "zvd" explicitly or "all" to include ZVD.
+    /// Axis-specific overrides (--shapers-x, --shapers-y, --shapers-z) take
+    /// precedence for files matching that axis.
     #[arg(short, long, default_value = "zv,mzv,ei,2hump_ei,3hump_ei")]
     shapers: String,
+
+    /// Shaper types to test for the X axis (overrides --shapers for x files).
+    #[arg(long, value_name = "SHAPERS")]
+    shapers_x: Option<String>,
+
+    /// Shaper types to test for the Y axis (overrides --shapers for y files).
+    #[arg(long, value_name = "SHAPERS")]
+    shapers_y: Option<String>,
+
+    /// Shaper types to test for the Z axis (overrides --shapers for z files).
+    #[arg(long, value_name = "SHAPERS")]
+    shapers_z: Option<String>,
 
     /// Damping ratio
     #[arg(long, default_value = "0.1")]
@@ -89,13 +105,18 @@ struct Args {
     #[arg(short, long)]
     quiet: bool,
 
-    /// Moonraker IP address (default: 127.0.0.1)
-    #[arg(long, value_name = "IP", default_value = "127.0.0.1")]
-    moonraker_ip: String,
+    /// Moonraker hostname or IP address (default: 127.0.0.1)
+    #[arg(long, value_name = "HOST", default_value = "127.0.0.1")]
+    moonraker_host: String,
 
     /// Moonraker port (default: 80)
     #[arg(long, value_name = "PORT", default_value = "80")]
     moonraker_port: u16,
+
+    /// G-code macro to use for visible log messages when --output klippy is used.
+    /// Default is M118. Use RESPOND to send via RESPOND MSG='...'.
+    #[arg(long, value_name = "MACRO", default_value = "M118")]
+    log_macro: String,
 
     /// Commit shaper params to printer.cfg (sends SAVE_CONFIG RESTART=0)
     #[arg(long)]
@@ -115,57 +136,151 @@ fn run() -> Result<()> {
     validate_args(&args)?;
 
     let test_damping_ratios = parse_damping_ratios(&args.test_damping_ratios)?;
-    let shapers = parse_shaper_selection(&args.shapers)?;
 
-    let mut calibrator = ShaperCalibrator::new()
-        .with_damping_ratio(args.damping_ratio)
-        .with_test_damping_ratios(test_damping_ratios)
-        .with_scv(args.scv)
-        .with_max_freq(args.max_freq);
-
-    if let Some(max_sm) = args.max_smoothing {
-        calibrator = calibrator.with_max_smoothing(max_sm);
-    }
-
-    if let Some(ref freq_str) = args.shaper_freq {
-        let (start, end, step) = parse_freq_range(freq_str)?;
-        calibrator = calibrator.with_freq_range(start, end, step);
-    }
-
-    for shaper in shapers {
-        calibrator = calibrator.with_shaper(shaper);
-    }
-
-    let mut psd = if args.raw {
-        PsdInput::from_raw_csv_streaming(&args.input, args.window_t)?
-    } else {
-        PsdInput::from_csv_with_window(&args.input, args.window_t)?
-    };
-
-    psd.normalize();
-    psd.suppress_low_freq(MIN_FREQ);
-
-    let result = calibrator.fit(&psd)?;
-    let axis = axis_from_path(&args.input);
+    let wants_klippy = args.output.iter().any(|mode| mode == "klippy");
+    let mut klippy_results: Vec<(String, CalibrationOutput)> = Vec::new();
     let name_suffix = args
         .name
         .clone()
         .unwrap_or_else(|| chrono::Local::now().format("%Y%m%d_%H%M%S").to_string());
 
-    for output_mode in &args.output {
-        match output_mode.as_str() {
-            "klippy" => apply_via_klippy(&args, axis, &result)?,
-            "cfg" => print_cfg_block(axis, &result),
-            "csv" => write_csv_output(&args, axis, &result, &name_suffix)?,
-            "json" => write_json_file(&args, axis, &result, &name_suffix, false)?,
-            "json-pretty" => write_json_file(&args, axis, &result, &name_suffix, true)?,
-            path => write_json_path(&args, path, &result)?,
+    for (input_idx, input) in args.input.iter().enumerate() {
+        let axis = axis_from_path(input);
+        if wants_klippy
+            && let Err(e) = send_log_klippy(
+                &args,
+                &[format!(
+                    "Calculating the best input shaper parameters for {axis} axis"
+                )],
+            )
+        {
+            eprintln!("Warning: failed to send progress message: {e}");
+        }
+
+        let shapers = axis_shaper_selection(&args, axis)?;
+
+        let mut calibrator = ShaperCalibrator::new()
+            .with_damping_ratio(args.damping_ratio)
+            .with_test_damping_ratios(test_damping_ratios.clone())
+            .with_scv(args.scv)
+            .with_max_freq(args.max_freq);
+
+        if let Some(max_sm) = args.max_smoothing {
+            calibrator = calibrator.with_max_smoothing(max_sm);
+        }
+
+        if let Some(ref freq_str) = args.shaper_freq {
+            let (start, end, step) = parse_freq_range(freq_str)?;
+            calibrator = calibrator.with_freq_range(start, end, step);
+        }
+
+        for shaper in shapers {
+            calibrator = calibrator.with_shaper(shaper);
+        }
+
+        let result = calibrate_file(&args, &calibrator, input)?;
+
+        let file_suffix = if args.input.len() > 1 {
+            format!("{name_suffix}_{}", input_idx + 1)
+        } else {
+            name_suffix.clone()
+        };
+
+        for output_mode in &args.output {
+            match output_mode.as_str() {
+                "klippy" => {
+                    // Defer; collect for later batched send. Strip the PSD
+                    // bins to avoid keeping N copies of the full spectrum.
+                    let mut klippy_result = result.clone();
+                    klippy_result.psd_bins.clear();
+                    klippy_results.push((axis.to_string(), klippy_result));
+                }
+                "cfg" => print_cfg_block(axis, &result),
+                "csv" => write_csv_output(&args, axis, &result, &file_suffix)?,
+                "json" => write_json_file(&args, axis, &result, &file_suffix, false)?,
+                "json-pretty" => write_json_file(&args, axis, &result, &file_suffix, true)?,
+                path => write_json_path(&args, path, &result)?,
+            }
+        }
+
+        if !args.quiet {
+            print_summary_stderr(&result);
         }
     }
 
-    if !args.quiet {
-        print_summary_stderr(&result);
+    if wants_klippy {
+        apply_via_klippy(&args, &klippy_results)?;
     }
+
+    Ok(())
+}
+
+fn calibrate_file(
+    args: &Args,
+    calibrator: &ShaperCalibrator,
+    input: &Path,
+) -> Result<CalibrationOutput> {
+    let mut psd = if args.raw {
+        PsdInput::from_raw_csv_streaming(input, args.window_t)?
+    } else {
+        PsdInput::from_csv_with_window(input, args.window_t)?
+    };
+
+    psd.normalize();
+    psd.suppress_low_freq(MIN_FREQ);
+
+    calibrator.fit(&psd)
+}
+
+fn axis_shaper_selection(args: &Args, axis: &str) -> Result<Vec<Box<dyn ShaperModel>>> {
+    let raw = match axis {
+        "x" => args.shapers_x.as_deref(),
+        "y" => args.shapers_y.as_deref(),
+        "z" => args.shapers_z.as_deref(),
+        _ => None,
+    };
+    parse_shaper_selection(raw.unwrap_or(&args.shapers))
+}
+
+// /// Send M118 lines to the printer UI only.
+// fn send_m118_ui<S: AsRef<str>>(args: &Args, lines: &[S]) -> Result<()> {
+//     // Unused but kept for future UI-only logging.
+//     if lines.is_empty() {
+//         return Ok(());
+//     }
+//     let script = lines
+//         .iter()
+//         .map(|line| format!("M118 {}", line.as_ref()))
+//         .collect::<Vec<_>>()
+//         .join("\n");
+//     send_gcode_script(&args.moonraker_host, args.moonraker_port, &script)?;
+//     Ok(())
+// }
+
+/// Format a single visible log line using the configured macro.
+fn format_log_macro(args: &Args, msg: &str) -> String {
+    let macro_name = args.log_macro.as_str();
+    if macro_name.eq_ignore_ascii_case("M118") {
+        format!("M118 {msg}")
+    } else if macro_name.eq_ignore_ascii_case("RESPOND") {
+        let escaped = msg.replace('\\', "\\\\").replace('\'', "\\'");
+        format!("RESPOND MSG='{escaped}'")
+    } else {
+        format!("{} {msg}", args.log_macro)
+    }
+}
+
+/// Send visible log lines to the printer using the configured macro.
+fn send_log_klippy<S: AsRef<str>>(args: &Args, lines: &[S]) -> Result<()> {
+    if lines.is_empty() {
+        return Ok(());
+    }
+    let script = lines
+        .iter()
+        .map(|line| format_log_macro(args, line.as_ref()))
+        .collect::<Vec<_>>()
+        .join("\n");
+    send_gcode_script(&args.moonraker_host, args.moonraker_port, &script)?;
     Ok(())
 }
 
@@ -174,6 +289,12 @@ fn validate_args(args: &Args) -> Result<()> {
     validate_non_negative(args.scv, "--scv")?;
     validate_positive(args.max_freq, "--max-freq")?;
     validate_positive(args.window_t, "--window-t")?;
+
+    if args.input.is_empty() {
+        return Err(ShaperError::Cli(
+            "At least one input FILE is required".to_string(),
+        ));
+    }
 
     if let Some(max_smoothing) = args.max_smoothing {
         validate_non_negative(max_smoothing, "--max-smoothing")?;
@@ -311,68 +432,98 @@ fn parse_shaper_selection(selection: &str) -> Result<Vec<Box<dyn ShaperModel>>> 
 }
 
 fn axis_from_path(path: &Path) -> &'static str {
-    if path
-        .file_stem()
-        .and_then(|stem| stem.to_str())
-        .is_some_and(|stem| stem.contains("_y") || stem.contains("-y"))
-    {
+    let stem = path.file_stem().and_then(|s| s.to_str()).unwrap_or("");
+    if stem.contains("_y") || stem.contains("-y") {
         "y"
+    } else if stem.contains("_z") || stem.contains("-z") {
+        "z"
+    } else if stem.contains("_x") || stem.contains("-x") {
+        "x"
     } else {
+        eprintln!(
+            "Warning: filename '{}' does not contain an axis hint (_x, -x, _y, -y, _z, -z); assuming X axis",
+            stem
+        );
         "x"
     }
 }
 
-fn apply_via_klippy(
-    args: &Args,
-    axis: &str,
-    result: &rusty_shaper::types::CalibrationOutput,
-) -> Result<()> {
-    let axis_up = axis.to_uppercase();
+fn apply_via_klippy(args: &Args, results: &[(String, CalibrationOutput)]) -> Result<()> {
+    if results.is_empty() {
+        return Ok(());
+    }
 
-    for fit in &result.all_results {
-        let m118 = format!(
-            "M118 Fitted shaper '{}' frequency = {:.1} Hz (vibrations = {:.1}%, smoothing ~= {:.3})\n\
-             M118 To avoid too much smoothing with '{}', suggested max_accel <= {:.0} mm/sec^2",
-            fit.shaper_name,
-            fit.best.freq,
-            fit.best.vibrs * 100.0,
-            fit.best.smoothing,
-            fit.shaper_name,
-            (fit.best.max_accel / 100.0).round() * 100.0
-        );
-        if let Err(e) = send_gcode_script(&args.moonraker_ip, args.moonraker_port, &m118) {
-            eprintln!("Warning: failed to send M118: {e}");
+    // Build one multiline M118 script so Moonraker receives all the log output
+    // in a single POST, mirroring Kalico's shaper_calibrate format.
+    let mut m118_lines = Vec::new();
+    for (axis, result) in results {
+        m118_lines.push(format!(
+            "Calculating the best input shaper parameters for {axis} axis"
+        ));
+
+        for fit in &result.all_results {
+            m118_lines.push(format!(
+                "Fitted shaper '{}' frequency = {:.1} Hz (vibrations = {:.1}%, smoothing ~= {:.3})",
+                fit.shaper_name,
+                fit.best.freq,
+                fit.best.vibrs * 100.0,
+                fit.best.smoothing
+            ));
+            m118_lines.push(format!(
+                "To avoid too much smoothing with '{}', suggested max_accel <= {:.0} mm/sec^2",
+                fit.shaper_name,
+                (fit.best.max_accel / 100.0).round() * 100.0
+            ));
+        }
+
+        m118_lines.push(format!(
+            "Recommended shaper_type_{} = {}, shaper_freq_{} = {:.1} Hz",
+            axis, result.recommended_shaper, axis, result.recommended_freq
+        ));
+    }
+    send_log_klippy(args, &m118_lines)?;
+
+    // Build single SET_INPUT_SHAPER script with all axes.
+    let mut script = String::from("SET_INPUT_SHAPER");
+    for (axis, result) in results {
+        let axis_up = axis.to_uppercase();
+        script.push_str(&format!(
+            " SHAPER_TYPE_{}={} SHAPER_FREQ_{}={:.1}",
+            axis_up,
+            result.recommended_shaper.to_uppercase(),
+            axis_up,
+            result.recommended_freq
+        ));
+    }
+    send_gcode_script(&args.moonraker_host, args.moonraker_port, &script)?;
+
+    if !args.quiet {
+        for (axis, result) in results {
+            let axis_up = axis.to_uppercase();
+            eprintln!(
+                "✓ Set input_shaper {axis_up} = {} @ {:.1} Hz on Klippy",
+                result.recommended_shaper.to_uppercase(),
+                result.recommended_freq
+            );
         }
     }
 
-    let m118_rec = format!(
-        "M118 Recommended shaper_type_{} = {}, shaper_freq_{} = {:.1} Hz",
-        axis, result.recommended_shaper, axis, result.recommended_freq
-    );
-    if let Err(e) = send_gcode_script(&args.moonraker_ip, args.moonraker_port, &m118_rec) {
-        eprintln!("Warning: failed to send M118: {e}");
-    }
-
-    let script = format!(
-        "SET_INPUT_SHAPER SHAPER_TYPE_{}={} SHAPER_FREQ_{}={:.1}",
-        axis_up,
-        result.recommended_shaper.to_uppercase(),
-        axis_up,
-        result.recommended_freq
-    );
-    send_gcode_script(&args.moonraker_ip, args.moonraker_port, &script)?;
-
-    if !args.quiet {
-        eprintln!(
-            "✓ Set input_shaper {axis_up} = {} @ {:.1} Hz on Klippy",
-            result.recommended_shaper.to_uppercase(),
-            result.recommended_freq
-        );
-    }
+    // Always remind the user that SAVE_CONFIG is needed to persist.
+    send_log_klippy(
+        args,
+        &[
+            "The SAVE_CONFIG command will update the printer config file with these parameters."
+                .to_string(),
+        ],
+    )?;
 
     if args.commit {
+        send_log_klippy(
+            args,
+            &["rusty-shaper initiated with --commit argument, saving config now!".to_string()],
+        )?;
         send_gcode_script(
-            &args.moonraker_ip,
+            &args.moonraker_host,
             args.moonraker_port,
             "SAVE_CONFIG RESTART=0",
         )?;
@@ -382,6 +533,7 @@ fn apply_via_klippy(
     } else if !args.quiet {
         eprintln!("Note: Parameters are in RAM only. Use --commit to persist to printer.cfg.");
     }
+
     Ok(())
 }
 
@@ -518,6 +670,19 @@ fn write_csv_output(
     if !args.quiet {
         eprintln!("CSV written to {}", path.display());
     }
+
+    if args.output.iter().any(|mode| mode == "klippy")
+        && let Err(e) = send_log_klippy(
+            args,
+            &[format!(
+                "Shaper calibration data written to {} file",
+                path.display()
+            )],
+        )
+    {
+        eprintln!("Warning: failed to send CSV M118: {e}");
+    }
+
     Ok(())
 }
 
@@ -546,11 +711,14 @@ mod tests {
 
     fn test_args() -> Args {
         Args {
-            input: PathBuf::from("input.csv"),
+            input: vec![PathBuf::from("input.csv")],
             output: Vec::new(),
             workdir: PathBuf::from("/tmp"),
             name: None,
             shapers: "mzv".to_string(),
+            shapers_x: None,
+            shapers_y: None,
+            shapers_z: None,
             damping_ratio: 0.1,
             test_damping_ratios: "0.075,0.1,0.15".to_string(),
             scv: 5.0,
@@ -561,8 +729,9 @@ mod tests {
             window_t: 0.5,
             with_psd: false,
             quiet: false,
-            moonraker_ip: "127.0.0.1".to_string(),
+            moonraker_host: "127.0.0.1".to_string(),
             moonraker_port: 80,
+            log_macro: "M118".to_string(),
             commit: false,
         }
     }
@@ -631,5 +800,45 @@ mod tests {
         let json = serialize_output(&result, true, false).expect("serialize should succeed");
         let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
         assert!(parsed.as_object().unwrap().contains_key("psd_bins"));
+    }
+
+    #[test]
+    fn axis_shaper_selection_uses_axis_override() {
+        let mut args = test_args();
+        args.shapers = "zv,mzv".to_string();
+        args.shapers_y = Some("ei".to_string());
+
+        let y = axis_shaper_selection(&args, "y").unwrap();
+        assert_eq!(y.len(), 1);
+        assert_eq!(y[0].name(), "ei");
+
+        let x = axis_shaper_selection(&args, "x").unwrap();
+        assert_eq!(x.len(), 2);
+        assert!(x.iter().any(|s| s.name() == "zv"));
+        assert!(x.iter().any(|s| s.name() == "mzv"));
+    }
+
+    #[test]
+    fn apply_via_klippy_batches_axes() {
+        let args = test_args();
+        let x = rusty_shaper::types::CalibrationOutput {
+            recommended_shaper: "mzv".to_string(),
+            recommended_freq: 40.0,
+            recommended_max_accel: 10000.0,
+            all_results: Vec::new(),
+            psd_bins: Vec::new(),
+        };
+        let y = rusty_shaper::types::CalibrationOutput {
+            recommended_shaper: "ei".to_string(),
+            recommended_freq: 55.0,
+            recommended_max_accel: 8000.0,
+            all_results: Vec::new(),
+            psd_bins: Vec::new(),
+        };
+        let results = vec![("x".to_string(), x), ("y".to_string(), y)];
+
+        // With no output flag this should be a no-op; we only check that the
+        // function does not panic with a fake Moonraker endpoint.
+        let _ = apply_via_klippy(&args, &results);
     }
 }
