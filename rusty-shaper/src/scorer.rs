@@ -695,6 +695,9 @@ mod tests {
     /// to absorb floating-point and windowing differences between the implementations.
     mod real_world_regression {
         use super::*;
+        use flate2::read::GzDecoder;
+        use std::fs::File;
+        use std::io::copy;
 
         const DEFAULT_SHAPER_NAMES: &[&str] = &["zv", "mzv", "ei", "2hump_ei", "3hump_ei"];
         const FREQ_TOL_HZ: f64 = 0.5;
@@ -797,8 +800,17 @@ mod tests {
         }
 
         fn fit_real_capture(csv_name: &str) -> CalibrationOutput {
-            let path = data_dir().join(csv_name);
-            let mut psd = crate::input::PsdInput::from_raw_csv_streaming(&path, 0.5)
+            let path = data_dir().join(format!("{csv_name}.gz"));
+            let mut capture = tempfile::NamedTempFile::new()
+                .expect("temporary capture file should be created");
+            let mut decoder = GzDecoder::new(
+                File::open(&path)
+                    .unwrap_or_else(|e| panic!("failed to open {}: {e}", path.display())),
+            );
+            copy(&mut decoder, capture.as_file_mut())
+                .unwrap_or_else(|e| panic!("failed to decompress {}: {e}", path.display()));
+
+            let mut psd = crate::input::PsdInput::from_raw_csv_streaming(capture.path(), 0.5)
                 .expect("real capture should parse");
             // Match the CLI's calibration pipeline exactly.
             psd.normalize();
