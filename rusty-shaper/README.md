@@ -135,6 +135,44 @@ Axis is auto-detected from the filename (`_y` or `-y` suffix → Y axis, otherwi
 
 Full structured output with all shaper results, scores, and vibration data.
 
+## Cosmos / Klippy integration
+
+[`examples/klippy-rusty-shaper`](examples/klippy-rusty-shaper) is the
+reference wrapper used by Cosmos. It finds the most recent raw X and Y
+resonance captures recorded by Klippy, writes the generated CSV beside those
+captures, and posts the selected input-shaper settings to Moonraker.
+
+Cosmos packages the wrapper as `/usr/bin/klippy-rusty-shaper`; installations
+outside Cosmos can install the example at that path. Configure Klippy with:
+
+```ini
+[gcode_shell_command RUSTY_SHAPER_START]
+command: /usr/bin/klippy-rusty-shaper
+timeout: 30
+verbose: True
+```
+
+For a complete standalone drop-in—including the recommended `M125` macro and
+contrasting `SHAPER_RUSTY` / `SHAPER_CLASSIC` invocation macros—use
+[`examples/printer.cfg`](examples/printer.cfg).
+`M125` uses Klippy's `action_respond_info`, so Rusty's status messages appear
+in Fluidd/Mainsail and are retained in `klippy.log`. Do not define it if the
+printer already assigns `M125` another function.
+
+Call it immediately after collecting both raw captures. The optional parameter
+is a comma-separated Rusty shaper list (for example, `mzv` or `mzv,ei`); omit
+it to use Rusty's Kalico-compatible default set.
+
+```gcode
+TEST_RESONANCES AXIS=X OUTPUT=raw_data
+TEST_RESONANCES AXIS=Y OUTPUT=raw_data
+RUN_SHELL_COMMAND CMD=RUSTY_SHAPER_START PARAMS="mzv"
+```
+
+The wrapper assumes the standard Cosmos paths (`/etc/klipper/logs/klippy.log`)
+and a local Moonraker listener on port 80. It is intentionally an integration
+example rather than a replacement for the standalone `rusty-shaper` CLI.
+
 ## Architecture
 
 ```
