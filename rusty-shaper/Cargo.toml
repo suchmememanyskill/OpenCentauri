@@ -37,3 +37,6 @@ path = "src/main.rs"
 [lib]
 name = "rusty_shaper"
 path = "src/lib.rs"
+# rlib  – used by the binary (unchanged)
+# cdylib – produces librusty_shaper.so for Python ctypes / Kalico
+crate-type = ["rlib", "cdylib"]
