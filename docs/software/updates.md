@@ -80,6 +80,37 @@ Bug Fixes:
     }
     ```
 
+### v1.4.49 (Released on 29/07/2026)
+
+[Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.49/2026-07-29/a51b5052093940708c28c2bb7431aed6.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
+
+Changelog:
+
+1. Fixed several fan‑control‑related issues.
+2. Resolved multiple UI interaction experience issues.
+3. Updated partial material information on the material management page.
+4. Fixed rare cases where the device would freeze during operation.
+5. Addressed known Wi‑Fi instability connection issues
+
+??? info "Raw response:"
+    ```json
+    {
+        "code": "000000",
+        "messages": [],
+        "data": {
+            "update": true,
+            "version": "1.4.49",
+            "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.49/2026-07-29/a51b5052093940708c28c2bb7431aed6.bin",
+            "firmwareType": 1,
+            "packageHash": "b9b64070cef7dda78106c9130db8a881",
+            "updateStrategy": 1,
+            "log": "UPDATE\n1. Fixed several fan‑control‑related issues.\n2. Resolved multiple UI interaction experience issues.\n3. Updated partial material information on the material management page.\n4. Fixed rare cases where the device would freeze during operation.\n5. Addressed known Wi‑Fi instability connection issues.",
+            "timeMS": 1785329339038,
+            "dataInfoId": "b6818ba4254b433fa0530f22d20754f2"
+        },
+        "success": true
+    }
+    ```
 
 ### v1.4.44 (Released on 28/04/2026)
 
