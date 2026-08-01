@@ -45,42 +45,7 @@ Internally, the following commands are used, where %s is the path to the .swu fi
 The Centauri Carbon during startup checks [an endpoint on chituiot.com](https://mms.chituiot.com/mainboardVersionUpdate/getInfo.do7?machineType=ELEGOO%20Centauri%20Carbon&machineId=0&version=1.4.46&lan=en&firmwareType=1) to check if a new firmware update is available. Note that that endpoint requires a relatively new version of the firmware to be provided in the URL.
 Below are archives of what this endpoint provided at the stated date.
 
-### v1.4.46 (Released on 08/05/2026)
-
-[Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.46/2026-05-08/104101205ee740a68a3bc049f0b03c70.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
-
-Changelog:
-
-Updates:
-1. Added CANVAS support for multi-color printing.
-2. Enabled purge G-code during printing and added support for purge parameters via M6211.
-3. Upgraded the UI from the basic version to the standard version.
-
-Bug Fixes:
-1. Fixed various UI issues.
-2. Fixed an issue where incorrect filament was used for the wipe line when printing multi-color models after loading. filament into slot 1.
-3. Fixed multiple system freeze issues.
-
-??? info "Raw response:"
-    {
-      "code": "000000",
-      "messages": [],
-      "data": {
-        "update": true,
-        "version": "1.4.46",
-        "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.46/2026-05-08/104101205ee740a68a3bc049f0b03c70.bin",
-        "firmwareType": 1,
-        "packageHash": "a33ee84d6d74e77d07a8f24865d81f1e",
-        "updateStrategy": 1,
-        "log": "Updates\n1. Added CANVAS support for multi-color printing.\n2. Enabled purge G-code during printing and added support for purge parameters via M6211.\n3. Upgraded the UI from the basic version to the standard version.\nBug Fixes\n1. Fixed various UI issues.\n2. Fixed an issue where incorrect filament was used for the wipe line when printing multi-color models after loading. filament into slot 1.\n3. Fixed multiple system freeze issues.",
-        "timeMS": 1778233188021,
-        "dataInfoId": "badcd92cdbb14c93a4f64d48cfaf0c6b"
-      },
-      "success": true
-    }
-    ```
-
-### v1.4.49 (Released on 29/07/2026)
+### v1.4.49 (Released 29/07/2026)
 
 [Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.49/2026-07-29/a51b5052093940708c28c2bb7431aed6.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
 
@@ -112,7 +77,43 @@ Changelog:
     }
     ```
 
-### v1.4.44 (Released on 28/04/2026)
+### v1.4.46 (Released 08/05/2026)
+
+[Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.46/2026-05-08/104101205ee740a68a3bc049f0b03c70.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
+
+Changelog:
+
+Updates:
+1. Added CANVAS support for multi-color printing.
+2. Enabled purge G-code during printing and added support for purge parameters via M6211.
+3. Upgraded the UI from the basic version to the standard version.
+
+Bug Fixes:
+1. Fixed various UI issues.
+2. Fixed an issue where incorrect filament was used for the wipe line when printing multi-color models after loading. filament into slot 1.
+3. Fixed multiple system freeze issues.
+
+??? info "Raw response:"
+    ```json
+    {
+      "code": "000000",
+      "messages": [],
+      "data": {
+        "update": true,
+        "version": "1.4.46",
+        "packageUrl": "https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.46/2026-05-08/104101205ee740a68a3bc049f0b03c70.bin",
+        "firmwareType": 1,
+        "packageHash": "a33ee84d6d74e77d07a8f24865d81f1e",
+        "updateStrategy": 1,
+        "log": "Updates\n1. Added CANVAS support for multi-color printing.\n2. Enabled purge G-code during printing and added support for purge parameters via M6211.\n3. Upgraded the UI from the basic version to the standard version.\nBug Fixes\n1. Fixed various UI issues.\n2. Fixed an issue where incorrect filament was used for the wipe line when printing multi-color models after loading. filament into slot 1.\n3. Fixed multiple system freeze issues.",
+        "timeMS": 1778233188021,
+        "dataInfoId": "badcd92cdbb14c93a4f64d48cfaf0c6b"
+      },
+      "success": true
+    }
+    ```
+
+### v1.4.44 (Released 28/04/2026)
 
 [Download](https://download.chitubox.com/chitusystems/chitusystems/public/printer/firmware/release/1/ca8e1d9a20974a5896f8f744e780a8a7/1/1.4.44/2026-04-28/c514df905a4243eab4a84a77d349a998.bin){  referrerpolicy="no-referrer" .md-button .md-button--primary }
 
