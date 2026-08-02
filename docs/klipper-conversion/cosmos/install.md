@@ -26,7 +26,7 @@
     1. Touch and hold the `IMPORT_ME_DO_NOT_PRINT` file, then tap `Import`.
     1. In the installer, select `Install OpenCentauri` > `Install COSMOS (Online)`.
     1. Select `Reboot` when the installation has finished.
-    1. Remove the thumbdrive.
+    1. Remove the thumbdrive after COSMOS has booted.
 
 === "Local/Offline"
 
@@ -39,7 +39,7 @@
     1. Touch and hold the `IMPORT_ME_DO_NOT_PRINT` file, then tap `Import`.
     1. In the installer, select `Install OpenCentauri` > `Install OpenCentauri From USB`.
     1. Select `Reboot` when the installation has finished.
-    1. Remove the thumbdrive.
+    1. Remove the thumbdrive after COSMOS has booted.
 
 ## After installation
 
