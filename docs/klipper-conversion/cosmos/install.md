@@ -10,7 +10,7 @@
 ## Installation
 
 !!! Note
-    As COSMOS is still under heavy development, it is important to read [the changelogs](https://github.com/OpenCentauri/cosmos/releases) on GitHub before installing a new version. It may contain additional instructions for migration from an old version.
+    As COSMOS is still under heavy development, it is important to read [the changelogs](https://github.com/OpenCentauri/cosmos/releases) on GitHub before installing a new version. They may contain additional instructions for migration from an old version.
 
 === "Online"
 
@@ -56,7 +56,7 @@ From COSMOS 26.07.0 onwards, the [OpenCentauri COSMOS OrcaSlicer profile](https:
 Set the printer connection in OrcaSlicer to:
 
 - Host Type: `Moonraker (Klipper)`
-   - Note: The Moonraker host type lets you select the upload location during an update dialog. Upload to the `gcodes` folder.
+   - Note: The Moonraker host type lets you select the upload location during a print/upload dialog. Upload to the `gcodes` folder.
 - Printer Agent: Moonraker
 - Hostname, IP or URL: your printer's IP address
 
