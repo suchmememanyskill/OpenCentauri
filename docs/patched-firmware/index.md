@@ -68,7 +68,7 @@ If you'd like to support our work, you can do so on [Ko-Fi](https://ko-fi.com/op
 
 ??? question "**How do I uninstall it?**"
 
-    Follow the installation steps again and run `Install Official 1.1.40` instead of `Install OpenCentauri`. See the [Install page](./install.md#uninstall).
+    Follow the installation steps again and select `Install Official` > `Install 1.4.46 (Online)`. See the [Install page](./install.md#uninstall).
 
 ??? question "**Does installing the patched firmware break my warranty?**"
 

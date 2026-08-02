@@ -32,7 +32,7 @@ Read the [custom features](./features.md) offered by COSMOS.
     - Ability to view the bed mesh in the webui
     - Display input shaper data and compare how mods effect achievable acceleration
     - Ability to level the bed at other temperatures which will give much better ABS first layers since you don't need to worry about bed warp if you level at temp
-    - Store as many bed meshes as you'd like and automatically the appropriate mesh in start gcode for any combination of build plate and bed temp.
+    - Automatically load the saved `default` bed mesh, or enable adaptive meshing to probe only the area used by each print.
     - Better leveling scripts that increase accuracy
     - See fan RPM in the webUI
     - Directly set exhaust fan speed
@@ -56,11 +56,11 @@ Read the [custom features](./features.md) offered by COSMOS.
 
 ??? question "**How long does it take to install COSMOS?**"
 
-    The above process takes <5 minutes to prepare if you already have OC installed, however the first boot after install will take longer than usual because new firmware is being flashed to the toolhead and bed boards. This usually takes 5-10 minutes.
+    The above process takes <5 minutes to prepare if you already have OC installed, however the first boot after install will take longer than usual because new firmware is being flashed to the toolhead and bed boards. This usually takes 5-10 minutes. Do not power off the printer while the startup screen says that the bed or toolhead is being flashed.
 
 ??? question "**How do I uninstall COSMOS?**"
 
-    There is a button in the COSMOS main menu that allows you to revert your printer to the stock firmware.
+    There is a button in the COSMOS main menu that allows you to switch the printer to OpenCentauri Patched firmware. See the [uninstall instructions](./install.md#uninstall).
 
 ??? question "**Does installing COSMOS break my printers warranty?**"
 
