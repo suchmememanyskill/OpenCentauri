@@ -1787,6 +1787,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="After installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-orcaslicer-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required OrcaSlicer profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#update" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2347,6 +2375,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="After installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-orcaslicer-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required OrcaSlicer profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#update" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2398,31 +2454,62 @@
 <p>The stock mainboard is extremely resource limited and there is currently very little overhead to run any plugins, packages, or features not in standard klipper/kalico. Do not attempt to install others unless you <em>really</em> know what you are doing!</p>
 </div>
 <h2 id="installation">Installation</h2>
-<p><em>COSMOS is not considered stable yet. When it is stable, it will be added to the OpenCentauri Installer</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As COSMOS is still under heavy development, it is important to read <a href="https://github.com/OpenCentauri/cosmos/releases">the changelogs</a> on GitHub before installing a new version. It may contain additional instructions for migration from an old version.</p>
+<p>As COSMOS is still under heavy development, it is important to read <a href="https://github.com/OpenCentauri/cosmos/releases">the changelogs</a> on GitHub before installing a new version. They may contain additional instructions for migration from an old version.</p>
 </div>
-<p>The process for installing COSMOS is pretty much the same as for installing patched-OC firmware.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Local/Offline</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Online</label><label for="__tabbed_1_2">Local/Offline</label></div>
 <div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Online requirement</p>
+<p>Your Centauri Carbon must be connected to the internet so the installer can download COSMOS. Choose the <code>Local/Offline</code> method if the printer is not connected to the internet.</p>
+</div>
+<ol>
+<li><a href="https://github.com/OpenCentauri/oc-installer/releases/latest/download/oc-installer.zip">Download</a> the latest OpenCentauri installer release.</li>
+<li>Insert a FAT32-formatted thumbdrive into your PC.</li>
+<li>Extract the <code>install_opencentauri</code> folder from <code>oc-installer.zip</code> onto the root of the thumbdrive.</li>
+<li>Eject the thumbdrive from your PC and insert it into your Centauri Carbon.</li>
+<li>On your Centauri Carbon, navigate to the files tab, tap <code>Usb Drive</code>, then open the <code>install_opencentauri</code> folder.</li>
+<li>Touch and hold the <code>IMPORT_ME_DO_NOT_PRINT</code> file, then tap <code>Import</code>.</li>
+<li>In the installer, select <code>Install OpenCentauri</code> &gt; <code>Install COSMOS (Online)</code>.</li>
+<li>Select <code>Reboot</code> when the installation has finished.</li>
+<li>Remove the thumbdrive after COSMOS has booted.</li>
+</ol>
+</div>
 <div class="tabbed-block">
 <ol>
 <li><a href="https://github.com/OpenCentauri/oc-installer/releases/latest/download/oc-installer.zip">Download</a> the latest OpenCentauri installer release.</li>
-<li>Insert a fat32-formatted thumbdrive into your pc.</li>
-<li>Extract the install_opencentauri folder from oc-installer.zip onto the root of the thumbdrive</li>
-<li><a href="https://github.com/OpenCentauri/cosmos/releases/latest/download/update.swu">Download the latest COSMOS update.swu</a> and place it inside the install_opencentauri folder on your thumbdrive.</li>
-<li>Eject your thumbdrive from your pc and insert it into your Centauri Carbon.</li>
-<li>On your Centauri Carbon, navigate to the files tab, then tap the Usb Drive menu, then tap the install_opencentauri folder.</li>
-<li>Touch hold the IMPORT_ME_DO_NOT_PRINT file, then tap Import.</li>
-<li>Run Install OpenCentauri (Local).</li>
-<li>Restart when the install process finished.</li>
-<li>Remove the thumbdrive.</li>
+<li>Insert a FAT32-formatted thumbdrive into your PC.</li>
+<li>Extract the <code>install_opencentauri</code> folder from <code>oc-installer.zip</code> onto the root of the thumbdrive.</li>
+<li><a href="https://github.com/OpenCentauri/cosmos/releases/latest/download/update.swu">Download the latest COSMOS <code>update.swu</code></a> and place it inside the <code>install_opencentauri</code> folder on your thumbdrive.</li>
+<li>Eject the thumbdrive from your PC and insert it into your Centauri Carbon.</li>
+<li>On your Centauri Carbon, navigate to the files tab, tap <code>Usb Drive</code>, then open the <code>install_opencentauri</code> folder.</li>
+<li>Touch and hold the <code>IMPORT_ME_DO_NOT_PRINT</code> file, then tap <code>Import</code>.</li>
+<li>In the installer, select <code>Install OpenCentauri</code> &gt; <code>Install OpenCentauri From USB</code>.</li>
+<li>Select <code>Reboot</code> when the installation has finished.</li>
+<li>Remove the thumbdrive after COSMOS has booted.</li>
 </ol>
 </div>
 </div>
 </div>
+<h2 id="after-installation">After installation</h2>
+<p>Connect to the printer's IP address in a web browser to open its web interface. Run <code>CHECK_CALIBRATION</code> from the Macros section, then select <code>Calibrate All</code>. This calibrates resonance compensation, the extruder PID, the load cells, the Z offset, and the bed mesh. If the automatic routine cannot finish, see the <a href="../features/#manual-calibration">manual calibration steps</a>.</p>
+<h3 id="required-orcaslicer-profile">Required OrcaSlicer profile</h3>
+<p>From COSMOS 26.07.0 onwards, the <a href="https://cloud.orcaslicer.com/b/3fad3c38f25f">OpenCentauri COSMOS OrcaSlicer profile</a> is required due to changes in the machine start and end G-code. Import and use the latest version of the profile before printing.</p>
+<div class="admonition warning">
+<p class="admonition-title">Old profiles are rejected</p>
+<p>Older machine G-code that calls <code>M729</code> or <code>M8213</code> triggers an emergency stop and displays a message telling you to use the COSMOS start and end machine G-code. Update the profile before trying to print again.</p>
+</div>
+<p>Set the printer connection in OrcaSlicer to:</p>
+<ul>
+<li>Host Type: <code>Moonraker (Klipper)</code></li>
+<li>Note: The Moonraker host type lets you select the upload location during a print/upload dialog. Upload to the <code>gcodes</code> folder.</li>
+<li>Printer Agent: Moonraker</li>
+<li>Hostname, IP or URL: your printer's IP address</li>
+</ul>
 <h2 id="update">Update</h2>
+<p>By default, COSMOS checks for updates shortly after startup while the printer is idle. When an update is available, the printer displays an <code>Update Available</code> prompt with an <code>Update Now</code> button. The automatic check and release channel can be changed in <a href="../features/#cosmos-settings"><code>cosmos.conf</code></a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Via Screen (Online)</label><label for="__tabbed_2_2">Via SSH (Online)</label><label for="__tabbed_2_3">Via USB (Offline)</label><label for="__tabbed_2_4">Via SSH (Manual, Offline)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2453,15 +2540,6 @@
 <p>You can also flash an arbitrary .swu via SSH. Just place the .swu somewhere accessible to the machine (like in /user-resource via SCP/SSH), SSH into your machine, then run <code>flash /path/to/.swu</code>.</p>
 </div>
 </div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">After Setup</p>
-<p>After setup, connect your printer to the internet via the on screen UI. Connect via a web browser to your printer's IP, this will load up the web interface of the printer. Under the Macros section, run <code>FULL CALIBRATION</code> to run through basic machine calibrations (resonance compensation, bed mesh, extruder pid calibration).</p>
-<p>If you are using OrcaSlicer, don't forget to change the connectivity settings. New settings are:</p>
-<ul>
-<li>Host Type: Octo/Klipper</li>
-<li>Hostname, IP or URL: ip.of.your.printer</li>
-</ul>
 </div>
 <h2 id="uninstall">Uninstall</h2>
 <div class="admonition warning">
@@ -2508,7 +2586,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 15, 2026 19:53:56 UTC">April 15, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 2, 2026 20:48:49 UTC">August 2, 2026</span>
   </span>
 
     
@@ -2541,14 +2619,14 @@
           <img src="https://avatars.githubusercontent.com/u/38142618?v=4&amp;size=72" alt="suchmememanyskill">
         </a>
       
-        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
-          
-          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
-        </a>
-      
         <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
           
           <img src="https://avatars.githubusercontent.com/u/19864447?v=4&amp;size=72" alt="web-flow">
+        </a>
+      
+        <a href="https://github.com/robertsamples" class="md-author" title="@robertsamples">
+          
+          <img src="https://avatars.githubusercontent.com/u/64489385?v=4&amp;size=72" alt="robertsamples">
         </a>
       
       

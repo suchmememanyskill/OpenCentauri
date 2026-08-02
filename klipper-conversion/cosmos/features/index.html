@@ -1816,10 +1816,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#full_calibration" class="md-nav__link">
+  <a href="#check_calibration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FULL_CALIBRATION
+        CHECK_CALIBRATION
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bed_mesh_calibrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BED_MESH_CALIBRATE
       
     </span>
   </a>
@@ -1865,10 +1876,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ui-configuration" class="md-nav__link">
+  <a href="#cosmos-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UI Configuration
+        COSMOS settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual calibration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-g-code-from-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import G-code from USB
       
     </span>
   </a>
@@ -2426,10 +2459,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#full_calibration" class="md-nav__link">
+  <a href="#check_calibration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FULL_CALIBRATION
+        CHECK_CALIBRATION
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bed_mesh_calibrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BED_MESH_CALIBRATE
       
     </span>
   </a>
@@ -2475,10 +2519,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ui-configuration" class="md-nav__link">
+  <a href="#cosmos-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UI Configuration
+        COSMOS settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual calibration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-g-code-from-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import G-code from USB
       
     </span>
   </a>
@@ -2547,14 +2613,18 @@
 <h1 id="cosmos-extra-features">COSMOS Extra Features</h1>
 <p>This page outlines features specific to COSMOS (not to Klipper!), like how configuration works, what macros we added and what recovery options we added.</p>
 <h2 id="custom-macros">Custom Macros</h2>
-<h3 id="full_calibration">FULL_CALIBRATION</h3>
-<p>Performs a full calibration of the machine. Currently includes resonance compensation calibration on the X and Y axis, bed meshing, and PID calibration of the extruder.</p>
+<h3 id="check_calibration">CHECK_CALIBRATION</h3>
+<p>Checks whether the input shaper, default bed mesh, load cells, and extruder PID have been calibrated. If anything is missing, select <code>Calibrate All</code> in the prompt to run the complete calibration routine.</p>
+<p>The routine uses <code>full_calibrate_hotend_temperature</code> and <code>full_calibrate_bed_temperature</code> from <code>cosmos.conf</code>; it no longer accepts temperature arguments in the macro command.</p>
+<p>Example: <code>CHECK_CALIBRATION</code></p>
+<h3 id="bed_mesh_calibrate">BED_MESH_CALIBRATE</h3>
+<p>Heats the bed to the requested temperature, homes the printer, cleans the nozzle, calibrates the load-cell Z home, and creates a bed mesh. It also calibrates the Z offset when nozzle Z homing is disabled.</p>
 <p>Args:</p>
 <ul>
-<li>EXTRUDER_TEMP: number. Optional.</li>
-<li>BED_TEMP: number. Optional.</li>
+<li><code>BED_TEMP</code>: number. Optional; defaults to the bed's current target or 60 °C.</li>
 </ul>
-<p>Example: <code>FULL_CALIBRATION EXTRUDER_TEMP=220 BED_TEMP=60</code></p>
+<p>Example: <code>BED_MESH_CALIBRATE BED_TEMP=60</code></p>
+<p>Run <code>SAVE_CONFIG</code> after the calibration to save the new mesh.</p>
 <h3 id="load_filament">LOAD_FILAMENT</h3>
 <p>Loads filament into the toolhead. After loading, a prompt asks if you want to extrude more.</p>
 <p>Args:</p>
@@ -2570,26 +2640,64 @@
 <p>Relevant files are:</p>
 <ul>
 <li><code>printer.cfg</code>: User facing configuration. Add your custom Klipper macros in here. SAVE_CONFIG saves its configuration to this file as well.</li>
-<li><code>klipper-readonly/*.cfg</code>: System configuration. If these files are edited, they will stop receiving any future updates. If you wish to override a section, copy paste the relevant section to your printer.cfg, and editing it there. Nothing stops you from editing the files, though.</li>
+<li><code>klipper-readonly/*.cfg</code>: System configuration managed by COSMOS. Do not edit these files because firmware updates reset them and discard any changes. To override a section, copy the relevant section into <code>printer.cfg</code> and edit it there.</li>
 </ul>
-<details class="note">
-<summary>Revert klipper-readonly .cfg's</summary>
-<p>Run the following SSH command: <code>rm -f /data/overlay-etc/upper/klipper/config/klipper-readonly/* &amp;&amp; sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches</code></p>
-</details>
-<h2 id="ui-configuration">UI Configuration</h2>
-<p>See <code>cosmos.conf</code> for configuration on which user interface is used.</p>
-<p>Screen options:</p>
+<h2 id="cosmos-settings">COSMOS settings</h2>
+<p>Edit <code>cosmos.conf</code> from the web interface to configure COSMOS. The file contains the available values and descriptions for settings including:</p>
 <ul>
-<li>grumpyscreen</li>
+<li>the built-in screen and web UI</li>
+<li>update checks and the release channel</li>
+<li>camera and toolhead LEDs</li>
+<li>print heat soak, adaptive meshing, and adaptive purging</li>
+<li>nozzle Z homing and the end-of-print bed position</li>
+<li>automatic calibration temperatures</li>
 </ul>
-<p>Webui options:</p>
-<ul>
-<li>mainsail</li>
-<li>fluidd</li>
-</ul>
-<p>Restart your printers for your changes to take effect.</p>
+<p>Save the file, then reboot the entire printer for changes to take effect. A Klipper firmware restart alone does not reload these settings; power cycle the printer or run <code>REBOOT_MACHINE</code>.</p>
+<h2 id="manual-calibration">Manual calibration</h2>
+<p><code>CHECK_CALIBRATION</code> normally completes every initial calibration in one routine. Sometimes errors can prevent some printers from reaching the end of the calibration routine. If that happens, use the tabs below to run only the missing parts from the web interface's console.</p>
+<p>The examples use the default 250 °C hotend and 60 °C bed calibration temperatures. If you changed <code>full_calibrate_hotend_temperature</code> or <code>full_calibrate_bed_temperature</code> in <code>cosmos.conf</code>, use those values instead.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Input shaper</label><label for="__tabbed_1_2">Extruder PID</label><label for="__tabbed_1_3">Load cells</label><label for="__tabbed_1_4">Z offset and bed mesh</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Remove loose objects from the bed and chamber before starting. These commands calibrate and save each axis independently:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">G28</span>
+ACCELEROMETER_DEBUG_READ CHIP=lis2dw REG=0x0F
+SHAPER_CALIBRATE AXIS=X FORCE_SHAPER=mzv
+SAVE_CONFIG RESTART=0
+SHAPER_CALIBRATE AXIS=Y FORCE_SHAPER=mzv
+SAVE_CONFIG
+</code></pre></div>
+<p><code>SAVE_CONFIG RESTART=0</code> after the X axis preserves its successful result without intentionally restarting before the Y calibration. If X succeeds but Y fails, X remains saved and you only need to retry the Y command after the next boot. The final <code>SAVE_CONFIG</code> saves the Y result and restarts Klipper normally.</p>
+</div>
+<div class="tabbed-block">
+<p>These commands move the toolhead over the purge tray, tune the extruder at the configured calibration temperature, and clean the nozzle afterward:</p>
+<div class="highlight"><pre><span></span><code>MOVE_TO_TRAY
+PID_CALIBRATE HEATER=extruder TARGET=250
+CLEAN_NOZZLE
+SAVE_CONFIG
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Clear the bed and chamber, then tare, calibrate, and save the load cells:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">G28</span>
+LOAD_CELL_CALIBRATE TARE=TRUE SAVE=TRUE
+SAVE_CONFIG
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This macro performs the load-cell Z home, Z-offset calibration when required, and the bed mesh at the chosen temperature:</p>
+<div class="highlight"><pre><span></span><code>BED_MESH_CALIBRATE BED_TEMP=60
+SAVE_CONFIG
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>After the printer restarts, run <code>CHECK_CALIBRATION</code> again. Each item should be marked <code>OK</code> before you start a print.</p>
+<h2 id="import-g-code-from-usb">Import G-code from USB</h2>
+<p>Place <code>.gcode</code> or <code>.gco</code> files in the root of a USB drive and insert it into the printer. COSMOS copies the files into its internal <code>gcodes</code> folder so they appear in the print interface. Uppercase <code>.GCODE</code> and <code>.GCO</code> extensions are also supported.</p>
+<p>Files already present in the internal <code>gcodes</code> folder with the same name are skipped rather than overwritten.</p>
 <h2 id="recovery">Recovery</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">USB</label><label for="__tabbed_1_2">UART/FEL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">USB</label><label for="__tabbed_2_2">UART/FEL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>COSMOS offers 2 recovery options on USB devices</p>
@@ -2632,7 +2740,7 @@ network={
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 12, 2026 22:22:11 UTC">April 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 2, 2026 20:48:49 UTC">August 2, 2026</span>
   </span>
 
     
