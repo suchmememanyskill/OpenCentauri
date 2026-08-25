@@ -2457,20 +2457,44 @@
 
 
 <h1 id="cc2-toolhead">CC2 Toolhead</h1>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_toolheadboard.jpg" data-desc-position="bottom"><img alt="Toolhead board image" src="../assets/cc2_toolheadboard.jpg" width="800"></a></p>
-<figcaption>
-<p>Credit to keefe826 on the OpenCentauri Discord.</p>
-</figcaption>
-</figure>
+<table>
+<thead>
+<tr>
+<th>Front</th>
+<th>Back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_toolheadboard.jpg" data-desc-position="bottom"><img alt="Toolhead board image" src="../assets/cc2_toolheadboard.jpg" width="800"></a></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_toolheadboard_back.jpg" data-desc-position="bottom"><img alt="Toolhead board back image" src="../assets/cc2_toolheadboard_back.jpg" width="800"></a></td>
+</tr>
+<tr>
+<td>Credit to keefe826 on the OpenCentauri Discord.</td>
+<td>Credit to toreg0977 on the OpenCentauri Discord.</td>
+</tr>
+</tbody>
+</table>
 <p>The toolhead board is connected over a USB-C cable. Unlike the CC1, serial is used instead of USB protocol for communication. The toolhead board receives 24V power.</p>
 <h2 id="supplementary-board">Supplementary board</h2>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/supplementary_board.jpg" data-desc-position="bottom"><img alt="Toolhead supplementary board image" src="../assets/supplementary_board.jpg" width="600"></a></p>
-<figcaption>
-<p>Credit to keefe826 on the OpenCentauri Discord.</p>
-</figcaption>
-</figure>
+<table>
+<thead>
+<tr>
+<th>Front</th>
+<th>Back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/supplementary_board.jpg" data-desc-position="bottom"><img alt="Toolhead supplementary board image" src="../assets/supplementary_board.jpg" width="600"></a></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/supplementary_board_back.jpg" data-desc-position="bottom"><img alt="Toolhead supplementary board back image" src="../assets/supplementary_board_back.jpg" width="600"></a></td>
+</tr>
+<tr>
+<td>Marked <code>EF-C1-V1.0.065</code>. Credit to toreg0977 on the OpenCentauri Discord.</td>
+<td>Credit to toreg0977 on the OpenCentauri Discord.</td>
+</tr>
+</tbody>
+</table>
 <p>The Toolhead board has a 2x4 pin port at the bottom. This connector links to a separate PCB that breaks out the required hotend connectors (temperature sensor, heater, and hotend fan).</p>
 <h2 id="toolhead-board-pins">Toolhead Board Pins</h2>
 <figure>
@@ -2786,6 +2810,24 @@
 <p>Filament detector board annotated with hall effect-based cover detection. Credit to keefe826 on the OpenCentauri Discord.</p>
 </figcaption>
 </figure>
+<table>
+<thead>
+<tr>
+<th>Front</th>
+<th>Back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_filamentdetector_front.jpg" data-desc-position="bottom"><img alt="Filament detector board front image" src="../assets/cc2_filamentdetector_front.jpg" width="600"></a></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/cc2_filamentdetector_back.jpg" data-desc-position="bottom"><img alt="Filament detector board back image" src="../assets/cc2_filamentdetector_back.jpg" width="600"></a></td>
+</tr>
+<tr>
+<td>Connector side, marked <code>EF-A3-V1.0.077</code>. Credit to toreg0977 on the OpenCentauri Discord.</td>
+<td>Sensor side, showing the tangle detection hall sensor (<code>U1</code>) on the rear tab and the filament detector optical sensor (<code>U3</code>) mid-board. Credit to toreg0977 on the OpenCentauri Discord.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="filament-cutter-actuation-sensor">Filament cutter actuation sensor</h2>
 <p>A small board screwed into the hotend uses a Hall effect sensor to detect filament cutter actuation via a magnet in the filament cutter arm. It connects to the right side of the filament detector board.</p>
 <figure>
@@ -2811,7 +2853,11 @@
 <tbody>
 <tr>
 <td>MCU</td>
-<td>Unknown</td>
+<td>GD32F303CCT6</td>
+</tr>
+<tr>
+<td>MCU vendor</td>
+<td>GigaDevice</td>
 </tr>
 <tr>
 <td>Vendor Id</td>
@@ -2969,7 +3015,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 4, 2026 06:47:21 UTC">July 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 25, 2026 06:59:57 UTC">August 25, 2026</span>
   </span>
 
     
