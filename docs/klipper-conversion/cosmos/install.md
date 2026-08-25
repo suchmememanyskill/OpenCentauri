@@ -1,7 +1,7 @@
 # Install COSMOS
 
-!!! Warning "Beta Software!"
-    COSMOS is still under heavy development. Don't install this firmware if you actually depend on using your printer. Functionality is not set in stone and may change at any time.
+!!! Note "Actively developed"
+    COSMOS is stable enough for everyday printing, but it is still actively developed. Functionality can change between releases, and newer features get less mileage than the rest of the firmware.
 
 !!! Danger "**Stop: Before you add any plugins**"
 
@@ -10,7 +10,7 @@
 ## Installation
 
 !!! Note
-    As COSMOS is still under heavy development, it is important to read [the changelogs](https://github.com/OpenCentauri/cosmos/releases) on GitHub before installing a new version. They may contain additional instructions for migration from an old version.
+    Because COSMOS is actively developed, it is important to read [the changelogs](https://github.com/OpenCentauri/cosmos/releases) on GitHub before installing a new version. They may contain additional instructions for migration from an old version.
 
 === "Online"
 

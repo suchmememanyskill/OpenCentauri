@@ -1,9 +1,9 @@
 # CC2 Toolhead
 
-![Toolhead board image](./assets/cc2_toolheadboard.jpg){ width="800" }
-/// caption
-Credit to keefe826 on the OpenCentauri Discord.
-///
+Front|Back
+---|---
+![Toolhead board image](./assets/cc2_toolheadboard.jpg){ width="800" }|![Toolhead board back image](./assets/cc2_toolheadboard_back.jpg){ width="800" }
+Credit to keefe826 on the OpenCentauri Discord.|Credit to toreg0977 on the OpenCentauri Discord.
 
 The toolhead board is connected over a USB-C cable. Unlike the CC1, serial is used instead of USB protocol for communication. The toolhead board receives 24V power.
 
@@ -11,10 +11,10 @@ The toolhead board is connected over a USB-C cable. Unlike the CC1, serial is us
 
 ## Supplementary board
 
-![Toolhead supplementary board image](./assets/supplementary_board.jpg){ width="600" }
-/// caption
-Credit to keefe826 on the OpenCentauri Discord.
-///
+Front|Back
+---|---
+![Toolhead supplementary board image](./assets/supplementary_board.jpg){ width="600" }|![Toolhead supplementary board back image](./assets/supplementary_board_back.jpg){ width="600" }
+Marked `EF-C1-V1.0.065`. Credit to toreg0977 on the OpenCentauri Discord.|Credit to toreg0977 on the OpenCentauri Discord.
 
 The Toolhead board has a 2x4 pin port at the bottom. This connector links to a separate PCB that breaks out the required hotend connectors (temperature sensor, heater, and hotend fan).
 
@@ -124,6 +124,11 @@ Back side of detector board showing filament actuation lever, optical sensor, an
 Filament detector board annotated with hall effect-based cover detection. Credit to keefe826 on the OpenCentauri Discord.
 ///
 
+Front|Back
+---|---
+![Filament detector board front image](./assets/cc2_filamentdetector_front.jpg){ width="600" }|![Filament detector board back image](./assets/cc2_filamentdetector_back.jpg){ width="600" }
+Connector side, marked `EF-A3-V1.0.077`. Credit to toreg0977 on the OpenCentauri Discord.|Sensor side, showing the tangle detection hall sensor (`U1`) on the rear tab and the filament detector optical sensor (`U3`) mid-board. Credit to toreg0977 on the OpenCentauri Discord.
+
 ## Filament cutter actuation sensor
 
 A small board screwed into the hotend uses a Hall effect sensor to detect filament cutter actuation via a magnet in the filament cutter arm. It connects to the right side of the filament detector board.
@@ -141,7 +146,8 @@ Filament cutter magnet location highlighted in red
 
 Metric|Value
 ---|---
-MCU|Unknown
+MCU|GD32F303CCT6
+MCU vendor|GigaDevice
 Vendor Id|Unknown
 Product Id|Unknown
 Device BCD|Unknown

@@ -13,7 +13,7 @@ Read the [custom features](./features.md) offered by COSMOS.
 
 !!! warning "**Looking for regular Opencentauri?**"
 
-    This is a Beta full Klipper/Kalico firmware, for regular OpenCentauri patched from official Elegoo firmware go [here](../../patched-firmware/index.md)
+    This is the full Klipper/Kalico firmware. For regular OpenCentauri patched from official Elegoo firmware go [here](../../patched-firmware/index.md), though note that it is winding down and will stop receiving active updates soon.
 
 !!! Danger "**Stop: Before you add any plugins**"
 
@@ -36,15 +36,12 @@ Read the [custom features](./features.md) offered by COSMOS.
     - Better leveling scripts that increase accuracy
     - See fan RPM in the webUI
     - Directly set exhaust fan speed
+    - Support for the CANVAS multimaterial upgrade through AFC, including automatic flashing of the CANVAS board
     - Ability to add an aftermarket AMS (see this [repository](https://github.com/shawn-makes-stuff/cosmoace-integration) for information on ancubic ACE integration on COSMOS)
     - Full control over I/O pins- this should make it possible repurpose model fan - tachometer pin for a toolhead filament detector
     - Ability control and dim the toolhead led for those that have added it, from webui and printer screen
     - Dimming control on the main light
     - Additionally all the major benefits of OC V3.0 (eliminating excessive outgoing traffic, homing changes to increase cable durability, fixed mid-print fan control)
-
-??? question "**Sounds great but what's the catch?**"
-
-    COSMOS is not currently stable so you should not install the early beta builds on any production machine or printer that you cannot afford to wait for a bugfix if problems arise. However if you are in a position to try the beta build any feedback and bug reports will greatly help the Dev team polish the firmware!
 
 ??? question "**Do I need any additional hardware to run COSMOS?**"
 
@@ -74,9 +71,15 @@ Read the [custom features](./features.md) offered by COSMOS.
 
     Maybe, but developer efforts are focused on the CC1 for the time being
 
-??? question "**Will COSMOS work with the Canvas upgrade for the Centauri Carbon 1?**"
+??? question "**Will COSMOS work with the CANVAS upgrade for the Centauri Carbon 1?**"
 
-    Not yet, but we are working on it!
+    Yes. COSMOS drives CANVAS through AFC (see the next question), and builds and flashes Klipper firmware onto the CANVAS board for you. The four channels appear as the AFC lanes `CANVAS_1` to `CANVAS_4`, mapped to tools `T0` to `T3`, so slicers and macros address them like any other toolchanger. Enable CANVAS in `cosmos.conf` and COSMOS pulls in the matching Klipper configuration automatically. If a CANVAS toolhead is detected while the configuration is not loaded, COSMOS shuts down rather than driving hardware it is not configured for.
+
+    CANVAS support landed after the `26.07.0` release, so for now it is only in nightly builds. Set the release channel to nightly in [`cosmos.conf`](./features.md#cosmos-settings) to get it, or wait for the next stable release. It is also newer and less tested than the rest of COSMOS, and a few things are not implemented yet — most notably RFID spool tag reading and the CANVAS buzzer, and filament eject is disabled. Do not edit `klipper-readonly/canvas.cfg` directly; override the sections you need in `printer.cfg` instead, as updates reset it.
+
+??? question "**What is AFC, and why does COSMOS use it for CANVAS?**"
+
+    AFC (Automated Filament Changer) is an existing Klipper add-on for driving multimaterial units, so it already handles lanes, tool mapping, loading and unloading, runout, and LED status. COSMOS ships a [fork of AFC-Klipper-Add-On](https://github.com/suchmememanyskill/AFC-Klipper-Add-On) with the changes needed for CANVAS hardware rather than writing a CANVAS-only implementation from scratch. It is installed as part of COSMOS, so there is nothing extra to add — and, as with any other package, you should not install a different copy of it yourself.
 
 ??? question "**Is COSMOS related to the OpenCentauri board?**"
 
