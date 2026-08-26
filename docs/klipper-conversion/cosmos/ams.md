@@ -18,12 +18,15 @@ The **Type** row uses [Happy Hare's MMU classification](https://github.com/moggi
 |**Build**|Preassembled|Kit|Kit|Preassembled|
 |**Spool management**|Unenclosed|Enclosed|Enclosed|Enclosed|
 |**Rewinder**|Spring loaded|Motorized|Spring loaded (filamentalist)|Motorized|
-|**Drying Temp**|N/A|N/A|Optional upgrade, 60 °C|55 °C|
+|**Drying Temp**|N/A|N/A|Optional upgrade, 90 °C<sup>†</sup>|55 °C|
 |**Software solution in COSMOS**|AFC|AFC|AFC|CosmoACE|
 |**Status**|Supported, nightly builds only|Documentation pending|Soon™|Community add-on|
 
 /// caption
 *[At West3D use discount code "OPENCENTAURI on box turtle orders to redeem"](https://west3d.com/OPENCENTAURI)
+
+
+<sup>†</sup>90 °C sounds like a bad idea
 ///
 
 
