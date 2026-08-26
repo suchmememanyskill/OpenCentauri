@@ -52,7 +52,7 @@ CANVAS support was only after the `26.07.0` release, so it is currently only in 
 3. Reboot the entire printer. A Klipper firmware restart alone does not reload `cosmos.conf` — power cycle or run `REBOOT_MACHINE`.
 4. The first boot after enabling CANVAS takes longer than usual while firmware is flashed to the CANVAS board. Do not power off while the screen reports flashing.
 
-COSMOS pulls in the matching Klipper configuration automatically once the setting is enabled. If a CANVAS toolhead is detected while the configuration is *not* loaded, COSMOS shuts down.
+COSMOS pulls in the matching Klipper configuration automatically once the setting is enabled. If a CANVAS toolhead is detected while the configuration is *not* loaded klippy will not start.
 
 ### Configuration
 
@@ -91,72 +91,8 @@ QuattroBox is another four-lane changer supported by AFC. In AFC's configuration
 
 ## Anycubic ACE Pro
 
-The ACE Pro is supported through [CosmoACE](https://github.com/shawn-makes-stuff/cosmoace-integration), a community add-on by [shawn-makes-stuff](https://github.com/shawn-makes-stuff). It communicates with the ACE system directly over USB serial using the unit's own JSON-RPC protocol, so it **does not use AFC** and CANVAS/AFC support must stay disabled. Two ACE units can be chained for eight colors.
+The ACE Pro is supported through [CosmoACE](https://github.com/shawn-makes-stuff/cosmoace-integration), a community add-on by [shawn-makes-stuff](https://github.com/shawn-makes-stuff). Full installation instructions are available there. It communicates with the ACE system directly over USB serial using the unit's own JSON-RPC protocol, so it **does not use AFC** and CANVAS/AFC support must stay disabled. Two ACE units can be chained for eight colors.
 
-CosmoACE installs using only built-in COSMOS tools — no `apt`, `pip`, `git`, or `systemctl` — and it preserves `/user-resource/` and `printer.cfg` across firmware updates. A factory reset wipes them.
-
-### Hardware
-
-1. Fit the printable filament hub adapter to the runout sensor.
-2. Modify the ACE cable by swapping pins 3 and 4 on the 4-pin connector end, or use an adapter.
-3. Connect the ACE's USB cable to an external printer USB port.
-4. For eight colors, chain the second ACE from the first unit's spare USB port.
-
-### Install
-
-Confirm CANVAS/AFC is disabled in `cosmos.conf` first — this is the default:
-
-```
-[extras]
-elegoo_canvas = False
-```
-
-Then install over SSH using whichever method suits you:
-
-=== "Download on printer"
-
-    ``` sh
-    cd /user-resource
-    curl -k -f -S -L -o cosmoace.tar.gz https://github.com/shawn-makes-stuff/cosmoace-integration/archive/refs/heads/main.tar.gz
-    tar xzf cosmoace.tar.gz && rm cosmoace.tar.gz
-    sh cosmoace-integration-main/install.sh
-    ```
-
-=== "USB drive"
-
-    ``` sh
-    sh /tmp/usb/sda1/cosmoace-integration/install.sh
-    ```
-
-=== "scp from a computer"
-
-    ``` sh
-    scp -O -r cosmoace-integration root@<printer-ip>:/user-resource/
-    ssh root@<printer-ip>
-    sh /user-resource/cosmoace-integration/install.sh
-    ```
-
-The installer is idempotent and only adds an include line to `printer.cfg`.
-
-### Slicer setup
-
-Add these to your slicer profile:
-
-Placement|G-code
----|---
-Machine start G-code|`ACE_START`
-Change filament G-code|`T{next_extruder} PURGE={flush_length}`
-Machine end G-code|`ACE_END`
-
-### Tuning
-
-The distance from the filament sensor to the printhead must be calibrated for your setup. Adjust it in `/etc/klipper/config/ace-addon.cfg`:
-
-```
-variable_load_to_printhead_mm = 730
-```
-
-CosmoACE has been tested against COSMOS `26.07.0`.
 
 ## Adding another unit
 
