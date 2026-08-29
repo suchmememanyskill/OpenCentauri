@@ -23,11 +23,9 @@ The **Type** row uses [Happy Hare's MMU classification](https://github.com/moggi
 |**Status**|Supported, nightly builds only|Documentation pending|Soon™|Community add-on|
 
 /// caption
-*At [West3D](https://west3d.com/OPENCENTAURI), [Formbot](http://formbot3d.com/), or [Onetwo3d](https://www.onetwo3d.co.uk/)
- use discount code "OPENCENTAURI" on box turtle orders to redeem  
-
-
-
+*At [West3D](https://west3d.com/OPENCENTAURI), 
+ use discount code "OPENCENTAURI" on box turtle orders to redeem; also available from [Formbot](https://www.formbot3d.com/?DIST=RUNDHFg%3D) or [Onetwo3d](https://www.onetwo3d.co.uk/product/ldo-boxturtle-v1-0-automated-filament-changer/?wpam_id=13)
+ 
 *<sup>†</sup>90 °C sounds like a bad idea*
 ///
 
