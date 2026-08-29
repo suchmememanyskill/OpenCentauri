@@ -23,7 +23,9 @@ The **Type** row uses [Happy Hare's MMU classification](https://github.com/moggi
 |**Status**|Supported, nightly builds only|Documentation pending|Soon™|Community add-on|
 
 /// caption
-*[At West3D use discount code "OPENCENTAURI on box turtle orders to redeem"](https://west3d.com/OPENCENTAURI)
+*At [West3D](https://west3d.com/OPENCENTAURI), [Formbot](http://formbot3d.com/), or [Onetwo3d](https://www.onetwo3d.co.uk/)
+ use discount code "OPENCENTAURI" on box turtle orders to redeem  
+
 
 
 *<sup>†</sup>90 °C sounds like a bad idea*
