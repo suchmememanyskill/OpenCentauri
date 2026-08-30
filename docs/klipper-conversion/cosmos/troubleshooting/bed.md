@@ -1,6 +1,6 @@
 # Bed issues
 
-The load cells on the Centauri Carbon are not great, and the post-install autocalibration does not always get it right. If you are getting "probe triggered prior to movement" errors, the mesh looks wrong, or probing behaves oddly, recalibrating the load cells manually against a known weight usually sorts it out.
+The load cells on the Centauri Carbon are not great, and the post-install autocalibration does not always get it right. If you are getting "probe triggered prior to movement" errors, the mesh looks wrong, or probing behaves oddly, reseating the bed assembly is the fix that has most reliably worked, followed by re-taring.
 
 ## Probing fails or the nozzle probes in mid-air
 
@@ -8,11 +8,17 @@ Symptoms include `Probe triggered prior to movement`, runs of `Bad probe detecte
 
 Work through these in order — the mechanical causes are the most common, and no amount of recalibration fixes them.
 
-1. **Reseat the bed springs.** Remove and refit the heated bed so all springs seat evenly and the screws are tightened evenly. This is the single fix that has resolved the most cases.
+1. **Reseat the bed assembly.** Remove and refit the heated bed so all springs seat evenly and the screws are tightened evenly. It is an involved job, but it is the fix that has most reliably resolved these errors.
 2. **Reseat the load cell connectors.** Sometimes unplugging and plugging back in helps.
-3. **Check the channels individually.** Run `LOAD_CELL_READ` with an empty bed, then again with a 1-2 kg weight in the middle. All four channels should move in the same direction by broadly similar amounts. A channel with the wrong sign, or one that barely moves, points at a misinstalled or failed cell, which calibration cannot correct.
-4. **Sanity-check the calibration.** check `counts_per_gram` against the reference range noted under [recalibrating the load cells](#recalibrating-the-load-cells). A wildly different value means the calibration itself is bad — remove any `[load_cell_probe]` overrides from `printer.cfg`, restart Klipper, and [recalibrate](#recalibrating-the-load-cells).
-5. **Try a longer probe pullback.** If the failure is specific to the tap rather than the hardware, override the shipped `0.4` in `printer.cfg`:
+3. **Re-tare the load cells.** This is safe to run as often as you like:
+
+    ``` gcode
+    LOAD_CELL_CALIBRATE TARE=TRUE SAVE=TRUE
+    ```
+
+4. **Check `counts_per_gram`.** It should be near `105`. A value far from that usually means a load cell is dodgy rather than that the calibration is wrong, so recalibrating is unlikely to help.
+5. **Check the channels individually.** Run `LOAD_CELL_READ` with an empty bed, then again with a 1-2 kg weight in the middle. All four channels should move in the same direction by broadly similar amounts. A channel with the wrong sign, or one that barely moves, points at a misinstalled or failed cell, which calibration cannot correct.
+6. **Try a longer probe pullback.** If the failure is specific to the tap rather than the hardware, override the shipped `0.4` in `printer.cfg`:
 
     ```
     [load_cell_probe]
@@ -20,7 +26,6 @@ Work through these in order — the mechanical causes are the most common, and n
     ```
 
     Values of `0.5` and `0.6` have both helped. Note this is `printer.cfg`, so the syntax is `key: value` with a colon — using `=` here silently does nothing.
-
 
 
 ## Load cell force safety limit
@@ -39,7 +44,7 @@ Unplug the load cell connectors and plug them back in. If that does not hold, th
 
 ## Recalibrating the load cells
 
-You need something of a known mass to press on the bed. A full spool of filament is roughly 1200 g and works well. The weight must be between 50 g and 25000 g.
+Try the steps above first, recalibration is worth doing once re-taring has failed. You need something of a known mass to press on the bed. A full spool of filament is roughly 1200 g and works well. The weight must be between 50 g and 25000 g.
 
 1. Clear the bed completely and let the printer sit idle.
 2. Start the guided calibration from the console:
@@ -80,7 +85,7 @@ You need something of a known mass to press on the bed. A full spool of filament
 
     `LOAD_CELL_READ` reports the current force and how much of the sensor range is in use. `LOAD_CELL_DIAGNOSTIC` collects samples and reports sensor health, which is worth running if you suspect a wiring fault rather than a calibration problem.
 
-Your counts per gram should be ~20-100 for reference. This usually resolves any problem. If it does ask for assistance on the [OC Discord server](https://discord.gg/t6Cft3wNJ3) for more detailed troubleshooting steps.
+Your `counts_per_gram` should come out near `105`. If it lands far from that, suspect a load cell rather than the calibration, and ask for assistance on the [OC Discord server](https://discord.gg/t6Cft3wNJ3).
 
 ## Redoing the bed mesh
 
