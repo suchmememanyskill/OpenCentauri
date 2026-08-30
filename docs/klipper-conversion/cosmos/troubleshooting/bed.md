@@ -80,7 +80,7 @@ You need something of a known mass to press on the bed. A full spool of filament
 
     `LOAD_CELL_READ` reports the current force and how much of the sensor range is in use. `LOAD_CELL_DIAGNOSTIC` collects samples and reports sensor health, which is worth running if you suspect a wiring fault rather than a calibration problem.
 
-Your counts per gram should be ~20-100 for reference. This usally resolves any problem. If it does ask for assistance on the [OC Discord server](https://discord.gg/t6Cft3wNJ3) for more detailed troubleshooting steps.
+Your counts per gram should be ~20-100 for reference. This usually resolves any problem. If it does ask for assistance on the [OC Discord server](https://discord.gg/t6Cft3wNJ3) for more detailed troubleshooting steps.
 
 ## Redoing the bed mesh
 
