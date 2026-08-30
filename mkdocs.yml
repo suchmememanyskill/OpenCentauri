@@ -72,6 +72,15 @@ nav:
     - Install: klipper-conversion/cosmos/install.md
     - Features: klipper-conversion/cosmos/features.md
     - AMS Support: klipper-conversion/cosmos/ams.md
+    - Troubleshooting:
+      - klipper-conversion/cosmos/troubleshooting/index.md
+      - Bed issues: klipper-conversion/cosmos/troubleshooting/bed.md
+      - Printing and slicer issues: klipper-conversion/cosmos/troubleshooting/printing.md
+      - Stability and memory: klipper-conversion/cosmos/troubleshooting/stability.md
+      - Z offset: klipper-conversion/cosmos/troubleshooting/z-offset.md
+      - CANVAS and AFC: klipper-conversion/cosmos/troubleshooting/canvas.md
+      - Configuration and recovery: klipper-conversion/cosmos/troubleshooting/recovery.md
+      - Common questions: klipper-conversion/cosmos/troubleshooting/questions.md
   - Patched Firmware:
     - About: patched-firmware/index.md
     - Install: patched-firmware/install.md
@@ -96,6 +105,7 @@ theme:
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tabs
+    - navigation.indexes
     - navigation.expand
     - navigation.top
     - navigation.footer
