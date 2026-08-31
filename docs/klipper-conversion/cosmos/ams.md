@@ -20,7 +20,7 @@ The **Type** row uses [Happy Hare's MMU classification](https://github.com/moggi
 |**Rewinder**|Spring loaded|Motorized|Spring loaded (filamentalist)|Motorized|
 |**Drying Temp**|N/A|N/A|Optional upgrade, 90 °C<sup>†</sup>|55 °C|
 |**Software solution in COSMOS**|AFC|AFC|AFC|CosmoACE|
-|**Status**|Supported, nightly builds only|Documentation pending|Soon™|Community add-on|
+|**Status**|Supported|Documentation pending|Soon™|Community add-on|
 
 /// caption
 *At [West3D](https://west3d.com/OPENCENTAURI), 
@@ -36,7 +36,7 @@ The **Type** row uses [Happy Hare's MMU classification](https://github.com/moggi
 
 CANVAS is the only unit supported in the COSMOS tree itself. COSMOS builds and flashes Klipper and Katapult firmware onto the CANVAS mainboard for you, and exposes the four channels as the AFC lanes `CANVAS_1` to `CANVAS_4`, mapped to tools `T0` to `T3`.
 
-CANVAS support was only after the `26.07.0` release, so it is currently only in nightly builds. Set the release channel to nightly in [`cosmos.conf`](./features.md#cosmos-settings), or wait for the next stable release.
+CANVAS support is available in the `26.08.0` release and later.
 
 ### Setup
 

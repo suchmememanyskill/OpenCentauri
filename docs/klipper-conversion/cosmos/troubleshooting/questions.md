@@ -58,7 +58,7 @@
     smooth_time: 1.5
     ```
 
-    While we have found 1.5 is a good consensus option for stock and available aftermarket alternative hotends every pritner is different. If you are having issues getting issues with 1.5 second smoothing time you may want to increase or decrease it slightly. Report results to the [OpenCentauri Discord](https://discord.gg/t6Cft3wNJ3).
+    While we have found 1.5 is a good consensus option for stock and available aftermarket alternative hotends every printer is different. If you are having issues getting issues with 1.5 second smoothing time you may want to increase or decrease it slightly. Report results to the [OpenCentauri Discord](https://discord.gg/t6Cft3wNJ3).
 
 ??? question "**Something else is broken**"
 

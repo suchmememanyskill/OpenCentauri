@@ -13,9 +13,9 @@ Read the [custom features](./features.md) offered by COSMOS.
 
 Read about [AMS support](./ams.md) for multi-color printing.
 
-!!! warning "**Looking for regular Opencentauri?**"
+!!! warning "**Looking for OpenCentauri patched?**"
 
-    This is the full Klipper/Kalico firmware. For regular OpenCentauri patched from official Elegoo firmware go [here](../../patched-firmware/index.md), though note that it is winding down and will stop receiving active updates soon.
+    This is the full Klipper/Kalico firmware. For OpenCentauri patched from official Elegoo firmware go [here](../../patched-firmware/index.md), though note that it is winding down and will stop receiving active updates soon.
 
 !!! Danger "**Stop: Before you add any plugins**"
 
@@ -77,7 +77,7 @@ Read about [AMS support](./ams.md) for multi-color printing.
 
     Yes. COSMOS drives CANVAS through AFC (see the next question), and builds and flashes Klipper firmware onto the CANVAS board for you. The four channels appear as the AFC lanes `CANVAS_1` to `CANVAS_4`, mapped to tools `T0` to `T3`, so slicers and macros address them like any other toolchanger. Enable CANVAS in `cosmos.conf` and COSMOS pulls in the matching Klipper configuration automatically. If a CANVAS toolhead is detected while the configuration is not loaded, COSMOS shuts down rather than driving hardware it is not configured for.
 
-    Setup steps are on the [AMS support](./ams.md) page. CANVAS support landed after the `26.07.0` release, so for now it is only in nightly builds. Set the release channel to nightly in [`cosmos.conf`](./features.md#cosmos-settings) to get it, or wait for the next stable release. It is also newer and less tested than the rest of COSMOS, and a few things are not implemented yet — most notably RFID spool tag reading and the CANVAS buzzer, and filament eject is disabled. Do not edit `klipper-readonly/canvas.cfg` directly; override the sections you need in `printer.cfg` instead, as updates reset it.
+    Setup steps are on the [AMS support](./ams.md) page. CANVAS support is available in the `26.08.0` release and later. It is newer and less tested than the rest of COSMOS, and a few things are not implemented yet — most notably RFID spool tag reading and the CANVAS buzzer, and filament eject is disabled. Do not edit `klipper-readonly/canvas.cfg` directly; override the sections you need in `printer.cfg` instead, as updates reset it.
 
 ??? question "**What is AFC, and why does COSMOS use it for CANVAS?**"
 
