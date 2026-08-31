@@ -20,4 +20,4 @@ If a failed calibration left the printer in a bad state, COSMOS keeps a copy of 
 
 !!! note "The screen and camera turning off during calibration is normal"
 
-    Both disconnect during input shaper calibration and come back afterwards.
+    Both the GUI and camera services are stopped during input shaper calibration and are restarted afterwards.
