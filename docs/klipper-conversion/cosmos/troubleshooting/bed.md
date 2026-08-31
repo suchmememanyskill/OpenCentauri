@@ -18,7 +18,7 @@ Work through these in order — the mechanical causes are the most common, and n
 
 4. **Check `counts_per_gram`.** It should be near `105`. A value far from that usually means a load cell is dodgy rather than that the calibration is wrong, so recalibrating is unlikely to help.
 5. **Check the channels individually.** Run `LOAD_CELL_READ` with an empty bed, then again with a 1-2 kg weight in the middle. All four channels should move in the same direction by broadly similar amounts. A channel with the wrong sign, or one that barely moves, points at a misinstalled or failed cell, which calibration cannot correct.
-6. **Try a longer probe pullback.** If the failure is specific to the tap rather than the hardware, override the shipped `0.4` in `printer.cfg`:
+6. **Try a longer probe pullback.** If the tap fails due to `TAP_PULLBACK_TOO_SHORT` error in `klippy.log`, override the shipped `0.4` in `printer.cfg`:
 
     ```
     [load_cell_probe]
