@@ -18,6 +18,6 @@ Usually at the resonance and input shaper step, which is the heaviest thing the 
 
 If a failed calibration left the printer in a bad state, COSMOS keeps a copy of your previous `printer.cfg` in the `config-backups` folder.
 
-!!! note "The screen and camera dropping out during calibration is normal"
+!!! note "The screen and camera turning off during calibration is normal"
 
     Both disconnect during input shaper calibration and come back afterwards.
