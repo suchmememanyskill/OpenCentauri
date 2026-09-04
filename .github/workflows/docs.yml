@@ -1,9 +1,5 @@
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 name: build-docs
+
 on:
   push:
     branches:
@@ -11,25 +7,36 @@ on:
     paths:
       - "docs/**"
       - "zensical.toml"
+      - "requirements.txt"
+      - ".github/workflows/docs.yml"
   workflow_dispatch:
-      
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/configure-pages@v6
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
       - run: pip install -r requirements.txt
+
       - run: zensical build --clean
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e  # v4.0.0
         with:
-          path: site
-      - uses: actions/deploy-pages@v4
-        id: deployment
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          cname: docs.opencentauri.cc
