@@ -1,5 +1,7 @@
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 name: build-docs
 on:
@@ -8,21 +10,26 @@ on:
       - main
     paths:
       - "docs/**"
-      - "mkdocs.yml"
+      - "zensical.toml"
   workflow_dispatch:
       
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/configure-pages@v6
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.x"
 
       - run: pip install -r requirements.txt
-
-      - run: MKDOCS_GIT_COMMITTERS_APIKEY=${{secrets.GITHUB_TOKEN}} mkdocs gh-deploy --force --clean --verbose
+      - run: zensical build --clean
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+        id: deployment
